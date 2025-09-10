@@ -14,3 +14,5 @@ Content goes here...
    :caption: Service documentation:
 
    overview
+   web_interface
+   python_module
