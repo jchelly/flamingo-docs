@@ -16,3 +16,4 @@ Content goes here...
    overview
    web_interface
    python_module
+   python_examples

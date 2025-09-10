@@ -88,7 +88,7 @@ The python module provides a mechanism to fetch multiple slices with one
 http request. Remote datasets have a request_slices() method which takes
 a sequence of slice objects as input and returns a single array with the
 slices concatenated along the first axis. Slice objects can be created
-by indexing numpy's built in np.s_ object. For example::
+by indexing numpy's built in `np.s_` object. For example::
 
     slices = []
     slices.append(np.s_[10:20,:])
