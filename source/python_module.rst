@@ -20,11 +20,11 @@ Connecting to the server
 You can connect to the service as follows::
 
     import hdfstream
-    root = hdfstream.RemoteDirectory("__SERVER_URL__", "EAGLE")
+    root = hdfstream.open("cosma", "EAGLE")
 
-Here, the first parameter is the server URL and the second is the name of the
-directory to open. The first time you connect in each python session you will
-be prompted for your username and password.
+Here, the first parameter is the server name. This can be a full URL or an
+alias recognised by the hdfstream module. The second parameter is the name of
+the directory to open.
 
 Directory objects
 -----------------
@@ -40,12 +40,12 @@ RemoteDirectory. E.g. to open the directory containing the z=0
 snapshot of the EAGLE RefL0012N0188 simulation::
 
     # Open a subdirectory
-    subdir = root["Fiducial_models/RefL0012N0188/snapshot_028_z000p000"]</code></pre>
+    subdir = root["Fiducial_models/RefL0012N0188/snapshot_028_z000p000"]
 
 which returns another RemoteDirectory, or::
 
     # Open a HDF5 file
-    snap_file = root["Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5"]</code></pre>
+    snap_file = root["Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5"]
 
 which opens the specified file and returns a RemoteFile object.
 
@@ -60,12 +60,12 @@ This returns a RemoteFile object which behaves like a h5py.File.
 We can read a dataset by indexing the file::
 
     # Read all dark matter particle positions in the file
-    dm_pos = snap_file["PartType1/Coordinates"][...]</code></pre>
+    dm_pos = snap_file["PartType1/Coordinates"][...]
 
 or if we only want to download part of the dataset::
 
     # Read the first 100 dark matter particle positions
-    dm_pos = snap_file["PartType1/Coordinates"][:100,:]</code></pre>
+    dm_pos = snap_file["PartType1/Coordinates"][:100,:]
 
 HDF5 attributes can be accessed using the attrs field of group and dataset objects::
 
@@ -73,7 +73,7 @@ HDF5 attributes can be accessed using the attrs field of group and dataset objec
 
 And we can list the contents of a group::
 
-    print(list(snap_file["PartType0"]))</code></pre>
+    print(list(snap_file["PartType0"]))
 
 Requesting multiple dataset slices
 ----------------------------------
@@ -93,7 +93,7 @@ by indexing numpy's built in `np.s_` object. For example::
     slices = []
     slices.append(np.s_[10:20,:])
     slices.append(np.s_[50:60,:])
-    data = dm_pos.request_slices(slices)</code></pre>
+    data = dm_pos.request_slices(slices)
 
 This would return the coordinates of particles 10 to 19 and 50 to 59 in a
 single array of shape (20,3). There are some restrictions on the slices:

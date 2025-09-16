@@ -9,7 +9,7 @@ simulations and make a dotplot. First, we connect to the server and
 open the EAGLE root directory::
 
     import hdfstream
-    root = hdfstream.RemoteDirectory("__SERVER_URL__","EAGLE")
+    root = hdfstream.open("cosma","EAGLE")
 
 This returns a RemoteDirectory object which can be indexed to access
 subdirectories and files.
@@ -21,8 +21,10 @@ We index the root directory with the path to the file we want to
 read.  In this case the we're going to read the star particles from
 a simulation snapshot.  The snapshot is split over multiple
 files. The correct file paths can be determined by browsing the file
-hierarchy in the `web interface <viewer/EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000>`__
-and you can see the contents of one of the snapshot files `here <viewer/EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5>`__.
+hierarchy in the
+`web interface <viewer.html?path=/EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000>`__
+and you can see the contents of one of the snapshot files
+`here <viewer.html?path=/EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5>`__.
 
 To open this file in python::
 

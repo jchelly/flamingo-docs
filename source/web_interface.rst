@@ -12,7 +12,7 @@ can navigate back to the parent directory from a sub-directory by
 clicking on the parent directory name in the path shown at the top
 of the page.
 
-`Example directory listing for an EAGLE snapshot <viewer/EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000">`__
+`Example directory listing for an EAGLE snapshot <viewer.html?path=EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000>`__
 
 Full file downloads
 -------------------
@@ -49,7 +49,7 @@ of some datasets and attributes, although compound data types and arrays
 with more than two dimensions are not supported. This page also shows
 how to open the file in python.
 
-`Example listing the contents of an EAGLE snapshot file <viewer/EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5">`__
+`Example listing the contents of an EAGLE snapshot file <viewer.html?path=EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5>`__
 
 Opening files with many datasets can take a moment, especially if the file
 system hosting the data is busy.

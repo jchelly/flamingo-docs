@@ -11,9 +11,9 @@ possible at several levels of granularity:
     streaming in `messagepack <https://msgpack.org/index.html>`__
     format
 
-A `python client module <viewer?page=python_module>`__ which
-implements a similar interface to h5py is provided. This can be used
-to `download dataset slices as numpy arrays <viewer?page=python_examples>`__,
+A :doc:`python client module <python_module>` which implements a similar
+interface to h5py is provided. This can be used to
+:doc:`download dataset slices as numpy arrays <python_examples>`,
 for example.
 
 The web interface can be used to browse the available files and their
