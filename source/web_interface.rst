@@ -1,5 +1,5 @@
-Web interface
-=============
+Browsing the available data
+===========================
 
 Directory listings
 ------------------

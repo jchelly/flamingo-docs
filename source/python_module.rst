@@ -1,5 +1,5 @@
-Python client module
-====================
+Accessing data in python
+========================
 
 The python module allows remote access to HDF5 datasets using an interface
 similar to h5py.

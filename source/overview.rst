@@ -1,5 +1,5 @@
-Service overview
-================
+Overview
+========
 
 This service provides web based remote access to collections of data
 stored in HDF5 format on the COSMA system in Durham. Access is
