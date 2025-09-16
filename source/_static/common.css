@@ -40,11 +40,8 @@ body {
   Directory listing
 */
 
-.directory_listing li {
-    margin-top: 0.3em;
-}
-
 .directory_listing td {
     padding-right: 1em;
-    padding-bottom: 0.3em;
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
 }

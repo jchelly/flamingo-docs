@@ -7,7 +7,7 @@ Content goes here...
    :maxdepth: 1
    :caption: FLAMINGO data:
 
-   viewer
+   File browser <viewer>
 
 .. toctree::
    :maxdepth: 1

@@ -88,14 +88,11 @@ function download_url(path) {
 
 function viewer_url(path, object=null) {
     let url = null;
-    url = new URL("/hdfstream/viewer/"+path, window.location.origin);
+    url = new URL("/flamingo/viewer.html", window.location.origin);
+    if (path != null)
+        url.searchParams.set("path", encodeURIComponent(path));
     if(object != null)
         url.searchParams.set("object", encodeURIComponent(object));
-    return url;
-}
-
-function docs_url(page) {
-    const url = new URL("/hdfstream/static/"+page+".html", window.location.origin);
     return url;
 }
 
@@ -435,6 +432,7 @@ async function display_directory(path, object) {
     }
 
     // Create list of files
+    add_element(div, "br");
     const file_header = add_element(div, "h3");
     if(nr_files > 0) {
         const file_table = add_element(div, "table");
@@ -878,6 +876,7 @@ async function display_dataset(path, file_data, object_name, object_data) {
     }
 
     // Add header for contents
+    add_element(div, "br");
     const contents_header = add_element(div, "h3");
     add_text(contents_header, "Dataset contents");
 
@@ -889,6 +888,7 @@ async function display_dataset(path, file_data, object_name, object_data) {
     add_text(li2, "Shape : "+format_shape(object_data.shape));
 
     // Add control for offset into the dataset
+    add_element(div, "br");
     const input_label = add_element(div, "label")
     add_text(input_label, "First row shown : ")
     const input_offset = add_element(input_label, "input")
@@ -930,19 +930,15 @@ class ViewerState {
     // Update this state object from the supplied URL
     init_from_url(url) {
         // Extract virtual path from the URL
-        let path = decode_path(url.pathname);
+        let path = url.searchParams.get("path");
+        if(path != null)
+            path = "/" + sanitize_path(decodeURIComponent(path));
+        else
+            path = "/";
         // Extract object name from the URL
         let object = url.searchParams.get("object");
         if(object != null)
             object = "/"+sanitize_path(decodeURIComponent(object));
-        // Remove prefix from the path
-        if(path.startsWith("/hdfstream/viewer")) {
-            path = path.slice("/hdfstream/viewer".length);
-        } else {
-            // If we have an unrecognized URL format, go to the root dir
-            path = "/";
-            object = null;
-        }
         // Store parameters
         this.path = sanitize_path(path);
         this.object = object;
