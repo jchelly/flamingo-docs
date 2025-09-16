@@ -1,13 +1,13 @@
-FLAMINGO
-========
+FLAMINGO data release
+=====================
 
 Content goes here...
 
 .. toctree::
    :maxdepth: 1
-   :caption: Data collections:
+   :caption: FLAMINGO data:
 
-   eagle
+   viewer
 
 .. toctree::
    :maxdepth: 1
@@ -18,9 +18,5 @@ Content goes here...
    python_module
    python_examples
    performance
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Technical details:
 
 
