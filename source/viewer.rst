@@ -10,6 +10,6 @@ File browser
     </div>
     <div class="viewer" id="content"></div>
     <script type="module">
-         import { viewer_onload } from "/hdfstream/viewer.js";
+         import { viewer_onload } from "./_static/viewer.js";
          window.addEventListener('load', viewer_onload);
     </script>
