@@ -19,4 +19,9 @@ Content goes here...
    python_examples
    performance
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Technical details:
 
+   api_description
+   msgpack_encoding
