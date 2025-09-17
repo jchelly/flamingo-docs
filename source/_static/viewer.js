@@ -867,6 +867,17 @@ async function display_dataset(path, file_data, object_name, object_data) {
     const name_header = add_element(div, "h2");
     add_text(name_header, "Dataset: "+object_name);
 
+    // Add description, if we have one:
+    // SWIFT datasets have a Description attribute
+    let description = object_data.attributes.Description;
+    // EAGLE datasets have a VarDescription attribute
+    if(description == null)description = object_data.attributes.VarDescription;
+    // If we have a description attribute, convert it to text
+    if(description != null) {
+        const descr_p = add_element(div, "p");
+        add_text(descr_p, format_attribute_value(description));
+    }
+
     // Show how to access this dataset in python
     div.appendChild(python_dataset_example(path, object_name));
 
