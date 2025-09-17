@@ -791,15 +791,7 @@ class DataTable {
 function python_dataset_example(path, object_name) {
 
     const result = document.createElement("div");
-
-    // Get the server URL, which we'll need to construct the example code.
-    // This is the page URL up to (but excluding) the /hdfstream/viewer part.
-    const url = new URL(window.location.href);
-    const server = url.origin; // E.g. https://localhost:8443
-
-    // Split into root directory and rest of path
-    const dir_name = path.split("/", 1)[0];
-    const file_name = sanitize_path(path.replace(dir_name+"/", ""));
+    const file_name = sanitize_path(path);
 
     // Add a header
     add_text(add_element(result, "h3"), "Read this dataset in python");
@@ -812,7 +804,7 @@ function python_dataset_example(path, object_name) {
     // Construct the example text
     let example = "";
     example += 'import hdfstream\n';
-    example += 'root_dir = hdfstream.open("'+server+'/hdfstream/", "'+dir_name+'")\n';
+    example += 'root_dir = hdfstream.open("cosma", "/")\n';
     example += 'h5file = root_dir["'+file_name+'"]\n';
     example += 'data = h5file["'+sanitize_path(object_name)+'"][...]\n';
     add_text(code, example);
@@ -825,15 +817,7 @@ function python_dataset_example(path, object_name) {
 function python_hdf5_file_example(path) {
 
     const result = document.createElement("div");
-
-    // Get the server URL, which we'll need to construct the example code.
-    // This is the page URL up to (but excluding) the /hdfstream/viewer part.
-    const url = new URL(window.location.href);
-    const server = url.origin; // E.g. https://localhost:8443
-
-    // Split into root directory and rest of path
-    const dir_name = path.split("/", 1)[0];
-    const file_name = sanitize_path(path.replace(dir_name+"/", ""));
+    const file_name = sanitize_path(path);
 
     // Add a header
     add_text(add_element(result, "h3"), "Open this file in python");
@@ -846,7 +830,7 @@ function python_hdf5_file_example(path) {
     // Construct the example text
     let example = "";
     example += 'import hdfstream\n';
-    example += 'root_dir = hdfstream.open("'+server+'/hdfstream/", "'+dir_name+'")\n';
+    example += 'root_dir = hdfstream.open("cosma", "/")\n';
     example += 'h5file = root_dir["'+file_name+'"]\n';
     add_text(code, example);
     hljs.highlightElement(code);
