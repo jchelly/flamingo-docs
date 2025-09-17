@@ -27,21 +27,6 @@ function sanitize_path(path) {
     return path1;
 }
 
-// Decode a URL encoded path
-function decode_path(path) {
-
-    const components = path.split("/");
-    let result = "";
-    for(let i=0; i<components.length; i+=1) {
-        const component = decodeURIComponent(components[i]);
-        if(i == 0)
-            result = component;
-        else
-            result = result + "/" + component;
-    }
-    return result;
-}
-
 function add_element(node, type) {
     return node.appendChild(document.createElement(type));
 }
@@ -90,9 +75,9 @@ function viewer_url(path, object=null) {
     let url = null;
     url = new URL("/flamingo/viewer.html", window.location.origin);
     if (path != null)
-        url.searchParams.set("path", encodeURIComponent(path));
+        url.searchParams.set("path", path);
     if(object != null)
-        url.searchParams.set("object", encodeURIComponent(object));
+        url.searchParams.set("object", object);
     return url;
 }
 
@@ -935,13 +920,13 @@ class ViewerState {
         // Extract virtual path from the URL
         let path = url.searchParams.get("path");
         if(path != null)
-            path = "/" + sanitize_path(decodeURIComponent(path));
+            path = "/" + sanitize_path(path);
         else
             path = "/";
         // Extract object name from the URL
         let object = url.searchParams.get("object");
         if(object != null)
-            object = "/"+sanitize_path(decodeURIComponent(object));
+            object = "/"+sanitize_path(object);
         // Store parameters
         this.path = path;
         this.object = object;
