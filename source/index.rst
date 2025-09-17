@@ -5,9 +5,9 @@ Content goes here...
 
 .. toctree::
    :maxdepth: 1
-   :caption: FLAMINGO data:
+   :caption: FLAMINGO simulations:
 
-   File browser <viewer>
+   Browse files <https://localhost:8444/flamingo/viewer.html?path=/FLAMINGO>
 
 .. toctree::
    :maxdepth: 1
