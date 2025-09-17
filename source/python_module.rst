@@ -1,8 +1,8 @@
 Accessing data in python
 ========================
 
-The python module allows remote access to HDF5 datasets using an interface
-similar to h5py.
+The hdfstream python module allows remote access to HDF5 datasets using an
+interface similar to h5py.
 
 Installation
 ------------
@@ -116,7 +116,7 @@ as messagepack arrays, which will incur more overhead than the
 binary objects used for fixed size types.
 
 Large arrays of variable length types
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Datasets containing variable length types are encoded as
 messagepack array objects, which have a size limit of about 4
@@ -129,7 +129,7 @@ None of the datasets currently available through the service
 contain this type of data.
 
 Large arrays of fixed length types
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The service is capable of encoding arbitrarily large datasets
 containing fixed length types such as ints or floats. In this
