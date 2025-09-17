@@ -733,6 +733,7 @@ class DataTable {
         result.id = "data_table_div";
 
         // Check if we can display the data
+        if(this.nr_rows == 0)return result; // No rows to display
         if(this.rank > 2) {
             add_text(result, "Too many dimensions!");
             return result;
