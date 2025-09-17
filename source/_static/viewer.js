@@ -417,7 +417,7 @@ async function display_directory(path, object) {
             const td1 = add_element(tr, "td");
             const dir_link = add_element(td1, "a");
             dir_link.href = viewer_url(join_path(path, name));
-            add_text(dir_link, name);
+            add_text(dir_link, "📁 "+name);
             dir_link.onclick = function() {display_path(path+"/"+name, null, true) ; return false}; // returning false prevents loading the href
             // Add description of this directory, if we have one
             const td2 = add_element(tr, "td");
@@ -444,7 +444,7 @@ async function display_directory(path, object) {
                 const td1 = add_element(tr, "td");
                 const file_link = add_element(td1, "a");
                 file_link.href = viewer_url(join_path(path, name));
-                add_text(file_link, name);
+                add_text(file_link, "📄 " + name);
                 file_link.onclick = function() {display_path(path+"/"+name, null, true) ; return false}; // returning false prevents loading the href
                 // Add description of this directory, if we have one
                 const td2 = add_element(tr, "td");
@@ -922,7 +922,10 @@ class ViewerState {
         } else {
             // Set state from (path, object)
             this.path = "/"+sanitize_path(path);
-            this.object = "/"+sanitize_path(object);
+            if(object != null)
+                this.object = "/"+sanitize_path(object);
+            else
+                this.object = null;
             this.url = viewer_url(this.path, this.object).toString();
         }
     }
