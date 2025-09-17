@@ -921,8 +921,8 @@ class ViewerState {
             this.init_from_url(url);
         } else {
             // Set state from (path, object)
-            this.path = sanitize_path(path);
-            this.object = object;
+            this.path = "/"+sanitize_path(path);
+            this.object = "/"+sanitize_path(object);
             this.url = viewer_url(this.path, this.object).toString();
         }
     }
@@ -940,7 +940,7 @@ class ViewerState {
         if(object != null)
             object = "/"+sanitize_path(decodeURIComponent(object));
         // Store parameters
-        this.path = sanitize_path(path);
+        this.path = path;
         this.object = object;
         // Generate sanitized URL string
         this.url = viewer_url(this.path, this.object).toString();
