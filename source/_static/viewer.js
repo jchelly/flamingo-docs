@@ -298,6 +298,7 @@ async function fetch_and_decode_slice(path, object, start, count) {
 function add_filename_header(node, path, size, link_self) {
 
     const header = add_element(node, "h2");
+    add_text(header, "📄 "); // Add file icon
     make_links_from_path(header, path, link_self);
 
     // Get file size as a string
@@ -352,6 +353,7 @@ async function display_directory(path, object) {
     div.classList.add("directory_listing");
 
     const header = add_element(div, "h2");
+    add_text(header, "📁 ");
     make_links_from_path(header, path, false);
 
     // Get directory size as a string
@@ -481,7 +483,7 @@ function append_attributes(list, root) {
         const object = Object.values(root.attributes)[i];
         const li = add_element(list, "li");
         const b = add_element(li, "b");
-        add_text(b, name);
+        add_text(b, "📝 "+name);
         add_text(li, " : " + format_attribute_value(object));
     }
 }
@@ -521,7 +523,7 @@ async function display_hdf5_group(path, root_name) {
             // Add the expandable details/summary box
             const details = add_element(li, "details");
             const summary = add_element(details, "summary");
-            add_text(summary, name);
+            add_text(summary, "📁 "+name);
 
             // Store the file path and group name in the details element
             details.dataset.path = path;
@@ -536,8 +538,10 @@ async function display_hdf5_group(path, root_name) {
             const li = add_element(group_list, "li");
             const details = add_element(li, "details");
             const summary = add_element(details, "summary");
-            add_text(summary, name);
-            add_text(details, "  Soft link to "+object.target);
+            add_text(summary, "🔗 "+name);
+            const link_ul = add_element(details, "ul");
+            const link_li = add_element(link_ul, "ul");
+            add_text(link_li, "↪️ Soft link to "+object.target);
         }
     }
 
@@ -555,7 +559,7 @@ async function display_hdf5_group(path, root_name) {
             const ds_name = join_path(root_name, name);
             ds_link.href = viewer_url(path, ds_name);
             ds_link.onclick = function() {display_path(path, ds_name, true) ; return false}; // returning false prevents loading the href
-            add_text(ds_link, name);
+            add_text(ds_link, "📊 "+ name);
             // Add type and dimensions information
             const ul = add_element(details, "ul");
             const li1 = add_element(ul, "li");
