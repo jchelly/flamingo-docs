@@ -1,3 +1,58 @@
+
+/*
+  Text font and size
+*/
+body {
+    margin:0em;
+    font-size:11pt;
+}
+body {
+    font-family:Helvetica, FreeSans, Verdana, sans-serif;
+    color:#272727;
+}
+/*
+  Dataset contents table
+*/
+.data_table table th {
+    text-align: left;
+}
+.data_table td {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.data_table tr:nth-child(odd) { background-color: #d1d6ff; }
+.data_table tr:nth-child(even) { background-color: #ffffff; }
+
+/*
+  HDF5 file contents listing
+*/
+.hdf5_listing ul {
+    list-style: none;
+    padding-inline-start: 2em;
+    margin-top: 0.3em;
+}
+
+.hdf5_listing li {
+    margin-top: 0.3em;
+}
+
+/*
+  Directory listing
+*/
+
+.directory_listing td {
+    padding-right: 1em;
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
+}
+
+.directory_listing a {
+    white-space: nowrap;
+}
+
+/*
+  Maximum page width for RTD sphinx theme
+*/
 .wy-nav-content {
     max-width: 1200px !important;
 }

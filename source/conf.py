@@ -33,7 +33,7 @@ html_title = 'FLAMINGO'
 # customization.
 #
 html_css_files = [
-    'common.css',
+    'custom.css',
     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/default.min.css',
 ]
 html_js_files = [
