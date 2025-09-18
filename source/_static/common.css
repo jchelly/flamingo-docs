@@ -49,3 +49,10 @@ body {
 .directory_listing a {
     white-space: nowrap;
 }
+
+/*
+  Maximum page width for RTD sphinx theme
+*/
+.wy-nav-content {
+    max-width: 1200px !important;
+}

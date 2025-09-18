@@ -24,9 +24,22 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
-#html_theme = 'furo'
 html_static_path = ['_static']
 html_title = 'FLAMINGO'
+
+#
+# Additional files needed for the file browser: msgpack library for decoding
+# responses, highlight.js syntax highlighter, dompurify and some CSS
+# customization.
+#
 html_css_files = [
-    'custom.css',
+    'common.css',
+    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/default.min.css',
+]
+html_js_files = [
+    'https://unpkg.com/@msgpack/msgpack@2.8.0',
+    'https://unpkg.com/dompurify@3.2.3/dist/purify.min.js',
+    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js',
+    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/python.min.js',
+    'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/yaml.min.js',
 ]
