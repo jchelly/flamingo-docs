@@ -58,7 +58,7 @@ function join_path(path, name) {
 }
 
 function msgpack_url(path, object=null, data_size_limit=null) {
-    const url = new URL("/hdfstream/msgpack/"+path, window.location.origin);
+    const url = new URL("/hdfstream/msgpack/"+sanitize_path(path), window.location.origin);
     if(object != null)
         url.searchParams.set("object", object);
     if(data_size_limit != null)
@@ -67,7 +67,7 @@ function msgpack_url(path, object=null, data_size_limit=null) {
 }
 
 function download_url(path) {
-    const url = new URL("/hdfstream/download/"+path, window.location.origin);
+    const url = new URL("/hdfstream/download/"+sanitize_path(path), window.location.origin);
     return url;
 }
 
@@ -75,7 +75,7 @@ function viewer_url(path, object=null) {
     let url = null;
     url = new URL("/flamingo/viewer.html", window.location.origin);
     if (path != null)
-        url.searchParams.set("path", path);
+        url.searchParams.set("path", sanitize_path(path));
     if(object != null)
         url.searchParams.set("object", object);
     return url;
@@ -344,16 +344,18 @@ async function display_directory(path, object) {
     // Get directory size as a string
     const dir_size = format_file_size(object.size);
 
-    // Add a link to download the directory
-    const p2 = add_element(div, "p");
-    const dl_link = add_element(p2, "a");
-    dl_link.href = download_url(path);
-    add_text(dl_link, "Full directory download ("+dir_size+")");
+    if(sanitize_path(path) != "") {
+        // Add a link to download the directory
+        const p2 = add_element(div, "p");
+        const dl_link = add_element(p2, "a");
+        dl_link.href = download_url(path);
+        add_text(dl_link, "Full directory download ("+dir_size+")");
 
-    // Include note about large downloads if the directory is >100GB
-    if(object.size >= 107374182400) {
-        const note = add_element(div, "p");
-        set_inner_html(note, "Note that you can use the <a href='/hdfstream/viewer?page=python_module'>python module</a> to extract HDF5 datasets of interest without downloading complete files, or if you have a user account on COSMA then <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a> might allow faster downloads.");
+        // Include note about large downloads if the directory is >100GB
+        if(object.size >= 107374182400) {
+            const note = add_element(div, "p");
+            set_inner_html(note, "Note that you can use the <a href='/hdfstream/viewer?page=python_module'>python module</a> to extract HDF5 datasets of interest without downloading complete files, or if you have a user account on COSMA then <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a> might allow faster downloads.");
+        }
     }
 
     // Make a div to contain any description for this diretcory
