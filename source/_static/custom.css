@@ -1,15 +1,3 @@
-
-/*
-  Text font and size
-*/
-body {
-    margin:0em;
-    font-size:11pt;
-}
-body {
-    font-family:Helvetica, FreeSans, Verdana, sans-serif;
-    color:#272727;
-}
 /*
   Dataset contents table
 */
