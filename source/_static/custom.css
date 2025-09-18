@@ -42,5 +42,16 @@
   Maximum page width for RTD sphinx theme
 */
 .wy-nav-content {
-    max-width: 1200px !important;
+    max-width: 1000px !important;
+}
+
+/*
+  Maximum page width for Piccolo sphinx theme
+*/
+div.body {
+    min-width: 360px;
+    max-width: 1000px !important;
+}
+div.document div.documentwrapper {
+  max-width: 1000px !important;
 }

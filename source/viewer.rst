@@ -1,5 +1,6 @@
 .. raw:: html
 
+    <link rel="stylesheet" type="text/css" href="_static/wide.css" />
     <div style="height: 0; visibility: hidden;">
 
 File browser
