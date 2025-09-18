@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'FLAMINGO'
+project = 'FLAMINGO Data Release'
 copyright = '2025, John Helly'
 author = 'John Helly'
 
@@ -23,9 +23,10 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
+#html_theme = 'sphinx_rtd_theme'
+html_theme = 'piccolo_theme'
 html_static_path = ['_static']
-html_title = 'FLAMINGO'
+html_title = 'FLAMINGO Data Release'
 
 #
 # Additional files needed for the file browser: msgpack library for decoding

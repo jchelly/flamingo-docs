@@ -5,9 +5,11 @@ Content goes here...
 
 .. toctree::
    :maxdepth: 1
-   :caption: FLAMINGO simulations:
+   :caption: Simulation data:
 
-   Browse files <https://localhost:8444/flamingo/viewer.html?path=/FLAMINGO>
+   FLAMINGO <https://localhost:8444/flamingo/viewer.html?path=/FLAMINGO>
+   EAGLE <https://localhost:8444/flamingo/viewer.html?path=/EAGLE>
+   All data <https://localhost:8444/flamingo/viewer.html?path=/>
 
 .. toctree::
    :maxdepth: 1
