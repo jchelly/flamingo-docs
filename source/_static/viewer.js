@@ -302,7 +302,7 @@ function add_filename_header(node, path, size, link_self) {
 function make_links_from_path(node, path, link_self) {
     // Make links to parent directories from the supplied path
     var part_path = "";
-    const components = path.split("/");
+    const components = ("/"+sanitize_path(path)).split("/");
     for (var i = 0; i < components.length; i++) {
 
         // Compute the full path and URL of this component
