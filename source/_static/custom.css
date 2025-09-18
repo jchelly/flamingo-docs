@@ -50,8 +50,8 @@
 */
 div.body {
     min-width: 360px;
-    max-width: 1000px !important;
+    max-width: 1100px !important;
 }
 div.document div.documentwrapper {
-  max-width: 1000px !important;
+  max-width: 1100px !important;
 }
