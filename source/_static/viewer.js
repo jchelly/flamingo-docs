@@ -997,6 +997,7 @@ async function display_path(path, object_name, push_state) {
 
     // Update the page
     display_content(result);
+    window.scrollTo(0, 0);
 
     if(push_state) {
         // Set state used for browser history and back button
