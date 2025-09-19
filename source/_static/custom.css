@@ -34,24 +34,37 @@
     padding-bottom: 0.15em;
 }
 
+/*
+  Don't word-wrap file and directory names
+*/
 .directory_listing a {
     white-space: nowrap;
 }
 
 /*
-  Maximum page width for RTD sphinx theme
+  Documentation maximum page width for RTD sphinx theme
 */
 .wy-nav-content {
     max-width: 1000px !important;
 }
 
 /*
-  Maximum page width for Piccolo sphinx theme
+  Documentation page maximum width for Piccolo sphinx theme.
+  Also prevent centering (override "margin: auto") so that it doesn't look odd
+  when we allow the file browser to use the full page width.
 */
 div.body {
     min-width: 360px;
-    max-width: 1100px !important;
+    max-width: 1000px !important;
 }
 div.document div.documentwrapper {
-  max-width: 1100px !important;
+    max-width: 1000px !important;
+    margin: 3em !important;
+}
+
+/*
+  Also limit the width of descriptions in directory listing pages
+*/
+.directory_listing p {
+    max-width: 1000px !important;
 }
