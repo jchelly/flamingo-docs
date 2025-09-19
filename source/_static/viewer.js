@@ -421,7 +421,7 @@ async function display_directory(path, object) {
     }
 
     // Create list of files
-    add_element(div, "br");
+    if((nr_dirs > 0) && (nr_files > 0))add_element(div, "br");
     const file_header = add_element(div, "h3");
     if(nr_files > 0) {
         const file_table = add_element(div, "table");
