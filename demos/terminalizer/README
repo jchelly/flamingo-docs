@@ -1,0 +1,13 @@
+
+Running terminalizer, assuming installed without root:
+
+  export ELECTRON_DISABLE_SANDBOX=true
+  npx terminalizer record demo -k -c ./config.yml
+  npx terminalizer render demo
+
+Commands for the dataset download demo:
+
+  import hdfstream
+  flamingo = hdfstream.open("https://dataweb.cosma.dur.ac.uk:8443/hdfstream", "/FLAMINGO")
+  snap = flamingo["L1000N0900/HYDRO_FIDUCIAL/snapshots/flamingo_0077/flamingo_0077.hdf5"]
+  bh_pos = snap["PartType5/Coordinates"][...]
