@@ -59,7 +59,7 @@ div.body {
 }
 div.document div.documentwrapper {
     max-width: 1000px !important;
-    margin: 3em !important;
+    margin-left: 3em !important;
 }
 
 /*
@@ -67,4 +67,16 @@ div.document div.documentwrapper {
 */
 .directory_listing p {
     max-width: 1000px !important;
+}
+
+
+/*
+  Screenshots
+*/
+img.screenshot {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 4px;
+    background-color: #f9f9f9;
 }
