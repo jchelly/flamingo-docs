@@ -45,10 +45,10 @@ This interface also provides links to download files and directories.
 Accessing subsets of the data
 -----------------------------
 
-We also provide a mechanism to request the contents of HDF5 files
-without downloading the whole file. This allows more granular access:
-it is possible, for example, to download just the star particles from
-some specified region in a simulation snapshot or download only a few
+We also provide a mechanism to request parts of HDF5 files without
+downloading the whole file. This allows more granular access: it is
+possible, for example, to download just the star particles from some
+specified region in a simulation snapshot or download only a few
 properties of interest from a halo catalogue.
 
 We provide adapted versions of the pynbody and swiftsimio python
