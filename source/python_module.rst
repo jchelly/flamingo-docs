@@ -1,11 +1,9 @@
 Accessing data in python
 ========================
 
-The hdfstream python module allows remote access to HDF5 datasets using an
-interface similar to h5py.
-
-The module source code is hosted `on github
-<https://github.com/jchelly/hdfstream-python>`__ and full
+The hdfstream python module allows remote access to HDF5 datasets
+using an interface similar to h5py. The module source code is hosted
+`on github <https://github.com/jchelly/hdfstream-python>`__ and full
 documentation is available on `Read the Docs
 <https://hdfstream-python.readthedocs.io/en/stable/>`__. In case of
 problems, please `post an issue

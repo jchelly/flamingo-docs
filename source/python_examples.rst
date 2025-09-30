@@ -33,10 +33,14 @@ the file (it behaves similarly to a read only h5py.File or h5py.Group).
 Reading the halo positions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We can see the contents of the halo catalogue file `here
-<viewer.html?path=/FLAMINGO/L1000N0900/DMO_FIDUCIAL/SOAP-HBT/halo_properties_0077.hdf5>`__. The
-dataset ``BoundSubhalos/CentreOfMass`` contains the centre of mass of
-the particles bound to each halo. To read the halo positions from the file::
+We can see the contents of this particular halo catalogue file in the
+`file browser
+<viewer.html?path=/FLAMINGO/L1000N0900/DMO_FIDUCIAL/SOAP-HBT/halo_properties_0077.hdf5>`__
+and the format of SOAP output files is described in the
+:doc:`documentation pages <soap>`. The dataset
+``BoundSubhalos/CentreOfMass`` contains the centre of mass of the
+particles bound to each halo. To read the halo positions from the
+file::
 
     halo_pos = soap_file["BoundSubhalo/CentreOfMass"][...]
 
