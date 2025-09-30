@@ -44,3 +44,8 @@ html_js_files = [
     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/python.min.js',
     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/yaml.min.js',
 ]
+
+# Don't collapse toc when using Piccolo theme
+html_theme_options = {
+    "globaltoc_collapse": False
+}
