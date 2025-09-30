@@ -1,17 +1,8 @@
-FLAMINGO data release
+FLAMINGO Data Release
 =====================
 
-Content goes here...
-
 .. toctree::
-   :maxdepth: 1
-   :caption: Simulation data:
-
-   FLAMINGO <https://localhost:8444/flamingo/viewer.html?path=/FLAMINGO>
-   EAGLE <https://localhost:8444/flamingo/viewer.html?path=/EAGLE>
-   All data <https://localhost:8444/flamingo/viewer.html?path=/>
-
-.. toctree::
+   :hidden:
    :maxdepth: 1
    :caption: How to use this service:
 
@@ -20,10 +11,24 @@ Content goes here...
    python_module
    python_examples
    performance
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Technical details:
-
    api_description
    msgpack_encoding
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: FLAMINGO data:
+
+   Browse files <https://localhost:8444/flamingo/viewer.html?path=/FLAMINGO>
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: FLAMINGO documentation:
+
+   simulations
+   snapshots
+   soap
+   lightcones
+
+This page provides access to the `FLAMINGO simulations <https://flamingo.strw.leidenuniv.nl/>`__.

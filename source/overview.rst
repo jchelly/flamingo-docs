@@ -1,10 +1,10 @@
-Overview
-========
+Service Overview
+================
 
 This service provides web based remote access to the `FLAMINGO
-simulations <https://flamingo.strw.leidenuniv.nl/>`__: Full-hydro
-Large-scale structure simulations with All-sky Mapping for the
-Interpretation of Next Generation Observations.
+simulations <https://flamingo.strw.leidenuniv.nl/>`__ as described in
+`Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__
+and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023arXiv230605492K>`__.
 
 FLAMINGO simulation data products
 ---------------------------------
@@ -27,8 +27,10 @@ The following data products are available:
     dark matter, the X-ray luminosity of the gas in several bands, and
     measurements of the thermal and kinetic Sunyaev–Zeldovich effects.
 
-Browsing the simulation data
-----------------------------
+See the links in the sidebar for full documentation.
+
+Downloading simulation data
+---------------------------
 
 All outputs are stored in the form of HDF5 files. Complete files and
 directories (such as a full simulation snapshot or a halo catalogue)
@@ -39,8 +41,6 @@ locate files of interest and view their contents.
 .. image:: file_browser.png
    :class: screenshot
    :alt: screenshot of the file browser page
-
-This interface also provides links to download files and directories.
 
 Accessing subsets of the data
 -----------------------------
@@ -53,12 +53,9 @@ properties of interest from a halo catalogue.
 
 We provide adapted versions of the pynbody and swiftsimio python
 modules which can transparently make use of this service, and a more
-generic module which allows downloads of arbitrary HDF5 data using a
-similar API to h5py.
+generic hdfstream module which allows downloads of arbitrary HDF5 data
+using a similar API to h5py.
 
 .. image:: download_dataset.gif
    :class: screenshot
    :alt: animation showing a dataset download in python
-
-Currently no authentication is required to access the simulation data,
-although there is a (fairly high) rate limit on requests.
