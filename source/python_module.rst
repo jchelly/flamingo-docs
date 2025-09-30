@@ -18,9 +18,6 @@ The module can be installed using pip::
 
   pip install hdfstream
 
-This will install the module and its dependencies (currently requests,
-msgpack, msgpack-numpy and numpy).
-
 Connecting to the server
 ------------------------
 

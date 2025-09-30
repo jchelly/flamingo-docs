@@ -9,6 +9,8 @@ where the keys are messagepack strings.
 For messagepack implementations in various languages see
 `msgpack.org <https://msgpack.org/index.html>`__
 
+.. _encoded_directory:
+
 Directories
 -----------
 
@@ -20,6 +22,8 @@ A directory is encoded as a messagepack map with the following entries:
 
 Subdirectories may have a value of nil if they were not loaded because the
 recursion limit was reached.
+
+.. _encoded_file:
 
 Files
 -----
@@ -37,6 +41,8 @@ File types currently recognized by the server are listed below:
   * ``text/plain``: other types of text files
   * ``application/octet-stream``: other binary data
 
+.. _encoded_group:
+
 HDF5 Groups
 -----------
 
@@ -47,6 +53,8 @@ A HDF5 group is encoded as a messagepack map with the following entries:
   * ``members``: a map where the keys are the names of the objects in this group and the values are recursively encoded HDF5 objects
 
 As with directories, members may have a value of nil if the recursion limit is reached.
+
+.. _encoded_dataset:
 
 HDF5 Datasets
 -------------
@@ -61,6 +69,8 @@ A HDF5 dataset is encoded as a messagepack map with the following entries:
 
 The data entry may be nil if it would be larger than the maximum data size
 in a recursive group request.
+
+.. _encoded_ndarray:
 
 Encoded arrays
 --------------

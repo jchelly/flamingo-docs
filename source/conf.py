@@ -46,6 +46,6 @@ html_js_files = [
 ]
 
 # Don't collapse toc when using Piccolo theme
-html_theme_options = {
-    "globaltoc_collapse": False
-}
+#html_theme_options = {
+#    "globaltoc_collapse": False
+#}
