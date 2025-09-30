@@ -1,5 +1,5 @@
-Service Overview
-================
+Introduction
+============
 
 This service provides web based remote access to the `FLAMINGO
 simulations <https://flamingo.strw.leidenuniv.nl/>`__ as described in
@@ -27,7 +27,8 @@ The following data products are available:
     dark matter, the X-ray luminosity of the gas in several bands, and
     measurements of the thermal and kinetic Sunyaev–Zeldovich effects.
 
-See the links in the sidebar for full documentation.
+See the :doc:`FLAMINGO documentation pages <flamingo_docs>` for full
+descriptions of the outputs.
 
 Downloading simulation data
 ---------------------------
@@ -51,10 +52,12 @@ possible, for example, to download just the star particles from some
 specified region in a simulation snapshot or download only a few
 properties of interest from a halo catalogue.
 
-We provide adapted versions of the pynbody and swiftsimio python
+We provide adapted versions of the
+`pynbody <https://github.com/pynbody/pynbody>`__ and
+`swiftsimio <https://github.com/SWIFTSIM/swiftsimio>`__ python
 modules which can transparently make use of this service, and a more
-generic hdfstream module which allows downloads of arbitrary HDF5 data
-using a similar API to h5py.
+generic :doc:`hdfstream <python_module>` module which allows downloads of
+arbitrary HDF5 data using a similar interface to h5py.
 
 .. image:: download_dataset.gif
    :class: screenshot

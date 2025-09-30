@@ -4,6 +4,13 @@ Accessing data in python
 The hdfstream python module allows remote access to HDF5 datasets using an
 interface similar to h5py.
 
+The module source code is hosted `on github
+<https://github.com/jchelly/hdfstream-python>`__ and full
+documentation is available on `Read the Docs
+<https://hdfstream-python.readthedocs.io/en/stable/>`__. In case of
+problems, please `post an issue
+<https://github.com/jchelly/hdfstream-python/issues>`__.
+
 Installation
 ------------
 
@@ -20,7 +27,7 @@ Connecting to the server
 You can connect to the service as follows::
 
     import hdfstream
-    root = hdfstream.open("cosma", "EAGLE")
+    flamingo = hdfstream.open("cosma", "/FLAMINGO")
 
 Here, the first parameter is the server name. This can be a full URL or an
 alias recognised by the hdfstream module. The second parameter is the name of
@@ -33,19 +40,19 @@ The command above returns a RemoteDirectory object. This behaves like a
 python dictionary where the keys are the names of files and subdirectories
 within the directory. We can list the contents with::
 
-    print(list(root))
+    print(list(flamingo))
 
 A file or subdirectory can be opened by indexing the
 RemoteDirectory. E.g. to open the directory containing the z=0
-snapshot of the EAGLE RefL0012N0188 simulation::
+snapshot of the L1000N0900/DMO_FIDUCIAL simulation::
 
     # Open a subdirectory
-    subdir = root["Fiducial_models/RefL0012N0188/snapshot_028_z000p000"]
+    subdir = flamingo["L1000N0900/DMO_FIDUCIAL/snapshots/flamingo_0077"]
 
 which returns another RemoteDirectory, or::
 
     # Open a HDF5 file
-    snap_file = root["Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5"]
+    snap_file = flamingo["L1000N0900/DMO_FIDUCIAL/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
 
 which opens the specified file and returns a RemoteFile object.
 
@@ -54,7 +61,7 @@ Reading HDF5 groups and datasets
 
 Files are opened by indexing the directory object with the path to the file::
 
-    snap_file = root["Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5"]
+    snap_file = flamingo["L1000N0900/DMO_FIDUCIAL/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
 
 This returns a RemoteFile object which behaves like a h5py.File.
 We can read a dataset by indexing the file::
