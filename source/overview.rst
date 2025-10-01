@@ -27,8 +27,12 @@ The following data products are available:
     dark matter, the X-ray luminosity of the gas in several bands, and
     measurements of the thermal and kinetic Sunyaev–Zeldovich effects.
 
-See the :doc:`FLAMINGO documentation pages <flamingo_docs>` for full
-descriptions of the outputs.
+Documentation
+-------------
+
+See the links in the side bar for
+:doc:`more information on how to use this service <service_docs>`
+and :doc:`full descriptions of the available data products <flamingo_docs>`.
 
 Downloading simulation data
 ---------------------------
