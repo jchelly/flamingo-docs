@@ -9,7 +9,7 @@ file, and so the properties listed reflect those present in the current
 run of SOAP, rather than all possible properties.
 
 Property types
-==============
+--------------
 
 Subhalo quantities (SH)
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -173,7 +173,7 @@ found in the next section.
 +------------------------------------+----------------------------------------+------------+-------------+
 
 Property categories
-===================
+-------------------
 
 Halo properties only make sense if the subhalo contains sufficient
 particles. Halo finders are often run with a configuration that requires
@@ -256,7 +256,7 @@ different categories are summarised in the table below.
 +---------+-----------------------------------------------------------------------+
 
 Overview table
-==============
+--------------
 
 The table below lists all the properties that are computed by SOAP when
 run in HYDRO mode. For dark matter only (DMO) mode only the properties
@@ -1100,7 +1100,7 @@ HaloCentre are aL)
 
 
 Non-trivial properties
-======================
+----------------------
 
 :math:`^{1}`\ The centre of mass and centre of mass velocity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1556,7 +1556,7 @@ AB-magnitudes (rest-frame absolute maggies) directly by applying -2.5
 log10(L) without additional corrections.
 
 Spherical overdensity calculations
-==================================
+----------------------------------
 
 The radius at which the density reaches a certain threshold value is
 found by linear interpolation of the cumulative mass profile obtained
@@ -1665,7 +1665,7 @@ for the neutrino masses computed for the SOs. Neutrinos are not included
 in the calculation of the centre of mass and centre of mass velocity.
 
 Group membership files
-======================
+----------------------
 
 Before SOAP can be run we generate a set of files which contain halo
 membership information for each particle in the SWIFT snapshot. The
