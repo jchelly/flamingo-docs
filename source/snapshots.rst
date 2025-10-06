@@ -15,6 +15,6 @@ The following sections describe the layout and contents of the snapshots.
    snapshot_format
    snapshot_particle_properties
 
-For more details of the SWIFT simulation snapshot format, see the
-`SWIFT documentation
+For more information about the SWIFT simulation snapshot format used
+here, see the `SWIFT documentation
 <https://swift.strw.leidenuniv.nl/docs/Snapshots/index.html>`__.

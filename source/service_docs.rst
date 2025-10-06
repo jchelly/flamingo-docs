@@ -6,7 +6,6 @@ The following pages explain how to access FLAMINGO data products through this se
 .. toctree::
    :maxdepth: 2
 
-   overview
    web_interface
    python_module
    python_examples

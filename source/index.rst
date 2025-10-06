@@ -6,6 +6,7 @@ This page provides access to the `FLAMINGO simulations <https://flamingo.strw.le
 .. toctree::
    :maxdepth: 2
 
+   introduction
    service_docs
    flamingo_docs
    FLAMINGO data <https://localhost:8444/flamingo/viewer.html?path=/FLAMINGO>
