@@ -20,3 +20,11 @@ div.document div.documentwrapper {
     margin-right: 1em !important;
     max-width: 100% !important;
 }
+
+/*
+  Maximum page width for file browser with Immaterial theme
+*/
+.md-main__inner {
+    max-width: 100rem !important;
+}
+

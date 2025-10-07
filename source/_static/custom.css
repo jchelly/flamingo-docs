@@ -63,6 +63,13 @@ div.document div.documentwrapper {
 }
 
 /*
+  Documentation page max width for immaterial theme
+*/
+.md-main__inner {
+    max-width: 70rem !important;
+}
+
+/*
   Also limit the width of descriptions in directory listing pages
 */
 .directory_listing p {

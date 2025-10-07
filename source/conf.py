@@ -23,10 +23,25 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-#html_theme = 'sphinx_rtd_theme'
-html_theme = 'piccolo_theme'
 html_static_path = ['_static']
 html_title = 'FLAMINGO Data Release'
+
+#
+# Theme selection
+#
+# Read the Docs
+#html_theme = 'sphinx_rtd_theme'
+
+# Piccolo
+html_theme = 'piccolo_theme'
+# Don't collapse toc when using Piccolo theme
+html_theme_options = {
+#    "globaltoc_collapse": False
+}
+
+# Immaterial
+#extensions = ["sphinx_immaterial"]
+#html_theme = 'sphinx_immaterial'
 
 #
 # Additional files needed for the file browser: msgpack library for decoding
@@ -44,8 +59,3 @@ html_js_files = [
     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/python.min.js',
     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/yaml.min.js',
 ]
-
-# Don't collapse toc when using Piccolo theme
-#html_theme_options = {
-#    "globaltoc_collapse": False
-#}
