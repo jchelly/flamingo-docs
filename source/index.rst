@@ -1,7 +1,5 @@
-FLAMINGO Data Release
-=====================
-
-This page provides access to the `FLAMINGO simulations <https://flamingo.strw.leidenuniv.nl/>`__.
+Welcome to the FLAMINGO data release documentation
+==================================================
 
 .. toctree::
    :maxdepth: 2
