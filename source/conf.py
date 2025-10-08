@@ -35,9 +35,9 @@ html_title = 'FLAMINGO Data Release'
 # Piccolo
 html_theme = 'piccolo_theme'
 # Don't collapse toc when using Piccolo theme
-html_theme_options = {
+#html_theme_options = {
 #    "globaltoc_collapse": False
-}
+#}
 
 # Immaterial
 #extensions = ["sphinx_immaterial"]
