@@ -1,7 +1,7 @@
 Healpix light-cones
 =========================
 
-The FLAMINGO healpix light-cones are a set of concentric spheres centered on virtual observers. The details of the light-cone construction are stated in Appendix~A of Schaye et al. 2023. The files are stored as `Healpix <https://healpix.sourceforge.io/>`_ files with :math:`N_\mathrm{side} = 16384`, corresponding to a resolution of 0.21 arcmin. All `Healpy <https://healpy.readthedocs.io/en/latest/>`_ routines can be applied to postprocess the data (e.g., smoothing, masking, or applying pixel window functions.
+The FLAMINGO healpix light-cones are a set of concentric spheres centered on virtual observers. The details of the light-cone construction are stated in Appendix A of `Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__. The files are stored as `Healpix <https://healpix.sourceforge.io/>`_ files with :math:`N_\mathrm{side} = 16384`, corresponding to a resolution of 0.21 arcmin. All `Healpy <https://healpy.readthedocs.io/en/latest/>`_ routines can be applied to postprocess the data (e.g., smoothing, masking, or applying pixel window functions.)
 
 
 An example of how to read in the data using lightcone_io is 
@@ -21,15 +21,18 @@ The shells are stored such that ``shell 0`` corresponds to the lowest redshift s
 
 .. code-block:: python
 
-   for i in range(shells.nr_shells):  # looping over the first 60 shells until z = 3
+   for i in range(shells.nr_shells):  
        total_mass = shells[i]["TotalMass"][:]
        inner_radius = shells[i].comoving_inner_radius
        outer_radius = shells[i].comoving_outer_radius
 	
 
-Possibly include section to link halo light-cone to map?
+Integrated light-cones that have been generated in the analysis for specific papers can be found at
 
+.. toctree::
+   :maxdepth: 1
 
+   integrated_lightcones
 
 
 

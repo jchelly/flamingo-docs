@@ -6,7 +6,7 @@ This page will describe the light-cones. Details are presented in Appendix A of 
 The following sections describe the layout and contents of the different light-cone types.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    healpix_lightcones
    halo_lightcones
