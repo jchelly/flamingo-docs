@@ -25,6 +25,7 @@ exclude_patterns = []
 
 html_static_path = ['_static']
 html_title = 'FLAMINGO Data Release'
+html_logo = 'https://flamingo.strw.leidenuniv.nl/assets/FLAMINGO_navbar_brand_stroke.png'
 
 #
 # Theme selection
