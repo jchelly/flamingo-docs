@@ -14,9 +14,10 @@ The following data products are available:
   * Snapshots of the full distribution of particles (dark matter, gas,
     stars, black holes and neutrinos) at a series of output times
     between redshift z=15 and the present day
-  * Halo catalogues and merger trees generated using the HBTplus (or
-    HERONS?)  halo finder with a wide range of halo properties
-    computed using the `SOAP post-processing tool
+  * Halo catalogues and merger trees generated using the `HBT-HERONS
+    <https://hbt-herons.strw.leidenuniv.nl/>`__ halo finder with a
+    wide range of halo properties computed using the `SOAP
+    post-processing tool
     <https://joss.theoj.org/papers/10.21105/joss.08252>`__
   * Full sky lightcone particle outputs, where each simulation
     particle is output as it crosses the past lightcone of an observer
@@ -26,6 +27,8 @@ The following data products are available:
     lightcone observer. These include the total mass in gas, stars and
     dark matter, the X-ray luminosity of the gas in several bands, and
     measurements of the thermal and kinetic Sunyaev–Zeldovich effects.
+  * Approximate lightcone halo catalogues created by using black hole
+    particles to trace halo positions between snapshots
 
 Documentation
 -------------
