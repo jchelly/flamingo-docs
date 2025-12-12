@@ -6,6 +6,10 @@ simulations <https://flamingo.strw.leidenuniv.nl/>`__ as described in
 `Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__
 and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023arXiv230605492K>`__.
 
+.. note:: The FLAMINGO simulations are not yet public. Access to the
+          simulation data is currently restricted and requires an
+          account.
+
 FLAMINGO simulation data products
 ---------------------------------
 
