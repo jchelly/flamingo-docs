@@ -4,15 +4,17 @@ Browsing the available data
 Directory listings
 ------------------
 
-This web interface can be used to browse the available files. Use
-the links in the Collections list on the left side of the page to
-view the root directory of each project. Each directory page
-contains links to any sub-directories and files it contains.  You
-can navigate back to the parent directory from a sub-directory by
-clicking on the parent directory name in the path shown at the top
-of the page.
+This web interface can be used to browse the available files. Use the
+`FLAMINGO data
+<https://dataweb.cosma.dur.ac.uk:8443/flamingo/viewer.html?path=/FLAMINGO>`__
+link on the left side of the page to view the FLAMINGO project root
+directory. Each directory page contains links to any sub-directories
+and files it contains.  You can navigate back to the parent directory
+from a sub-directory by clicking on the parent directory name in the
+path shown at the top of the page.
 
-`Example directory listing for an EAGLE snapshot <viewer.html?path=EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000>`__
+For example, `this page <viewer.html?path=FLAMINGO/L1_m9/L1_m9>`__
+shows the available files for the fiducial ``L1_m9`` hydro simulation.
 
 Full file downloads
 -------------------
@@ -39,6 +41,8 @@ same directory.
 File contents
 -------------
 
+Th web interface can display the contents of certain file types.
+
 HDF5
 ^^^^
 
@@ -49,10 +53,9 @@ of some datasets and attributes, although compound data types and arrays
 with more than two dimensions are not supported. This page also shows
 how to open the file in python.
 
-`Example listing the contents of an EAGLE snapshot file <viewer.html?path=EAGLE/Fiducial_models/RefL0012N0188/snapshot_028_z000p000/snap_028_z000p000.0.hdf5>`__
-
-Opening files with many datasets can take a moment, especially if the file
-system hosting the data is busy.
+For example, you can see the contents of the z=0 SOAP halo catalogue
+from the fiducial ``L1_m9`` simulation `here
+<viewer.html?path=FLAMINGO/L1_m9/L1_m9/SOAP-HBT/halo_properties_0077.hdf5>`__.
 
 Text
 ^^^^

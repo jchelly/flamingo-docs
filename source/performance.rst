@@ -20,7 +20,7 @@ If you need to read multiple slices from one dataset, it is much
 more efficient to download them all in a single request than to
 make multiple requests in a loop. See
 the :doc:`python module documentation <python_module>` and
-`API description <viewer?page=api_description>`__ for details.
+:doc:`API description <api_description>` for details.
 
 Parallel requests for HDF5 data
 -------------------------------
