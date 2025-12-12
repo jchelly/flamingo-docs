@@ -87,3 +87,10 @@ img.screenshot {
     padding: 4px;
     background-color: #f9f9f9;
 }
+
+/*
+  Header bar colour in piccolo theme
+*/
+:root {
+    --mainNavColor: #986196;
+}
