@@ -354,7 +354,7 @@ async function display_directory(path, object) {
         // Include note about large downloads if the directory is >100GB
         if(object.size >= 107374182400) {
             const note = add_element(div, "p");
-            set_inner_html(note, "Note that you can use the <a href='/hdfstream/viewer?page=python_module'>python module</a> to extract HDF5 datasets of interest without downloading complete files, or if you have a user account on COSMA then <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a> might allow faster downloads.");
+            set_inner_html(note, "Note that you can use the <a href='python_module.html'>python module</a> to extract HDF5 datasets of interest without downloading complete files, or if you have a user account on COSMA then <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a> might allow faster downloads.");
         }
     }
 
