@@ -1,5 +1,5 @@
 Light-cone outputs
-=================
+==================
 
 This page will describe the light-cones. Details are presented in Appendix A of Schaye et al. (2023).
 
