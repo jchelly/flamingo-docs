@@ -94,3 +94,10 @@ img.screenshot {
 :root {
     --mainNavColor: #986196;
 }
+
+/*
+  Background image from the main FLAMINGO site
+*/
+div.document {
+    background: url("../_static/FLAMINGO_webpage_background_cropped.png") repeat-x;
+}
