@@ -7,4 +7,4 @@ Welcome to the FLAMINGO data release documentation
    introduction
    service_docs
    flamingo_docs
-   FLAMINGO data <https://localhost:8444/flamingo/viewer.html?path=/FLAMINGO>
+   FLAMINGO data <https://dataweb.cosma.dur.ac.uk:8443/flamingo/viewer.html?path=/FLAMINGO>
