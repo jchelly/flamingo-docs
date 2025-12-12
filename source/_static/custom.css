@@ -107,7 +107,7 @@ div.document {
   Size and position of the logo
 */
 nav img.flamingo_logo {
-    height: 2rem !important;
+    height: 2.0rem !important;
     width: auto;
     vertical-align:middle;
     margin-right:0.7rem;
