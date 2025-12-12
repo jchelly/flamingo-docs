@@ -39,15 +39,15 @@ within the directory. We can list the contents with::
 
 A file or subdirectory can be opened by indexing the
 RemoteDirectory. E.g. to open the directory containing the z=0
-snapshot of the L1000N0900/DMO_FIDUCIAL simulation::
+snapshot of the ``L1_m10/L1_m10_DMO`` simulation::
 
     # Open a subdirectory
-    subdir = flamingo["L1000N0900/DMO_FIDUCIAL/snapshots/flamingo_0077"]
+    subdir = flamingo["L1_m10/L1_m10_DMO/snapshots/flamingo_0077"]
 
 which returns another RemoteDirectory, or::
 
     # Open a HDF5 file
-    snap_file = flamingo["L1000N0900/DMO_FIDUCIAL/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
+    snap_file = flamingo["L1_m10/L1_m10_DMO/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
 
 which opens the specified file and returns a RemoteFile object.
 
@@ -56,7 +56,7 @@ Reading HDF5 groups and datasets
 
 Files are opened by indexing the directory object with the path to the file::
 
-    snap_file = flamingo["L1000N0900/DMO_FIDUCIAL/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
+    snap_file = flamingo["L1_m10/L1_m10_DMO/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
 
 This returns a RemoteFile object which behaves like a h5py.File.
 We can read a dataset by indexing the file::
