@@ -100,4 +100,15 @@ img.screenshot {
 */
 div.document {
     background: url("../_static/FLAMINGO_webpage_background_cropped.png") repeat-x;
+    background-position: 0 2.0rem;
+}
+
+/*
+  Size and position of the logo
+*/
+nav img.flamingo_logo {
+    height: 2rem !important;
+    width: auto;
+    vertical-align:middle;
+    margin-right:0.7rem;
 }
