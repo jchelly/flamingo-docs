@@ -8,6 +8,6 @@ Running terminalizer, assuming installed without root:
 Commands for the dataset download demo:
 
   import hdfstream
-  flamingo = hdfstream.open("https://dataweb.cosma.dur.ac.uk:8443/hdfstream", "/FLAMINGO")
-  snap = flamingo["L1000N0900/HYDRO_FIDUCIAL/snapshots/flamingo_0077/flamingo_0077.hdf5"]
+  flamingo = hdfstream.open("cosma", "/FLAMINGO")
+  snap = flamingo["L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"]
   bh_pos = snap["PartType5/Coordinates"][...]
