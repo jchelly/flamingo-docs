@@ -50,7 +50,7 @@ can be downloaded directly for local analysis. We provide a `web-based
 file browser <viewer.html?path=FLAMINGO>`__ which can be used to
 locate files of interest and view their contents.
 
-.. image:: file_browser.png
+.. image:: L1_m9_directory.png
    :class: screenshot
    :alt: screenshot of the file browser page
 

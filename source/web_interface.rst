@@ -14,14 +14,11 @@ from a sub-directory by clicking on the parent directory name in the
 path shown at the top of the page.
 
 For example, `this page <viewer.html?path=FLAMINGO/L1_m9/L1_m9>`__
-shows the available files for the fiducial ``L1_m9`` hydro simulation.
+shows the available data for the fiducial ``L1_m9`` hydro simulation.
 
-Full file downloads
--------------------
-
-Clicking on a file on the directory listing page displays a page
-describing the contents of the file and a link which can be used to
-download the complete file.
+.. image:: L1_m9_directory.png
+   :class: screenshot
+   :alt: screenshot of a directory listing
 
 Directory downloads
 -------------------
@@ -38,33 +35,15 @@ confusion when several simulations contain files with the same name. If
 several tar files are downloaded it is recommended to untar them all in the
 same directory.
 
-File contents
--------------
+Full file downloads
+-------------------
 
-Th web interface can display the contents of certain file types.
+Clicking on a file on the directory listing page displays the contents
+of the file and a link which can be used to download it.
 
-HDF5
-^^^^
+.. image:: L1_m9_soap.png
+   :class: screenshot
+   :alt: screenshot showing the contents of a SOAP halo catalogue
 
-Clicking on a HDF5 file on the directory listing page will display
-the internal structure of the file, showing groups, datasets and
-attributes. The web interface is capable of displaying the contents
-of some datasets and attributes, although compound data types and arrays
-with more than two dimensions are not supported. This page also shows
-how to open the file in python.
-
-For example, you can see the contents of the z=0 SOAP halo catalogue
-from the fiducial ``L1_m9`` simulation `here
-<viewer.html?path=FLAMINGO/L1_m9/L1_m9/SOAP-HBT/halo_properties_0077.hdf5>`__.
-
-Text
-^^^^
-
-Following a link to a text file on the directory listing page will download
-and display the file in your browser.
-
-Binary
-^^^^^^
-
-Other file types cannot be displayed. In this case just a download link is
-provided.
+The web interface can display the contents of HDF5 and text files. If
+a file cannot be displayed, only a download link is provided.
