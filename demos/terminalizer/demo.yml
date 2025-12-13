@@ -50,7 +50,7 @@ config:
   # Don't forget to add a backgroundColor style with a null as type
   frameBox:
     type: floating
-    title: Python
+    title: Downloading a HDF5 dataset in python
     style:
       border: 0px black solid
       # boxShadow: none
@@ -82,7 +82,7 @@ config:
   fontSize: 14
   
   # The height of lines
-  lineHeight: 1
+  lineHeight: 1.2
   
   # The spacing between letters
   letterSpacing: 0
