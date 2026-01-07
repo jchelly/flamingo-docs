@@ -7,10 +7,11 @@ number. Lower snapshot numbers correspond to higher redshifts.
 
 The particle data for a single snapshot is split across multiple HDF5
 files. Each snapshot directory contains a set of files
-``flamingo_XXXX.Y.hdf5``, where ``XXXX`` is the snapshot number. Each
-one of these files contains the particles in part of the simulation
-volume. To read all of the particles in the snapshot it is necessary
-to read all of the files.
+``flamingo_XXXX.Y.hdf5``, where ``XXXX`` is the snapshot number and
+``Y`` numbers the files that make up each snapshot. Each one of these
+files contains the particles in part of the simulation volume. To read
+all of the particles in the snapshot it is necessary to read all of
+the files.
 
 Virtual snapshot files
 ----------------------
@@ -18,9 +19,9 @@ Virtual snapshot files
 For convenience, each snapshot directory also contains a "virtual"
 snapshot file which has a name of the form
 ``flamingo_XXXX.hdf5``. This file contains HDF5 virtual datasets which
-refer to the particle data in all of the "real" snapshot files. This
-file can be treated as a single, large snapshot file which contains
-all of the particles.
+refer to the particle data in the "real" snapshot files. This file can
+be treated as a single, large snapshot file which contains all of the
+particles.
 
 If you download the virtual snapshot file it will only be readable if
 you also download the real snapshot files to the same directory. The
@@ -33,7 +34,8 @@ for the snapshot you're interested in.
    finding the real data files.
 
 If you use the hdfstream module to read from a virtual snapshot the
-server automatically reads the underlying datasets.
+server automatically reads the underlying datasets in the real
+snapshot files.
 
 Snapshot redshifts
 ------------------
@@ -218,7 +220,8 @@ Snapshot redshifts for ``L1_m8`` and ``L2p8`` models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The high resolution (``m8``) 1Gpc box and the larger simulation boxes
-have one extra snapshot at redshift z=12.26:
+have one extra snapshot at redshift z=12.26. This affects the
+numbering of all later snapshots, as shown below.
 
 +-----------------+----------+
 | Snapshot number | Redshift |
