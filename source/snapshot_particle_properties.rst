@@ -1,3 +1,5 @@
+.. _particle-properties:
+
 Particle properties
 ===================
 
