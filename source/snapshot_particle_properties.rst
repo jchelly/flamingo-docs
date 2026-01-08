@@ -268,20 +268,21 @@ datasets which contain data for three different X-ray bands:
 Stellar luminosities
 ^^^^^^^^^^^^^^^^^^^^
 
-Star particles have a ``Luminosities`` dataset. This contains
-rest-frame dust-free AB luminosities of the star particles in the GAMA
-bands. These were computed using the `BC03 <https://ui.adsabs.harvard.edu/abs/2003MNRAS.344.1000B/abstract>`_
-(GALAXEV) models convolved with different filter bands, as used in the dust-free modelling of
-`Trayford et al. (2015) <https://ui.adsabs.harvard.edu/abs/2015MNRAS.452.2879T/abstract>`_.
+Star particles have a ``Luminosities`` dataset. For each particle and
+band this contains the rest frame flux at 10pc expressed in maggies (a
+linear flux unit equal to 3631Jy in the AB system used here). Dust
+extinction is not included. These were computed using the `BC03
+<https://ui.adsabs.harvard.edu/abs/2003MNRAS.344.1000B/abstract>`_
+(GALAXEV) models convolved with the different filter bands, as used in
+the dust-free modelling of `Trayford et al. (2015)
+<https://ui.adsabs.harvard.edu/abs/2015MNRAS.452.2879T/abstract>`_.
 
-The dimensionless quantity stored in the dataset is the luminosity
-divided by 3631Jy. This means that AB-magnitudes (rest-frame absolute
-maggies) ``M`` can be computed with:
+The rest frame, absolute AB-magnitude can be computed as:
 
   :math:`M = -2.5 \log10(L)`
 
 where ``L`` is the number stored in the dataset. Luminosities for the
-nine GAMA bands are stored in the following order:
+GAMA bands are stored in the following order:
 
 +-------------+---------------------+
 | Array index | Band                |
