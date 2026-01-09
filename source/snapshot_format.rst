@@ -115,20 +115,20 @@ symbolic links to the groups with more descriptive names.
      - HDF5 group name
      - Link name
    * - Gas particles
-     - PartType0
-     - GasParticles
+     - ``PartType0``
+     - ``GasParticles``
    * - Dark matter particles
-     - PartType1
-     - DMParticles
+     - ``PartType1``
+     - ``DMParticles``
    * - Star particles
-     - PartType4
-     - StarsParticles
+     - ``PartType4``
+     - ``StarsParticles``
    * - Black hole particles
-     - PartType5
-     - BHParticles
+     - ``PartType5``
+     - ``BHParticles``
    * - Neutrino particles
-     - PartType6
-     - NeutrinoParticles
+     - ``PartType6``
+     - ``NeutrinoParticles``
 
 The quantities stored for each particle type are described in :ref:`particle-properties`.
 
