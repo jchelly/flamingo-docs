@@ -11,10 +11,10 @@ The following sections describe the layout and contents of the snapshots.
 .. toctree::
    :maxdepth: 2
 
-   snapshot_dirs
-   snapshot_format
-   snapshot_redshifts
-   snapshot_particle_properties
+   Directory layout <snapshot_dirs>
+   File format <snapshot_format>
+   Output redshifts <snapshot_redshifts>
+   Particle properties <snapshot_particle_properties>
 
 For more information about the SWIFT simulation snapshot format used
 here, see the `SWIFT documentation

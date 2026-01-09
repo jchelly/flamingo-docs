@@ -6,8 +6,8 @@ redshifts, depending on the model. SOAP halo catalogues exist for all
 of these redshifts but full particle data is only available for a
 subset.
 
-Snapshot redshifts for ``L1_m9`` and ``L1_m10`` models
-------------------------------------------------------
+Output redshifts for ``L1_m9`` and ``L1_m10`` models
+----------------------------------------------------
 
 The snapshot redshifts for all FLAMINGO simulations in 1Gpc boxes at
 ``m9`` and ``m10`` resolution are listed below.
@@ -173,8 +173,8 @@ The snapshot redshifts for all FLAMINGO simulations in 1Gpc boxes at
 +-----------------+----------+--------------------------+
 
 
-Snapshot redshifts for ``L1_m8`` and ``L2p8`` models
-----------------------------------------------------
+Output redshifts for ``L1_m8`` and ``L2p8`` models
+--------------------------------------------------
 
 The high resolution (``m8``) 1Gpc box and the larger simulation boxes
 have one extra snapshot at redshift z=12.26. This affects the
