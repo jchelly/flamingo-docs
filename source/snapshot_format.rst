@@ -132,10 +132,25 @@ symbolic links to the groups with more descriptive names.
 
 The quantities stored for each particle type are described in :ref:`particle-properties`.
 
-Dataset metadata
-----------------
+Particle datasets
+-----------------
 
-The datasets in the particle type groups have a number of descriptive attributes:
+Each particle property (position, mass, velocity etc) is stored as a
+separate dataset in the particle type group. For scalar quantities,
+such as the particle mass, the dataset has one element per
+particle. For vector quantities, the first index is the particle index
+and the second index is the x/y/z dimension.
+
+Datasets have a ``Description`` attribute which gives a short
+description of their contents.
+
+Dataset units
+^^^^^^^^^^^^^
+
+All datasets are stored in units which are constructed by multiplying
+together (usually integer) powers of the base units described
+above. Each dataset has attributes which store the exponent of each
+base unit for that quantity.
 
 .. list-table::
    :header-rows: 1
@@ -143,5 +158,60 @@ The datasets in the particle type groups have a number of descriptive attributes
 
    * - Attribute name
      - Attribute description
-   * - Description
-     - A short description of the particle property
+   * - ``U_L exponent``
+     - Exponent of the length unit
+   * - ``U_M exponent``
+     - Exponent of the mass unit
+   * - ``U_T exponent``
+     - Exponent of the temperature unit
+   * - ``U_t exponent``
+     - Exponent of the time unit
+   * - ``U_I exponent``
+     - Exponent of the current unit (not used in FLAMINGO)
+
+For example, particle velocities have ``U_L exponent`` = 1 and
+``U_t exponent`` = -1.
+
+Some quantities are stored in comoving coordinates. We therefore also
+include an attribute ``a-scale exponent`` which stores the exponent of
+the cosmological expansion factor :math:`a` which is required to
+convert the dataset to physical coordinates. Quantities which are
+already in physical coordinates have ``a-scale exponent`` = 0. Comoving
+particle positions have ``a-scale exponent`` = 1.
+
+There is also a ``h-scale exponent`` attribute which indicates when
+units contain powers of the Hubble parameter, :math:`h`. This is
+always zero in FLAMINGO. Particle positions are stored in
+:math:`\mathrm{Mpc}` and not :math:`\mathrm{Mpc/h}`, for example.
+
+There are also attributes which directly give the conversion factor to
+CGS, with and without any :math:`a` factors included.
+
+Compression
+^^^^^^^^^^^
+
+Many FLAMINGO datasets use lossy compression to save disk space when
+very precise values are not required. This is indicated by the ``Lossy
+compression filter`` attribute. The possible values of this attribute
+are:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - Filter name
+     - Description
+   * - None
+     - No lossy compression has been applied to this dataset
+   * - HalfFloat
+     - Float numbers with 10-bits mantissa and 5-bits exponent. Accurate to about 3 decimal digits but with limited range 6.1e-5 to 6.5e4.
+   * - BFloat16
+     - Floating point numbers with 7-bits mantissa and 8-bits exponent. Accurate to about 2.4 decimal digits and has the same range as a 32 bit float.
+   * - FMantissa9
+     - Floating point numbers with 9-bits mantissa and 8-bits exponent. Accurate to about 3 decimal digits and has the same range as a 32 bit float.
+   * - DMantissa9
+     - Floating point numbers with 9-bits mantissa and 11-bits exponent. Accurate to about 3 decimal digits and has the same range as a 64 bit double.
+   * - DScale1
+     - Stores floating point data accurate to 1 decimal place by multiplying by 10 and storing as an integer
+   * - DScale5
+     - Stores floating point data accurate to 5 decimal places by multiplying by :math:`10^5` and storing as an integer
