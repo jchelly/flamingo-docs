@@ -66,9 +66,9 @@ datasets which store the following particle properties:
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``VelocityDivergences``            | float32 | N          | :math:`\mathrm{Mpc^{-1}} \mathrm{km/s}`                                    | Local velocity divergence field around the particles. Provided without cosmology, as this includes the Hubble flow. To return to a peculiar velocity divergence, :math:`\nabla . v_{pec} = a^2 (\nabla . v - n_D H)`     |
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``XrayLuminosities``               | float64 | N,3        | :math:`\mathrm{Mpc}^{-1} \mathrm{M}_{\odot} \mathrm{(km/s)}^3`             | Intrinsic X-ray luminosities in various bands. This is 0 for star-forming particles (see :ref:`xray-bands`)                                                                                                              |
+| ``XrayLuminosities``               | float64 | N,3        | :math:`\mathrm{Mpc}^{-1} \mathrm{M}_{\odot} \mathrm{(km/s)}^3`             | Intrinsic X-ray luminosities (i.e. energy per unit time) in various bands. This is 0 for star-forming particles (see :ref:`xray-bands`)                                                                                  |
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``XrayPhotonLuminosities``         | float64 | N,3        | :math:`\mathrm{Mpc^{-1}} \mathrm{km/s}`                                    | Intrinsic X-ray photon luminosities in various bands. This is 0 for star-forming particles (see :ref:`xray-bands`)                                                                                                       |
+| ``XrayPhotonLuminosities``         | float64 | N,3        | :math:`\mathrm{Mpc^{-1}} \mathrm{km/s}`                                    | Intrinsic X-ray photon luminosities (i.e. number of photons per unit time) in various bands. This is 0 for star-forming particles (see :ref:`xray-bands`)                                                                |
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Dark matter particles
@@ -114,7 +114,7 @@ HDF5 datasets which store the following particle properties:
 +----------------------------------+---------+------------+---------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``InitialMasses``                | float32 | N          | :math:`10^{10} \mathrm{M}_\odot`                                          | Masses of the star particles at birth time                                                                                                                                                       |
 +----------------------------------+---------+------------+---------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``Luminosities``                 | float32 | N,9        | :math:`3631 Jy`                                                           | Rest-frame dust-free AB-luminosities of the star particles in the GAMA bands (see :ref:`luminosities` for details)                                                                               |
+| ``Luminosities``                 | float32 | N,9        | :math:`\mathrm{maggies}`                                                  | Rest-frame, dust-free AB flux at 10pc distance in each of the GAMA bands (see :ref:`luminosities` for details)                                                                                   |
 +----------------------------------+---------+------------+---------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``Masses``                       | float32 | N          | :math:`10^{10} \mathrm{M}_\odot`                                          | Masses of the particles at the current point in time (i.e. after stellar losses)                                                                                                                 |
 +----------------------------------+---------+------------+---------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -285,8 +285,9 @@ which contains smoothed mass fractions for 9 different elements.
 X-ray bands
 ^^^^^^^^^^^
 
-Gas particles have ``XrayLuminosities`` and ``XrayPhotonLuminosities``
-datasets which contain data for three different X-ray bands:
+Gas particles have ``XrayLuminosities`` (energy per unit time) and
+``XrayPhotonLuminosities`` (number of photons per unit time) datasets
+which contain data for three different X-ray bands:
 
 +-------------+---------------------+
 | Array index | Band                |
@@ -303,10 +304,16 @@ datasets which contain data for three different X-ray bands:
 Stellar luminosities
 ^^^^^^^^^^^^^^^^^^^^
 
+.. warning:: Star particle "luminosities" are stored in terms of flux
+             and do NOT use the same units as the X-ray luminosity
+             datasets described above.
+
 Star particles have a ``Luminosities`` dataset. For each particle and
-band this contains the rest frame flux at 10pc expressed in maggies (a
-linear flux unit equal to 3631Jy in the AB system used here). Dust
-extinction is not included. These were computed using the `BC03
+photometric band this contains the rest frame flux at 10pc, expressed
+in maggies. Maggies are a dimensionless measure of flux defined as the
+ratio :math:`F/F_0`, where :math:`F_0=3631\mathrm{Jy}` is the flux
+corresponding to an AB magnitude of zero. Dust extinction is not
+included. These were computed using the `BC03
 <https://ui.adsabs.harvard.edu/abs/2003MNRAS.344.1000B/abstract>`_
 (GALAXEV) models convolved with the different filter bands, as used in
 the dust-free modelling of `Trayford et al. (2015)
@@ -316,8 +323,9 @@ The rest frame, absolute AB-magnitude can be computed as:
 
   :math:`M = -2.5 \log10(L)`
 
-where ``L`` is the number stored in the dataset. Luminosities for the
-GAMA bands are stored in the following order:
+where ``L`` is the dimensionless number stored in the
+dataset. Luminosities for the GAMA bands are stored in the following
+order:
 
 +-------------+---------------------+
 | Array index | Band                |
