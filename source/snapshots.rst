@@ -16,6 +16,10 @@ runs also include gas, star and black hole particles.
 
         .. image:: _static/images/L1_m8_snapshots/L1_m8_dm_veldisp_z0.jpg
 
+    .. card:: L1_m8 stellar mass at z=0
+
+        .. image:: _static/images/L1_m8_snapshots/L1_m8_stellar_mass_z0.jpg
+
 The following sections describe the layout and contents of the snapshots.
 
 .. toctree::
