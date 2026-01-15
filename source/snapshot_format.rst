@@ -95,7 +95,7 @@ described in the ``InternalCodeUnits`` group. In FLAMINGO, the
 snapshot and internal unit systems are the same.
 
 The exact units used for each particle property are documented in
-:ref:`particle-properties`.
+:doc:`snapshot_particle_properties`.
 
 Particle types
 --------------
@@ -130,7 +130,7 @@ symbolic links to the groups with more descriptive names.
      - ``PartType6``
      - ``NeutrinoParticles``
 
-The quantities stored for each particle type are described in :ref:`particle-properties`.
+The quantities stored for each particle type are described in :doc:`snapshot_particle_properties`.
 
 Particle datasets
 -----------------

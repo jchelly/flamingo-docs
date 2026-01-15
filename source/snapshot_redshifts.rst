@@ -1,3 +1,5 @@
+.. _snapshot-redshifts:
+
 Snapshot redshifts
 ==================
 

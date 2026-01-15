@@ -1,10 +1,18 @@
 Snapshots
 =========
 
-FLAMINGO simulation snapshots record the full distribution of
-particles in the simulation volume at an instant in time. The dark
-matter only runs contain dark matter and neutrino particles. The hydro
-runs also include gas, star and black hole particles.
+Each FLAMINGO simulation models the evolution of a cubic volume of the
+Universe from just after the big bang to the present day. The state of
+the simulation is output at intervals as a series of "snapshots",
+which record the distribution of particles in the simulated volume at
+an instant in time.
+
+Snapshots contain multiple particle types which model different matter
+components: the dark matter only simulations contain particles
+representing the distribution of dark matter and neutrinos. The hydro
+simulations also include particles representing gas, stars and black
+holes. Many physical properties, such as position, mass and velocity,
+are stored for each particle.
 
 .. card-carousel:: 2
 
