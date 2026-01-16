@@ -18,14 +18,12 @@ def make_textures(input_filename, output_filename):
 
     # Get cartesian projection
     nx = 2048
-    ny = 1024
-    proj = hp.projector.CartesianProj(xsize=nx, ysize=ny, lonra=[0, 360], latra=[-90, 90])
+    proj = hp.projector.CartesianProj(xsize=nx, ysize=nx // 2, lonra=[0, 360], latra=[-90, 90])
     vec2pix = lambda x, y, z : hp.pixelfunc.vec2pix(nside, x, y, z)
     map_2d = proj.projmap(map_data, vec2pix)
 
     vmin = np.mean(map_2d) / 6.
     vmax = np.mean(map_2d) * 8.
-    #vmin, vmax = np.percentile(map_2d.flatten(), (10.0, 90.0))
 
     # Convert the array to a colour image
     norm = LogNorm(vmin=vmin, vmax=vmax)
