@@ -1,7 +1,7 @@
-Integrated light-cones
-======================
+Integrated lightcones
+=====================
 
-This page describes the integrated healpix light-cones that have been produced in the analyses of the simulations.
+This page describes the integrated healpix lightcones that have been produced in the analyses of the simulations.
 
 Weak lensing convergence maps
 -----------------------------

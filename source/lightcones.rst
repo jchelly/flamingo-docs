@@ -27,6 +27,11 @@ and number of particles in the lightcone becomes extremely large, so
 for each particle type there is an upper redshift limit beyond which
 particles are not output.
 
+Lightcone halo catalogues
+-------------------------
+
+(introduce :doc:`halo_lightcones` here)
+
 HEALPix maps
 ------------
 
@@ -54,7 +59,7 @@ lightcone outputs. See also Appendix A of `Schaye et al (2023)
 .. toctree::
    :maxdepth: 2
 
-   healpix_lightcones
-   halo_lightcones
    particle_lightcones
+   halo_lightcones
+   healpix_lightcones
 
