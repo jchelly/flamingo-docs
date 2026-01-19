@@ -7,21 +7,30 @@ from mayavi import mlab
 from tvtk.api import tvtk # python wrappers for the C++ vtk ecosystem
 
 
-def rotated_normal(angle_deg):
-    theta = np.radians(angle_deg)
-    return (np.cos(theta), np.sin(theta), 0)
+shell_radii = np.asarray([ 110.28034967,  323.74707781,  533.47608886,  737.88616873,
+                           936.93161437, 1130.5995746 , 1318.90693547, 1501.89694379,
+                           1679.63573267, 1852.20889111, 2019.71816755, 2182.27838873,
+                           2340.01464167, 2493.05974369, 2641.55200841, 2785.63330491,
+                           2925.44739533, 3061.13853317, 3192.85029551, 3320.72462868,
+                           3444.90107806, 3565.51618201, 3682.70300628, 3796.59079081,
+                           3907.30470367, 4014.9656809 , 4119.6903266 , 4221.59087162,
+                           4320.77518663, 4417.34682442, 4511.40509122, 4603.0451394 ,
+                           4692.35808217, 4779.43111858, 4864.34766428, 4947.18749134,
+                           5028.02686726, 5106.93869772, 5183.99267013, 5259.25539387,
+                           5332.79053612, 5404.6589559 , 5474.91883745, 5543.62581158,
+                           5610.83307895, 5676.5915288 , 5740.94984538, 5803.95461583,
+                           5865.65043506, 5926.08000386, 5985.28421479, 6043.30224357,
+                           6100.17163283, 6155.92837429, 6210.60697991, 6264.24055424,
+                           6316.86086185, 6368.49839205, 6419.18242355, 6468.94107628])
 
 
 def auto_sphere():
     # create a figure window (and scene)
-    fig = mlab.figure(size=(600, 600))
+    fig = mlab.figure(size=(600, 600), bgcolor=(1,1,1))
 
-    for shell_nr, radius, angle in (
-            (0, 0.5, 180.0),
-            (1, 0.7, 250.0),
-            (2, 0.9, 300.0),
-            (3, 1.1, 120.0),
-            ):
+    for shell_nr in range(10):
+
+        radius = shell_radii[shell_nr]
 
         # load and map the texture
         img = tvtk.PNGReader()
@@ -38,17 +47,30 @@ def auto_sphere():
                                            phi_resolution=Nrad)
 
         # Clip the sphere
+        box = tvtk.Box()
+        box.bounds = (0.0, 10000.0,
+                      0.0, 10000.0,
+                      0.0, 10000.0)
+
         clipper = tvtk.ClipPolyData(
             input_connection=sphere.output_port,
-            clip_function=tvtk.Plane(normal=rotated_normal(angle), origin=(0, 0, 0)),
+            clip_function=box,
         )
 
         # assemble rest of the pipeline, assign texture
         sphere_mapper = tvtk.PolyDataMapper(input_connection=clipper.output_port)
         sphere_actor = tvtk.Actor(mapper=sphere_mapper, texture=texture)
+
+        # Set the tint color (RGB in 0–1 range)
+        f = ((shell_nr+1) / 10.0) * 0.9 + 0.1
+        sphere_actor.property.color = (f, f, f) # light red tint
+
         fig.scene.add_actor(sphere_actor)
+    return fig
 
 
 if __name__ == "__main__":
-    auto_sphere()
+    fig = auto_sphere()
+    mlab.view(azimuth=50, elevation=30, roll=0, distance=8000)
+    mlab.savefig("sphere.png", figure=fig)
     mlab.show()

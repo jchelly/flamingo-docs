@@ -22,8 +22,8 @@ def make_textures(input_filename, output_filename):
     vec2pix = lambda x, y, z : hp.pixelfunc.vec2pix(nside, x, y, z)
     map_2d = proj.projmap(map_data, vec2pix)
 
-    vmin = np.mean(map_2d) / 6.
-    vmax = np.mean(map_2d) * 8.
+    vmin = np.mean(map_2d) / 3.
+    vmax = np.mean(map_2d) * 4.
 
     # Convert the array to a colour image
     norm = LogNorm(vmin=vmin, vmax=vmax)
