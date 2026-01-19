@@ -6,7 +6,7 @@ import numpy as np
 from mayavi import mlab
 from tvtk.api import tvtk # python wrappers for the C++ vtk ecosystem
 
-
+boxsize = 1000.0
 shell_radii = np.asarray([ 110.28034967,  323.74707781,  533.47608886,  737.88616873,
                            936.93161437, 1130.5995746 , 1318.90693547, 1501.89694379,
                            1679.63573267, 1852.20889111, 2019.71816755, 2182.27838873,
@@ -22,6 +22,41 @@ shell_radii = np.asarray([ 110.28034967,  323.74707781,  533.47608886,  737.8861
                            5865.65043506, 5926.08000386, 5985.28421479, 6043.30224357,
                            6100.17163283, 6155.92837429, 6210.60697991, 6264.24055424,
                            6316.86086185, 6368.49839205, 6419.18242355, 6468.94107628])
+
+
+def draw_cube(offset, scale):
+
+    # Cube vertices
+    pts = np.array([
+        [0, 0, 0],  # 0
+        [1, 0, 0],  # 1
+        [1, 1, 0],  # 2
+        [0, 1, 0],  # 3
+        [0, 0, 1],  # 4
+        [1, 0, 1],  # 5
+        [1, 1, 1],  # 6
+        [0, 1, 1],  # 7
+    ], dtype=float)
+
+    pts *= scale
+    pts += np.asarray(offset)[None,:]
+
+    # Edges defined by vertex index pairs
+    edges = [
+        (0,1), (1,2), (2,3), (3,0),   # bottom square
+        (4,5), (5,6), (6,7), (7,4),   # top square
+        (0,4), (1,5), (2,6), (3,7)    # vertical edges
+    ]
+
+    # Draw edges
+    for i, j in edges:
+        mlab.plot3d(
+            [pts[i,0], pts[j,0]],
+            [pts[i,1], pts[j,1]],
+            [pts[i,2], pts[j,2]],
+            tube_radius=None,  # makes it a line instead of a tube
+            color=(1,1,1)
+        )
 
 
 def auto_sphere():
@@ -66,6 +101,13 @@ def auto_sphere():
         sphere_actor.property.color = (f, f, f) # light red tint
 
         fig.scene.add_actor(sphere_actor)
+
+    # Draw box replications
+    #for i in range(0,2):
+    #    for j in range(0,2):
+    #        for k in range(0,2):
+    #            draw_cube((i*1000,j*1000,k*1000), 1000.0)
+
     return fig
 
 
