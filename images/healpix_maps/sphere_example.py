@@ -23,13 +23,19 @@ def auto_sphere(image_file):
     sphere = tvtk.TexturedSphereSource(radius=R, theta_resolution=Nrad,
                                        phi_resolution=Nrad)
 
+    # Clip the sphere
+    clipper = tvtk.ClipPolyData(
+        input_connection=sphere.output_port,
+        clip_function=tvtk.Plane(normal=(1, 0, 0), origin=(0, 0, 0)),
+    )
+
     # assemble rest of the pipeline, assign texture
-    sphere_mapper = tvtk.PolyDataMapper(input_connection=sphere.output_port)
+    sphere_mapper = tvtk.PolyDataMapper(input_connection=clipper.output_port)
     sphere_actor = tvtk.Actor(mapper=sphere_mapper, texture=texture)
     fig.scene.add_actor(sphere_actor)
 
 
 if __name__ == "__main__":
-    image_file = 'shell_0.png'
+    image_file = './images/shell_0.png'
     auto_sphere(image_file)
     mlab.show()
