@@ -22,7 +22,7 @@ We subscript the root directory with the path to the file we want to
 read.  In this case the we're going to read the halo positions from
 a SOAP halo catalogue. The correct file path can be determined by browsing
 the file hierarchy in the
-`file browser <viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT>`__.
+`file browser </flamingo/viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT>`__.
 To open this file in python::
 
     soap_file = root["L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5"]
@@ -35,7 +35,7 @@ Reading the halo positions
 
 We can see the contents of this particular halo catalogue file in the
 `file browser
-<viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5>`__
+</flamingo/viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5>`__
 and the format of SOAP output files is described in the
 :doc:`documentation pages </soap/index>`. The dataset
 ``BoundSubhalos/CentreOfMass`` contains the centre of mass of the

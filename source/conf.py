@@ -27,7 +27,7 @@ html_static_path = ['_static']
 html_title = 'FLAMINGO Data Release'
 
 # The piccolo theme doesn't have an option to have a logo AND text in the nav bar, hence this hack
-html_short_title = '<image src="_static/FLAMINGO_navbar_brand_stroke.png" class="flamingo_logo"> FLAMINGO Data Release'
+html_short_title = '<image src="/_static/FLAMINGO_navbar_brand_stroke.png" class="flamingo_logo"> FLAMINGO Data Release'
 
 #
 # Theme selection
