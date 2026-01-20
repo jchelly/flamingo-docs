@@ -7,7 +7,7 @@ shells around the observer. When a particle crosses the lightcone we
 determine which radial shell it is in and accumulate its contribution
 to the appropriate map.
 
-.. figure:: _static/images/lightcones/sphere.png
+.. figure:: images/sphere.png
    :class: with-border
 
    Projected gas mass in 10 concentric spherical shells around an
