@@ -1,5 +1,19 @@
-Healpix lightcone maps
+HEALPix lightcone maps
 ======================
+
+The lightcone HEALPix maps are full-sky projected maps of particle
+properties (such as mass or x-ray luminosity) in concentric spherical
+shells around the observer. When a particle crosses the lightcone we
+determine which radial shell it is in and accumulate its contribution
+to the appropriate map.
+
+.. figure:: _static/images/lightcones/sphere.png
+   :class: with-border
+
+   Projected gas mass in 10 concentric spherical shells around an
+   observer in the ``L1_m8`` simulation. The observer is at the centre
+   of the sphere. The outer sphere has a comoving radius of
+   approximately 2Gpc.
 
 The FLAMINGO healpix light-cones are a set of concentric spheres centered on virtual observers. The details of the light-cone construction are stated in Appendix A of `Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__. The files are stored as `Healpix <https://healpix.sourceforge.io/>`_ files with :math:`N_\mathrm{side} = 16384`, corresponding to a resolution of 0.21 arcmin. All `Healpy <https://healpy.readthedocs.io/en/latest/>`_ routines can be applied to postprocess the data (e.g., smoothing, masking, or applying pixel window functions.)
 
