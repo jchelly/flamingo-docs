@@ -16,7 +16,7 @@ path shown at the top of the page.
 For example, `this page <viewer.html?path=FLAMINGO/L1_m9/L1_m9>`__
 shows the available data for the fiducial ``L1_m9`` hydro simulation.
 
-.. image:: L1_m9_directory.png
+.. image:: ../images/L1_m9_directory.png
    :class: screenshot
    :alt: screenshot of a directory listing
 
@@ -41,7 +41,7 @@ Full file downloads
 Clicking on a file on the directory listing page displays the contents
 of the file and a link which can be used to download it.
 
-.. image:: L1_m9_soap.png
+.. image:: images/L1_m9_soap.png
    :class: screenshot
    :alt: screenshot showing the contents of a SOAP halo catalogue
 

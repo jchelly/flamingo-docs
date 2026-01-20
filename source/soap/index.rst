@@ -1711,5 +1711,5 @@ information alongside other particle properties. Using the virtual file
 along with the spatial masking functionality within swiftsimio means it
 is possible to quickly load all the particles bound to a given subhalo.
 
-.. |image| image:: image7.png
-.. |image1| image:: image4.png
+.. |image| image:: images/image7.png
+.. |image1| image:: images/image4.png

@@ -8,5 +8,5 @@ These pages describe the available data products in detail.
 
    simulations
    snapshots/index
-   soap
+   soap/index
    lightcones/index

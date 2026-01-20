@@ -37,7 +37,7 @@ We can see the contents of this particular halo catalogue file in the
 `file browser
 <viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5>`__
 and the format of SOAP output files is described in the
-:doc:`documentation pages <soap>`. The dataset
+:doc:`documentation pages </soap/index>`. The dataset
 ``BoundSubhalos/CentreOfMass`` contains the centre of mass of the
 particles bound to each halo. To read the halo positions from the
 file::
@@ -63,4 +63,4 @@ We can then make a plot of halos in a slice through the volume using matplotlib:
     plt.title("Halos at z=0 in L1_m9/L1_m9_DMO")
     plt.show()
 
-.. image:: soap_halos.png
+.. image:: images/soap_halos.png

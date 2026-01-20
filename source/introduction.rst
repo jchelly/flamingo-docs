@@ -39,7 +39,7 @@ Documentation
 -------------
 
 See the links in the side bar for
-:doc:`more information on how to use this service <service_docs>`
+:doc:`more information on how to use this service <service_docs/index>`
 and :doc:`full descriptions of the available data products <flamingo_docs>`.
 
 Downloading simulation data
@@ -51,7 +51,7 @@ can be downloaded directly for local analysis. We provide a `web-based
 file browser <viewer.html?path=FLAMINGO>`__ which can be used to
 locate files of interest and view their contents.
 
-.. image:: L1_m9_directory.png
+.. image:: images/L1_m9_directory.png
    :class: screenshot
    :alt: screenshot of the file browser page
 
@@ -64,13 +64,13 @@ possible, for example, to download just the star particles from some
 specified region in a simulation snapshot or download only a few
 properties of interest from a halo catalogue.
 
-We provide adapted versions of the
-`pynbody <https://github.com/pynbody/pynbody>`__ and
-`swiftsimio <https://github.com/SWIFTSIM/swiftsimio>`__ python
-modules which can transparently make use of this service, and a more
-generic :doc:`hdfstream <python_module>` module which allows downloads of
-arbitrary HDF5 data using a similar interface to h5py.
+We provide adapted versions of the `pynbody
+<https://github.com/pynbody/pynbody>`__ and `swiftsimio
+<https://github.com/SWIFTSIM/swiftsimio>`__ python modules which can
+transparently make use of this service, and a more generic
+:doc:`hdfstream <service_docs/python_module>` module which allows
+downloads of arbitrary HDF5 data using a similar interface to h5py.
 
-.. image:: download_dataset.gif
+.. image:: images/download_dataset.gif
    :class: screenshot
    :alt: animation showing a dataset download in python
