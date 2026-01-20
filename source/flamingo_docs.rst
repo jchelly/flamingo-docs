@@ -7,6 +7,6 @@ These pages describe the available data products in detail.
    :maxdepth: 1
 
    simulations
-   snapshots
+   snapshots/index
    soap
-   lightcones
+   lightcones/index

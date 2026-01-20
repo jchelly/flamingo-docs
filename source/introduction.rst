@@ -15,10 +15,10 @@ FLAMINGO simulation data products
 
 The following data products are available:
 
-  * :doc:`snapshots` of the full distribution of particles (dark
+  * :doc:`snapshots/index` of the full distribution of particles (dark
     matter, gas, stars, black holes and neutrinos) at a :doc:`series
-    of output times <snapshot_redshifts>` between redshift z=15 and
-    the present day
+    of output times <snapshots/snapshot_redshifts>` between redshift
+    z=15 and the present day
   * Halo catalogues and merger trees generated using the `HBT-HERONS
     <https://hbt-herons.strw.leidenuniv.nl/>`__ halo finder with a
     wide range of halo properties computed using the `SOAP
