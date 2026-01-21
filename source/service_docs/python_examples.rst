@@ -55,11 +55,11 @@ Plotting the positions
 We can then make a plot of halos in a slice through the volume using matplotlib::
 
     import matplotlib.pyplot as plt
-    to_plot = halo_pos[:,2] < 50.0 # Plot a 50Mpc/h slice in the x-y plane
+    to_plot = halo_pos[:,2] < 50.0 # Plot a 50Mpc slice in the x-y plane
     plt.plot(halo_pos[to_plot,0], halo_pos[to_plot,1], "k,", rasterized=True)
     plt.gca().set_aspect("equal")
-    plt.xlabel("x [Mpc/h]")
-    plt.ylabel("y [Mpc/h]")
+    plt.xlabel("x [Mpc]")
+    plt.ylabel("y [Mpc]")
     plt.title("Halos at z=0 in L1_m9/L1_m9_DMO")
     plt.show()
 
