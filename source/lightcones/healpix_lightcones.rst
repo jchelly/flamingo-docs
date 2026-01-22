@@ -7,13 +7,26 @@ shells around the observer. When a particle crosses the lightcone we
 determine which radial shell it is in and accumulate its contribution
 to the appropriate map.
 
-.. figure:: images/sphere.png
-   :class: with-border
+.. grid:: 2
 
-   Projected gas mass in 10 concentric spherical shells around an
-   observer in the ``L1_m8`` simulation. The observer is at the centre
-   of the sphere. The outer sphere has a comoving radius of
-   approximately 2Gpc.
+    .. grid-item-card:: Projected mass in shells
+       :columns: 5
+
+       .. image:: images/sphere.png
+
+       Projected gas mass in 10 concentric spherical shells around an
+       observer in the ``L1_m8`` simulation. The observer is at the centre
+       of the sphere. The outer sphere has a comoving radius of
+       approximately 2Gpc.
+
+    .. grid-item-card:: Compton Y parameter at z < 0.05
+       :columns: 7
+
+       .. image:: images/comptony_z0.05.png
+
+       Mollweide projected full sky map of the thermal
+       Sunyaev-Zel'dovich effect as quantified by the Compton y
+       parameter for the redshift interval 0 < z < 0.05.
 
 The FLAMINGO healpix light-cones are a set of concentric spheres centered on virtual observers. The details of the light-cone construction are stated in Appendix A of `Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__. The files are stored as `Healpix <https://healpix.sourceforge.io/>`_ files with :math:`N_\mathrm{side} = 16384`, corresponding to a resolution of 0.21 arcmin. All `Healpy <https://healpy.readthedocs.io/en/latest/>`_ routines can be applied to postprocess the data (e.g., smoothing, masking, or applying pixel window functions.)
 
