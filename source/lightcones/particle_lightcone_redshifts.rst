@@ -11,158 +11,255 @@ is listed no lightcone particle data are available.
    :header-rows: 1
    :stub-columns: 1
 
-   * - Simulation
-     - Number of observers
-     - Gas
-     - Dark matter
-     - Stars
-     - Black holes
-     - Neutrinos
-   * - L1_m8
-     - 2
-     - :math:`z < 0.5`
-     - :math:`z < 0.25`
-     - 
-     - 
-     - 
-     - 
-   * - L1_m9
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - L1_m10
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - L2p8_m9
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - fgas+2sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - fgas-2sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - fgas-4sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - fgas-8sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - Mstar-1sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - Mstar-1sigma_fgas-4sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - Jet
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - Jet_fgas-4sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - Planck
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - PlanckNu0p24Var
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - PlanckNu0p24Fix
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - PlanckNu0p48Fix
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - LS8
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - PlanckDCDM12
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - PlanckDCDM24
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - LS8_fgas-8sigma
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
-   * - NoCooling
-     - 
-     - 
-     - 
-     - 
-     - 
-     - 
+   * - Name
+     - Lightcone nr.
+     - Gas max :math:`z`
+     - DM max :math:`z`
+     - stars max :math:`z`
+     - BH max :math:`z`
+     - Neutrino max :math:`z`
+   * - ``L1_m9``
+     - 0
+     - 0.5
+     - 0.25
+     - 0.5
+     - 15.0
+     - 0.25
+   * - ``L1_m9``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas+2sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas+2sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas-2sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas-2sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas-4sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas-4sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas-8sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``fgas-8sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Mstar-1sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Mstar-1sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Mstar-1sigma_fgas-4sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Mstar-1sigma_fgas-4sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Jet``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Jet``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Jet_fgas-4sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Jet_fgas-4sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Planck``
+     - 0
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``Planck``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckNu0p24Var``
+     - 0
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckNu0p24Var``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckNu0p24Fix``
+     - 0
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckNu0p24Fix``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckNu0p28Fix``
+     - 0
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckNu0p28Fix``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``LS8``
+     - 0
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``LS8``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckDCDM12``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckDCDM12``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckDCDM24``
+     - 0
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``PlanckDCDM24``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``LS8_fgas-8sigma``
+     - 0
+     - 0.5
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``LS8_fgas-8sigma``
+     - 1
+     - -
+     - -
+     - -
+     - 15.0
+     - -
+   * - ``NoCooling``
+     - 0
+     - 0.5
+     - -
+     - -
+     - -
+     - -
