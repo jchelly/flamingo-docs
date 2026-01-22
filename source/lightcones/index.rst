@@ -18,7 +18,7 @@ The FLAMINGO lightcone outputs include particle data, HEALPix maps, and
 halo catalogues. These are described in the following sections:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    particle_lightcones
    halo_lightcones
