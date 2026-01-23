@@ -9,7 +9,29 @@ each observer ``X``.
 
 The particles for each observer are distributed over a set of files
 ``lightconeX_0000.Y.hdf5``, where the integer ``Y`` numbers the files
-within the set.
+within the set. This structure is illustrated below:
+
+.. mermaid::
+
+   flowchart LR
+     lcp["particle_lightcones/"]
+
+     lcp --> obs0["`**Observer 0**
+     lightcone0_particles/`"]
+     lcp --> obs1["`**Observer 1**
+     lightcone1_particles/`"]
+
+     obs0 --> data0["lightcone0_0000.0.hdf5
+     lightcone0_0000.1.hdf5
+     lightcone0_0000.2.hdf5
+     ...
+     "]
+
+     obs1 --> data1["lightcone1_0000.0.hdf5
+     lightcone1_0000.1.hdf5
+     lightcone1_0000.2.hdf5
+     ...
+     "]
 
 For example, the lightcone particle data for the fiducial ``L1_m9``
 model can be viewed in the file browser at
