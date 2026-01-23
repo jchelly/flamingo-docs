@@ -1,11 +1,33 @@
 Snapshot directory layout
 =========================
 
-The snapshots for each simulation are stored in directories with names
-of the form ``snapshots/flamingo_XXXX``, where ``XXXX`` is the
-snapshot number. Lower snapshot numbers correspond to higher
-redshifts. See :doc:`snapshot_redshifts` for the relation between
-snapshot number and redshift.
+The layout of the snapshot files for each simulation is shown in the
+diagram below. Each simulation has a ``snapshots`` directory with one
+``flamingo_XXXX`` subdirectory for each output time, where ``XXXX`` is
+the snapshot number. See :doc:`snapshot_redshifts` for the relation
+between snapshot number and redshift.
+
+.. mermaid::
+
+   flowchart LR
+     snapshots["snapshots/"]
+
+     snapshots --> s0000["flamingo_0000/"]
+     snapshots --> s0001["flamingo_0001/"]
+
+     s0000 --> s0000_virtual["`**Virtual snapshot**
+     flamingo_0000.hdf5`"]
+     s0000 --> s0000_chunks["`**Snapshot chunks**
+     flamingo_0000.0.hdf5
+     flamingo_0000.1.hdf5
+     flamingo_0000.2.hdf5
+     ...`"]
+
+     s0001 --> s0001_f0["..."]
+
+You can see the snapshots for the fiducial ``L1_m9`` model in the file
+browser at `/FLAMINGO/L1_m9/L1_m9/snapshots/
+</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/snapshots>`__.
 
 Virtual snapshot file
 ---------------------

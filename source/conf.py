@@ -13,7 +13,7 @@ author = 'John Helly'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_design"]
+extensions = ["sphinx_design", "sphinxcontrib.mermaid"]
 
 templates_path = ['_templates']
 exclude_patterns = []

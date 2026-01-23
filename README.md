@@ -6,7 +6,7 @@ This repository contains incomplete sphinx documentation for FLAMINGO.
 
 To build the html documentation:
 ```
-pip install sphinx piccolo_theme sphinx_design
+pip install sphinx piccolo_theme sphinx_design sphinxcontrib_mermaid
 make html
 ```
 
