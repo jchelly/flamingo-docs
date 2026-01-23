@@ -7,9 +7,10 @@ diagram below. Each simulation has a ``snapshots`` directory with one
 the snapshot number. See :doc:`snapshot_redshifts` for the relation
 between snapshot number and redshift.
 
-As an example, see `/FLAMINGO/L1_m9/L1_m9/snapshots/
-</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/snapshots>`__ for
-the ``L1_m9`` snapshot data.
+.. tip:: The easiest way to access particle data is to use swiftsimio
+         to read the :ref:`virtual-snapshot` so that you don't need to
+         concatenate data from multiple files and unit metadata is
+         read automatically. TODO: write and link to examples!
 
 .. mermaid::
 
@@ -29,6 +30,12 @@ the ``L1_m9`` snapshot data.
 
      s0001 --> s0001_f0["..."]
 
+As an example, see `/FLAMINGO/L1_m9/L1_m9/snapshots/
+</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/snapshots>`__ for
+the ``L1_m9`` snapshot data.
+
+.. _virtual-snapshot:
+
 Virtual snapshot file
 ---------------------
 
@@ -38,11 +45,6 @@ virtual datasets which refer to particle data distributed over a
 number of additional HDF5 files in the same directory. This file can
 be treated as a single, large snapshot file which contains all of the
 particles.
-
-.. tip:: The easiest way to access particle data is to use swiftsimio
-         to read the virtual snapshot so that you don't need to
-         concatenate data from multiple files and unit metadata is
-         read automatically. TODO: write and link to examples!
 
 Snapshot data files
 -------------------

@@ -1,4 +1,209 @@
 Particle lightcone file format
 ==============================
 
-This will describe the particle data file format.
+This page describes the format of the particle lightcone outputs. The
+particles for each lightcone observer are split across a number of
+HDF5 files. For full details of all of the available particle
+properties see :doc:`particle_lightcone_properties`.
+
+.. tip:: The `lightcone_io
+         <https://lightconeio.readthedocs.io/en/latest/>`__ python
+         module can be used to read particle lightcone data without
+         needing to know the file format details below. It also
+         implements efficient retrieval of particles in specific
+         redshift ranges or positions on the sky.
+
+
+Lightcone metadata
+------------------
+
+Each file contains a HDF5 group ``Lightcone``, which has attributes
+with general information about the output. These include:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 0
+
+   * - Attribute name
+     - Meaning
+   * - ``nr_mpi_ranks``
+     - Number of files in the set.
+   * - ``mpi_rank``
+     - Index of this file within the set.
+   * - ``observer_position``
+     - Three element array with the observer position in the simulation box at :math:`z=0`, in comoving :math:`\mathrm{Mpc}`.
+   * - ``maximum_redshift_Gas``
+     - Maximum redshift at which gas particles were output
+   * - ``maximum_redshift_DM``
+     - Maximum redshift at which dark matter particles were output
+   * - ``maximum_redshift_Stars``
+     - Maximum redshift at which star particles were output
+   * - ``maximum_redshift_BH``
+     - Maximum redshift at which black hole particles were output
+   * - ``maximum_redshift_Neutrino``
+     - Maximum redshift at which neutrino particles were output
+
+Unit system
+-----------
+
+Each file has a HDF5 group ``Units`` with attributes specifying the
+simulation base units used, which are the same as in the snapshots:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 0
+
+   * - Attribute name
+     - Meaning
+     - Value in FLAMINGO
+   * - ``Unit length in cgs (U_L)``
+     - Simulation base length unit in CGS
+     - :math:`\mathrm{Mpc}`
+   * - ``Unit mass in cgs (U_M)``
+     - Simulation base mass unit in CGS
+     - :math:`10^{10}\mathrm{M}_{\odot}`
+   * - ``Unit time in cgs (U_M)``
+     - Simulation base time unit in CGS
+     - :math:`\mathrm{Mpc} \mathrm{(km/s)}^{-1}`
+   * - ``Unit temperature in cgs (U_M)``
+     - Simulation base temperature unit in CGS
+     - :math:`\mathrm{K}`
+
+
+Particle types
+--------------
+
+Each file contains one HDF5 group for each particle type. These are:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 0
+
+   * - Group name
+     - Particle type
+   * - ``Gas``
+     - Gas particles
+   * - ``DM``
+     - Dark matter particles
+   * - ``Stars``
+     - Star particles
+   * - ``BH``
+     - Black hole particles
+   * - ``Neutrino``
+     - Neutrino particles
+
+Not all particle types were output in all simulations or for all
+observers, so some groups may be absent in some cases.
+
+Particle datasets
+-----------------
+
+Each :doc:`particle property <particle_lightcone_properties>`
+(position, mass, velocity etc) is stored as a separate dataset in the
+particle type group. For scalar quantities, such as the particle mass,
+the dataset has one element per particle. For vector quantities, the
+first index is the particle index and the second index is the x/y/z
+dimension.
+
+All datasets are stored in units which are constructed by multiplying
+together (usually integer) powers of the base units described
+above. Each dataset has attributes which store the exponent of each
+base unit for that quantity.
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - Attribute name
+     - Attribute description
+   * - ``U_L exponent``
+     - Exponent of the length unit
+   * - ``U_M exponent``
+     - Exponent of the mass unit
+   * - ``U_T exponent``
+     - Exponent of the temperature unit
+   * - ``U_t exponent``
+     - Exponent of the time unit
+   * - ``U_I exponent``
+     - Exponent of the current unit (not used in FLAMINGO)
+
+For example, particle velocities have ``U_L exponent`` = 1 and
+``U_t exponent`` = -1.
+
+Some quantities are stored in comoving coordinates. We therefore also
+include an attribute ``a-scale exponent`` which stores the exponent of
+the cosmological expansion factor :math:`a` which is required to
+convert the dataset to physical coordinates. Quantities which are
+already in physical coordinates have ``a-scale exponent`` = 0. Comoving
+particle positions have ``a-scale exponent`` = 1.
+
+There is also a ``h-scale exponent`` attribute which indicates when
+units contain powers of the Hubble parameter, :math:`h`. This is
+always zero in FLAMINGO. Particle positions are stored in
+:math:`\mathrm{Mpc}` and not :math:`\mathrm{Mpc/h}`, for example.
+
+This scheme is almost identical to the snapshots, except that the
+conversion factor to physical CGS units cannot be given as an
+attribute because different particles in the dataset crossed the
+lightcone at different times and therefore have varying values of
+:math:`a`.
+
+Spatial indexing
+----------------
+
+The comoving volume of the lightcone increases rapidly with redshift
+so the number of particles in the outputs can be very large. We
+organize the lightcone particle files to allow efficient retrieval of
+particles in specified redshift ranges or positions on the sky. This
+is similar to the spatial indexing scheme used in the snapshots but
+adapted to spherical coordinates.
+
+The volume within the maximum redshift of the lightcone is divided
+into concentric spherical shells. The thickness of these shells is
+chosen such that each shell contains approximately the same number of
+particles. We divide each shell into pixels using a low resolution
+HEALPix map. This has the effect of dividing the lightcone volume into
+cells which are identified their shell and pixel index.
+
+The particles in the lightcone are then sorted by shell index and
+particles with the same shell index are sorted by pixel index within
+the shell. In each lightcone file we store the offset to the first
+particle in each cell and the number of particles in each cell. If we
+wish to find particles in a particular redshift range and/or position
+on the sky we can compute which cells overlap the required volume and
+look up which ranges of particles to read.
+
+Each file has a HDF5 group ``Cells`` which contains this spatial
+indexing information. It contains one sub-group for each particle type
+with the following HDF5 datasets:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 0
+
+   * - Dataset name
+     - Meaning
+   * - ``cell_length``
+     -
+   * - ``cell_offset``
+     -
+   * - ``cell_pixel``
+     -
+   * - ``cell_z_min``
+     -
+   * - ``cell_z_max``
+     -
+   * - ``first_particle_in_file``
+     -
+   * - ``num_particles_in_file``
+     -
+   * - ``num_cells``
+     -
+   * - ``redshift_bins``
+     -
+   * - ``redshift_first``
+     -
+   * - ``nside``
+     -
+   * - ``order``
+     -

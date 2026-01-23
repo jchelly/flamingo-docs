@@ -1,5 +1,5 @@
-Particle properties in the particle lightcones
-==============================================
+Particle properties in the lightcones
+=====================================
 
 This page documents all of the properties which are stored for each
 type of particle in the FLAMINGO lightcone particle outputs.
