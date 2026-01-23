@@ -314,7 +314,7 @@ store the following particle properties.
      - float32
      - N
      - :math:`-`
-     - Scale-factors at which the black holes last reached a large Eddington ratio. -1 if never reached.
+     - Scale-factors at which the black holes last reached an Eddington ratio greater than 0.1. -1 if never reached.
    * - ``LastMajorMergerScaleFactors``
      - float32
      - N
