@@ -36,7 +36,8 @@ is necessary to read from all of the files.
 If you download the virtual snapshot file it will only be readable if
 you also download the snapshot data files to the same directory. The
 easiest way to ensure this is to use the full directory download link
-for the snapshot you're interested in.
+for the snapshot you're interested in. See
+:doc:`/service_docs/web_interface` for details.
 
 .. warning:: If HDF5 can't find the data for a virtual dataset it
    silently returns incorrect "fill" values! So if you download a
