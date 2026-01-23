@@ -9,7 +9,11 @@ each observer ``X``.
 
 The particles for each observer are distributed over a set of files
 ``lightconeX_0000.Y.hdf5``, where the integer ``Y`` numbers the files
-within the set. This structure is illustrated below:
+within the set. This structure is illustrated below.
+
+As an example, see `/FLAMINGO/L1_m9/L1_m9/particle_lightcones/
+</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/particle_lightcones>`__
+for the ``L1_m9`` particle lightcones.
 
 .. mermaid::
 
@@ -32,8 +36,3 @@ within the set. This structure is illustrated below:
      lightcone1_0000.2.hdf5
      ...
      "]
-
-For example, the lightcone particle data for the fiducial ``L1_m9``
-model can be viewed in the file browser at
-`/FLAMINGO/L1_m9/L1_m9/particle_lightcones/
-</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/particle_lightcones>`__.

@@ -7,6 +7,10 @@ diagram below. Each simulation has a ``snapshots`` directory with one
 the snapshot number. See :doc:`snapshot_redshifts` for the relation
 between snapshot number and redshift.
 
+As an example, see `/FLAMINGO/L1_m9/L1_m9/snapshots/
+</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/snapshots>`__ for
+the ``L1_m9`` snapshot data.
+
 .. mermaid::
 
    flowchart LR
@@ -24,10 +28,6 @@ between snapshot number and redshift.
      ...`"]
 
      s0001 --> s0001_f0["..."]
-
-You can see the snapshots for the fiducial ``L1_m9`` model in the file
-browser at `/FLAMINGO/L1_m9/L1_m9/snapshots/
-</flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/snapshots>`__.
 
 Virtual snapshot file
 ---------------------
