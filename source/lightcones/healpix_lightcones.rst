@@ -44,7 +44,10 @@ information see the documentation links below and appendix A of
 .. toctree::
    :maxdepth: 2
 
-   healpix_map_descriptions
+   Directory layout <healpix_layout>
+   File format <healpix_format>
+   Shell redshifts <healpix_shell_redshifts>
+   Map descriptions <healpix_map_descriptions>
    integrated_lightcones
 
 

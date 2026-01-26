@@ -1,5 +1,5 @@
-HEALPix map types
-=================
+HEALPix map descriptions
+========================
 
 This page describes the available HEALPix maps: i.e. what quantities
 have been computed and their units.

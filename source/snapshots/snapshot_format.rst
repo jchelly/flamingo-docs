@@ -144,6 +144,8 @@ and the second index is the x/y/z dimension.
 Datasets have a ``Description`` attribute which gives a short
 description of their contents.
 
+.. _dataset-units:
+
 Dataset units
 ^^^^^^^^^^^^^
 

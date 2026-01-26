@@ -21,6 +21,6 @@ halo catalogues. These are described in the following sections:
    :maxdepth: 2
 
    particle_lightcones
-   halo_lightcones
    healpix_lightcones
+   halo_lightcones
 

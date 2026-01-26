@@ -105,10 +105,7 @@ the dataset has one element per particle. For vector quantities, the
 first index is the particle index and the second index is the x/y/z
 dimension.
 
-All datasets are stored in units which are constructed by multiplying
-together (usually integer) powers of the base units described
-above. Each dataset has attributes which store the exponent of each
-base unit for that quantity.
+The lightcone particle datasets have the following attributes:
 
 .. list-table::
    :header-rows: 1
@@ -127,26 +124,13 @@ base unit for that quantity.
    * - ``U_I exponent``
      - Exponent of the current unit (not used in FLAMINGO)
 
-For example, particle velocities have ``U_L exponent`` = 1 and
-``U_t exponent`` = -1.
+The ``U_*`` exponent attributes specify the units of each quantity in
+the same way as in the :ref:`snapshots <dataset-units>`.
 
-Some quantities are stored in comoving coordinates. We therefore also
-include an attribute ``a-scale exponent`` which stores the exponent of
-the cosmological expansion factor :math:`a` which is required to
-convert the dataset to physical coordinates. Quantities which are
-already in physical coordinates have ``a-scale exponent`` = 0. Comoving
-particle positions have ``a-scale exponent`` = 1.
-
-There is also a ``h-scale exponent`` attribute which indicates when
-units contain powers of the Hubble parameter, :math:`h`. This is
-always zero in FLAMINGO. Particle positions are stored in
-:math:`\mathrm{Mpc}` and not :math:`\mathrm{Mpc/h}`, for example.
-
-This scheme is almost identical to the snapshots, except that the
-conversion factor to physical CGS units cannot be given as an
-attribute because different particles in the dataset crossed the
-lightcone at different times and therefore have varying values of
-:math:`a`.
+.. note:: the conversion factor to physical CGS units is not given as
+          an attribute here because different particles in the dataset
+          crossed the lightcone at different times and therefore have
+          different values of :math:`a`.
 
 Spatial indexing
 ----------------
