@@ -174,8 +174,9 @@ on the sky we can compute which cells overlap the required volume and
 look up which ranges of particles to read.
 
 Each file has a HDF5 group ``Cells`` which contains this spatial
-indexing information. It contains one sub-group for each particle type
-with the following HDF5 datasets:
+indexing information. Each particle type is indexed separately, so the
+``Cells`` group contains one sub-group for each particle type with
+the following information:
 
 .. list-table::
    :header-rows: 1
@@ -184,26 +185,40 @@ with the following HDF5 datasets:
    * - Dataset name
      - Meaning
    * - ``cell_length``
-     -
+     - Total number of particles in each cell.
    * - ``cell_offset``
-     -
+     - Offset to the first particle in each cell. If there are a total
+       of :math:`N` particles across all files in the set, then offset
+       :math:`0` is the first particle in the first file and offset
+       :math:`N-1` is the last particle in the last file.
    * - ``cell_pixel``
-     -
+     - The HEALPix pixel index of each cell.
    * - ``cell_z_min``
-     -
+     - The minimum redshift of each cell.
    * - ``cell_z_max``
-     -
+     - The maximum redshift of each cell.
    * - ``first_particle_in_file``
-     -
+     - The offset to the first particle in each file, defined in the
+       same way as ``cell_offset``. Has one element for each file in
+       the set.
    * - ``num_particles_in_file``
-     -
+     - The number of particles in each file. Has one element for each
+       file in the set.
    * - ``num_cells``
-     -
+     - The total number of cells across all files. Equal to the number
+       of HEALPix pixels times the number of redshift cells. This is
+       the size of the ``cell_*`` datasets.
    * - ``redshift_bins``
-     -
+     - The edges of the redshift bins used in this output. If
+       :math:`N` redshift shells were used this has :math:`N+1`
+       elements.
    * - ``redshift_first``
-     -
+     - Specifies the sorting order of the particles. If 1, particles
+       are sorted by redshift shell index and then by pixel index
+       within the shell. If 0, particles are sorted by pixel index and
+       then by redshift shell index within the pixel.
    * - ``nside``
-     -
+     - Specifies the resolution of the HEALPix map used for spatial
+       indexing.
    * - ``order``
-     -
+     - Specifies the pixel ordering used: either ``ring`` or ``nest``.
