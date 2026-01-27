@@ -5,9 +5,10 @@ This page describes the available HEALPix maps: i.e. what quantities
 have been computed and their units.
 
 Some quantities relating to gas particles are smoothed onto the map by
-converting the particle's SPH smoothing length to an angular size. For
-other quantities the full contribution from the particle is added to
-a single pixel and no smoothing is done.
+converting the particle's SPH smoothing length to an angular size. See
+:ref:`smoothed-maps` for details. For other quantities the full
+contribution from the particle is added to a single pixel and no
+smoothing is done.
 
 Quantities and units
 --------------------
@@ -94,7 +95,7 @@ A full list of the available quantities is shown in the table below.
 .. _compton-y:
 
 Compton :math:`y` parameter
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Compton :math:`y` parameter maps are computed by accumulating the
 following dimensionless quantity for each gas particle which crosses
@@ -109,7 +110,7 @@ where :math:`m_\text{g}` is the particle's mass,
 .. _doppler-b:
 
 Doppler :math:`b` parameter
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: Due to a bug, the contribution of each particle to the
              Doppler :math:`b` parameter maps incorrectly included an
@@ -129,7 +130,7 @@ observer.
 .. _dispersion-measure:
 
 Dispersion measure
-------------------
+^^^^^^^^^^^^^^^^^^
 
 .. warning:: Due to a bug, the contribution of each particle to the
              dispersion measure maps incorrectly omitted a factor of
@@ -144,3 +145,50 @@ crosses the lightcone:
   :math:`\Delta \text{DM} = \frac{n_\text{e} m_\text{g} a}{\Omega_\text{pixel}^2 d_\text{A}^2 \rho}`
 
 where :math:`a` is the expansion factor at which the particle crossed the lightcone.
+
+.. _smoothed-maps:
+
+Smoothed maps
+-------------
+
+Gas particles in the FLAMINGO simulations have an associated SPH
+smoothing length, so quantities derived from the gas can be smoothed
+onto the HEALPix maps. When a gas particle crosses the lightcone its
+angular smoothing length is computed as:
+
+.. math::
+
+   \theta_\text{h} = \arctan(h/r)
+
+where :math:`h` is the particle's smoothing length and :math:`r` is
+the distance from the observer at which the particle crossed the
+lightcone. A gas particle with an angular smoothing length
+:math:`\theta_\text{h}` will update all pixels within an angular
+radius
+
+.. math::
+
+   \theta_\text{s}=\gamma\theta_\text{h}
+
+where :math:`\gamma` is the number of smoothing lengths at which the
+SPH kernel falls to zero. If :math:`\theta_\text{s}` is smaller than
+the maximum angular radius of any HEALPix pixel then no smoothing is
+done and the full contribution of the particle to the map is added to
+a single pixel. Otherwise, we need to distribute the particle's
+contribution over multiple pixels weighted by a 2D projected
+smoothing kernel.
+
+The projected kernel is computed using equation 30 of `Price (2007)
+<https://ui.adsabs.harvard.edu/abs/2007PASA...24..159P/abstract>`__:
+
+.. math::
+
+  F(q_{xy}) = \int_{-\sqrt{R^2-q^{2}_{xy}}}^{\sqrt{R^2-q^{2}_{xy}}} W(q) \mathrm{d}q_{z}
+
+Here, :math:`q^2 = q^2_{xy} + q^2_{z}`, :math:`R = h\gamma` is the
+radius where the SPH kernel reaches zero, and :math:`W(q)` is the
+Wendland C2 kernel used in FLAMINGO's SPH implementation. The
+contribution to the map from a particle is distributed between all
+pixels with centres within an angular radius :math:`\theta_s` of the
+particle, weighted by the projected kernel and normalized such that
+the total contribution to the map is the same as in the un-smoothed case.

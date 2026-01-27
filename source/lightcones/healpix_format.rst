@@ -25,6 +25,8 @@ of the shell:
    * - ``nr_files_per_shell``
      - How many files the maps are split over. This is always 1 in the FLAMINGO data release.
 
+See :doc:`healpix_shell_redshifts` for a full list of shell redshifts and comoving radii.
+
 Unit system
 -----------
 
@@ -61,7 +63,7 @@ datasets have the following attributes:
 
 .. list-table::
    :header-rows: 1
-   :stub-columns: 1
+   :stub-columns: 0
 
    * - Attribute name
      - Attribute description
