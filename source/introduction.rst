@@ -24,23 +24,25 @@ The following data products are available:
     wide range of halo properties computed using the `SOAP
     post-processing tool
     <https://joss.theoj.org/papers/10.21105/joss.08252>`__
-  * Full sky lightcone particle outputs, where each simulation
+  * Full sky :doc:`lightcone particle
+    outputs<lightcones/particle_lightcones>`, where each simulation
     particle is output as it crosses the past lightcone of an observer
     placed somewhere in the simulation volume
-  * Full sky `HEALPix maps <https://healpix.sourceforge.io/>`__ of
+  * Full sky :doc:`HEALPix maps <lightcones/healpix_lightcones>` of
     various quantities evaluated in spherical shells around each
     lightcone observer. These include the total mass in gas, stars and
     dark matter, the X-ray luminosity of the gas in several bands, and
     measurements of the thermal and kinetic Sunyaev–Zeldovich effects.
-  * Approximate lightcone halo catalogues created by using black hole
-    particles to trace halo positions between snapshots
+  * Approximate :doc:`lightcone halo
+    catalogues<lightcones/halo_lightcones>` created by using black
+    hole particles to trace halo positions between snapshots
 
 Documentation
 -------------
 
-See the links in the side bar for
-:doc:`more information on how to use this service <service_docs/index>`
-and :doc:`full descriptions of the available data products <flamingo_docs>`.
+See the links in the side bar for :doc:`more information on how to use
+this service <service_docs/index>` and full descriptions of the
+available data products.
 
 Downloading simulation data
 ---------------------------
