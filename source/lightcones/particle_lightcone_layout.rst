@@ -21,17 +21,17 @@ within the set. This structure is illustrated below.
      lcp --> obs1["`**Observer 1**
      lightcone1_particles/`"]
 
-     obs0 --> data0["lightcone0_0000.0.hdf5
+     obs0 --> data0["`**Particle data**
+     lightcone0_0000.0.hdf5
      lightcone0_0000.1.hdf5
      lightcone0_0000.2.hdf5
-     ...
-     "]
+     ...`"]
 
-     obs1 --> data1["lightcone1_0000.0.hdf5
+     obs1 --> data1["`**Particle data**
+     lightcone1_0000.0.hdf5
      lightcone1_0000.1.hdf5
      lightcone1_0000.2.hdf5
-     ...
-     "]
+     ...`"]
 
 As an example, see `/FLAMINGO/L1_m9/L1_m9/particle_lightcones/
 </flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/particle_lightcones>`__

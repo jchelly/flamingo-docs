@@ -17,8 +17,10 @@ between snapshot number and redshift.
    flowchart LR
      snapshots["snapshots/"]
 
-     snapshots --> s0000["flamingo_0000/"]
-     snapshots --> s0001["flamingo_0001/"]
+     snapshots --> s0000["`**Snapshot 0**
+     flamingo_0000/`"]
+     snapshots --> s0001["`**Snapshot 1**
+     flamingo_0001/`"]
 
      s0000 --> s0000_virtual["`**Virtual snapshot**
      flamingo_0000.hdf5`"]
