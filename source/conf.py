@@ -13,12 +13,13 @@ author = 'John Helly'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_design", "sphinxcontrib.mermaid"]
+extensions = ["sphinx_design", "sphinxcontrib.mermaid", "sphinx.ext.todo",]
 
 templates_path = ['_templates']
 exclude_patterns = []
 
-
+# Enable TODO list generation
+todo_include_todos = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
