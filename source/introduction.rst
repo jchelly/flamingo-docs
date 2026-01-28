@@ -40,12 +40,16 @@ The following data products are available:
     catalogues<lightcones/halo_lightcones>` created by using black
     hole particles to trace halo positions between snapshots
 
+.. todo::
+
+   Mention dispersion measures and ray-traced lensing convergence maps.
+
 Documentation
 -------------
 
-See the links in the side bar for :doc:`more information on how to use
-this service <service_docs/index>` and full descriptions of the
-available data products.
+See the links in the side bar on the left for :doc:`more information
+on how to use this service <service_docs/index>` and full descriptions
+of the available data products.
 
 Downloading simulation data
 ---------------------------
