@@ -2,9 +2,9 @@ Introduction
 ============
 
 This service provides web based remote access to the `FLAMINGO
-simulations <https://flamingo.strw.leidenuniv.nl/>`__ as described in
-`Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__
-and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023arXiv230605492K>`__.
+simulations <https://flamingo.strw.leidenuniv.nl/>`__ described in
+`Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__
+and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.6103K/abstract>`__.
 
 .. note:: The FLAMINGO simulations are not yet public. Access to the
           simulation data is currently restricted and requires an
