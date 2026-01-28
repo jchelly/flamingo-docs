@@ -12,8 +12,8 @@ redshift. The shells used in FLAMINGO are shown in the table below:
    * - Shell index
      - Inner redshift
      - Outer redshift
-     - Inner radius [:math:`\mathrm{Mpc}`]
-     - Outer radius [:math:`\mathrm{Mpc}`]
+     - Inner radius [comoving :math:`\mathrm{Mpc}`]
+     - Outer radius [comoving :math:`\mathrm{Mpc}`]
    * - 0
      - 0.001
      - 0.050
