@@ -4,7 +4,7 @@ Integrated lightcones
 This page describes the integrated healpix lightcones that have been produced in the analyses of the simulations.
 In the construction of these maps, the FLAMINGO shells have been rotated whenever the lightcone diameter exceeds the
 box size. The same rotation has been applied to the different observables, meaning the different integrated maps can 
-be directly compared. The rotations that have been applied to the 1 cGpc (L1) or 2.8 cGpc (L2p8) variations are
+be directly compared and cross correlated. The rotations that have been applied to the 1 cGpc (L1) or 2.8 cGpc (L2p8) variations are
 
 .. code-block:: python
 
