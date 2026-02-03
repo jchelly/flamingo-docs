@@ -20,10 +20,13 @@ The following data products are available:
     of output times <snapshots/snapshot_redshifts>` between redshift
     z=15 and the present day
   * Halo catalogues and merger trees generated using the `HBT-HERONS
-    <https://hbt-herons.strw.leidenuniv.nl/>`__ halo finder with a
-    wide range of halo properties computed using the `SOAP
-    post-processing tool
+    <https://hbt-herons.strw.leidenuniv.nl/>`__ halo finder (`Forouhar
+    Moreno et al. 2025
+    <https://ui.adsabs.harvard.edu/abs/2025arXiv250206932F/abstract>`__)
+    with a wide range of halo properties computed using the `SOAP
     <https://joss.theoj.org/papers/10.21105/joss.08252>`__
+    post-processing tool (`McGibbon et al. 2025
+    <https://ui.adsabs.harvard.edu/abs/2025JOSS...10.8252M/abstract>`__.)
   * Full sky :doc:`lightcone particle
     outputs<lightcones/particle_lightcones>`, where each simulation
     particle is output as it crosses the past lightcone of an observer
