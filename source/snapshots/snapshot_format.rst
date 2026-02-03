@@ -33,9 +33,9 @@ useful attributes are:
 Cosmology
 ^^^^^^^^^
 
-The ``Cosmology`` group stores the cosmological parameters used in the
-simulation and the redshift of the snapshot output. It includes the
-following HDF5 attributes:
+The ``Cosmology`` group stores the values of the cosmological
+parameters used in the simulation and the redshift of the snapshot
+output. It includes the following HDF5 attributes:
 
 +-------------------------+--------------------------------------------------------------------------------------------------------+
 | Attribute name          | Description                                                                                            |
@@ -50,7 +50,7 @@ following HDF5 attributes:
 +-------------------------+--------------------------------------------------------------------------------------------------------+
 | ``Omega_lambda``        | Dark energy density parameter :math:`\Omega_{\mathrm{\Lambda}}` at z=0                                 |
 +-------------------------+--------------------------------------------------------------------------------------------------------+
-| ``Omega_m``             | Mass density parameter :math:`\Omega_\mathrm{m} = \Omega_{\mathrm{cdm}} + \Omega_\mathrm{b}` at z=0    |
+| ``Omega_m``             | Matter density parameter :math:`\Omega_\mathrm{m} = \Omega_{\mathrm{cdm}} + \Omega_\mathrm{b}` at z=0  |
 +-------------------------+--------------------------------------------------------------------------------------------------------+
 | ``Omega_nu``            | Neutrino density parameter :math:`\Omega_{\mathrm{\nu}}` at the snapshot redshift                      |
 +-------------------------+--------------------------------------------------------------------------------------------------------+
@@ -62,11 +62,11 @@ following HDF5 attributes:
 +-------------------------+--------------------------------------------------------------------------------------------------------+
 
 .. note:: `swiftsimio
-          <https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`_
-          can create a suitable astropy cosmology object from the
-          snapshot metadata. This is the safest way to convert
-          redshifts to comoving distances or lookback times, for
-          example.
+          <https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`__
+          can create a suitable `astropy <https://www.astropy.org/>`__
+          cosmology object from the snapshot metadata. This is the
+          safest way to convert redshifts to comoving distances or
+          lookback times, for example.
 
 Units
 ^^^^^
