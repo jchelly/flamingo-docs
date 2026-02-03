@@ -8,11 +8,13 @@ which record the distribution of particles in the simulated volume at
 an instant in time.
 
 Snapshots contain multiple particle types which model different matter
-components: the dark matter only simulations contain particles
-representing the distribution of dark matter and neutrinos. The hydro
-simulations also include particles representing gas, stars and black
-holes. Many physical properties, such as position, mass and velocity,
-are stored for each particle.
+components: cold dark matter (CDM), gas, stars, black holes and
+neutrinos. In the dark matter only simulations only CDM and neutrino
+particles are present but the CDM particles account for the mass in
+baryons, which are assumed to trace the distribution of the CDM. In
+the hydro simulations all particle types are present. Many physical
+properties, such as position, mass and velocity, are stored for each
+particle.
 
 .. card-carousel:: 2
 
