@@ -7,10 +7,11 @@ diagram below. Each simulation has a ``snapshots`` directory with one
 the snapshot number. See :doc:`snapshot_redshifts` for the relation
 between snapshot number and redshift.
 
-.. tip:: The easiest way to access particle data is to use swiftsimio
-         to read the :ref:`virtual-snapshot` so that you don't need to
-         concatenate data from multiple files and unit metadata is
-         read automatically. TODO: write and link to examples!
+.. tip:: The easiest way to access particle data is to use `swiftsimio
+         <https://swiftsimio.readthedocs.io/en/latest/>`__ to read the
+         :ref:`virtual-snapshot` so that you don't need to concatenate
+         data from multiple files and unit metadata is read
+         automatically. TODO: write and link to examples!
 
 .. mermaid::
 
@@ -56,20 +57,20 @@ itself. The particles in each snapshot are split across multiple HDF5
 files with names of the form ``flamingo_XXXX.Y.hdf5``, where ``XXXX``
 is the snapshot number and ``Y`` numbers the files that make up the
 snapshot. Each one of these files contains the particles in part of
-the simulation volume. To read all of the particles in the snapshot it
+the simulation volume. To read all of the particles in the snapshot, it
 is necessary to read from all of the files.
 
-If you download the virtual snapshot file it will only be readable if
+If you download the virtual snapshot file, it will only be readable if
 you also download the snapshot data files to the same directory. The
 easiest way to ensure this is to use the full directory download link
 for the snapshot you're interested in. See
 :doc:`/service_docs/web_interface` for details.
 
-.. warning:: If HDF5 can't find the data for a virtual dataset it
+.. warning:: If HDF5 can't find the data for a virtual dataset, it
    silently returns incorrect "fill" values! So if you download a
-   virtual snapshot and get strange results it may be that HDF5 isn't
+   virtual snapshot and get strange results, it may be that HDF5 isn't
    finding the real data files.
 
-If you use the hdfstream module to read from a virtual snapshot the
+If you use the hdfstream module to read from a virtual snapshot, the
 server automatically reads the underlying datasets in the real
 snapshot files.
