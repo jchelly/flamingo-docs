@@ -34,8 +34,9 @@ The following data products are available:
   * Full sky :doc:`HEALPix maps <lightcones/healpix_lightcones>` of
     various quantities evaluated in spherical shells around each
     lightcone observer. These include the total mass in gas, stars and
-    dark matter, the X-ray luminosity of the gas in several bands, and
-    measurements of the thermal and kinetic Sunyaev–Zeldovich effects.
+    dark matter, the X-ray luminosity of the gas in several bands,
+    measurements of the thermal and kinetic Sunyaev–Zeldovich effects,
+    the dispersion measure and weak lensing convergence.
   * Approximate :doc:`lightcone halo
     catalogues<lightcones/halo_lightcones>` created by using black
     hole particles to trace halo positions between snapshots
@@ -43,9 +44,9 @@ The following data products are available:
 Documentation
 -------------
 
-See the links in the side bar for :doc:`more information on how to use
-this service <service_docs/index>` and full descriptions of the
-available data products.
+See the links in the side bar on the left for :doc:`more information
+on how to use this service <service_docs/index>` and full descriptions
+of the available data products.
 
 Downloading simulation data
 ---------------------------
