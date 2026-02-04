@@ -9,5 +9,5 @@ to the data for each one.
 
    naming
    layout
-   hydro>
+   hydro
    dmo
