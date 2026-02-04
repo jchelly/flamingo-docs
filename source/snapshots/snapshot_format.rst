@@ -101,7 +101,7 @@ Particle types
 --------------
 
 The FLAMINGO simulations contain gas, dark matter, star, black hole
-and neutrino particles. There is a HDF5 group for each particle
+and neutrino particles. There is an HDF5 group for each particle
 type. Within these groups particle properties (position, mass,
 velocity etc) are stored as HDF5 datasets. The particle type groups
 follow Gadget-2's ``PartTypeX`` naming scheme but there are also
