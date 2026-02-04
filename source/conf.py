@@ -13,13 +13,13 @@ author = 'John Helly'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_design", "sphinxcontrib.mermaid", "sphinx.ext.todo",]
+extensions = ["sphinx_design", "sphinxcontrib.mermaid", "sphinx.ext.todo", "sphinx.ext.ifconfig"]
 
 templates_path = ['_templates']
 exclude_patterns = []
 
 # Enable TODO list generation
-todo_include_todos = True
+todo_include_todos = False
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -63,3 +63,6 @@ html_js_files = [
     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/python.min.js',
     'https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/yaml.min.js',
 ]
+
+if "sphinx.ext.todo" in extensions:
+    tags.add("todos")
