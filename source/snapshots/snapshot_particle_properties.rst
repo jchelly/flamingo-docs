@@ -64,9 +64,9 @@ datasets which store the following particle properties:
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``VelocityDivergences``            | float32 | N          | :math:`\mathrm{Mpc^{-1}} \mathrm{km/s}`                                    | Local velocity divergence field around the particles. Provided without cosmology, as this includes the Hubble flow. To return to a peculiar velocity divergence, :math:`\nabla . v_{pec} = a^2 (\nabla . v - 3 H)`       |
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``XrayLuminosities``               | float64 | N,3        | :math:`\mathrm{Mpc}^{-1} \mathrm{M}_{\odot} \mathrm{(km/s)}^3`             | Intrinsic X-ray luminosities (i.e. energy per unit time) in various bands. This is 0 for star-forming particles (see :ref:`xray-bands`)                                                                                  |
+| ``XrayLuminosities``               | float64 | N,3        | :math:`\mathrm{Mpc}^{-1} \mathrm{M}_{\odot} \mathrm{(km/s)}^3`             | Intrinsic X-ray luminosities (i.e. energy per unit time) in various bands in the :math:`z=0` observer frame. This is 0 for star-forming particles (see :ref:`xray-bands`)                                                |
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``XrayPhotonLuminosities``         | float64 | N,3        | :math:`\mathrm{Mpc^{-1}} \mathrm{km/s}`                                    | Intrinsic X-ray photon luminosities (i.e. number of photons per unit time) in various bands. This is 0 for star-forming particles (see :ref:`xray-bands`)                                                                |
+| ``XrayPhotonLuminosities``         | float64 | N,3        | :math:`\mathrm{Mpc^{-1}} \mathrm{km/s}`                                    | Intrinsic X-ray photon luminosities (i.e. number of photons per unit time) in various bands in the :math:`z=0` observer frame. This is 0 for star-forming particles (see :ref:`xray-bands`)                              |
 +------------------------------------+---------+------------+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Dark matter particles
@@ -289,7 +289,7 @@ X-ray bands
 
 Gas particles have ``XrayLuminosities`` (energy per unit time) and
 ``XrayPhotonLuminosities`` (number of photons per unit time) datasets
-which contain data for three different X-ray bands:
+which contain data for three different observer frame X-ray bands:
 
 +-------------+---------------------+
 | Array index | Band                |

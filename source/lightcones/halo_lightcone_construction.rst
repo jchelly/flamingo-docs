@@ -26,15 +26,15 @@ way to the next and previous snapshot redshifts respectively. Each
 shell will be populated with halos drawn from the corresponding
 snapshot. These shells are illustrated below.
 
+.. warning:: These are not the same as the shells used to construct the
+             :doc:`HEALPix maps <healpix_lightcones>`.
+
 .. card::
    :img-top: images/lightcone_shells.png
 
    Redshift shells used in the construction of the lightcone halo
    catalogue for ``L1_m9``. Only low redshifts are shown for clarity.
 
-Note that these are not the same as the shells used to construct the
-:doc:`HEALPix maps <healpix_lightcones>`.
-   
 Matching halos to the black hole particle lightcone
 ---------------------------------------------------
 
