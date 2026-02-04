@@ -6,7 +6,7 @@ Welcome to the FLAMINGO data release documentation
 
    introduction
    service_docs/index
-   simulations
+   simulations/index
    snapshots/index
    Halo catalogues <soap/index>
    lightcones/index
