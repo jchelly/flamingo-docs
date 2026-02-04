@@ -10,10 +10,10 @@ in and accumulate its contribution to the appropriate maps.
 These maps use the `HEALPix <https://healpix.sourceforge.io/>`__
 pixelisation scheme to divide the sky into pixels of equal area. The
 maps are provided at two resolutions. The highest resolution maps have
-an angular resolution of about 13 arcseconds (:math:`N_{side}=16384`).
+an angular resolution of about 13 arcseconds (:math:`N_\mathrm{side}=16384`).
 Since these large maps can be difficult to work with, we also provide
 down-sampled maps with an angular resolution of about 50 arcseconds
-(:math:`N_{side}=4096`).
+(:math:`N_\mathrm{side}=4096`).
 
 .. grid:: 2
 

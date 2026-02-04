@@ -4,8 +4,8 @@ HEALPix map directory layout
 Each FLAMINGO simulation has a directory ``healpix_maps`` which
 contains the HEALPix map data. Maps are available at two resolutions:
 
-  * Full resolution maps with :math:`N_{side}=16384` in the directory ``nside_16384``
-  * Lower resolution maps with :math:`N_{side}=4096` in the directory ``nside_4096``
+  * Full resolution maps with :math:`N_\mathrm{side}=16384` in the directory ``nside_16384``
+  * Lower resolution maps with :math:`N_\mathrm{side}=4096` in the directory ``nside_4096``
 
 Within these directories there is one directory ``lightconeX_shells``
 for each observer ``X``. Each of the observer directories contains
