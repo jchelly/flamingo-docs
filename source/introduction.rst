@@ -72,10 +72,11 @@ properties of interest from a halo catalogue.
 
 We provide adapted versions of the `pynbody
 <https://github.com/pynbody/pynbody>`__ and `swiftsimio
-<https://github.com/SWIFTSIM/swiftsimio>`__ python modules which can
-transparently make use of this service, and a more generic
-:doc:`hdfstream <service_docs/python_module>` module which allows
-downloads of arbitrary HDF5 data using a similar interface to h5py.
+<https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`__
+python modules which can transparently make use of this service, and a
+more generic :doc:`hdfstream <service_docs/python_module>` module
+which allows downloads of arbitrary HDF5 data using a similar
+interface to h5py.
 
 .. image:: images/download_dataset.gif
    :class: screenshot

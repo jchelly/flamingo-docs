@@ -12,9 +12,9 @@ Shape column, N indicates the number of particles in the dataset.
 .. note:: Units are provided here for information, but it's usually
           better to use the metadata in the files for any unit
           conversions. The `swiftsimio
-          <https://github.com/SWIFTSIM/swiftsimio>`__ python module
-          handles units automatically in snapshots and SOAP halo
-          catalogues.
+          <https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`__
+          python module handles units automatically in snapshots and
+          SOAP halo catalogues.
 
 Gas particles
 -------------
