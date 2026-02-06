@@ -5,6 +5,9 @@ The tables below list all of the dark matter only simulations which
 are part of the FLAMINGO data release and provide a link to the
 simulation data.
 
+For exact model parameters see the `table of FLAMINGO simulations
+<https://flamingo.strw.leidenuniv.nl/simulations.html>`__.
+
 Fiducial models
 ---------------
 

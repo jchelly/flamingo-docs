@@ -1,8 +1,8 @@
 Simulations
 ===========
 
-This section describes the available FLAMINGO simulations and provides links
-to the data for each one.
+This section describes the available FLAMINGO simulations and provides
+links to the data for each one.
 
 .. toctree::
    :maxdepth: 2

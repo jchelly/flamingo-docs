@@ -29,9 +29,9 @@ Mass resolution
 Where the name of a simulation starts with ``LX_mY``, the value of the
 integer ``Y`` indicates the mass resolution of the simulation. It is
 approximately equal to :math:`\log_{10}(m_{\mathrm{gas}})`, where
-:math:`m_{\mathrm{gas}}` is the gas particle mass. All simulations
-with no resolution specifier in their name were run at ``m9``
-resolution.
+:math:`m_{\mathrm{gas}}` is the gas particle mass in solar masses. All
+simulations with no resolution specifier in their name were run at
+``m9`` resolution.
 
 .. note:: The exact particle masses vary slightly with the cosmology
           used in each simulation (see `this table
