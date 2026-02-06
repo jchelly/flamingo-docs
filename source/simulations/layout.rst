@@ -15,27 +15,16 @@ products: :doc:`snapshots </snapshots/index>`, :doc:`halo catalogues
      flamingo["`**Project root**
      FLAMINGO/`"]
 
-     flamingo --> L1_m8["`**High res. 1Gpc**
-     L1_m8/`"]
-     L1_m8-->L1_m8_fiducial["`**Fiducial model**
-     L1_m8/`"]
-     L1_m8-->L1_m8_dmo["`**DMO model**
-     L1_m8_DMO/`"]
-
-     flamingo --> L1_m9["`**Fiducial res. 1Gpc**
+     flamingo --> L1_m9["`**Box size and resolution**
      L1_m9/`"]
-     L1_m9-->L1_m9_fiducial["`**Fiducial model**
+     L1_m9-->L1_m9_fiducial["`**Run name**
      L1_m9/`"]
-     L1_m9-->L1_m9_dmo["`**DMO model**
-     L1_m9_DMO/`"]
 
-     L1_m9-->L1_m9_variations["`**Model variations**
-     fgas+2sigma/
-     fgas-2sigma/
-     ...`"]
-
-     flamingo --> others["`**Other boxes**
-     L1_m10/
-     L2p8_m9/
-     ...`"]
-
+     L1_m9_fiducial-->snapshots["**Snapshot data**
+     snapshots/"]
+     L1_m9_fiducial-->particle_lc["**Lightcone data**
+     particle_lightcones/
+     healpix_maps/
+     halo_lightcone/"]
+     L1_m9_fiducial-->soap["**Halo catalogues**
+     SOAP-HBT/"]
