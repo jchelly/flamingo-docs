@@ -16,6 +16,13 @@ checks = [
         "nr_snaps"       : 79,
         "expected_snaps" : sl.L1_m8_snapshots
     },
+    # L1_m10 runs
+    {
+       "box"            : "L1_m10",
+       "names"          : ["L1_m10", "L1_m10_DMO"],
+       "nr_snaps"       : 78,
+       "expected_snaps" : sl.L1_m9_snapshots
+    },
     # L2p8_m9 runs
     {
         "box"            : "L2p8_m9",
@@ -36,6 +43,20 @@ checks = [
         "names"          : sl.L1_m9_DMO,
         "nr_snaps"       : 78,
         "expected_snaps" : sl.L1_m9_snapshots
+    },
+    # L5p6_m10 runs
+    {
+        "box"            : "L5p6_m10",
+        "names"          : ["L5p6_m10_DMO"],
+        "nr_snaps"       : 79,
+        "expected_snaps" : sl.L1_m8_snapshots
+    },
+    # L11p2_m11 runs
+    {
+        "box"            : "L11p2_m11",
+        "names"          : ["L11p2_m11_DMO"],
+        "nr_snaps"       : 79,
+        "expected_snaps" : sl.L1_m8_snapshots
     },
 ]
 
