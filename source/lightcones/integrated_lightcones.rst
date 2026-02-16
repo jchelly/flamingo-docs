@@ -58,3 +58,52 @@ to these files. The files can be read as
 where the part ``L1_m9_lc0`` changes between the variations and lightcones (lc), for example,
 ``L2p8_m9_DMO_lc4`` for observer four in the 2800 cGpc dark-matter-only box.
 
+
+
+ROSAT convolved X-ray All-Sky maps
+----------------------------------
+
+The ROSAT convolved X-ray All-Sky maps are computed as described in section 3.1 of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`. Briefly, these HEALPix all-sky maps are computed from the particle lightcones and present the photon count rate in the soft band (0.5-2.0 keV) from hot gas on the sky integrated from redshift 0 to 0.5. The X-ray emission is convolved with the effective area of the ROSAT detector response matrix. Specifically these ring-ordered HEALPix maps are constructed at :math:`N_\mathrm{side} = 4096` from the particle lightcone (of the 0th observer of each ``L1_m9`` simulation given). When integrating along the line of sight the on-sky coordinates of the gas particles in each shell are rotated as described in `Broxterman et al (2024)
+<https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.2309B%2F/abstract>`. The maps containing the X-ray emission from hot gas can be read as
+
+.. code-block:: python
+
+    import h5py filename="/cosma8/data/dp004/dc-mcdo1/DataRelease/ROSAT_Xray_Maps/Gas_Convolved/{BoxsizeResolution}/{SimulationName}.h5" 
+    xray_source="Gas"
+    map_name="XrayROSATIntrinsicPhotonsConvolved"
+    
+    with h5py.File(filename.format(BoxsizeResolution="L1000N1800", SimulationName="HYDRO_FIDUCIAL"), "r") as intergrated_map:
+        
+        # read ROSAT convolved photon flux X-ray map
+        ROSAT_Xray_map=intergrated_map[xray_source+’/’+map_name][:]
+        
+        # print simulations identifier (name) in FLAMINGO papers:
+        print("\tFLAMINGO identifier: {label}".format(label=intergrated_map[xray_source].attrs[’paper_name’][:]))
+        
+        # print intergrated redshift range:
+        lc_zmin=intergrated_map[xray_source].attrs[’redshift_min’] lc_zmax=intergrated_map[xray_source].attrs[’redshift_max’]
+        print("\tredshift range: {zmin:.3f}, {zmax:.3f}".format(zmin=lc_zmin, zmax=lc_zmax))
+        
+        # print expression for map units:
+        print("\tunit expression: {map_units}".format(map_units=intergrated_map[xray_source].attrs[’unit_expression’]))
+
+
+
+Note, these maps are given in units of :math:`\mathrm{photon}/ \mathrm{s} / A_\mathrm{pix}` where :math:`A_\mathrm{pix}` is the area of a pixel in the HEALPix map of a given :math:`N_\mathrm{side}` . See the example given below for how to convert the map from per pixel area to per steradian (or square degree)
+
+.. code-block:: python
+    import h5py
+    import healpy as hp
+    import unyt 
+    filename="/cosma8/data/dp004/dc-mcdo1/DataRelease/ROSAT_Xray_Maps/Gas_Convolved/{BoxsizeResolution}/{simulation}.h5"
+    xray_source="Gas"
+    map_name="XrayROSATIntrinsicPhotonsConvolved"
+    with h5py.File(filename.format(BoxsizeResolution="L1000N1800", simulation="HYDRO_FIDUCIAL"), "r") as intergrated_map:
+        # read map
+        ROSAT_Xray_map_per_sr=intergrated_map[xray_source+’/’+map_name][:]
+
+        nside = intergrated_map[xray_source].attrs[’shell_nside’] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
+        # apply unit transformation and define map units
+        ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
+
+
