@@ -346,16 +346,33 @@ async function display_directory(path, object) {
 
     if(sanitize_path(path) != "") {
         // Add a link to download the directory
-        const p2 = add_element(div, "p");
-        const dl_link = add_element(p2, "a");
+        const card = add_element(div, "div");
+        card.className = "downloadoptions";
+        const details = add_element(card, "details");
+        const summary = add_element(details, "summary");
+        add_text(summary, "Download options");
+        // Make a list of access options
+        const ul = add_element(details, "ul");
+        // Full download
+        const li1 = add_element(ul, "li");
+        const dl_link = add_element(li1, "a");
         dl_link.href = download_url(path);
-        add_text(dl_link, "Full directory download ("+dir_size+")");
-
-        // Include note about large downloads if the directory is >100GB
+        add_text(dl_link, "Full directory download as .tar file");
         if(object.size >= 107374182400) {
-            const note = add_element(div, "p");
-            set_inner_html(note, "Note that you can use the <a href='python_module.html'>python module</a> to extract HDF5 datasets of interest without downloading complete files, or if you have a user account on COSMA then <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a> might allow faster downloads.");
+            if(Object.keys(object.directories).length > 0) {
+                add_text(li1, " ( ⚠️"+dir_size+", see subdirectories for smaller downloads)");
+            } else {
+                add_text(li1, " ( ⚠️"+dir_size+")");
+            }
+        } else {
+            add_text(li1, " ("+dir_size+")");
         }
+        // Access via api
+        const li2 = add_element(ul, "li");
+        set_inner_html(li2, "Access individual datasets using the <a href='/flamingo/service_docs/python_module.html'>hdfstream python module</a>");
+        // Access via globus
+        const li3 = add_element(ul, "li");
+        set_inner_html(li3, "Users with a <a href='https://cosma.readthedocs.io/en/latest'>Cosma</a> account can use <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a>");
     }
 
     // Make a div to contain any description for this diretcory
