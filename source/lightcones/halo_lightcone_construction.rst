@@ -53,9 +53,31 @@ build up a lightcone halo catalogue that extends to :math:`z=15`.
 
 This method only works for halos which contain at least one black hole
 particle. All halos below the black hole seeding mass are likely to be
-missing from the lightcone catalogue. Some halos above the seeding
-mass, such as satellite subhalos, may lose their central black hole in
-some cases and also not appear in the halo lightcone.
+missing from the lightcone catalogue. Black holes are seeded in halos
+with masses greater than
+
+  :math:`\mathrm{M_{seed}} = 2.757 \times 10^{11} \mathrm{M}_\odot (\mathrm{M_{gas}} /1.07 \times 10^9 \mathrm{M}_\odot)`
+
+where :math:`\mathrm{M_{gas}}` is the gas particle mass. The black
+hole seeding masses for the fiducial hydro simulations are shown
+below:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 0
+
+   * - Simulation
+     - :math:`\mathrm{M_{seed} [M_\odot}]`
+   * - ``L1_m8``
+     - :math:`3.44 \times 10^{10}`
+   * - ``L1_m9``
+     - :math:`2.76 \times 10^{11}`
+   * - ``L1_m10``
+     - :math:`2.21 \times 10^{12}`
+
+Some halos above the seeding mass, such as satellite subhalos, may
+lose their central black hole in some cases and also not appear in the
+halo lightcone.
 
 Choice of tracer particle
 -------------------------
@@ -64,7 +86,7 @@ The most bound black hole particle in each halo is the obvious choice
 to trace the position of the halo over time. However, in FLAMINGO
 black hole particles can be destroyed by merging with another black
 hole particle. It's also possible for the most bound black hole in a
-halo to be recently formed. If the black hole particle which is most
+halo to have formed recently. If the black hole particle which is most
 bound at the time of the snapshot does not exist at the time the halo
 crossed the lightcone, then that halo will not appear in the lightcone
 halo catalogue.
