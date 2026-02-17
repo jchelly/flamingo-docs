@@ -56,7 +56,7 @@ particle. All halos below the black hole seeding mass are likely to be
 missing from the lightcone catalogue. Black holes are seeded in halos
 with masses greater than
 
-  :math:`\mathrm{M_{seed}} = 2.757 \times 10^{11} \mathrm{M}_\odot (\mathrm{M_{gas}} /1.07 \times 10^9 \mathrm{M}_\odot)`
+  :math:`\mathrm{M_{seed}} = 2.757 \times 10^{11} \mathrm{M}_\odot \frac{\mathrm{M_{gas}}}{1.07 \times 10^9 \mathrm{M}_\odot}`
 
 where :math:`\mathrm{M_{gas}}` is the gas particle mass. The black
 hole seeding masses for the fiducial hydro simulations are shown
