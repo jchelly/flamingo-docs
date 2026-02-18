@@ -1,6 +1,8 @@
 Group membership files
 ----------------------
 
+TODO: Can we remove this? This information should just be included in the snapshot data?
+
 Before SOAP can be run we generate a set of files which contain halo
 membership information for each particle in the SWIFT snapshot. The
 datasets in these files are stored in the same order and with the same
@@ -38,12 +40,3 @@ The GroupNr values stored here are zero based array indexes into the
 full subhalo catalogue, and not the subhalos IDs. For example the first
 group in the VELOCIraptor catalogue has GroupNr=0 and ID=1.
 
-The script ‘make_virtual_snapshot.py‘ will combine snapshot and group
-membership files into a single virtual snapshot file. This virtual file
-can be read by swiftsimio and gadgetviewer to provide halo membership
-information alongside other particle properties. Using the virtual file
-along with the spatial masking functionality within swiftsimio means it
-is possible to quickly load all the particles bound to a given subhalo.
-
-.. |image| image:: images/image7.png
-.. |image1| image:: images/image4.png
