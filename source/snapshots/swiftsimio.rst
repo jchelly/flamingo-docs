@@ -1,5 +1,5 @@
-Using swiftsimio to read snapshots
-==================================
+Reading snapshots with swiftsimio
+=================================
 
 The `swiftsimio <https://swiftsimio.readthedocs.io/en/latest/>`__
 python module can be used to read snapshots. It can efficiently cut
