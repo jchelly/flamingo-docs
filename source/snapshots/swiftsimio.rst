@@ -37,13 +37,6 @@ downloaded, and how to open a remote file on the hdfstream server.
 
 .. tab-set::
 
-   .. tab-item:: Opening a local file
-
-      .. code-block:: python
-
-         import swiftsimio as sw
-         snap = sw.load("./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5")
-
    .. tab-item:: Opening a remote file
 
       .. code-block:: python
@@ -58,6 +51,13 @@ downloaded, and how to open a remote file on the hdfstream server.
          # Pass the remote file object to swiftsimio instead of a filename
          import swiftsimio as sw
          snap = sw.load(remote_snapshot)
+
+   .. tab-item:: Opening a local file
+
+      .. code-block:: python
+
+         import swiftsimio as sw
+         snap = sw.load("./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5")
 
 Each snapshot consists of a large number of data files and a single
 :doc:`virtual snapshot file </snapshots/snapshot_dirs>`. Swiftsimio

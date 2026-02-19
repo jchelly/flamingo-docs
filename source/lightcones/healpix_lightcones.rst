@@ -50,8 +50,8 @@ information see the documentation links below and appendix A of
    File format <healpix_format>
    Shell redshifts <healpix_shell_redshifts>
    Map descriptions <healpix_map_descriptions>
+   Reading the maps <healpix_lightcone_io>
    integrated_lightcones
-
 
 
 
