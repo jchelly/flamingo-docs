@@ -5,8 +5,10 @@ SOAP calculates properties for several definitions of a halo. These various type
 give users the freedom to select the most appropriate definition for their scientific
 use case.
 
-Bound subhalo (SH)
-------------------
+.. _bound_subhalo_description:
+
+Bound subhalo
+-------------
 
 Bound subhalo properties are computed for each subhalo identified by the subhalo finder,
 irrespective of whether it is a central or satellite subhalo (or even
@@ -14,8 +16,10 @@ satellite of satellite and so on). They include all particles that they
 subhalo finder has determined are bound to the subhalo. Subhalo properties
 are contained within the group ``bound_subhalo`` in the output file.
 
-Exclusive sphere (ES)
----------------------
+.. _exclusive_sphere_description:
+
+Exclusive sphere
+----------------
 
 Exclusive sphere properties are similar to bound subhalo quantities, but
 they include only the particles
@@ -26,8 +30,10 @@ Exclusive sphere properties are contained within a group
 ``exclusive_sphere_XXXkpc``, where ``XXX`` is the corresponding aperture
 radius.
 
-Inclusive sphere (IS)
----------------------
+.. _inclusive_sphere_description:
+
+Inclusive sphere
+----------------
 
 Inclusive sphere properties use the same physical aperture radii as 
 the exclusive sphere quantities,
@@ -35,8 +41,10 @@ but include all particles within the radius, regardless of their
 membership status. They are stored within a group
 ``inclusive_sphere_XXXkpc``.
 
-Exclusive projected aperture (EP)
----------------------------------
+.. _projected_aperture_description:
+
+Exclusive projected aperture
+----------------------------
 
 The projected apertures are similar to exclusive sphere quantities, 
 except that their aperture
@@ -50,8 +58,10 @@ subhalo. Projected aperture quantities are stored in a group named
 aperture radius, and ``P`` corresponds to a particular projection
 direction (``x``, ``y`` or ``z``).
 
-Spherical overdensity (SO)
---------------------------
+.. _spherical_overdensity_description:
+
+Spherical overdensity
+---------------------
 
 Spherical overdensities are fundamentally different from the other types in that their
 aperture radius is determined from the density profile and so has a different value
@@ -70,7 +80,7 @@ i.e. field halos. The inclusive sphere quantities are stored in a group
 listed above.
 
 Input Halos
-----------
+-----------
 
 Some properties are directly copied from the original subhalo catalogue
 that was passed to SOAP. These are stored in a three separate groups.
@@ -95,23 +105,23 @@ Note that there will be three groups (``x``, ``y`` or ``z``) for each
 projected aperture variation. Each halo variation can have a filter
 applied to it. If a halo does not satisfy the filter then the variation
 will not be calculated for that halo. More information on filters can be
-found in the next section.
+found :doc:`in the next section <property_filters>`.
 
 
 +----------------------------------------+------------+-------------+
 | Group name                             | Inclusive? |  Filter     |
 +========================================+============+=============+
-| ``bound_subhalo``                      | n          |             |
+| ``bound_subhalo``                      | n          | basic       |
 +----------------------------------------+------------+-------------+
-| ``spherical_overdensity_200_crit``     | y          |             |
+| ``spherical_overdensity_200_crit``     | y          | basic       |
 +----------------------------------------+------------+-------------+
 | ``spherical_overdensity_50_crit``      | y          | general     |
 +----------------------------------------+------------+-------------+
 | ``spherical_overdensity_100_crit``     | y          | general     |
 +----------------------------------------+------------+-------------+
-| ``spherical_overdensity_200_mean``     | y          |             |
+| ``spherical_overdensity_200_mean``     | y          | basic       |
 +----------------------------------------+------------+-------------+
-| ``spherical_overdensity_500_crit``     | y          |             |
+| ``spherical_overdensity_500_crit``     | y          | basic       |
 +----------------------------------------+------------+-------------+
 | ``spherical_overdensity_5xr_500_crit`` | y          | general     |
 +----------------------------------------+------------+-------------+
@@ -121,15 +131,15 @@ found in the next section.
 +----------------------------------------+------------+-------------+
 | ``spherical_overdensity_bn98``         | y          | general     |
 +----------------------------------------+------------+-------------+
-| ``exclusive_sphere_10kpc``             | n          |             |
+| ``exclusive_sphere_10kpc``             | n          | basic       |
 +----------------------------------------+------------+-------------+
-| ``exclusive_sphere_30kpc``             | n          |             |
+| ``exclusive_sphere_30kpc``             | n          | basic       |
 +----------------------------------------+------------+-------------+
-| ``exclusive_sphere_50kpc``             | n          |             |
+| ``exclusive_sphere_50kpc``             | n          | basic       |
 +----------------------------------------+------------+-------------+
-| ``exclusive_sphere_100kpc``            | n          |             |
+| ``exclusive_sphere_100kpc``            | n          | basic       |
 +----------------------------------------+------------+-------------+
-| ``exclusive_sphere_300kpc``            | n          |             |
+| ``exclusive_sphere_300kpc``            | n          | basic       |
 +----------------------------------------+------------+-------------+
 | ``exclusive_sphere_500kpc``            | n          | general     |
 +----------------------------------------+------------+-------------+
@@ -137,15 +147,15 @@ found in the next section.
 +----------------------------------------+------------+-------------+
 | ``exclusive_sphere_3000kpc``           | n          | general     |
 +----------------------------------------+------------+-------------+
-| ``inclusive_sphere_10kpc``             | y          |             |
+| ``inclusive_sphere_10kpc``             | y          | basic       |
 +----------------------------------------+------------+-------------+
-| ``inclusive_sphere_30kpc``             | y          |             |
+| ``inclusive_sphere_30kpc``             | y          | basic       |
 +----------------------------------------+------------+-------------+
-| ``inclusive_sphere_50kpc``             | y          |             |
+| ``inclusive_sphere_50kpc``             | y          | basic       |
 +----------------------------------------+------------+-------------+
-| ``inclusive_sphere_100kpc``            | y          |             |
+| ``inclusive_sphere_100kpc``            | y          | basic       |
 +----------------------------------------+------------+-------------+
-| ``inclusive_sphere_300kpc``            | y          |             |
+| ``inclusive_sphere_300kpc``            | y          | basic       |
 +----------------------------------------+------------+-------------+
 | ``inclusive_sphere_500kpc``            | y          | general     |
 +----------------------------------------+------------+-------------+
@@ -161,13 +171,13 @@ found in the next section.
 +----------------------------------------+------------+-------------+
 | ``projected_aperture_100kpc_projP``    | n          | general     |
 +----------------------------------------+------------+-------------+
-| ``soap``                               | -          |             |
+| ``soap``                               | \-         | basic       |
 +----------------------------------------+------------+-------------+
-| ``input_halos``                        | -          |             |
+| ``input_halos``                        | \-         | basic       |
 +----------------------------------------+------------+-------------+
-| ``input_halos_hbtplus``                | -          |             |
+| ``input_halos_hbtplus``                | \-         | basic       |
 +----------------------------------------+------------+-------------+
-| ``input_halos_fof``                    | -          |             |
+| ``input_halos_fof``                    | \-         | basic       |
 +----------------------------------------+------------+-------------+
 
 
