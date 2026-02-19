@@ -9,14 +9,13 @@ swiftsimio:
 
   * Download a complete snapshot and have swiftsimio read it directly
     using `h5py <https://docs.h5py.org/en/stable/>`__
-  * Use swiftsimio to access snapshots stored on Cosma using the
-    `hdfstream <https://hdfstream-python.readthedocs.io/en/latest>`__
-    service
+  * Use swiftsimio to access snapshots stored on `Cosma
+    <https://cosma.readthedocs.io/en/latest/>`__ using the `hdfstream
+    <https://hdfstream-python.readthedocs.io/en/latest>`__ service
 
 The latter method might be preferable if you only need a small
-fraction of the data in a snapshot: if you're only interested in
-certain particle types or you only need the particles in some small
-region, for example.
+fraction of the data in a snapshot, such as only certain particle
+types or a small region around an object of interest.
 
 Installation
 ------------
@@ -29,39 +28,41 @@ For remote access to snapshots we also need the hdfstream module::
 
   pip install hdfstream
 
-Opening a local snapshot
-------------------------
+Opening a snapshot
+------------------
 
-If you have downloaded a full FLAMINGO snapshot, you can open it as follows::
+The examples below show how to open a local HDF5 which you have
+downloaded, and how to open a remote file on the hdfstream server.
 
-  import swiftsimio as sw
-  snap = sw.load("./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5")
+
+.. tab-set::
+
+   .. tab-item:: Opening a local file
+
+      .. code-block:: python
+
+         import swiftsimio as sw
+         snap = sw.load("./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5")
+
+   .. tab-item:: Opening a remote file
+
+      .. code-block:: python
+
+         # Connect to the hdfstream service and open the root directory
+         import hdfstream
+         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+
+         # Open the remote snapshot file
+         remote_snapshot = root_dir["FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"
+
+         # Pass the remote file object to swiftsimio instead of a filename
+         import swiftsimio as sw
+         snap = sw.load(remote_snapshot)
 
 Each snapshot consists of a large number of data files and a single
 :doc:`virtual snapshot file </snapshots/snapshot_dirs>`. Swiftsimio
 should be given the name of the virtual snapshot file, which
 references the data in all of the other files.
-
-Opening a remote snapshot
--------------------------
-
-You can open a snapshot for remote access as follows::
-
-  # Connect to the hdfstream service and open the root directory
-  import hdfstream
-  root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
-
-  # Open the remote snapshot file
-  remote_snapshot = root_dir["FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"
-
-  # Pass the remote file to swiftsimio
-  import swiftsimio as sw
-  snap = sw.load(remote_snapshot)
-
-Here, we pass a ``hdfstream.RemoteFile`` object to swiftsimio instead
-of the filename. Data from the snapshot is downloaded as needed. As
-before, swiftsimio should be used to open the virtual snapshot file
-and not any of the data files.
 
 Snapshot metadata
 -----------------
@@ -106,6 +107,10 @@ And to see the particle properties available for one particle type::
   SWIFT dataset at /FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5. 
   Available fields: coordinates, fofgroup_ids, masses, particle_ids, potentials, softenings, velocities
 
+See the `swiftsimio documentation
+<https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html#using-metadata>`__
+on snapshot metadata for more information.
+
 Reading particle data
 ---------------------
 
@@ -120,10 +125,9 @@ progress bar will appear. The result is a `cosmo_array
 <https://swiftsimio.readthedocs.io/en/latest/cosmo_array/index.html>`__,
 which is is a numpy array with unit and cosmology information
 attached. Units are handled using the `unyt
-<https://unyt.readthedocs.io/en/stable/>`__ module.
-
-In this example, the cosmo array records that the particle positions are
-in comoving Mpc::
+<https://unyt.readthedocs.io/en/stable/>`__ module. In this example,
+the cosmo array records that the particle positions are in comoving
+Mpc::
 
    >>>  print(star_pos)
    [[649.22656783 524.32466783 595.55844783]
@@ -134,3 +138,87 @@ in comoving Mpc::
    [987.07806218 995.72685218  88.39880218]
    [987.07910218 995.73126218  88.39935218]] Mpc (Comoving)
 
+Cutting out a region
+--------------------
+
+The particles in Swift snapshots are ordered in a way that allows us
+to read regions from a snapshot without reading the entire file. Given
+a range of coordinates in x, y, and z, swiftsimio can compute which
+parts of the file to read or download to find the corresponding
+particles. This is referred to as `spatial masking
+<https://swiftsimio.readthedocs.io/en/latest/masking/>`__.
+
+Spatial masking can be used to read in just part of a local snapshot
+which you have downloaded, or to download just part of a remote
+snapshot on the server.
+
+.. tab-set::
+
+   .. tab-item:: Using a local file
+
+      .. code-block:: python
+
+         # Name of the snapshot file to open:
+         # This is the path to a HDF5 file which we have downloaded.
+         filename = "./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"
+
+         # Create a mask object
+         import swiftsimio as sw
+         mask = sw.mask(filename)
+
+         # Define the region to read
+         from unyt import Mpc
+         load_region = [[100*Mpc, 150*Mpc], [100*Mpc, 150*Mpc], [100*Mpc,150*Mpc]]
+
+         # Constrain the region to read
+         mask.constrain_spatial(load_region)
+
+         # Open the snapshot using the mask
+         snap = sw.load(filename, mask=mask)
+
+         # Read the coordinates of gas particles in the region
+         gas_pos = snap.gas.coordinates
+
+   .. tab-item:: Using a remote file
+
+      .. code-block:: python
+
+         # Connect to the hdfstream service and open the root directory
+         import hdfstream
+         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+
+         # Open the remote snapshot file.
+         # The path here specifies a file on the server.
+         remote_snapshot = root_dir["FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"]
+
+         # Create a mask object
+         import swiftsimio as sw
+         mask = sw.mask(remote_snapshot)
+
+         # Define the region to read
+         from unyt import Mpc
+         load_region = [[100*Mpc, 150*Mpc], [100*Mpc, 150*Mpc], [100*Mpc,150*Mpc]]
+
+         # Constrain the region to read
+         mask.constrain_spatial(load_region)
+
+         # Open the snapshot using the mask
+         snap = sw.load(remote_snapshot, mask=mask)
+
+         # Download the coordinates of gas particles in the region
+         gas_pos = snap.gas.coordinates
+
+Saving a region as a new snapshot
+---------------------------------
+
+It's also possible to write a new snapshot file which contains only
+the selected region. Using the ``mask`` object from the previous
+example::
+
+  sw.subset_writer.write_subset("region_0077.hdf5", mask)
+
+This will write a new HDF5 snapshot file with all particles in the
+selected region. This is particularly useful when working with a remote
+snapshot because it allows you to download all particles in a region
+of interest and save them to a local file so that you don't need to
+download them again.
