@@ -60,7 +60,7 @@ downloaded, and how to open a remote file on the hdfstream server.
          snap = sw.load("./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5")
 
 Each snapshot consists of a large number of data files and a single
-:doc:`virtual snapshot file </snapshots/snapshot_dirs>`. Swiftsimio
+:ref:`virtual snapshot file <virtual-snapshot>`. Swiftsimio
 should be given the name of the virtual snapshot file, which
 references the data in all of the other files.
 
@@ -154,31 +154,6 @@ snapshot on the server.
 
 .. tab-set::
 
-   .. tab-item:: Using a local file
-
-      .. code-block:: python
-
-         # Name of the snapshot file to open:
-         # This is the path to a HDF5 file which we have downloaded.
-         filename = "./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"
-
-         # Create a mask object
-         import swiftsimio as sw
-         mask = sw.mask(filename)
-
-         # Define the region to read
-         from unyt import Mpc
-         load_region = [[100*Mpc, 150*Mpc], [100*Mpc, 150*Mpc], [100*Mpc,150*Mpc]]
-
-         # Constrain the region to read
-         mask.constrain_spatial(load_region)
-
-         # Open the snapshot using the mask
-         snap = sw.load(filename, mask=mask)
-
-         # Read the coordinates of gas particles in the region
-         gas_pos = snap.gas.coordinates
-
    .. tab-item:: Using a remote file
 
       .. code-block:: python
@@ -206,6 +181,31 @@ snapshot on the server.
          snap = sw.load(remote_snapshot, mask=mask)
 
          # Download the coordinates of gas particles in the region
+         gas_pos = snap.gas.coordinates
+
+   .. tab-item:: Using a local file
+
+      .. code-block:: python
+
+         # Name of the snapshot file to open:
+         # This is the path to a HDF5 file which we have downloaded.
+         filename = "./FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"
+
+         # Create a mask object
+         import swiftsimio as sw
+         mask = sw.mask(filename)
+
+         # Define the region to read
+         from unyt import Mpc
+         load_region = [[100*Mpc, 150*Mpc], [100*Mpc, 150*Mpc], [100*Mpc,150*Mpc]]
+
+         # Constrain the region to read
+         mask.constrain_spatial(load_region)
+
+         # Open the snapshot using the mask
+         snap = sw.load(filename, mask=mask)
+
+         # Read the coordinates of gas particles in the region
          gas_pos = snap.gas.coordinates
 
 Saving a region as a new snapshot
