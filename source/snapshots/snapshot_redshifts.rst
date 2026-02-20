@@ -6,10 +6,16 @@ Snapshot redshifts
 The FLAMINGO simulations were run with 78 or 79 output snapshot
 redshifts, depending on the model. SOAP halo catalogues exist for all
 of these redshifts but full particle data is only available for a
-subset.
+subset. The two tables below list the snapshot redshifts.
 
-Output redshifts for ``L1_m9`` and ``L1_m10`` models
-----------------------------------------------------
+The flagship ``L1_m8`` and ``L2p8`` models have :ref:`79 snapshots
+<snapshots-0-78>`. The ``L1_m9`` model variations and the ``L1_m10``
+model have :ref:`78 snapshots <snapshots-0-77>`.
+
+.. _snapshots-0-77:
+
+Output redshifts for ``L1_m9`` model variations and the ``L1_m10`` model
+------------------------------------------------------------------------
 
 The snapshot redshifts for all FLAMINGO simulations in 1Gpc boxes at
 ``m9`` and ``m10`` resolution are listed below.
@@ -174,6 +180,7 @@ The snapshot redshifts for all FLAMINGO simulations in 1Gpc boxes at
 | 77              | 0.00     | Y                        |
 +-----------------+----------+--------------------------+
 
+.. _snapshots-0-78:
 
 Output redshifts for ``L1_m8`` and ``L2p8`` models
 --------------------------------------------------

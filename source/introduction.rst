@@ -2,9 +2,9 @@ Introduction
 ============
 
 This service provides web based remote access to the `FLAMINGO
-simulations <https://flamingo.strw.leidenuniv.nl/>`__ as described in
-`Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__
-and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023arXiv230605492K>`__.
+simulations <https://flamingo.strw.leidenuniv.nl/>`__ described in
+`Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__
+and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.6103K/abstract>`__.
 
 .. note:: The FLAMINGO simulations are not yet public. Access to the
           simulation data is currently restricted and requires an
@@ -20,10 +20,13 @@ The following data products are available:
     of output times <snapshots/snapshot_redshifts>` between redshift
     z=15 and the present day
   * Halo catalogues and merger trees generated using the `HBT-HERONS
-    <https://hbt-herons.strw.leidenuniv.nl/>`__ halo finder with a
-    wide range of halo properties computed using the `SOAP
-    post-processing tool
+    <https://hbt-herons.strw.leidenuniv.nl/>`__ halo finder (`Forouhar
+    Moreno et al. 2025
+    <https://ui.adsabs.harvard.edu/abs/2025arXiv250206932F/abstract>`__)
+    with a wide range of halo properties computed using the `SOAP
     <https://joss.theoj.org/papers/10.21105/joss.08252>`__
+    post-processing tool (`McGibbon et al. 2025
+    <https://ui.adsabs.harvard.edu/abs/2025JOSS...10.8252M/abstract>`__.)
   * Full sky :doc:`lightcone particle
     outputs<lightcones/particle_lightcones>`, where each simulation
     particle is output as it crosses the past lightcone of an observer
@@ -31,8 +34,9 @@ The following data products are available:
   * Full sky :doc:`HEALPix maps <lightcones/healpix_lightcones>` of
     various quantities evaluated in spherical shells around each
     lightcone observer. These include the total mass in gas, stars and
-    dark matter, the X-ray luminosity of the gas in several bands, and
-    measurements of the thermal and kinetic Sunyaev–Zeldovich effects.
+    dark matter, the X-ray luminosity of the gas in several bands,
+    measurements of the thermal and kinetic Sunyaev–Zeldovich effects,
+    the dispersion measure and weak lensing convergence.
   * Approximate :doc:`lightcone halo
     catalogues<lightcones/halo_lightcones>` created by using black
     hole particles to trace halo positions between snapshots
@@ -40,9 +44,9 @@ The following data products are available:
 Documentation
 -------------
 
-See the links in the side bar for :doc:`more information on how to use
-this service <service_docs/index>` and full descriptions of the
-available data products.
+See the links in the side bar on the left for :doc:`more information
+on how to use this service <service_docs/index>` and full descriptions
+of the available data products.
 
 Downloading simulation data
 ---------------------------
@@ -68,10 +72,11 @@ properties of interest from a halo catalogue.
 
 We provide adapted versions of the `pynbody
 <https://github.com/pynbody/pynbody>`__ and `swiftsimio
-<https://github.com/SWIFTSIM/swiftsimio>`__ python modules which can
-transparently make use of this service, and a more generic
-:doc:`hdfstream <service_docs/python_module>` module which allows
-downloads of arbitrary HDF5 data using a similar interface to h5py.
+<https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`__
+python modules which can transparently make use of this service, and a
+more generic :doc:`hdfstream <service_docs/python_module>` module
+which allows downloads of arbitrary HDF5 data using a similar
+interface to h5py.
 
 .. image:: images/download_dataset.gif
    :class: screenshot
