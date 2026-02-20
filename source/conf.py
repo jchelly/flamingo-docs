@@ -20,6 +20,13 @@ extensions = ["sphinx_design", "sphinxcontrib.mermaid"]
 templates_path = ['_templates']
 exclude_patterns = []
 
+html_sidebars = {
+    "**": [
+        "globaltoc.html",  # Site contents
+        "localtoc.html",   # Page contents
+    ]
+}
+
 
 
 # -- Options for HTML output -------------------------------------------------
