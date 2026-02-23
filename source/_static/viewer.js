@@ -344,7 +344,7 @@ async function display_directory(path, object) {
     // Get directory size as a string
     const dir_size = format_file_size(object.size);
 
-    if(sanitize_path(path) != "") {
+    if((sanitize_path(path) != "") && (object.size < 1125899906842624)) {
         // Add a link to download the directory
         const card = add_element(div, "div");
         card.className = "downloadoptions";
