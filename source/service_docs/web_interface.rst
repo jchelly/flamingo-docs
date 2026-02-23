@@ -23,11 +23,17 @@ shows the available data for the fiducial ``L1_m9`` hydro simulation.
 Directory downloads
 -------------------
 
-Each directory listing page includes a link to download the directory and
-its contents as a tar file. Note that these downloads can be extremely large!
-Smaller downloads can be found by navigating to subdirectories. The service
-does not attempt to limit download sizes since it's hard to know how much
-network bandwidth, disk space and patience any particular user will have.
+Each directory listing page includes a "download options" drop down at
+the top. This includes a link to to download the directory and its
+contents as a tar file. It also shows how to download and unpack the
+directory contents using the ``curl`` and ``tar`` command line
+utilities.
+
+.. warning:: These downloads can be extremely large! Smaller downloads
+             can be found by navigating to subdirectories. The service
+             does not attempt to limit download sizes because some
+             users might have a lot of network bandwidth and disk
+             space, but a warning is presented for large downloads.
 
 Paths in the tar files are set such that when unpacked they reproduce the
 directory structure shown in the web interface. This is to help prevent

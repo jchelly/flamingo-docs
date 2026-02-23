@@ -351,28 +351,34 @@ async function display_directory(path, object) {
         const details = add_element(card, "details");
         const summary = add_element(details, "summary");
         add_text(summary, "Download options");
-        // Make a list of access options
-        const ul = add_element(details, "ul");
-        // Full download
-        const li1 = add_element(ul, "li");
-        const dl_link = add_element(li1, "a");
-        dl_link.href = download_url(path);
-        add_text(dl_link, "Full directory download as .tar file");
         if(object.size >= 107374182400) {
             if(Object.keys(object.directories).length > 0) {
-                add_text(li1, " ( ⚠️"+dir_size+", see subdirectories for smaller downloads)");
+                add_text(summary, " ( ⚠️"+dir_size+", see subdirectories for smaller downloads)");
             } else {
-                add_text(li1, " ( ⚠️"+dir_size+")");
+                add_text(summary, " ( ⚠️"+dir_size+")");
             }
         } else {
-            add_text(li1, " ("+dir_size+")");
+            add_text(summary, " ("+dir_size+")");
         }
+        // Make a list of access options
+        const ul = add_element(details, "ul");
         // Access via api
-        const li2 = add_element(ul, "li");
-        set_inner_html(li2, "Access individual datasets using the <a href='/flamingo/service_docs/python_module.html'>hdfstream python module</a>");
+        const li_api = add_element(ul, "li");
+        set_inner_html(li_api, "Access individual datasets using the <a href='/flamingo/service_docs/python_module.html'>hdfstream python module</a>");
+        // Full download
+        const li_dl = add_element(ul, "li");
+        const dl_link = add_element(li_dl, "a");
+        dl_link.href = download_url(path);
+        add_text(dl_link, "Full directory download as .tar file");
+        // Command line download
+        const li_cmd = add_element(ul, "li");
+        add_text(li_cmd, "Download and unpack on the command line:");
+        add_element(li_cmd, "br");
+        const dl_code = add_element(add_element(li_cmd, "pre"), "code");
+        dl_code.textContent = 'curl -u my_username -L "'+download_url(path)+'" | tar xvf -';
         // Access via globus
-        const li3 = add_element(ul, "li");
-        set_inner_html(li3, "Users with a <a href='https://cosma.readthedocs.io/en/latest'>Cosma</a> account can use <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a>");
+        const li_globus = add_element(ul, "li");
+        set_inner_html(li_globus, "Users with a <a href='https://cosma.readthedocs.io/en/latest'>Cosma</a> account can use <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a>");
     }
 
     // Make a div to contain any description for this diretcory
