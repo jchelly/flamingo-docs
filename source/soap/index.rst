@@ -30,6 +30,6 @@ TODO: Remove membership files from the list above?
           Within FLAMINGO a halo corresponds to an overdensity of particles, originally found using the 3D FoF algorithm. Each halo contains one or more
           subhalos, which are a self-bound collection of particles identified by
           HBT-HERONS. Subhalos can be either centrals (each halo has a single central subhalo,
-          and the halo centre is defined as the most bound particle position of its central 
-          subhalo), or satellites.
+          and the halo centre is defined as the position of the most bound 
+          particle of its central subhalo), or satellites.
 

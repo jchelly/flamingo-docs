@@ -12,8 +12,8 @@ Bound subhalo
 
 Bound subhalo properties are computed for each subhalo identified by the subhalo finder,
 irrespective of whether it is a central or satellite subhalo (or even
-satellite of satellite and so on). They include all particles that they
-subhalo finder has determined are bound to the subhalo. Subhalo properties
+a satellite of satellite, and so on). They include all particles that the
+subhalo finder has determined to be bound to the subhalo. Subhalo properties
 are contained within the group ``bound_subhalo`` in the output file.
 
 .. _exclusive_sphere_description:
@@ -25,7 +25,7 @@ Exclusive sphere properties are similar to bound subhalo quantities, but
 they include only the particles
 that are bound to the subhalo and also satisfy an additional radial cut
 (aperture). We use eight different aperture radii (10, 30, 50, 100, 300,
-500, 1000, 3000 kpc), so that every subhalo has eight of these.
+500, 1000, 3000 physical kpc), so that every subhalo has eight of these.
 Exclusive sphere properties are contained within a group
 ``exclusive_sphere_XXXkpc``, where ``XXX`` is the corresponding aperture
 radius.
@@ -39,7 +39,8 @@ Inclusive sphere properties use the same physical aperture radii as
 the exclusive sphere quantities,
 but include all particles within the radius, regardless of their
 membership status. They are stored within a group
-``inclusive_sphere_XXXkpc``.
+``inclusive_sphere_XXXkpc``, where ``XXX`` is the corresponding aperture
+radius.
 
 .. _projected_aperture_description:
 
@@ -63,18 +64,19 @@ direction (``x``, ``y`` or ``z``).
 Spherical overdensity
 ---------------------
 
-Spherical overdensities are fundamentally different from the other types in that their
+Spherical overdensities are fundamentally different from the other
+halo variations in that their
 aperture radius is determined from the density profile and so has a different value
-for each halos. They always include all particles within a sphere
+for each halo. They always include all particles within a sphere
 centred on the most bound particle, regardless of particle subhalo membership. The
 radius is either the radius at which the density reaches a certain
 target value (50 crit, 100 crit, 200 crit, 500 crit, 1000 crit, 2500
 crit, 200 mean,
-`Bryan & Norman (1998) <https://ui.adsabs.harvard.edu/abs/1998ApJ...495...80B>`__.
+`Bryan & Norman (1998) <https://ui.adsabs.harvard.edu/abs/1998ApJ...495...80B>`__)
+or a multiple of such a radius (5xR 500 crit).
 See `Spherical overdensity calculations`_ for details about how the radii are
-calculated) or a multiple of such a radius (5xR 500 crit).
-Details of the spherical overdensity calculation are given at the end of
-this document. Spherical overdensities are only computed for centrals,
+calculated.
+Spherical overdensities are only computed for centrals,
 i.e. field halos. The inclusive sphere quantities are stored in a group
 ``spherical_overdensity_XXX``, where ``XXX`` are the target density values
 listed above.
@@ -82,12 +84,12 @@ listed above.
 Input Halos
 -----------
 
-Some properties are directly copied from the original subhalo catalogue
+Some properties are copied directly from the original subhalo catalogue
 that was passed to SOAP. These are stored in a three separate groups.
 ``input_halos`` contains the fundamental properties required for SOAP
 to run. ``input_halos_fof`` contains the FoF properties of the host of
-each central subhalo. ``input_halos_hbtplus`` contains properties directly
-copied from the HBT-HERONS catalogues.
+each central subhalo. ``input_halos_hbtplus`` contains properties copied directly
+from the HBT-HERONS catalogues.
 
 SOAP
 ----
@@ -100,7 +102,7 @@ computed from the SOAP output alone.
 Summary table
 -------------
 
-The table below lists all the groups in the output file which contain datasets.
+The table below lists all the groups in the output file that contain datasets.
 Note that there will be three groups (``x``, ``y`` or ``z``) for each
 projected aperture variation. Each halo variation can have a filter
 applied to it. If a halo does not satisfy the filter then the variation
