@@ -188,66 +188,7 @@ Spherical overdensity calculations
 
 The radius at which the density reaches a certain threshold value is
 found by linear interpolation of the cumulative mass profile obtained
-after sorting the particles by radius. The approach we use is different
-from that taken by VR, where both the mass and the radius are obtained
-from independent interpolations on the mass and density profiles (the
-latter uses the logarithm of the density in the interpolation). The VR
-approach is inconsistent, in the sense that the condition
-
-.. math::
-
-   \begin{equation}
-       \frac{4\pi{}}{3} R_{\rm{}SO}-3 \rho{}_{\rm{}target} = M_{\rm{}SO},\label{eq:MSO_condition}
-   \end{equation}
-
-is not guaranteed to be true, and will be especially violated for large
-radial bins (the bins are generated from the particle radii by sorting
-the particles, so we have no control over their width). We instead opt
-to guarantee this condition by only finding :math:`R_{\rm{}SO}` or
-:math:`M_{\rm{}SO}` by interpolation and using eq.
-(`[eq:MSO_condition] <#eq:MSO_condition>`__) to derive the other
-quantity.
-
-.. container:: float
-   :name: fig:MSO_vs_RSO
-
-   |image| |image1|
-
-While the interpolation of the logarithmic density profile to find
-:math:`R_{\rm{}SO}` is more straightforward, we found that it can lead
-to significant deviations between the value of :math:`M_{\rm{}SO}` and
-the cumulative mass in neighbouring bins that can be more than one
-particle mass, as illustrated in Fig. `1 <#fig:MSO_vs_RSO>`__. The
-reason for this is that the cumulative mass profile at fixed density
-increases very steeply with radius, so that a small difference in
-:math:`R_{\rm{}SO}` leads to a relatively large difference in
-:math:`M_{\rm{}SO}`. Conversely, fixing :math:`M_{\rm{}SO}` will lead to
-an :math:`R_{\rm{}SO}` that only deviates a little bit from the
-:math:`R_{\rm{}SO}` found by interpolating the density profile. However,
-doing so requires us to find the intersection of the cumulative mass
-profile at fixed density (green line in Fig. `1 <#fig:MSO_vs_RSO>`__)
-with the actual cumulative mass profile, which means solving the
-following equation:
-
-.. math::
-
-   \begin{equation}
-       \frac{4\pi{}}{3} \rho{}_{\rm{}target} R_{\rm{}SO}-3 = M_{\rm{}low} + \left( \frac{M_{\rm{}high}-M_{\rm{}low}}{R_{\rm{}high} - R_{\rm{}low}} \right) \left(R_{\rm{}SO} - R_{\rm{}low}\right),
-       \label{eq:RSO}
-   \end{equation}
-
-where :math:`R/M_{\rm{}low/high}` are the bounds of the intersecting bin
-(which we find in the density profile). This third degree polynomial
-equation has no unique solution, although in practice only one of the
-three possible complex solutions is real. We find this solution by using
-a root finding algorithm within the intersecting bin (we use Brent’s
-method for this).
-
-For clarity, this is the full set of rules for determining the SO radius
-in SOAP:
-
-#. Sort particles according to radius and construct the cumulative mass
-   profile.
+after sorting the particles by radius. The process is as follows:
 
 #. Discard any particles at zero radius, since we cannot compute a
    density for those. The mass of these particles is used as an
@@ -255,40 +196,47 @@ in SOAP:
    is the position of the most bound particle, there should
    always be at least one such particle.
 
-#. Construct the density profile by dividing the cumulative mass at
+#. Sort remaining particles according to radius and construct the cumulative mass
+   profile. :math:`R_{i}` gives the radius of the particles, and
+   :math:`M_{i}` the cumulative mass up to and including that radius.
+
+#. Construct the halo density profile,
+   :math:`\rho_{i}`,
+   by dividing the cumulative mass at
    every radius by the volume of the sphere with that radius.
 
 #. Find intersection points between the density profile and the target
-   density, i.e. the radii :math:`R_{1,2}` and masses :math:`M_{1,2}`
-   where the density profile goes from above to below the threshold:
+   density, i.e. the consecutive indices :math:`i_{low}`, :math:`i_{high}`
+   where :math:`\rho_{low} > \rho_{target}` and 
+   :math:`\rho_{high} < \rho_{target}`
 
-   *. If there are none, analytically compute
-      :math:`R_{\rm{}SO}=\sqrt{3M_1/(4\pi{}R_1\rho_{\rm{}target})}`,
-      where :math:`R_1` and :math:`M_1` are the first non zero radius
-      and the corresponding cumulative mass. This is a special case of
-      Eq. (`[eq:RSO] <#eq:RSO>`__). Unless there are multiple particles
-      at the exact centre of potential position, this radius estimate
-      will then be based on just two particles.
+#. To determine :math:`R_{\rm{}SO}` we solve
 
-   *. In all other cases, we use :math:`R_{1,2}` and :math:`M_{1,2}` as
-      input for Eq. (`[eq:RSO] <#eq:RSO>`__) and solve for
-      :math:`R_{\rm{}SO}`. The only exception is the special case where
-      :math:`R_1 = R_2`. If that happens, we simply move further down
-      the line until we find a suitable interval.
+   .. math::
+      \begin{equation}
+          \frac{4\pi{}}{3} \rho{}_{\rm{}target} R_{\rm{}SO}^3 = M_{\rm{}low} + \left( \frac{M_{\rm{}high}-M_{\rm{}low}}{R_{\rm{}high} - R_{\rm{}low}} \right) \left(R_{\rm{}SO} - R_{\rm{}low}\right),
+      \end{equation}
 
-#. From :math:`R_{\rm{}SO}`, we determine :math:`M_{\rm{}SO}` using Eq.
-   (`[eq:MSO_condition] <#eq:MSO_condition>`__).
+   This third degree polynomial equation has no unique solution, although 
+   in practice only one of the three possible complex solutions is real. We 
+   find this solution by using a root finding algorithm within the
+   intersecting bin (we use Brent’s method for this).
 
-Neutrinos (if present in the model) are included in the inclusive sphere calculation
-(and only here, since neutrino
-particles cannot be bound to a subhalo) by adding both their weighted
+#. From :math:`R_{\rm{}SO}`, we determine :math:`M_{\rm{}SO}` using
+
+   .. math::
+      \begin{equation}
+      M_{\rm{}SO} = \frac{4\pi{}}{3} R_{\rm{}SO}^{3} \rho{}_{\rm{}target}
+      \end{equation}
+
+Neutrinos (if present in the model) are included in the spherical
+overdensity calculation by adding both their weighted
 masses (which can be negative), as well as the contribution from the
 background neutrino density. The latter is achieved by explicitly adding
 the cumulative mass profile at constant neutrino density to the total
-cumulative mass profile before computing the density profile. This is
-the only place where neutrinos explicitly enter the algorithm, except
-for the neutrino masses computed for the spherical overdensity properties.
+cumulative mass profile before computing the density profile.
 
-
-.. |image| image:: images/image7.png
-.. |image1| image:: images/image4.png
+The SOAP process is different to that used by some halo finders, where 
+both the mass and the radius are obtained from independent interpolations
+on the mass and density profiles (the latter uses the logarithm of the
+density in the interpolation).
