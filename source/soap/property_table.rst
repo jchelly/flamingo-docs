@@ -1,10 +1,10 @@
-SOAP property table
-===================
+SOAP properties table
+=====================
 
-The tables below list the properties available within the SOAP catalogues. The first table contains the properties within the ``input_halos`` group.
+The tables below list the (sub)halo properties available within the SOAP catalogues. The first table contains the properties within the ``input_halos`` group.
 The second table contains the properties which are calculated for both DMO and HYDRO simulations.
 The third table contains the properties which are only calculated for the HYDRO simulations.
-The final table contains the datasets copied over from the HBT-HERONS and FOF catalogues.
+The final table contains the datasets copied over from the HBT-HERONS and FoF catalogues.
 Within each table the properties are sorted based on their filters.
 
 The first column gives the name of the property when opened using the `swiftsimio library <https://swiftsimio.readthedocs.io/en/latest/soap/index.html>`_. Clicking on each property name will open a dropdown box, which contains information about the dataset within the HDF5 file. The second column gives the filter applied to that property, as descibred in :doc:`property_filters`. The third column indicates the halo variations for which this property is available (green if the property is computed for a certain variation, red if not). The variations are as follows:
@@ -18,7 +18,7 @@ The first column gives the name of the property when opened using the `swiftsimi
 The final column gives a description of the property. Certain properties also contain a link to a footnote at the bottom of this page which gives a full description of how they were calculated.
 
 
-Input Halo Properties
+Input halo properties
 ---------------------
 
 .. list-table::
@@ -44,11 +44,11 @@ Input Halo Properties
           * **HDF5 name:** ``InputHalos/HaloCentre``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** 1 pc accurate
      - basic
      - \-
-     - The centre of the subhalo as given by the halo finder. Used as reference for all relative positions. For VR and HBTplus this is equal to the position of the most bound particle in the subhalo.
+     - The centre of the subhalo as given by the halo finder. Used as reference for all relative positions. For HBT-HERONS this is equal to the position of the most bound particle in the subhalo.
    * - .. dropdown:: ``input_halos.is_central``
 
           * **HDF5 name:** ``InputHalos/IsCentral``
@@ -70,8 +70,8 @@ Input Halo Properties
      - \-
      - Total number of particles bound to the subhalo.
 
-DMO Properties
---------------
+Dark matter only properties
+---------------------------
 
 .. list-table::
    :widths: 25 10 15 50
@@ -86,7 +86,7 @@ DMO Properties
           * **HDF5 name:** ``CentreOfMass``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** 1 pc accurate
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -96,7 +96,7 @@ DMO Properties
           * **HDF5 name:** ``CentreOfMassVelocity``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** 0.1 km/s accurate
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -126,7 +126,7 @@ DMO Properties
           * **HDF5 name:** ``DarkMatterMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -136,7 +136,7 @@ DMO Properties
           * **HDF5 name:** ``EncloseRadius``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -146,7 +146,7 @@ DMO Properties
           * **HDF5 name:** ``MaximumCircularVelocity``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -156,7 +156,7 @@ DMO Properties
           * **HDF5 name:** ``MaximumCircularVelocityRadius``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -166,7 +166,7 @@ DMO Properties
           * **HDF5 name:** ``MaximumCircularVelocityRadiusUnsoftened``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -176,7 +176,7 @@ DMO Properties
           * **HDF5 name:** ``MaximumCircularVelocityUnsoftened``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -186,7 +186,7 @@ DMO Properties
           * **HDF5 name:** ``NoiseSuppressedNeutrinoMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -206,7 +206,7 @@ DMO Properties
           * **HDF5 name:** ``RawNeutrinoMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -216,7 +216,7 @@ DMO Properties
           * **HDF5 name:** ``SORadius``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -226,7 +226,7 @@ DMO Properties
           * **HDF5 name:** ``TotalMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -236,7 +236,7 @@ DMO Properties
           * **HDF5 name:** ``HalfMassRadiusTotal``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -250,7 +250,7 @@ DMO Properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Fraction of mass that is bound to a satellite outside this FOF group. `[6] <footnote-6_>`_
+     - Fraction of mass that is bound to a satellite outside this FoF group. `[6] <footnote-6_>`_
    * - .. dropdown:: ``mass_fraction_satellites``
 
           * **HDF5 name:** ``MassFractionSatellites``
@@ -260,7 +260,7 @@ DMO Properties
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
-     - Fraction of mass that is bound to a satellite in the same FOF group. `[6] <footnote-6_>`_
+     - Fraction of mass that is bound to a satellite in the same FoF group. `[6] <footnote-6_>`_
    * - .. dropdown:: ``spin_parameter``
 
           * **HDF5 name:** ``SpinParameter``
@@ -276,7 +276,7 @@ DMO Properties
           * **HDF5 name:** ``TotalInertiaTensor``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -286,7 +286,7 @@ DMO Properties
           * **HDF5 name:** ``TotalInertiaTensorNoniterative``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -316,7 +316,7 @@ DMO Properties
           * **HDF5 name:** ``AngularMomentumDarkMatter``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2} \cdot \rm{M} / \rm{t}`
+          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -326,7 +326,7 @@ DMO Properties
           * **HDF5 name:** ``DarkMatterInertiaTensor``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -336,7 +336,7 @@ DMO Properties
           * **HDF5 name:** ``DarkMatterInertiaTensorNoniterative``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -366,7 +366,7 @@ DMO Properties
           * **HDF5 name:** ``DarkMatterProjectedVelocityDispersion``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
@@ -376,7 +376,7 @@ DMO Properties
           * **HDF5 name:** ``DarkMatterVelocityDispersionMatrix``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\frac{\rm{L}^{2}}{\rm{t}^{2}}`
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -386,14 +386,14 @@ DMO Properties
           * **HDF5 name:** ``HalfMassRadiusDarkMatter``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
      - Dark matter half mass radius. `[5] <footnote-5_>`_
 
-HYDRO Properties
-----------------
+Hydrodynamical properties
+-------------------------
 
 .. list-table::
    :widths: 25 10 15 50
@@ -408,7 +408,7 @@ HYDRO Properties
           * **HDF5 name:** ``BlackHolesDynamicalMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -418,7 +418,7 @@ HYDRO Properties
           * **HDF5 name:** ``BlackHolesSubgridMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -448,7 +448,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -468,7 +468,7 @@ HYDRO Properties
           * **HDF5 name:** ``HalfMassRadiusStars``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
@@ -488,7 +488,7 @@ HYDRO Properties
           * **HDF5 name:** ``MostMassiveBlackHoleMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -538,7 +538,7 @@ HYDRO Properties
           * **HDF5 name:** ``StarFormationRate``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M} / \rm{t}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -558,7 +558,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -588,7 +588,7 @@ HYDRO Properties
           * **HDF5 name:** ``ComptonY``
           * **Shape:** 1
           * **Type:** float64
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -598,7 +598,7 @@ HYDRO Properties
           * **HDF5 name:** ``ComptonYWithoutRecentAGNHeating``
           * **Shape:** 1
           * **Type:** float64
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -608,7 +608,7 @@ HYDRO Properties
           * **HDF5 name:** ``DopplerB``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot`
+          * **Units:** :math:`a`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -618,7 +618,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasComptonYTemperature``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -628,7 +628,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasComptonYTemperatureCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -638,7 +638,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasComptonYTemperatureWithoutRecentAGNHeating``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -648,7 +648,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasComptonYTemperatureWithoutRecentAGNHeatingCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -678,7 +678,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperature``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -688,7 +688,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperatureCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -698,7 +698,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperatureWithoutCoolGas``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -708,7 +708,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperatureWithoutCoolGasAndRecentAGNHeating``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -718,7 +718,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperatureWithoutCoolGasAndRecentAGNHeatingCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -728,7 +728,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperatureWithoutCoolGasCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -738,7 +738,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperatureWithoutRecentAGNHeating``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -748,7 +748,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasTemperatureWithoutRecentAGNHeatingCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -758,7 +758,7 @@ HYDRO Properties
           * **HDF5 name:** ``HotGasMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -768,7 +768,7 @@ HYDRO Properties
           * **HDF5 name:** ``MostMassiveBlackHoleAccretionRate``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M} / \rm{t}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -788,7 +788,7 @@ HYDRO Properties
           * **HDF5 name:** ``MostMassiveBlackHolePosition``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** 1 pc accurate
      - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -798,7 +798,7 @@ HYDRO Properties
           * **HDF5 name:** ``MostMassiveBlackHoleVelocity``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -808,7 +808,7 @@ HYDRO Properties
           * **HDF5 name:** ``ProjectedTotalInertiaTensorNoniterative``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
@@ -828,7 +828,7 @@ HYDRO Properties
           * **HDF5 name:** ``SpectroscopicLikeTemperature``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -838,7 +838,7 @@ HYDRO Properties
           * **HDF5 name:** ``SpectroscopicLikeTemperatureCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -848,7 +848,7 @@ HYDRO Properties
           * **HDF5 name:** ``SpectroscopicLikeTemperatureWithoutRecentAGNHeating``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -858,7 +858,7 @@ HYDRO Properties
           * **HDF5 name:** ``SpectroscopicLikeTemperatureWithoutRecentAGNHeatingCoreExcision``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{T}`
+          * **Units:** :math:`\rm{K}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -868,7 +868,7 @@ HYDRO Properties
           * **HDF5 name:** ``StarFormingGasMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
@@ -898,7 +898,7 @@ HYDRO Properties
           * **HDF5 name:** ``ThermalEnergyGas``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{2}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -908,7 +908,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosity``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -918,7 +918,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosityCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -928,7 +928,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosityInRestframe``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -938,7 +938,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosityInRestframeCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -948,7 +948,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosityInRestframeWithoutRecentAGNHeating``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -958,7 +958,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosityInRestframeWithoutRecentAGNHeatingCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -968,7 +968,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosityWithoutRecentAGNHeating``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -978,7 +978,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayLuminosityWithoutRecentAGNHeatingCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{3}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{3}}{\rm{Mpc} \cdot \rm{s}^{3}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -988,7 +988,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosity``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -998,7 +998,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosityCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1008,7 +1008,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosityInRestframe``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1018,7 +1018,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosityInRestframeCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1028,7 +1028,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosityInRestframeWithoutRecentAGNHeating``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1038,7 +1038,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosityInRestframeWithoutRecentAGNHeatingCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1048,7 +1048,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosityWithoutRecentAGNHeating``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1058,7 +1058,7 @@ HYDRO Properties
           * **HDF5 name:** ``XRayPhotonLuminosityWithoutRecentAGNHeatingCoreExcision``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`1 / \rm{t}`
+          * **Units:** :math:`\frac{\rm{km}}{\rm{Mpc} \cdot \rm{s}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - general
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1068,7 +1068,7 @@ HYDRO Properties
           * **HDF5 name:** ``AngularMomentumGas``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2} \cdot \rm{M} / \rm{t}`
+          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -1088,7 +1088,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasCentreOfMass``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** 1 pc accurate
      - gas
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1098,7 +1098,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasCentreOfMassVelocity``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** 0.1 km/s accurate
      - gas
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1108,7 +1108,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasInertiaTensor``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1118,7 +1118,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasInertiaTensorNoniterative``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1148,7 +1148,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasProjectedVelocityDispersion``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
@@ -1158,7 +1158,7 @@ HYDRO Properties
           * **HDF5 name:** ``GasVelocityDispersionMatrix``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\frac{\rm{L}^{2}}{\rm{t}^{2}}`
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1168,7 +1168,7 @@ HYDRO Properties
           * **HDF5 name:** ``HalfMassRadiusGas``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
@@ -1188,7 +1188,7 @@ HYDRO Properties
           * **HDF5 name:** ``KineticEnergyGas``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{2}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -1198,7 +1198,7 @@ HYDRO Properties
           * **HDF5 name:** ``ProjectedGasInertiaTensorNoniterative``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - gas
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
@@ -1218,7 +1218,7 @@ HYDRO Properties
           * **HDF5 name:** ``MaximumDarkMatterCircularVelocity``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1228,7 +1228,7 @@ HYDRO Properties
           * **HDF5 name:** ``MaximumDarkMatterCircularVelocityRadius``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - dm
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1238,7 +1238,7 @@ HYDRO Properties
           * **HDF5 name:** ``AngularMomentumStars``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2} \cdot \rm{M} / \rm{t}`
+          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -1268,7 +1268,7 @@ HYDRO Properties
           * **HDF5 name:** ``KineticEnergyStars``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\frac{\rm{L}^{2} \cdot \rm{M}}{\rm{t}^{2}}`
+          * **Units:** :math:`10^{10}\ \frac{\rm{M}_\odot \cdot \rm{km}^{2}}{\rm{s}^{2}}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -1278,7 +1278,7 @@ HYDRO Properties
           * **HDF5 name:** ``LuminosityWeightedMeanStellarAge``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{t}`
+          * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1288,7 +1288,7 @@ HYDRO Properties
           * **HDF5 name:** ``MassWeightedMeanStellarAge``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{t}`
+          * **Units:** :math:`\rm{Mpc} \cdot \rm{s} / \rm{km}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1298,7 +1298,7 @@ HYDRO Properties
           * **HDF5 name:** ``ProjectedStellarInertiaTensorNoniterative``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
@@ -1318,7 +1318,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarCentreOfMass``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** 1 pc accurate
      - star
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -1328,7 +1328,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarCentreOfMassVelocity``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** 0.1 km/s accurate
      - star
      - :unavail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -1338,7 +1338,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarInertiaTensor``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1348,7 +1348,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarInertiaTensorNoniterative``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2}`
+          * **Units:** :math:`\rm{Mpc}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :avail:`SO`
@@ -1378,7 +1378,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarInitialMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :avail:`SO`
@@ -1418,7 +1418,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarProjectedVelocityDispersion``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :unavail:`BS` :unavail:`ES` :unavail:`IS` :avail:`EP` :unavail:`SO`
@@ -1428,7 +1428,7 @@ HYDRO Properties
           * **HDF5 name:** ``StellarVelocityDispersionMatrix``
           * **Shape:** 6
           * **Type:** float32
-          * **Units:** :math:`\frac{\rm{L}^{2}}{\rm{t}^{2}}`
+          * **Units:** :math:`\rm{km}^{2} / \rm{s}^{2}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - star
      - :avail:`BS` :unavail:`ES` :unavail:`IS` :unavail:`EP` :unavail:`SO`
@@ -1438,7 +1438,7 @@ HYDRO Properties
           * **HDF5 name:** ``AngularMomentumBaryons``
           * **Shape:** 3
           * **Type:** float32
-          * **Units:** :math:`\rm{L}^{2} \cdot \rm{M} / \rm{t}`
+          * **Units:** :math:`10^{10}\ \rm{Mpc} \cdot \rm{M}_\odot \cdot \rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - baryon
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :avail:`SO`
@@ -1448,7 +1448,7 @@ HYDRO Properties
           * **HDF5 name:** ``HalfMassRadiusBaryons``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - baryon
      - :avail:`BS` :avail:`ES` :avail:`IS` :avail:`EP` :unavail:`SO`
@@ -1464,7 +1464,7 @@ HYDRO Properties
      - :avail:`BS` :avail:`ES` :avail:`IS` :unavail:`EP` :unavail:`SO`
      - Kappa-corot for baryons (gas and stars), relative to the HaloCentre and the centre of mass velocity of the baryons. `[24] <footnote-24_>`_
 
-Copied Properties
+Copied properties
 -----------------
 
 .. list-table::
@@ -1504,13 +1504,13 @@ Copied Properties
           * **Compression:** no compression
      - basic
      - \-
-     - ID of the host FOF halo of this subhalo. Hostless halos have HostFOFId == -1
+     - ID of the host FoF halo of this subhalo. Hostless halos have HostFOFId == -1
    * - .. dropdown:: ``input_halos_hbtplus.last_max_mass``
 
           * **HDF5 name:** ``InputHalos/HBTplus/LastMaxMass``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - \-
@@ -1520,7 +1520,7 @@ Copied Properties
           * **HDF5 name:** ``InputHalos/HBTplus/LastMaxVmaxPhysical``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{L} / \rm{t}`
+          * **Units:** :math:`\rm{km} / \rm{s}`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - \-
@@ -1590,31 +1590,21 @@ Copied Properties
           * **HDF5 name:** ``InputHalos/FOF/Centres``
           * **Shape:** 3
           * **Type:** float64
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
+          * **Units:** :math:`a \cdot \rm{Mpc}`
           * **Compression:** 1 pc accurate
      - basic
      - \-
-     - Centre of mass of the host FOF halo of this subhalo. Zero for satellite and hostless subhalos.
+     - Centre of mass of the host FoF halo of this subhalo. Zero for satellite and hostless subhalos.
    * - .. dropdown:: ``input_halos_fof.masses``
 
           * **HDF5 name:** ``InputHalos/FOF/Masses``
           * **Shape:** 1
           * **Type:** float32
-          * **Units:** :math:`\rm{M}`
+          * **Units:** :math:`10^{10}\ \rm{M}_\odot`
           * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
      - basic
      - \-
-     - Mass of the host FOF halo of this subhalo. Zero for satellite and hostless subhalos.
-   * - .. dropdown:: ``input_halos_fof.radii``
-
-          * **HDF5 name:** ``InputHalos/FOF/Radii``
-          * **Shape:** 1
-          * **Type:** float32
-          * **Units:** :math:`\rm{a} \cdot \rm{L}`
-          * **Compression:** :math:`1.36693{\rm{}e}10 \rightarrow{} 1.367{\rm{}e}10`
-     - basic
-     - \-
-     - Radius of the particle furthest from the FOF centre of mass. Zero for satellite and hostless subhalos. Missing for older runs.
+     - Mass of the host FoF halo of this subhalo. Zero for satellite and hostless subhalos.
    * - .. dropdown:: ``input_halos_fof.sizes``
 
           * **HDF5 name:** ``InputHalos/FOF/Sizes``
@@ -1624,17 +1614,7 @@ Copied Properties
           * **Compression:** no compression
      - basic
      - \-
-     - Number of particles in the host FOF halo of this subhalo. Zero for satellite and hostless subhalos.
-   * - .. dropdown:: ``soap.descendant_index``
-
-          * **HDF5 name:** ``SOAP/DescendantIndex``
-          * **Shape:** 1
-          * **Type:** int32
-          * **Units:** dimensionless
-          * **Compression:** no compression
-     - basic
-     - \-
-     - Index (within the next snapshot SOAP arrays) of the main descendant of this subhalo. `[27] <footnote-27_>`_
+     - Number of particles in the host FoF halo of this subhalo. Zero for satellite and hostless subhalos.
    * - .. dropdown:: ``soap.host_halo_index``
 
           * **HDF5 name:** ``SOAP/HostHaloIndex``
@@ -1655,16 +1635,6 @@ Copied Properties
      - basic
      - \-
      - Whether this halo is included in the reduced snapshot.
-   * - .. dropdown:: ``soap.progenitor_index``
-
-          * **HDF5 name:** ``SOAP/ProgenitorIndex``
-          * **Shape:** 1
-          * **Type:** int32
-          * **Units:** dimensionless
-          * **Compression:** no compression
-     - basic
-     - \-
-     - Index (within the previous snapshot SOAP arrays) of the main progenitor of this subhalo. `[27] <footnote-27_>`_
    * - .. dropdown:: ``soap.subhalo_rank_by_bound_mass``
 
           * **HDF5 name:** ``SOAP/SubhaloRankByBoundMass``
@@ -1682,22 +1652,21 @@ Footnotes
 .. _footnote-1:
 
 **[1]** **The centre of mass and centre of mass velocity** are computed using all
-particle types except neutrinos (since neutrinos can never be bound to a halo).
+particle types except neutrinos.
 
 .. _footnote-2:
 
 **[2]** **The concentration** is computed using the
-method described in Wang et al. (2023), but using a fifth order polynomial fit to
-the R1-concentration relation for :math:`1<c<1000`. Therefore we set a floor of 1 and
+method described in `Wang et al. (2024) <https://ui.adsabs.harvard.edu/abs/2024MNRAS.52710760W>`_, but using a fifth order polynomial fit to
+the R1-concentration relation for :math:`1<c<1000`. Therefore, we set a floor of 1 and
 a ceiling of 1000 for the values calculated by SOAP. This method assumes halos have
 an NFW profile, and is only calculated for the
-following SO variations: :math:`200_{crit}`, :math:`200_{mean}`, and :math:`BN98`.
+following SO variations: 200 crit, 200 mean, and BN98.
 Neutrinos are included in the calculation of total concentration.
 The first moment of the density distribution, :math:`R1`, can be estimated from
 the concentration. From :math:`R1` the Einasto concentration can be calculated. It
-also possible to estimate other properties, such as :math:`V_{max}`, by using the :math:`R1`
-value and assuming an NFW profile. The concentration is only calculated for the
-following SO definitions: :math:`200_{c}`, :math:`200_{m}`, :math:`BN98`.
+also possible to estimate other properties, such as :math:`v_{max}`, by using the :math:`R1`
+value and assuming an NFW profile.
 
 .. _footnote-3:
 
@@ -1710,12 +1679,13 @@ computed using
 
 where the cumulative mass :math:`M(r)` includes all particles within the radius :math:`r`, and includes the
 contribution of the particle(s) at :math:`r=0`. The radius is computed relative to the halo centre.
-The softened :math:`v_{max}` value is calculated using the same method, except the particle
-radius has a floor of the softening length. An alternative way to calculate :math:`v_{max}`
+The softened :math:`v_{max}` value is calculated using the same method, except that the particle
+radius has a floor equal to the softening length. An alternative way to calculate :math:`v_{max}`
 is to estimate it from the halo concentration by assuming an NFW profile. We store the radius of the
 unsoftened maximum circular velocity. If the softened and unsoftened maximum circular velocities are
 equal, then their radii will also be equal. If the values are not equal, then the radius of the
 softened maximum circular velocity will be the simulation softening length.
+Note that the softened vmax is :math:`*not*` the :math:`v_{max}` computed using a softened potential.
 
 .. _footnote-4:
 
@@ -1732,22 +1702,22 @@ of neutrinos that is also used in the SO radius calculation. The latter is obtai
 
 .. _footnote-5:
 
-**[5]** **The half mass radius** is determined from linear interpolation of the
-cumulative mass profile obtained after sorting all particles by radius. For the projected halos (PA), SOAP 
+**[5]** **The half mass radius** is determined by linear interpolation of the
+cumulative mass profile obtained after sorting all particles by radius. For the projected apertures, SOAP 
 uses the 2D radius (distance to the projection axis) instead of the 3D radius.
 
 .. _footnote-6:
 
 **[6]** **The satellite mass fractions** is obtained by summing the masses of all
 particles within the inclusive sphere that are bound to a subhalo that is not the central subhalo, and 
-dividing this by :math:`M_{SO}`. This uses the same membership information that is also used to decide what 
+dividing this by :math:`M_{SO}`. This uses the same membership information as is used to decide what 
 particles need to be included in the exclusive sphere and projected aperture properties. For MassFractionSatellites
-we only consider particles with the same FOF ID as the most bound particle in the central subhalo. For
-MassFractionExternal we include all particles with a FOF ID not equal to the most bound particle in the central subhalo.
+we only consider particles with the same FoF ID as the most bound particle in the central subhalo. For
+MassFractionExternal we include all particles with a FoF ID not equal to the most bound particle in the central subhalo.
 
 .. _footnote-7:
 
-**[7]** **The spin parameter** is computed following Bullock et al. (2001):
+**[7]** **The spin parameter** is computed following `Bullock et al. (2001) <https://ui.adsabs.harvard.edu/abs/2001ApJ...555..240B>`_:
 
 .. math::
 
@@ -1776,14 +1746,14 @@ The reduced inertia tensor is calculated as
 
 where :math:`r_k` is the radial distance of the particle.
 
-We do not calculate the inertia tensor if there are less than 20 particles within the initial sphere.
+We do not calculate the inertia tensor if there are fewer than 20 particles within the initial sphere.
 
-For when calculating the inertia tensor for a bound subhalo we use a sphere with a radius equal to 10 times the half mass radius of the particles being considered.
+When calculating the inertia tensor for a bound subhalo we use a sphere with a radius equal to the half mass radius of the particles being considered.
 
 .. _footnote-9:
 
-**[9]** **The angular momentum** of gas, dark matter and stars is computed relative to
-the halo centre (cop) and the centre of mass velocity of that particular component, and not to the 
+**[9]** **The angular momentum** of gas, dark matter, or stars is computed relative to
+the halo centre and the centre of mass velocity of that particular component, and not to the 
 total centre of mass velocity. The full expression is
 
 .. math::
@@ -1806,13 +1776,13 @@ where
 
    \vec{v}_{\rm{}com,comp} = \frac{\sum_{i={\rm{}comp}} m_i \vec{v}_i}{\sum_{i={\rm{}comp}} m_i}.
 
-For FLAMINGO, we also compute the angular momentum for baryons, where the sum is then over both gas and star 
+We also compute the angular momentum for baryons, where the sum is then over both gas and star 
 particles.
 
 .. _footnote-10:
 
 **[10]** **The projected velocity dispersion** is computed along the projection axis.
-Along this axis, the velocity is a 1D quantity, so that the velocity dispersion is simply 1 value.
+Along this axis the velocity is a 1D quantity, so the velocity dispersion is simply a scalar.
 
 .. _footnote-11:
 
@@ -1823,8 +1793,8 @@ Along this axis, the velocity is a 1D quantity, so that the velocity dispersion 
    V_{\rm{}disp,comp} = \frac{1}{\sum_{i={\rm{}comp}} m_i} \sum_{i={\rm{}comp}} m_i \vec{v}_{{\rm{}comp},r,i}\vec{v}_{{\rm{}comp},r,i},
 
 where we compute the relative velocity as before, i.e. w.r.t. the centre of mass velocity of the particular 
-component of interest. While it is strictly speaking a :math:`33` matrix, there are only 6 independent 
-components. We use the following convention to output those 6 components as a 6 element array:
+component of interest. While it is strictly speaking a :math:`3  3` matrix, there are only 6 independent 
+components. We use the following convention to output those 6 components as a 6-element array:
 
 .. math::
 
@@ -1846,8 +1816,7 @@ the FLAMINGO snapshots. Metal mass fractions on the other hand are based on ``Me
 
 .. _footnote-13:
 
-**[13]** **The most massive black hole** is identified based on the BH subgrid mass (i.e.
-the same mass that goes into ``BlackHolesSubgridMass``).
+**[13]** **The most massive black hole** is identified based using subgrid masses of the black holes.
 
 .. _footnote-14:
 
@@ -1859,7 +1828,7 @@ sum of only the strictly positive values.
 
 .. _footnote-15:
 
-**[15]** **The Compton y parameter** is computed as in McCarthy et al. (2017):
+**[15]** **The Compton y parameter** is computed as in `McCarthy et al. (2017) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.465.2936M>`_:
 
 .. math::
 
@@ -1869,11 +1838,11 @@ where :math:`d_A(z)` is the angular diameter distance, :math:`_T` is the Thomson
 Boltzmann constant. :math:`n_{e,i}` and :math:`T_{e,i}` are the electron number density and electron temperature for gas 
 particle :math:`i`, while :math:`V_i=m_i/_i` is the SPH volume element that turns the sum over all particles :math:`i` 
 within the inclusive sphere into a volume integral. Note that the snapshot already contains the individual 
-:math:`y_i` values for the SPH particles, computed from the cooling tables during the simulation.
+:math:`y_i` values for the SPH particles.
 
 .. _footnote-16:
 
-**[16]** **The Doppler B parameter** is computed as in Roncarelli et al. (2018):
+**[16]** **The Doppler B parameter** is computed as in `Roncarelli et al. (2018) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.467..985R>`_:
 
 .. math::
 
@@ -1910,13 +1879,13 @@ zero in this case to avoid division by zero.
 
 .. _footnote-18:
 
-**[18]** **Core excised quantities** Excludes the inner region of the halo when computing the quantity.
-It is only calculated for SO/500\_crit. Any core excised calculation only uses the particles
+**[18]** **Core excised quantities** exclude the inner region of the halo when computing the quantity.
+They are only calculated for 500 crit. Any core excised calculation only uses the particles
 for which
 
 .. math::
 
-   0.15 R_{500c} \leq \mathbf{r} \geq R_{500c}
+   0.15 R_{500c} \leq \mathbf{r} \leq R_{500c}
 
 .. _footnote-19:
 
@@ -1931,15 +1900,16 @@ that satisfy
 
 .. math::
 
-   \verb+LastAGNFeedbackScaleFactors+_i \geq{} a - 15{\rm{}Myr}
+   0.1 \Delta{}T_{\rm{}AGN} \leq{} T_i \leq{} 10^{0.3} \Delta{}T_{\rm{}AGN},
 
 and
 
 .. math::
 
-   0.1 \Delta{}T_{\rm{}AGN} \leq{} T_i \leq{} 10^{0.3} \Delta{}T_{\rm{}AGN},
+   \verb+LastAGNFeedbackScaleFactors+_i \geq{} a(t - 15{\rm{}Myr})
 
-using the same parameters as used internally by SWIFT and with :math:`a` the current scale factor.
+where :math:` T_{AGN}` is the same value as used internally by SWIFT, :math:`t` is the cosmic time, and :math:`a()` 
+gives the scale factor as a function of time.
 
 .. _footnote-20:
 
@@ -1967,8 +1937,8 @@ snapshot. They are either in the emission rest-frame, or in the observed-frame o
 the redshift of the snapshot as the emission redshift . The three bands are always given in the same 
 order as in the snapshot:
 
-#. eRosita low/soft (:math:`0.2-2.3` keV)
-#. eRosita high/hard (:math:`2.3-8` keV)
+#. eROSITA low/soft (:math:`0.2-2.3` keV)
+#. eROSITA high/hard (:math:`2.3-8` keV)
 #. ROSAT (:math:`0.5-2` keV)
 
 .. _footnote-23:
@@ -1983,11 +1953,12 @@ where :math:`M_{corot}` is the sum of the mass of the counter-rotating particles
 and :math:`M_{Tot}` is the total mass of particles. This can lead to negative values,
 e.g. if there are a small number of particles moving quickly in one direction, and
 a larger number of particles moving slowly in the opposite direction. In this case
-the larger number of particles would be marked as counter-rotating.
+the larger number of particles could be marked as counter-rotating since the net
+angular momentum is dominated by the small number of rapidly rotating particles.
 
 .. _footnote-24:
 
-**[24]** **Kappa-corot** is computed as in Correa et al. (2017):
+**[24]** **Kappa-corot** is computed as in `Correa et al. (2017) <https://ui.adsabs.harvard.edu/abs/2017MNRAS.472L..45C>`_:
 
 .. math::
 
@@ -2033,7 +2004,7 @@ and the orthogonal distance to the angular momentum vector given by
 
 .. math::
 
-   R_i^2 = |\vec{x}_{r,i}|^2 - \left(\vec{x}_{r,i} \frac{\vec{L}_{\rm{}comp}}{|\vec{L}_{\rm{}comp}|}\right),
+   R_i^2 = |\vec{x}_{r,i}|^2 - \left(\vec{x}_{r,i} \frac{\vec{L}_{\rm{}comp}}{|\vec{L}_{\rm{}comp}|}\right)^2,
 
 where the angular momentum vector and the relative position and velocity are the same as above for 
 consistency.
@@ -2044,9 +2015,9 @@ consistency.
 
 .. _footnote-26:
 
-**[26]** **Luminosities are given in the GAMA bands** and are always using the same order
+**[26]** **Luminosities are given in the GAMA bands** and always using the same order
 as in the snapshots: u, g, r, i, z, Y, J, H, K. These are rest-frame dust-free
-AB-luminosities of the star particles. These were computed using the BC03
+AB-luminosities of the star particles. These were computed using the `Bruzual \& Charlot 2003 <https://ui.adsabs.harvard.edu/abs/2003MNRAS.344.1000B>`_
 (GALAXEV) models convolved with different filter bands and interpolated in
 log-log (f(log(Z), log(age)) = log(flux)) as used in the dust-free modelling
 of Trayford et al. (2015). The luminosities are given in dimensionless
@@ -2054,6 +2025,3 @@ units. They have been divided by 3631 Jy already, i.e. they can be turned
 into absolute AB-magnitudes (rest-frame absolute maggies) directly by
 applying -2.5 log10(L) without additional corrections.
 
-.. _footnote-27:
-
-**[27]** **The progenitor/descendant index** of a subhalo points to the subhalo in the previous/next snapshot which has the same HBT TrackId. Therefore this index can only be used to move up/down the main progenitor branch for a subhalo, it provides no information about subhalo mergers.
