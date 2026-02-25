@@ -46,7 +46,7 @@ downloaded, and how to open a remote file on the hdfstream server.
          root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
 
          # Open the remote snapshot file
-         remote_snapshot = root_dir["FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"
+         remote_snapshot = root_dir["FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"]
 
          # Pass the remote file object to swiftsimio instead of a filename
          import swiftsimio as sw
@@ -104,7 +104,7 @@ To see what particle types exist in this snapshot::
 And to see the particle properties available for one particle type::
 
   >>> print(snap.dark_matter)
-  SWIFT dataset at /FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5. 
+  SWIFT dataset at /FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5.
   Available fields: coordinates, fofgroup_ids, masses, particle_ids, potentials, softenings, velocities
 
 See the `swiftsimio documentation
