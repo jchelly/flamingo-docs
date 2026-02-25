@@ -14,3 +14,4 @@ beyond which particles are not output.
    File format <particle_lightcone_format>
    Redshift ranges <particle_lightcone_redshifts>
    Particle properties <particle_lightcone_properties>
+   Reading the particles <reading_particles>
