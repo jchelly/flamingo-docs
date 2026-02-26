@@ -65,17 +65,35 @@ the gravitational potential. The files correspond to integrated weak
 lensing convergence maps (:math:`\kappa`) that assume an
 non-tomographic Euclid-like source redshift distribution and are saved
 as ring-ordered Healpix maps at :math:`N_\mathrm{side} = 8192`. No
-smoothing or noise has been applied to these files. The files can be
-read as
+smoothing or noise has been applied to these files.
 
+Each simulation has a subdirectory ``value_add/broxterman24`` which
+contains the convergence maps. For example, the maps for ``L1_m9`` are
+in `this directory
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/value_add/broxterman24>`__. The
+files can be accessed using the :doc:`hdfstream
+</service_docs/python_module>` module or downloaded and read directly,
+as shown below.
 
-.. code-block:: python
+.. tab-set::
 
-    import h5py
-    file_path = '/cosma8/data/dp004/dc-brox1/FLAMINGO_datarelease/WL_convergence_Euclid_like_nz_Broxterman24_L1_m9_lc0.hdf5'
-    data_file = h5py.File(f"/{file_path}",'r')
-    kappa_map = data_file["Convergence"][:]
-    data_file.close()
+   .. tab-item:: Remote access
+
+      .. code-block:: python
+
+         import hdfstream
+         file_path = 'FLAMINGO/L1_m9/L1_m9/value_add/broxterman24/WL_convergence_Euclid_like_nz_Broxterman24_L1_m9_lc0.hdf5'
+         with hdfstream.open("cosma", file_path) as data_file:
+           kappa_map = data_file["Convergence"][:]
+
+   .. tab-item:: Reading downloaded files
+
+      .. code-block:: python
+
+         import h5py
+         file_path = './FLAMINGO/L1_m9/L1_m9/value_add/broxterman24/WL_convergence_Euclid_like_nz_Broxterman24_L1_m9_lc0.hdf5'
+         with h5py.File(f"/{file_path}",'r') as data_file:
+           kappa_map = data_file["Convergence"][:]
 
 where the part ``L1_m9_lc0`` changes between the variations and lightcones (lc), for example,
 ``L2p8_m9_DMO_lc4`` for observer four in the 2800 cGpc dark-matter-only box.
@@ -98,30 +116,63 @@ lightcone (of the 0th observer of each ``L1_m9`` simulation
 given). When integrating along the line of sight the on-sky
 coordinates of the gas particles in each shell are rotated as
 described in `Broxterman et al (2024)
-<https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.2309B%2F/abstract>`__. The
-maps containing the X-ray emission from hot gas can be read as
+<https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.2309B%2F/abstract>`__.
 
-.. code-block:: python
+Each simulation has a subdirectory ``value_add/mcdonald26`` which
+contains the convergence maps. For example, the maps for ``L1_m9`` are
+in `this directory
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26>`__. The
+files can be accessed using the :doc:`hdfstream
+</service_docs/python_module>` module or downloaded and read
+directly. Below, we show how to read the maps:
 
-    import h5py
-    filename="/cosma8/data/dp004/dc-mcdo1/DataRelease/ROSAT_Xray_Maps/Gas_Convolved/{BoxsizeResolution}/{SimulationName}.h5"
-    xray_source="Gas"
-    map_name="XrayROSATIntrinsicPhotonsConvolved"
+.. tab-set::
 
-    with h5py.File(filename.format(BoxsizeResolution="L1000N1800", SimulationName="HYDRO_FIDUCIAL"), "r") as integrated_map:
+   .. tab-item:: Remote access
 
-        # read ROSAT convolved photon flux X-ray map
-        ROSAT_Xray_map=integrated_map[xray_source+'/'+map_name][:]
+      .. code-block:: python
 
-        # print simulations identifier (name) in FLAMINGO papers:
-        print("\tFLAMINGO identifier: {label}".format(label=integrated_map[xray_source].attrs['paper_name'][:]))
+         import hdfstream
 
-        # print integrated redshift range:
-        lc_zmin=integrated_map[xray_source].attrs['redshift_min'] lc_zmax=integrated_map[xray_source].attrs['redshift_max']
-        print("\tredshift range: {zmin:.3f}, {zmax:.3f}".format(zmin=lc_zmin, zmax=lc_zmax))
+         xray_source="Gas"
+         map_name="XrayROSATIntrinsicPhotonsConvolved"
+         with hdfstream.open("cosma", "./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
 
-        # print expression for map units:
-        print("\tunit expression: {map_units}".format(map_units=integrated_map[xray_source].attrs['unit_expression']))
+           # read ROSAT convolved photon flux X-ray map
+           ROSAT_Xray_map=integrated_map[xray_source+'/'+map_name][:]
+
+           # print simulations identifier (name) in FLAMINGO papers:
+           print("\tFLAMINGO identifier: {label}".format(label=integrated_map[xray_source].attrs['paper_name'][:]))
+
+           # print integrated redshift range:
+           lc_zmin=integrated_map[xray_source].attrs['redshift_min'] lc_zmax=integrated_map[xray_source].attrs['redshift_max']
+           print("\tredshift range: {zmin:.3f}, {zmax:.3f}".format(zmin=lc_zmin, zmax=lc_zmax))
+
+           # print expression for map units:
+           print("\tunit expression: {map_units}".format(map_units=integrated_map[xray_source].attrs['unit_expression']))
+
+   .. tab-item:: Reading local files
+
+      .. code-block:: python
+
+         import h5py
+
+         xray_source="Gas"
+         map_name="XrayROSATIntrinsicPhotonsConvolved"
+         with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
+
+           # read ROSAT convolved photon flux X-ray map
+           ROSAT_Xray_map=integrated_map[xray_source+'/'+map_name][:]
+
+           # print simulations identifier (name) in FLAMINGO papers:
+           print("\tFLAMINGO identifier: {label}".format(label=integrated_map[xray_source].attrs['paper_name'][:]))
+
+           # print integrated redshift range:
+           lc_zmin=integrated_map[xray_source].attrs['redshift_min'] lc_zmax=integrated_map[xray_source].attrs['redshift_max']
+           print("\tredshift range: {zmin:.3f}, {zmax:.3f}".format(zmin=lc_zmin, zmax=lc_zmax))
+
+           # print expression for map units:
+           print("\tunit expression: {map_units}".format(map_units=integrated_map[xray_source].attrs['unit_expression']))
 
 
 
@@ -136,15 +187,13 @@ to per steradian (or square degree.)
     import h5py
     import healpy as hp
     import unyt
-    filename="/cosma8/data/dp004/dc-mcdo1/DataRelease/ROSAT_Xray_Maps/Gas_Convolved/{BoxsizeResolution}/{simulation}.h5"
     xray_source="Gas"
     map_name="XrayROSATIntrinsicPhotonsConvolved"
-    with h5py.File(filename.format(BoxsizeResolution="L1000N1800", simulation="HYDRO_FIDUCIAL"), "r") as integrated_map:
+
+    with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
         # read map
         ROSAT_Xray_map_per_sr=integrated_map[xray_source+'/'+map_name][:]
-
         nside = integrated_map[xray_source].attrs['shell_nside'] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
         # apply unit transformation and define map units
         ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
-
 
