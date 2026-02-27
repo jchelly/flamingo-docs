@@ -7,10 +7,10 @@ Plotting SOAP halo positions
 Here we open the z=0 SOAP halo catalogue for one of the FLAMINGO
 simulations, download the halo positions, and make a plot.
 
-First, we connect to the server and open the FLAMINGO root directory::
+First, we connect to the server and open the root directory::
 
     import hdfstream
-    root = hdfstream.open("cosma","/FLAMINGO")
+    root_dir = hdfstream.open("cosma","/")
 
 This returns a RemoteDirectory object which can be indexed to access
 subdirectories and files.
@@ -25,7 +25,7 @@ the file hierarchy in the
 `file browser </flamingo/viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT>`__.
 To open this file in python::
 
-    soap_file = root["L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5"]
+    soap_file = root_dir["FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5"]
 
 This returns a RemoteFile object which allows access to HDF5 objects in
 the file (it behaves similarly to a read only h5py.File or h5py.Group).

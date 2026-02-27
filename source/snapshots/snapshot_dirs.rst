@@ -7,11 +7,10 @@ diagram below. Each simulation has a ``snapshots`` directory with one
 the snapshot number. See :doc:`snapshot_redshifts` for the relation
 between snapshot number and redshift.
 
-.. tip:: The easiest way to access particle data is to use `swiftsimio
-         <https://swiftsimio.readthedocs.io/en/latest/>`__ to read the
-         :ref:`virtual-snapshot` so that you don't need to concatenate
-         data from multiple files and unit metadata is read
-         automatically. TODO: write and link to examples!
+.. tip:: The easiest way to access particle data is to use :doc:`swiftsimio
+         </snapshots/swiftsimio>` to read the :ref:`virtual-snapshot`
+         so that you don't need to concatenate data from multiple
+         files and unit metadata is read automatically.
 
 .. mermaid::
 

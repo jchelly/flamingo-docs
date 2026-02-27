@@ -344,18 +344,41 @@ async function display_directory(path, object) {
     // Get directory size as a string
     const dir_size = format_file_size(object.size);
 
-    if(sanitize_path(path) != "") {
+    if((sanitize_path(path) != "") && (object.size < 1125899906842624)) {
         // Add a link to download the directory
-        const p2 = add_element(div, "p");
-        const dl_link = add_element(p2, "a");
-        dl_link.href = download_url(path);
-        add_text(dl_link, "Full directory download ("+dir_size+")");
-
-        // Include note about large downloads if the directory is >100GB
+        const card = add_element(div, "div");
+        card.className = "downloadoptions";
+        const details = add_element(card, "details");
+        const summary = add_element(details, "summary");
+        add_text(summary, "Download options");
         if(object.size >= 107374182400) {
-            const note = add_element(div, "p");
-            set_inner_html(note, "Note that you can use the <a href='python_module.html'>python module</a> to extract HDF5 datasets of interest without downloading complete files, or if you have a user account on COSMA then <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a> might allow faster downloads.");
+            if(Object.keys(object.directories).length > 0) {
+                add_text(summary, " ( ⚠️"+dir_size+", see subdirectories for smaller downloads)");
+            } else {
+                add_text(summary, " ( ⚠️"+dir_size+")");
+            }
+        } else {
+            add_text(summary, " ("+dir_size+")");
         }
+        // Make a list of access options
+        const ul = add_element(details, "ul");
+        // Access via api
+        const li_api = add_element(ul, "li");
+        set_inner_html(li_api, "Access individual datasets using the <a href='/flamingo/service_docs/python_module.html'>hdfstream python module</a>");
+        // Full download
+        const li_dl = add_element(ul, "li");
+        const dl_link = add_element(li_dl, "a");
+        dl_link.href = download_url(path);
+        add_text(dl_link, "Full directory download as .tar file");
+        // Command line download
+        const li_cmd = add_element(ul, "li");
+        add_text(li_cmd, "Download and unpack on the command line:");
+        add_element(li_cmd, "br");
+        const dl_code = add_element(add_element(li_cmd, "pre"), "code");
+        dl_code.textContent = 'curl -u my_username -L "'+download_url(path)+'" | tar xvf -';
+        // Access via globus
+        const li_globus = add_element(ul, "li");
+        set_inner_html(li_globus, "Users with a <a href='https://cosma.readthedocs.io/en/latest'>Cosma</a> account can use <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a>");
     }
 
     // Make a div to contain any description for this diretcory
