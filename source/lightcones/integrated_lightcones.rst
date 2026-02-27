@@ -116,20 +116,17 @@ Note, these maps are given in units of :math:`\mathrm{photon}/ \mathrm{s} / A_\m
 
 These maps will be made publically available with the publication of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`. 
 
-We include 2 forms of AGN point source maps, the base AGN and abundance matched (AM) AGN point source all-sky maps, as described in sections 3.1 and 3.2 of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`.)
-The base AGN maps are computed from the black hole particles within the FLAMINGO particle lightcones, where the X-ray emission of each AGN is estimated from the black hole mass accretion rates. The AM AGN maps are constructed by matching the abundances of BH luminosities to the observed luminosity functions given by Shen et al (2020) `<https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.3252S/abstract>`, specifically we abundance match the most massive BH per central halo within the lightcone. 
+We include 2 sets of AGN point source maps, 1) a `base' AGN map and 2) an abundance matched (AM) AGN map. 
+The base AGN X-ray emission is estimated from the mass accretion rates of black hole (BH) particles within the FLAMINGO particle lightcones. The AM AGN maps are constructed by matching the abundances of BH luminosities to the observed luminosity functions given by Shen et al (2020) `<https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.3252S/abstract>`, specifically we only use the most massive massive massive BH per central halo with the abundance matching. 
+Both sets of maps are described in sections 3.1 and 3.2 of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`.)
 
-Both of these maps can be accessed as demonstrated below
+Both of these maps can be accessed as demonstrated
 .. code-block:: python
     
     with h5py.File(filename.format(BoxsizeResolution="L1000N1800", simulation="HYDRO_FIDUCIAL"), "r") as intergrated_map:
-        for xray_source in ["AGN_base", "AGN_AM"]:
-            # read map
-            ROSAT_Xray_map_per_sr=intergrated_map[xray_source+’/’+map_name][:]
-
-            nside = intergrated_map[xray_source].attrs[’shell_nside’] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
-            # apply unit transformation and define map units
-            ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s
+        AGN_names=["AGN_base", "AGN_AM"]
+        for xray_source in AGN_names:
+            ROSAT_point_source_maps[xray_source]=intergrated_map[xray_source+’/’+map_name][:]
             
 
 
