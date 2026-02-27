@@ -85,6 +85,8 @@ where the part ``L1_m9_lc0`` changes between the variations and lightcones (lc),
 ROSAT convolved X-ray All-Sky maps
 ----------------------------------
 
+The ROSAT convolved X-ray All-Sky maps are computed as described in section 3.1 of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`. Briefly, these HEALPix all-sky maps show the total photon count rate, in the soft band (0.5-2.0 keV), from intergratning along the line of sight. The X-ray emission in each map is from either hot gas or AGN point sources and convolved with the effective area of the ROSAT detector response matrix. Specifically these ring-ordered HEALPix maps are constructed at :math:`N_\mathrm{side} = 4096` from the particle lightcone (of the 0th observer of each ``L1_m9`` simulation given). When integrating along the line of sight the on-sky coordinates of the gas particles in each shell are rotated as described in `Broxterman et al (2024)
+<https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.2309B%2F/abstract>`.
 The ROSAT convolved X-ray All-Sky maps are computed as described in
 section 3.1 of `McDonald et al (2026)
 <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`__. Briefly,
@@ -101,8 +103,17 @@ described in `Broxterman et al (2024)
 <https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.2309B%2F/abstract>`__. The
 maps containing the X-ray emission from hot gas can be read as
 
-.. code-block:: python
+    Hot Gas
+    -------
 
+The maps are computed from the particle lightcones, where the X-ray emission is the total photon count rate from hot gas particles on the sky summed from redshift 0 to 0.5. 
+The maps containing the X-ray emission from hot gas can be read as
+
+.. code-block:: python
+    import h5py
+    import unyt 
+    import h5py 
+    filename="/cosma8/data/dp004/dc-mcdo1/DataRelease/ROSAT_Xray_Maps/Gas_Convolved/{BoxsizeResolution}/{SimulationName}.h5" 
     import h5py
     filename="/cosma8/data/dp004/dc-mcdo1/DataRelease/ROSAT_Xray_Maps/Gas_Convolved/{BoxsizeResolution}/{SimulationName}.h5"
     xray_source="Gas"
@@ -133,6 +144,7 @@ to per steradian (or square degree.)
 
 .. code-block:: python
 
+    with h5py.File(filename.format(BoxsizeResolution="L1000N1800", simulation="HYDRO_FIDUCIAL"), "r") as intergrated_map:
     import h5py
     import healpy as hp
     import unyt
@@ -146,5 +158,30 @@ to per steradian (or square degree.)
         nside = integrated_map[xray_source].attrs['shell_nside'] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
         # apply unit transformation and define map units
         ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
+
+
+
+    AGN Point Source Maps
+    ---------------------
+
+These maps will be made publically available with the publication of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`. 
+
+We include 2 forms of AGN point source maps, the base AGN and abundance matched (AM) AGN point source all-sky maps, as described in sections 3.1 and 3.2 of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`.)
+The base AGN maps are computed from the black hole particles within the FLAMINGO particle lightcones, where the X-ray emission of each AGN is estimated from the black hole mass accretion rates. The AM AGN maps are constructed by matching the abundances of BH luminosities to the observed luminosity functions given by Shen et al (2020) `<https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.3252S/abstract>`, specifically we abundance match the most massive BH per central halo within the lightcone. 
+
+Both of these maps can be accessed as demonstrated below
+.. code-block:: python
+    
+    with h5py.File(filename.format(BoxsizeResolution="L1000N1800", simulation="HYDRO_FIDUCIAL"), "r") as intergrated_map:
+        for xray_source in ["AGN_base", "AGN_AM"]:
+            # read map
+            ROSAT_Xray_map_per_sr=intergrated_map[xray_source+’/’+map_name][:]
+
+            nside = intergrated_map[xray_source].attrs[’shell_nside’] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
+            # apply unit transformation and define map units
+            ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s
+            
+
+
 
 
