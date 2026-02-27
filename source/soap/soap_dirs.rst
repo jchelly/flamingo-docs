@@ -17,8 +17,6 @@ As an example, see `/FLAMINGO/L1_m9/L1_m9/SOAP-HBT/
 </flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/SOAP-HBT>`__ for
 the ``L1_m9`` SOAP catalogues.
 
-# TODO: Do we want to hide the membership files?
-
 HBT-HERONS catalgoues
 ---------------------
 

@@ -7,7 +7,7 @@ The third table contains the properties which are only calculated for the HYDRO 
 The final table contains the datasets copied over from the HBT-HERONS and FoF catalogues.
 Within each table the properties are sorted based on their filters.
 
-The first column gives the name of the property when opened using the `swiftsimio library <https://swiftsimio.readthedocs.io/en/latest/soap/index.html>`_. Clicking on each property name will open a dropdown box, which contains information about the dataset within the HDF5 file. The second column gives the filter applied to that property, as descibred in :doc:`property_filters`. The third column indicates the halo variations for which this property is available (green if the property is computed for a certain variation, red if not). The variations are as follows:
+The first column gives the name of the property when opened using the `swiftsimio library <https://swiftsimio.readthedocs.io/en/latest/soap/index.html>`_. Clicking on each property name will open a dropdown box, which contains information about the dataset within the HDF5 file. The second column gives the filter applied to that property, as described in :doc:`soap_filters`. The third column indicates the halo variations for which this property is available (green if the property is computed for a certain variation, red if not). The variations are as follows:
 
 * ``BS`` - :ref:`bound_subhalo_description`
 * ``ES`` - :ref:`exclusive_sphere_description`
