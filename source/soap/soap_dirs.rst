@@ -28,7 +28,7 @@ Each simulation has an ``HBT-HERONS`` directory with one
 the snapshot number.
 
 Documentation for the HBT-HERONS files can be found at the
-`HBT-HERONS webstie
+`HBT-HERONS website
 <https://hbt-herons.strw.leidenuniv.nl/>`__
 
 As an example, see `/FLAMINGO/L1_m9/L1_m9/HBT-HERONS/

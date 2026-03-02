@@ -39,6 +39,7 @@ The following sections describe the layout and contents of the snapshots.
    File format <snapshot_format>
    Output redshifts <snapshot_redshifts>
    Particle properties <snapshot_particle_properties>
+   Partial snapshots <snapshot_partial>
 
 For more information about the SWIFT simulation snapshot format used
 here, see the `SWIFT documentation

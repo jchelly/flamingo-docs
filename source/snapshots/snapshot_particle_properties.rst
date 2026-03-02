@@ -1,3 +1,5 @@
+.. _snapshot_particle_properties:
+
 Particle properties
 ===================
 
