@@ -119,7 +119,7 @@ described in `Broxterman et al (2024)
 <https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.2309B%2F/abstract>`__.
 
 Each simulation has a subdirectory ``value_add/mcdonald26`` which
-contains the convergence maps. For example, the maps for ``L1_m9`` are
+contains the X-ray maps. For example, the maps for ``L1_m9`` are
 in `this directory
 </flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26>`__. The
 files can be accessed using the :doc:`hdfstream
@@ -196,4 +196,28 @@ to per steradian (or square degree.)
         nside = integrated_map[xray_source].attrs['shell_nside'] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
         # apply unit transformation and define map units
         ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
+
+
+
+    AGN Point Source Maps
+    ---------------------
+
+These maps will be made available with the publication of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`. 
+
+We include 2 sets of AGN point source maps, 1) a `base' AGN map and 2) an abundance matched (AM) AGN map. 
+The base AGN X-ray emission is estimated from the mass accretion rates of black hole (BH) particles within the FLAMINGO particle lightcones. The AM AGN maps are constructed by matching the abundances of BH luminosities to the observed luminosity functions given by Shen et al (2020) `<https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.3252S/abstract>`, specifically we only use the most massive massive massive BH per central halo with the abundance matching. 
+Both sets of maps are described in sections 3.1 and 3.2 of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`.)
+
+Both of these maps can be accessed as demonstrated
+.. code-block:: python
+    
+    with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as intergrated_map:
+        AGN_names=["AGN_base", "AGN_AM"]
+				ROSAT_point_source_maps={}
+        for xray_source in AGN_names:
+            ROSAT_point_source_maps[xray_source]=intergrated_map[xray_source+’/’+map_name][:]
+            
+
+
+
 
