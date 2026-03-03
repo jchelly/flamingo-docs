@@ -174,8 +174,6 @@ directly. Below, we show how to read the maps:
            # print expression for map units:
            print("\tunit expression: {map_units}".format(map_units=integrated_map[xray_source].attrs['unit_expression']))
 
-
-
 Note, these maps are given in units of :math:`\mathrm{photon}/
 \mathrm{s} / A_\mathrm{pix}` where :math:`A_\mathrm{pix}` is the area
 of a pixel in the HEALPix map of a given :math:`N_\mathrm{side}` . See
@@ -197,27 +195,32 @@ to per steradian (or square degree.)
         # apply unit transformation and define map units
         ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
 
+AGN Point Source Maps
+---------------------
 
+These maps will be made available with the publication of `McDonald et
+al (2026)
+<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`__.
 
-    AGN Point Source Maps
-    ---------------------
+We include 2 sets of AGN point source maps, 1) a "base" AGN map and 2)
+an abundance matched (AM) AGN map.  The base AGN X-ray emission is
+estimated from the mass accretion rates of black hole (BH) particles
+within the FLAMINGO particle lightcones. The AM AGN maps are
+constructed by matching the abundances of BH luminosities to the
+observed luminosity functions given by `Shen et al (2020)
+<https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.3252S/abstract>`__,
+specifically we only use the most massive massive massive BH per
+central halo with the abundance matching.  Both sets of maps are
+described in sections 3.1 and 3.2 of `McDonald et al (2026)
+<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`__.)
 
-These maps will be made available with the publication of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`. 
+Both of these maps can be accessed as demonstrated:
 
-We include 2 sets of AGN point source maps, 1) a `base' AGN map and 2) an abundance matched (AM) AGN map. 
-The base AGN X-ray emission is estimated from the mass accretion rates of black hole (BH) particles within the FLAMINGO particle lightcones. The AM AGN maps are constructed by matching the abundances of BH luminosities to the observed luminosity functions given by Shen et al (2020) `<https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.3252S/abstract>`, specifically we only use the most massive massive massive BH per central halo with the abundance matching. 
-Both sets of maps are described in sections 3.1 and 3.2 of `McDonald et al (2026) <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`.)
-
-Both of these maps can be accessed as demonstrated
 .. code-block:: python
-    
-    with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as intergrated_map:
+
+    with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
         AGN_names=["AGN_base", "AGN_AM"]
-				ROSAT_point_source_maps={}
+	ROSAT_point_source_maps={}
         for xray_source in AGN_names:
-            ROSAT_point_source_maps[xray_source]=intergrated_map[xray_source+’/’+map_name][:]
-            
-
-
-
+            ROSAT_point_source_maps[xray_source]=integrated_map[xray_source+'/'+map_name][:]
 
