@@ -9,6 +9,14 @@ documentation is available on `Read the Docs
 problems, please `post an issue
 <https://github.com/jchelly/hdfstream-python/issues>`__.
 
+The hdfstream module provides a generic solution for remote access to
+HDF5 data. If you're working with :doc:`simulation snapshots
+</snapshots/index>` you might prefer to use :doc:`swiftsimio
+</snapshots/swiftsimio>`, which can use hdfstream to access snapshots
+while providing a more friendly interface. Similarly, the lightcone_io
+module can be used to access :doc:`lightcone outputs
+</lightcones/index>`.
+
 Installation
 ------------
 
@@ -22,7 +30,7 @@ Connecting to the server
 You can connect to the service as follows::
 
     import hdfstream
-    flamingo = hdfstream.open("cosma", "/FLAMINGO")
+    root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
 
 Here, the first parameter is the server name. This can be a full URL or an
 alias recognised by the hdfstream module. The second parameter is the name of
@@ -35,31 +43,31 @@ The command above returns a RemoteDirectory object. This behaves like a
 python dictionary where the keys are the names of files and subdirectories
 within the directory. We can list the contents with::
 
-    print(list(flamingo))
+    print(list(root_dir))
 
-A file or subdirectory can be opened by indexing the
+A file or subdirectory can be opened by subscripting the
 RemoteDirectory. E.g. to open the directory containing the z=0
 snapshot of the ``L1_m10/L1_m10_DMO`` simulation::
 
     # Open a subdirectory
-    subdir = flamingo["L1_m10/L1_m10_DMO/snapshots/flamingo_0077"]
+    subdir = root_dir["FLAMINGO/L1_m10/L1_m10_DMO/snapshots/flamingo_0077"]
 
 which returns another RemoteDirectory, or::
 
     # Open a HDF5 file
-    snap_file = flamingo["L1_m10/L1_m10_DMO/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
+    snap_file = root_dir["FLAMINGO/L1_m10/L1_m10_DMO/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
 
 which opens the specified file and returns a RemoteFile object.
 
 Reading HDF5 groups and datasets
 --------------------------------
 
-Files are opened by indexing the directory object with the path to the file::
+Files are opened by subscripting the directory object with the path to the file::
 
-    snap_file = flamingo["L1_m10/L1_m10_DMO/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
+    snap_file = root_dir["FLAMINGO/L1_m10/L1_m10_DMO/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
 
 This returns a RemoteFile object which behaves like a h5py.File.
-We can read a dataset by indexing the file::
+We can read a dataset with::
 
     # Read all dark matter particle positions in the file
     dm_pos = snap_file["PartType1/Coordinates"][...]

@@ -46,7 +46,7 @@ A full list of the available quantities is shown in the table below.
    * - ``NeutrinoMass``
      - :math:`10^{10}\mathrm{M}_\odot`
      - No
-     - Total mass of neutrinos in each pixel. This consists of a constant background density plus perturbations represented by the neutrino particles.
+     - Total mass of neutrinos in each pixel.
    * - ``SmoothedGasMass``
      - :math:`10^{10}\mathrm{M}_\odot`
      - Yes
@@ -174,9 +174,8 @@ where :math:`\gamma` is the number of smoothing lengths at which the
 SPH kernel falls to zero. If :math:`\theta_\text{s}` is smaller than
 the maximum angular radius of any HEALPix pixel then no smoothing is
 done and the full contribution of the particle to the map is added to
-a single pixel. Otherwise, we need to distribute the particle's
-contribution over multiple pixels weighted by a 2D projected
-smoothing kernel.
+a single pixel. Otherwise, we distribute the particle's contribution
+over multiple pixels weighted by a 2D projected smoothing kernel.
 
 The projected kernel is computed using equation 30 of `Price (2007)
 <https://ui.adsabs.harvard.edu/abs/2007PASA...24..159P/abstract>`__:

@@ -50,7 +50,7 @@ the cosmological and galaxy formation model parameters.
      - Path to data
      - Description
    * - ``fgas+2σ``
-     - `FLAMINGO/L1_m9/fgas+2sigma </flamingo/viewer.html?path=/FLAMINGO/L1_m9/fgas+2sigma>`__
+     - `FLAMINGO/L1_m9/fgas+2sigma </flamingo/viewer.html?path=/FLAMINGO/L1_m9/fgas%2B2sigma>`__
      - Calibrated to cluster gas fractions 2σ above observed
    * - ``fgas-2σ``
      - `FLAMINGO/L1_m9/fgas-2sigma </flamingo/viewer.html?path=/FLAMINGO/L1_m9/fgas-2sigma>`__

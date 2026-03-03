@@ -35,6 +35,15 @@
 }
 
 /*
+  Download options
+*/
+.downloadoptions {
+    margin-left: 0em;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+}
+
+/*
   Don't word-wrap file and directory names
 */
 .directory_listing a {
