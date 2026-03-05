@@ -1,28 +1,34 @@
 Support
 =======
 
-Pages containing information about support
-
-Future announcements
---------------------
-
-In the future we will release new data products.
-
-Subscribe by sending an email to flamingo-data-join@mailman.strw.leidenuniv.nl with the subject "subscribe". You will recieve an email asking you to confirm you wish to subscribe, please check spam if not received
-
-Alternatively you can subscribe to the following thread on github.
-
 Questions
 ---------
 
 The following pages contains resources that might be useful to solve issues
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    Frequently asked questions <support_faq>
    List of known issues <support_issues>
 
-If these do not resolve your problem, You can email queries by sending them to flamingo-questions@strw.leidenuniv.nl
+If these do not resolve your problem, you can contact us by one of two ways.
 
-- Github discussion forum
+  * Create a thread on our `discussion forum
+    <https://github.com/robjmcgibbon/FlamingoDiscussionForum/discussions/categories/q-a?discussions_q=category%3AQ%26A+>`__
+  * Send an email to flamingo-questions@strw.leidenuniv.nl
+
+
+Future data products
+--------------------
+
+In the future we plan to release new data products. There are two ways to be notified about this.
+
+  * Subscribe to our mailing list by sending an email to flamingo-data-join@mailman.strw.leidenuniv.nl with the subject "subscribe". You will recieve an email asking you to confirm you wish to subscribe. Please check spam if you do not receive the confirmation.
+  * You can subscribe to the `following thread on our discussion forum
+    <https://github.com/robjmcgibbon/FlamingoDiscussionForum/discussions/1>`__
+
+The following is a list of data products we expect to add in the near future:
+
+  * GALFORM outputs
+  * Will paper 2 maps
