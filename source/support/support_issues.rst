@@ -88,6 +88,13 @@ The snapshots affected are:
  * M*−σ_fgas−4σ: snapshot 61
  * L2p8_m9: snapshots 26,46,63
 
+.. _issues_missing_hbt:
+
+Missing HBT catalogues
+~~~~~~~~~~~~~~~~~~~~~~
+
+The full set of SOAP catalogues is available for the L1_m10, but the original HBT catalogues have been lost. This means it is not possible to reconstruct the full merger tree for this run.
+
 .. _issues_fof_centres:
 
 FoF centres stored with extra scale factor
