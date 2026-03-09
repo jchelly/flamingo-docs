@@ -108,8 +108,6 @@ heated by AGN feedback. The :math:`\Delta T_\text{AGN}` value from the L1_m9 sim
 than the :math:`\Delta T_\text{AGN}` value from the corresponding run (see Table 1 of `Schaye et al. (2023)
 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__). No filtering was done for gas particles in the Jet runs.
 
-:unavail:`Do we need to quantify this effect (for the -8sigma run)?`
-
 .. _issues_unsoftened_spin:
 
 Unsoftened Vmax used for spin parameter
@@ -180,8 +178,6 @@ desired.
 
 Unweighted neutrino masses used for maps
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-:unavail:`How significant is this effect? Does it affect all maps? Ask John/Willem?`
 
 Unweighted neutrino masses were used to generate the maps, which means the maps are noisier than they could have been.
 
