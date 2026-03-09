@@ -79,6 +79,9 @@ resolution with varying cosmological parameters.
    * - ``PlanckDCDM24_DMO``
      - `FLAMINGO/L1_m9/PlanckDCDM24_DMO </flamingo/viewer.html?path=/FLAMINGO/L1_m9/PlanckDCDM24_DMO>`__
      - Decaying dark matter hydro model with decay rate :math:`\Gamma h / H_0 = 24` (see `Elbers et al 2025 <https://ui.adsabs.harvard.edu/abs/2025MNRAS.537.2160E/abstract>`__)
+   * - ``DESIw0wa_DMO``
+     - `FLAMINGO/L1_m9/DESIw0wa_DMO </flamingo/viewer.html?path=/FLAMINGO/L1_m9/DESIw0wa_DMO>`__
+     - Model with DESI w0wa cosmology
 
 Fiducial model with inverted phases
 -----------------------------------

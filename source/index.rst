@@ -7,6 +7,7 @@ Welcome to the FLAMINGO data release documentation
    introduction
    service_docs/index
    simulations/index
+   power_spectra
    snapshots/index
    Halo catalogues <soap/index>
    lightcones/index
