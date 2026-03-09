@@ -3,15 +3,13 @@ Known issues
 
 This page tracks known technical issues related to the data products.
 It will be updated as new issues are discovered.
-For a discussion of where the simulations diverge from observational data,
-please see section 5 of the data release paper.
 
 .. contents::
    :local:
    :backlinks: none
 
-Simulation issues
------------------
+Simulation
+----------
 
 .. _issues_bh_satellites:
 
@@ -48,15 +46,13 @@ in the last 15 Myr and whose temperatures are between
 :math:`10^{-1}\Delta T_\text{AGN}` and :math:`10^{0.3}\Delta T_\text{AGN}`, where :math:`\Delta T_\text{AGN}` is the AGN heating temperature
 (but see also :ref:`issues_incorrect_dT`).
 
-:unavail:`Comment on handling recently heated particles in the jet simulations?`
-
 Snapshots
 ---------
 
 .. _issues_dmantissa:
 
-HDF5 flags corrupted datasets
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+HDF5 erroneously flags datasets as being corrupted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Starting with HDF5 version 1.14.4, datasets with a :ref:`compression filter
 <faq_compression>` which compresses the data by more than 2x are flagged as problematic.
@@ -75,12 +71,12 @@ Halo catalogues
 
 .. _issues_hbt_hubble:
 
-Incorrect value of H(z) used by HBT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Incorrect value of H(z) used by HBT-HERONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For a small number of snapshots HBT used the value :math:`H(z) / h` instead of :math:`H(z)`.
-This incorrect value is expected to have a negligible effect during the unbinding step,
-since we add the Hubble flow to particles when calculating their kinetic energy.
+For a small number of snapshots HBT-HERONS used the value :math:`H(z) / h` instead of :math:`H(z)`.
+This incorrect value is expected to have a negligible effect, as it is only used during the unbinding step.
+.. since we add the Hubble flow to particles when calculating their kinetic energy.
 The snapshots affected are:
 
  * Jet: snapshot 74
@@ -90,10 +86,10 @@ The snapshots affected are:
 
 .. _issues_missing_hbt:
 
-Missing HBT catalogues
-~~~~~~~~~~~~~~~~~~~~~~
+Missing HBT-HERONS catalogues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The full set of SOAP catalogues is available for the L1_m10, but the original HBT catalogues have been lost. This means it is not possible to reconstruct the full merger tree for this run.
+The full set of SOAP catalogues is available for the L1_m10, but the original HBT-HERONS catalogues have been lost. This means it is not possible to reconstruct the full merger tree for this run.
 
 .. _issues_fof_centres:
 
@@ -104,14 +100,13 @@ The values in the dataset ``soap.input_halos_fof.centres`` should be multiplied 
 
 .. _issues_incorrect_dT:
 
-Incorrect dT for filtering recently heated gas
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-:snaponly:`Include in paper?`
+Incorrect :math:`\Delta T_\text{AGN}` for filtering recently heated gas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As described in :ref:`issues_agn_heating`, for a number of properties we filter out particles which have been recently
 heated by AGN feedback. The :math:`\Delta T_\text{AGN}` value from the L1_m9 simulation was used for all SOAP catalogues, rather
-than the :math:`\Delta T_\text{AGN}` value from the corresponding run.
+than the :math:`\Delta T_\text{AGN}` value from the corresponding run (see Table 1 of `Schaye et al. (2023)
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__). No filtering was done for gas particles in the Jet runs.
 
 :unavail:`Do we need to quantify this effect (for the -8sigma run)?`
 
@@ -120,7 +115,8 @@ than the :math:`\Delta T_\text{AGN}` value from the corresponding run.
 Unsoftened Vmax used for spin parameter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We store the ``MaximumCircularVelocity`` calculated using both softened and unsoftened particle positions. The unsoftened values can be unphysically large in some
+We store the ``MaximumCircularVelocity`` calculated using both softened and unsoftened particle positions.
+The unsoftened values of ``MaximumCircularVelocity`` can be unphysically large in some
 instances. For most runs the softened value was correctly used to calculate ``BoundSubhalo/SpinParameter``, but for the following runs the unsoftened value
 was used:
 
@@ -147,9 +143,9 @@ for redshifts greater than 3 for the L1m8 run.
 Missing inertia tensors
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-When computing the inertia tensors, a filter was applied based on particle mass (:math:`2 \times 10^{11}`),
+When computing the inertia tensors, a filter was applied based on subhalo bound mass (:math:`2 \times 10^{11} \mathrm{M_\odot}`),
 instead of the normal particle number threshold.
-This means the tensors are not available for low mass subhalos.
+This means the tensors are not available for low mass subhaloes.
 
 Halo lightcones
 ---------------
@@ -160,13 +156,9 @@ Missing satellite galaxies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Related to :ref:`issues_bh_satellites`. We use the locations of black hole particles to place galaxies on the lightcone.
-Since some satellite galaxies have no black holes, this means a small fraction of them are missing from the galaxy lightcones.
-The two figures below show the fraction of halos at redshift :math:`z=0` which are affected, as a function of bound stellar mass, and as a function of total mass.
-
-.. image:: images/sat_bh_fraction_Mstar.png
-
-.. image:: images/sat_bh_fraction_Mtot.png
-
+Since some galaxies have no black holes, this means a fraction of them are missing from the galaxy lightcones.
+This is particularly relevant for poorly resolved galaxies, and is more important for satellites than for centrals.
+Figures showing the fraction of haloes which are affected at redshift :math:`z=0` :ref:`can be found here<issues_lightcone_satellites_images>`.
 
 HEALpix maps
 ------------
@@ -189,8 +181,6 @@ desired.
 Unweighted neutrino masses used for maps
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:snaponly:`Include in paper?`
-
 :unavail:`How significant is this effect? Does it affect all maps? Ask John/Willem?`
 
 Unweighted neutrino masses were used to generate the maps, which means the maps are noisier than they could have been.
@@ -200,9 +190,7 @@ Unweighted neutrino masses were used to generate the maps, which means the maps 
 Incorrect search radius for smoothing particles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:snaponly:`Include in paper?`
-
-Search radius for smoothing particles when adding values to the map was too small by a factor of approximately 1.8. Therefore some particles which should have been smoothed were instead deposited onto a singular pixel. The impact of this bug for cross correlations was examined 
+The search radius for smoothing particles when adding values to the map was too small by a factor of approximately 1.8. Therefore, some particles which should have been smoothed were instead deposited onto a singular pixel. The impact of this bug for cross correlations was examined 
 in appendix A of `McDonald et al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__, and found to be negligible.
 
@@ -224,11 +212,11 @@ The cause of these bright pixels is unknown.
 Incorrect UVB used for computing X-ray values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:snaponly:`Include in paper?`
 
-The X-ray tables used when running the simulations assumed the z=0 UV background for all redshifts. The X-ray values have been recomputed for
+The X-ray tables used to compute X-ray luminosities when running the simulations assumed the z=0 UV background for all redshifts. The X-ray values have been recomputed for
 all the snapshots using a corrected table. We have also recomputed the X-ray maps where possible, but the shells above :math:`z=0.5` for the
 :math:`1 \mathrm{Gpc}` runs have not been corrected.
+Note that the tables used to compute the radiative cooling rates that are used during the simulation did use the correct, evolving UV background.
 
 Particle lightcones
 -------------------
@@ -238,10 +226,8 @@ Particle lightcones
 Replication of black holes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:snaponly:`Include in paper?`
-
 The repositioning of a black hole particle can cause it to cross into/out-of the
-lightcone. When this happens the same black hole can appear in the lightcone outputs multiple times in quick succession.
+lightcone. When this happens, the same black hole can appear in the lightcone outputs multiple times in quick succession.
 Note that it is expected that individual particles appear in the lightcone multiple times due to box replication,
 but they should not do so in very close succession. This affects the lightcones for all runs.
 
@@ -254,3 +240,6 @@ A ``Bfloat16`` :ref:`lossy compression filter<faq_compression>` was applied to t
 in the particle lightcones. The reduced precision means it is not possible to reliably determine whether a particle was heated by an AGN within the last 15 Myr.
 A discussion of this effect, and an alternative density cut which can be made instead, will be included in the version of `McDonald et al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__ that incorporates the referee’s comments.
+
+Figures showing the fraction of haloes which are affected at redshift :math:`z=0` :ref:`can be found here<issues_compression_images>`.
+
