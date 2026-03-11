@@ -4,6 +4,8 @@ Integrated lightcones
 This page describes the integrated lightcone HEALPix maps that have
 been produced in the analyses of the simulations.
 
+.. _map_rotations:
+
 Rotations
 ---------
 
