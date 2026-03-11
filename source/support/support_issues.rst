@@ -44,7 +44,7 @@ observables (Gas and Spectroscopic-like temperatures, ComptonY properties, X-ray
 properties) the SOAP catalogues provide versions that exclude particles that were subject to direct AGN heating
 in the last 15 Myr and whose temperatures are between
 :math:`10^{-1}\Delta T_\text{AGN}` and :math:`10^{0.3}\Delta T_\text{AGN}`, where :math:`\Delta T_\text{AGN}` is the AGN heating temperature
-(but see also :ref:`issues_incorrect_dT`).
+(but see also :ref:`Incorrect ΔT for filtering recently heated gas<issues_incorrect_dT>`).
 
 Snapshots
 ---------
@@ -246,9 +246,9 @@ Compression of scale factors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A ``Bfloat16`` :ref:`lossy compression filter<faq_compression>` was applied to the dataset ``PartType0/LastAGNFeedbackScaleFactors``
-in the particle lightcones. The reduced precision means it is not possible to reliably determine whether a particle was heated by an AGN within the last 15 Myr.
-A discussion of this effect, and an alternative density cut which can be made instead, will be included in the version of `McDonald et al. (2026)
-<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__ that incorporates the referee’s comments.
+in the particle lightcones.
+The reduced precision means it is not possible to reliably determine whether a particle was heated by an AGN within the last 15 Myr (as discussed in :ref:`issues_agn_heating`).
+A figure which gives a full description of this issue :ref:`can be found here<issues_compression_images>`.
+A alternative cut is to apply a time limit of 70 Myr, a density cut of :math:`\rho_{\mathrm{gas}}~ > 10^{-26} \mathrm{g~cm}^{-3}`, and the standard temperature constraint (:math:`10^{-1} \Delta T_{\mathrm{AGN}} < T/\mathrm{K} < 10^{0.3} \Delta T_{\mathrm{AGN}}`).
 
-Figures showing the fraction of haloes which are affected at redshift :math:`z=0` :ref:`can be found here<issues_compression_images>`.
 
