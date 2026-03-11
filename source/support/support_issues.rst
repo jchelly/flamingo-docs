@@ -186,22 +186,35 @@ Unweighted neutrino masses were used to generate the maps, which means the maps 
 Incorrect search radius for smoothing particles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The search radius for smoothing particles when adding values to the map was too small by a factor of approximately 1.8. Therefore, some particles which should have been smoothed were instead deposited onto a singular pixel. The impact of this bug for cross correlations was examined 
-in appendix A of `McDonald et al. (2026)
-<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__, and found to be negligible.
+When constructing the FLAMINGO smoothed maps, a given particle property is either added to a singular pixel 
+or smoothed over multiple pixels provided its search radius, :math:`\theta_{\mathrm{s}}`, is greater than the radius of a pixel in the map, 
+as described in Appendix A2 of `Schaye et al. (2023)
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__. The search radius is proportional to the particle's sph smoothing length, :math:`h`, 
+when projected onto the sky, :math:`\theta_{\mathrm{s}} \propto \arctan(h/r)`, where :math:`r` is the co-moving distance from the observer to the particle.
+The on-the-fly HEALPix maps erroneously used a search radius that was to small by a factor of :math:`\approx 1.9` when determining if a particle should be 
+smoothed onto the map. Hence, particles with an angular smoothing length 1-1.9 times the pixel radii were not smoothed and instead only updated a 
+singular pixel. Particles with a larger or smaller angular smoothing length were treated correctly.
+Furthermore, this bug only affected whether a particle should be smoothed; it had no impact on identifying pixels within 
+the search radius to update or on the actual smoothing of the particle's value across the smoothing kernel. `McDonald et al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__ finds that this bug has a negligible effect on cross-correlations computed with the smoothed X-ray maps.
 
 .. All maps except xray, also xray maps above z=0.5 for L1 runs, xray maps for all cosmology runs
 
 .. _issues_bright_pixels:
 
-Extra bright X-ray pixels
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Unusually bright X-ray pixels
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A number of the X-ray photon count maps contain individual pixels which are extremely bright.
-These pixels are 1-2 orders of magnitude brighter than the next brightest pixels, and should be smoothed over (which can be done using ``healpy``).
-The cause of these bright pixels is unknown.
+A very small number of pixels (3 in total) in the on-the-fly healpix lightcones are unusually bright
+(2 orders of magnitude greater) compared to all other pixels within that same lightcone (i.e. across all shells for all redshifts).
+These pixels could not be reproduced from the particle lightcones.
+Each of these unusually bright pixels has been overwritten with the mean value of the neighbouring pixels
 
-.. Some of the maps, such as those for the PLANCK and fiducial models have an extremely X-ray bright pixel that cannot be reproduced from the particle data.
+Affected maps:
+
+  * L1000M1800/HYDRO_PLANCK: lightcone0, shell 2, XrayROSATIntrinsicPhotons
+  * L2800M5040/HYDRO_FIDUCIAL: lightcone2, shell 1, XrayROSATIntrinsicPhotons
+  * L2800M5040/HYDRO_FIDUCIAL: lightcone7, shell 4, XrayROSATIntrinsicPhotons
 
 .. _issues_xray_uvb:
 
