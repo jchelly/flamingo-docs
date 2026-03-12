@@ -235,10 +235,12 @@ Particle lightcones
 Replication of black holes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The repositioning of a black hole particle can cause it to cross into/out-of the
-lightcone. When this happens, the same black hole can appear in the lightcone outputs multiple times in quick succession.
+The repositioning of a black hole particle can cause it to cross into the lightcone.
+When this happens, the same black hole can appear in the lightcone outputs multiple times in quick succession.
+Similarly repositioning a black hole out of the lightcone can cause it to be to be missing.
 Note that it is expected that individual particles appear in the lightcone multiple times due to box replication,
-but they should not do so in very close succession. This affects the lightcones for all runs.
+but they should not do so in very close succession. This affects the lightcones for all runs, but the effect
+is negligible (it occurs approximately once for every ten thousand times a black hole appears in the lightcone).
 
 .. _issues_compression:
 
