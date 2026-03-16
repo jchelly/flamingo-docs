@@ -224,3 +224,124 @@ Both of these maps can be accessed as demonstrated:
         for xray_source in AGN_names:
             ROSAT_point_source_maps[xray_source]=integrated_map[xray_source+'/'+map_name][:]
 
+
+Integrated Thermal SZ Maps
+--------------------------
+
+These maps will be made available with the publication of `Yang et
+al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
+
+These are integrated maps constructed by accumulating the Compton-y parameter maps from individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). Lensing effects are included using pixell, applied shell by shell with the integrated convergence map up to the shell of interest. Note that the Compton-y shells exclude contributions from gas particles that have recently been directly heated by AGN feedback. The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+
+.. code-block:: python
+    
+    import h5py
+
+    ##tSZ SED, assuming no relativistic corrections:
+    x = h*freq_test*1e9/(T_cmb*k_B)
+    tSZ_freq_dep_func = x*(np.cosh(x/2)/np.sinh(x/2))-4
+    
+    lensed_tSZ_map = h5py.File(map_save_dir+'lightcone0_shells/lensed_tSZ_rot_same_rot.hdf5', 'r')['data'][...]
+    delta_T_tSZ = tSZ_freq_dep_func * lensed_tSZ_map * T_cmb ## in K_CMB
+
+Integrated Kinetic SZ Maps
+--------------------------
+
+These maps will be made available with the publication of `Yang et
+al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
+
+These are integrated maps constructed by accumulating the Doppler-b parameter maps from individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). Lensing effects are computed using the same procedure as used for lensing of the thermal SZ map. The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+
+.. code-block:: python
+    
+    import h5py
+    
+    lensed_kSZ_map = h5py.File(map_save_dir+'lightcone0_shells/lensed_kSZ_rot_same_rot.hdf5', 'r')['data'][...]
+    delta_T_kSZ = -lensed_kSZ_map * T_cmb ## in K_CMB 
+
+Integrated Relativistically Corrected Thermal SZ Maps
+-----------------------------------------------------
+
+These maps will be made available with the publication of `Yang et
+al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
+
+These are the relativistically corrected version of the thermal SZ intensity fluctuation maps, with the correction function computed using
+SZpack (`Chluba et al., 2012 <https://ui.adsabs.harvard.edu/abs/2012MNRAS.426..510C/abstract>`__, `2013 <https://ui.adsabs.harvard.edu/abs/2013MNRAS.430.3054C/abstract>`__). For now, only maps under lightcone1_shells for the 2.8 Gpc box run are available. Maps are given in MJy/sr, and are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. To convert intensity maps into :math:`\Delta T_\mathrm{CMB}` maps, a conversion factor is required, computed as:
+
+.. code-block:: python
+
+    import h5py
+    import numpy as np
+    
+    def prefactor(x_freq):
+
+    	exp_x = np.exp(x_freq)
+    	prefactor = x_freq**4. * exp_x / (exp_x - 1.)**2.
+
+	return prefactor
+
+    x_CMB = h * freq_test * 1e9 / (T_cmb * k_B)
+    pref = prefactor(x_CMB)
+    unit_conv = (I_0 / T_cmb) * pref ## where I_0 = 270 MJy/sr.
+    
+    delta_T_rel_tSZ = h5py.File(map_save_dir + 'L2p8_m9_fid/lightcone1_shells/delta_ItSZ_'+str(freq_test)+'_rot_same_rot_MJy_sr.hdf5', 'r')['data'][...] / unit_conv ## in K_CMB
+
+Integrated Cosmic Infrared Background Maps
+------------------------------------------
+
+These maps will be made available with the publication of `Yang et
+al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
+
+These are integrated maps generated from the star formation rate lightcone outputs, with the bolometric infrared luminosity assumed to be proportional to the star formation rate (`Kennicutt, 1998 <https://ui.adsabs.harvard.edu/abs/1998ApJ...498..541K/abstract>`__). The luminosity at a given frequency is then computed using a greybody radiation SED for infrared sources (`Planck Collaboration et al., 2016 <https://ui.adsabs.harvard.edu/abs/2016A%26A...594A..15P/abstract>`__), with the SED parameters determined by fitting to the measured 353, 545, and 857 GHz CIB power spectra from `Lenz et al. (2019) <https://ui.adsabs.harvard.edu/abs/2019ApJ...883...75L/abstract>`__. The same procedure as used for lensing of the thermal SZ map is applied here. Maps are provided in the unit of Jy/sr, and are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Maps are generated using the default three-parameter model discussed in `Yang et al. (2026) <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map. Conversion factors from Jy/sr to K_CMB are taken from Table 6 in `Planck Collaboration et al. (2014) <https://ui.adsabs.harvard.edu/abs/2014A%26A...571A...9P/abstract>`__.
+
+.. code-block:: python
+
+    import h5py
+
+    lensed_CIB_map = h5py.File(map_save_dir+'lightcone0_shells/lensed_CIB_rot_BANDPASS_F'+str(freq_test)+'_three_params_same_rot.hdf5', 'r')['data'][...]
+    delta_T_CIB = lensed_CIB_map*unit_conv ## in K_CMB. Please see Planck Collaboration et al. (2014) above for the unit conversion at each frequency.
+
+Integrated Radio Point Source Maps
+----------------------------------
+
+These maps will be made available with the publication of `Yang et
+al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
+
+These are integrated maps constructed from the black hole particle lightcone outputs. Radio luminosities are assigned by abundance matching the bolometric AGN luminosity function to the LOFAR 150 MHz luminosity function up to z = 2.5 (`Kondapally et al., 2022 <https://ui.adsabs.harvard.edu/abs/2022MNRAS.513.3742K/abstract>`__). The lensed source fluxes are extrapolated to higher CMB frequencies using a power-law SED, with the power index fitted to match the measured radio source counts from the SPT survey at 95, 150, and 220 GHz (`Everett et al., 2020 <https://ui.adsabs.harvard.edu/abs/2020ApJ...900...55E/abstract>`__). The procedure is repeated for subsamples selected by black hole accretion state using different Eddington ratio cuts, :math:`\lambda_\mathrm{Edd}< 10^{−2}, 10^{−3}, 10^{−6}`. Maps are provided in the unit of Jy/sr at 150 MHz, and are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. While rescaling radio maps to higher CMB frequencies, each case has its own SED power-law index parameter. Maps are provided without any radio flux-density cuts. 3D radio lightcone catalogues are available upon request. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+
+.. code-block:: python
+
+    import h5py
+    
+    ##radio:
+    alpha_rad = -0.56
+    # alpha_rad = -0.58 ##if reading in lensed_radiops_rot_llim_0.001_MBHcut.hdf5
+    # alpha_rad = -0.61 ##if reading in lensed_radiops_rot_llim_1e-06_MBHcut.hdf5
+    radio_freq_dep_func = ((freq_test*1e9)/(150e6))**(alpha_rad)
+
+    lensed_radio_map = h5py.File(map_save_dir+'lightcone0_shells/lensed_radiops_rot_llim_0.01_MBHcut_same_rot.hdf5', 'r')['data'][...]
+    delta_T_radio = ( lensed_radio_map * radio_freq_dep_func )*unit_conv ## in K_CMB. Please see Planck Collaboration et al. (2014) above for the unit conversion at each frequency.
+
+Integrated Anisotropic Screening (optical depth :math:`\tau`) Maps
+------------------------------------------------------------------
+
+These maps will be made available with the publication of `Yang et
+al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
+
+These are integrated maps stacked from the dispersion measure maps per individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+
+.. code-block:: python
+
+    import h5py
+
+    lensed_DM_map = h5py.File(map_save_dir+'lightcone0_shells/lensed_DM_rot_same_rot.hdf5', 'r')['data'][...]
+    delta_tau_map = (lensed_DM_map - np.mean(lensed_DM_map)) * (3.085677581*1e22)**(-2) * 6.65 * 1e-29 ## convert the Thomson scattering cross-section in m^2 to Mpc^2, so delta_tau is dimensionless
+    delta_T_patchy = delta_tau_map * delta_T_CMB_prim ## if want to include the patchy screening effect, with delta_T_CMB_prim from e.g. CAMB in K_CMB.
+
+
