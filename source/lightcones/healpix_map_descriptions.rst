@@ -1,14 +1,19 @@
 HEALPix map descriptions
 ========================
 
-This page describes the available HEALPix maps: i.e. what quantities
-have been computed and their units.
+This page describes the HEALPix maps wich were output as the FLAMINGO
+simulations were running. It describes what quantities have been
+computed and their units.
 
 Some quantities relating to gas particles are smoothed onto the map by
 converting the particle's SPH smoothing length to an angular size. See
 :ref:`smoothed-maps` for details. For other quantities the full
 contribution from the particle is added to a single pixel and no
 smoothing is done.
+
+.. note:: See :doc:`integrated_lightcones` for HEALPix maps of
+          additional, redshift-integrated quantities which were
+          computed in post-processing.
 
 Quantities and units
 --------------------
@@ -30,11 +35,11 @@ A full list of the available quantities is shown in the table below.
    * - ``ComptonY``
      - :math:`-`
      - Yes
-     - Thermal SZ effect :ref:`compton-y`.
+     - Thermal SZ effect :ref:`compton-y`. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``DM``
      - :math:`\mathrm{Mpc}^{-2}`
      - Yes
-     - :ref:`dispersion-measure` (see note about bug, below).
+     - :ref:`dispersion-measure` (see note about bug, below). Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``DarkMatterMass``
      - :math:`10^{10}\mathrm{M}_\odot`
      - No
@@ -42,7 +47,7 @@ A full list of the available quantities is shown in the table below.
    * - ``DopplerB``
      - :math:`-`
      - Yes
-     - Kinematic SZ effect :ref:`doppler-b` (see note about bug, below).
+     - Kinematic SZ effect :ref:`doppler-b` (see note about bug, below). Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``NeutrinoMass``
      - :math:`10^{10}\mathrm{M}_\odot`
      - No
@@ -70,27 +75,41 @@ A full list of the available quantities is shown in the table below.
    * - ``XrayErositaHighIntrinsicEnergies``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Yes
-     - Total X-ray flux in the eROSITA 2.3 - 8.0 keV band
+     - Total X-ray flux in the eROSITA 2.3 - 8.0 keV band.  Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayErositaHighIntrinsicPhotons``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Yes
-     - Total X-ray photon flux in the eROSITA 2.3 - 8.0 keV band
+     - Total X-ray photon flux in the eROSITA 2.3 - 8.0 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayErositaLowIntrinsicEnergies``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Yes
-     - Total X-ray flux in the eROSITA 0.2 - 2.3 keV band
+     - Total X-ray flux in the eROSITA 0.2 - 2.3 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayErositaLowIntrinsicPhotons``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Yes
-     - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band
+     - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayROSATIntrinsicEnergies``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Yes
-     - Total X-ray flux in the ROSAT 0.5 - 2.0 keV band
+     - Total X-ray flux in the ROSAT 0.5 - 2.0 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayROSATIntrinsicPhotons``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Yes
-     - Total X-ray photon flux in the ROSAT 0.5 - 2.0 keV  band
+     - Total X-ray photon flux in the ROSAT 0.5 - 2.0 keV  band. Excludes :ref:`recently heated gas <agn_exclusion>`.
+
+.. _agn_exclusion:
+
+Exclusion of recently heated gas particles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Several of the maps described above, including the X-ray maps, Compton
+:math:`y` parameter, Doppler :math:`b` parameter, and dispersion
+measure were computed using only gas particles which have not been
+recently heated by AGN. Gas particles are excluded from these maps if
+they have been AGN heated within the last :math:`15 \mathrm{Myr}` and
+their temperature is between :math:`10^{-1} \Delta T_{\mathrm{AGN}}`
+and :math:`10^{0.3} \Delta T_{\mathrm{AGN}}`, where :math:`\Delta
+T_{\mathrm{AGN}}` is the AGN feedback heating temperature.
 
 .. _compton-y:
 
@@ -105,7 +124,8 @@ the lightcone:
 
 where :math:`m_\text{g}` is the particle's mass,
 :math:`\Omega_\text{pixel}` is the solid angle of a \healpix pixel and
-:math:`d_\text{A}` is the angular diameter distance to the observer.
+:math:`d_\text{A}` is the angular diameter distance to the
+observer.  Excludes :ref:`gas recently heated by AGN <agn_exclusion>`.
 
 .. _doppler-b:
 
@@ -125,7 +145,7 @@ particle which crosses the lightcone:
   :math:`\Delta b = \frac{n_\text{e} m_\text{g} \sigma_\text{T} v_\text{r}}{\Omega_\text{pixel}^2 d_\text{A}^2 \rho c}`
 
 where :math:`v_\text{r}` is the particle's radial velocity relative to the
-observer.
+observer. Excludes :ref:`gas recently heated by AGN <agn_exclusion>`.
 
 .. _dispersion-measure:
 
@@ -144,7 +164,9 @@ crosses the lightcone:
 
   :math:`\Delta \text{DM} = \frac{n_\text{e} m_\text{g} a}{\Omega_\text{pixel}^2 d_\text{A}^2 \rho}`
 
-where :math:`a` is the expansion factor at which the particle crossed the lightcone.
+where :math:`a` is the expansion factor at which the particle crossed
+the lightcone.  Excludes :ref:`gas recently heated by AGN
+<agn_exclusion>`.
 
 .. _smoothed-maps:
 
