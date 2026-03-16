@@ -31,3 +31,8 @@ halo/galaxy definitions, as described within the following pages.
           and the halo centre is defined as the position of the most bound 
           particle of its central subhalo), or satellites.
 
+The SOAP source code is available at `on github
+<https://github.com/SWIFTSIM/SOAP>`__ and the exact git revision which
+was used to generate a halo catalogue can be found by inspecting the
+``git_hash`` attribute of the ``Code`` group in the HDF5 halo
+catalogue file.

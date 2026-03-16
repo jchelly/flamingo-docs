@@ -30,6 +30,26 @@ useful attributes are:
 | ``NumFilesPerSnapshot`` | Number of files in the snapshot. Always 1 for virtual snapshots.      |
 +-------------------------+-----------------------------------------------------------------------+
 
+Code version
+~~~~~~~~~~~~
+
+The ``Code`` group contains attributes which can be used to determine
+the precise version of SWIFT which was used to run the simulation.
+
++---------------------------+-----------------------------------------------------------------------+
+| Attribute name            | Description                                                           |
++===========================+=======================================================================+
+| ``Code Version``          | SWIFT code version number, as a string                                |
++---------------------------+-----------------------------------------------------------------------+
+| ``Git Branch``            | Name of the git branch which was used                                 |
++---------------------------+-----------------------------------------------------------------------+
+| ``Git Revision``          | Identifies the exact git revision which was used                      |
++---------------------------+-----------------------------------------------------------------------+
+| ``Git Date``              | Date associated with this revision                                    |
++---------------------------+-----------------------------------------------------------------------+
+| ``Configuration options`` | Configure script flags which were used for this run                   |
++---------------------------+-----------------------------------------------------------------------+
+
 Cosmology
 ^^^^^^^^^
 
