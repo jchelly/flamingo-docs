@@ -1,14 +1,19 @@
 HEALPix map descriptions
 ========================
 
-This page describes the available HEALPix maps: i.e. what quantities
-have been computed and their units.
+This page describes the HEALPix maps wich were output as the FLAMINGO
+simulations were running. It describes what quantities have been
+computed and their units.
 
 Some quantities relating to gas particles are smoothed onto the map by
 converting the particle's SPH smoothing length to an angular size. See
 :ref:`smoothed-maps` for details. For other quantities the full
 contribution from the particle is added to a single pixel and no
 smoothing is done.
+
+.. note:: See :doc:`integrated_lightcones` for HEALPix maps of
+          additional, redshift-integrated quantities which were
+          computed in post-processing.
 
 Quantities and units
 --------------------
