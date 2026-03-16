@@ -232,7 +232,7 @@ These maps will be made available with the publication of `Yang et
 al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
 
-These are integrated maps constructed by accumulating the Compton-y parameter maps from individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). Lensing effects are included using pixell, applied shell by shell with the integrated convergence map up to the shell of interest. Note that the Compton-y shells exclude contributions from gas particles that have recently been directly heated by AGN feedback. The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+These are integrated maps constructed by accumulating the Compton-y parameter maps from individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). Lensing effects are included using `pixell <https://pixell.readthedocs.io/en/latest/>`__, applied shell by shell with the integrated convergence map up to the shell of interest. Note that the Compton-y shells exclude contributions from gas particles that have recently been directly heated by AGN feedback. The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
 
 .. code-block:: python
     
