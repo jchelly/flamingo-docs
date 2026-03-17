@@ -241,6 +241,7 @@ Similarly repositioning a black hole out of the lightcone can cause it to be to 
 Note that it is expected that individual particles appear in the lightcone multiple times due to box replication,
 but they should not do so in very close succession. This affects the lightcones for all runs, but the effect
 is negligible (it occurs approximately once for every ten thousand times a black hole appears in the lightcone).
+A figure showing the distribution of the distance between replicated particles :ref:`can be found here<issues_reposition_bh_images>`.
 
 .. _issues_compression:
 
