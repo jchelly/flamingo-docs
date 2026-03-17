@@ -11,3 +11,5 @@ links to the data for each one.
    layout
    hydro
    dmo
+   initial_conditions
+
