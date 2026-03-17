@@ -1,72 +1,57 @@
 Python examples
 ===============
 
-This page will provides links to examples showing how to read data in
-python.
+The simulation documentation linked on the left side of this page
+describes each type of simulation output (snapshots, halo catalogues,
+HEALPix maps etc) and provides examples showing how to read each one
+in python. Here, we provide links to these examples.
 
-TODO: move the example below, and maybe convert to use swiftsimio?
+Snapshots
+---------
 
+How to open a snapshot with swiftsimio, how to extract particles in a
+specified region, and how to download part of a snapshot and save it
+to a local file:
 
-Plotting SOAP halo positions
-----------------------------
+  * :doc:`/snapshots/swiftsimio`
 
-Here we open the z=0 SOAP halo catalogue for one of the FLAMINGO
-simulations, download the halo positions, and make a plot.
+Power spectra
+-------------
 
-First, we connect to the server and open the root directory::
+How to read and plot the matter power spectrum at several redshifts:
 
-    import hdfstream
-    root_dir = hdfstream.open("cosma","/")
+  * :doc:`/power_spectra`
 
-This returns a RemoteDirectory object which can be indexed to access
-subdirectories and files.
+Halo catalogues
+---------------
 
-Opening the file
-^^^^^^^^^^^^^^^^
+TODO: add a page with SOAP examples
 
-We subscript the root directory with the path to the file we want to
-read.  In this case the we're going to read the halo positions from
-a SOAP halo catalogue. The correct file path can be determined by browsing
-the file hierarchy in the
-`file browser </flamingo/viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT>`__.
-To open this file in python::
+Lightcone particle outputs
+--------------------------
 
-    soap_file = root_dir["FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5"]
+How to read lightcone particles in a specified redshift range and
+position on the sky:
 
-This returns a RemoteFile object which allows access to HDF5 objects in
-the file (it behaves similarly to a read only h5py.File or h5py.Group).
+  * :doc:`/lightcones/reading_particles`
 
-Reading the halo positions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+HEALPix maps in shells
+----------------------
 
-We can see the contents of this particular halo catalogue file in the
-`file browser
-</flamingo/viewer.html?path=/FLAMINGO/L1_m10/L1_m10_DMO/SOAP-HBT/halo_properties_0077.hdf5>`__
-and the format of SOAP output files is described in the
-:doc:`documentation pages </soap/index>`. The dataset
-``BoundSubhalos/CentreOfMass`` contains the centre of mass of the
-particles bound to each halo. To read the halo positions from the
-file::
+How to read in the HEALPix maps of various quantities for a specified
+redshift shell and observer:
 
-    halo_pos = soap_file["BoundSubhalo/CentreOfMass"][...]
+  * :doc:`/lightcones/healpix_lightcone_io`
 
-This returns the result as a numpy array. We can also view any metadata
-attributes on the datasets in order to determine the units. E.g.::
+Integrated HEALPix maps
+-----------------------
 
-    print(soap_file["BoundSubhalo/CentreOfMass"].attrs)
+How to read the redshift integrated HEALPix maps:
 
-Plotting the positions
-^^^^^^^^^^^^^^^^^^^^^^
+  * :doc:`/lightcones/integrated_lightcones`
 
-We can then make a plot of halos in a slice through the volume using matplotlib::
+Lightcone halo catalogues
+-------------------------
 
-    import matplotlib.pyplot as plt
-    to_plot = halo_pos[:,2] < 50.0 # Plot a 50Mpc slice in the x-y plane
-    plt.plot(halo_pos[to_plot,0], halo_pos[to_plot,1], "k,", rasterized=True)
-    plt.gca().set_aspect("equal")
-    plt.xlabel("x [Mpc]")
-    plt.ylabel("y [Mpc]")
-    plt.title("Halos at z=0 in L1_m9/L1_m9_DMO")
-    plt.show()
+TODO: write (and test...) an example
 
-.. image:: images/soap_halos.png
