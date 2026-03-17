@@ -21,6 +21,7 @@ halo/galaxy definitions, as described within the following pages.
    soap_halo_variations
    soap_filters
    soap_property_table
+   Reading with swiftsimio <swiftsimio>
    soap_matching
 
 .. note:: Within the cosmological simulation community people refer to both

@@ -13,16 +13,15 @@ in python. Here, we provide links to these examples.
   * :doc:`Read and plot the matter power spectrum at several redshifts
     </power_spectra>`
 
-  * TODO: add a page with SOAP examples
+  * :doc:`Read SOAP halo properties using swiftsimio</soap/swiftsimio>`
 
   * :doc:`Identify the same halo between different simulations </soap/soap_matching>`
 
   * :doc:`Read lightcone particles in a specified redshift range and
     position on the sky </lightcones/reading_particles>`
 
-  * :doc:`Read in the HEALPix maps of various quantities for a
-    specified redshift shell and observer
-    </lightcones/healpix_lightcone_io>`
+  * :doc:`Read in HEALPix maps of various quantities for a specified
+    redshift shell and observer </lightcones/healpix_lightcone_io>`
 
   * :doc:`Read the redshift integrated HEALPix maps
     </lightcones/integrated_lightcones>`

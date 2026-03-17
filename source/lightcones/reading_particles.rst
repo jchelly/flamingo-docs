@@ -34,14 +34,14 @@ for observer 0 in the fiducial ``L1_m9`` simulation.
 
          # Connect to the hdfstream service and open the root directory
          import hdfstream
-         root = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
 
          # Location of one of the lightcone particle files relative to the remote directory
          filename = "FLAMINGO/L1_m9/L1_m9/particle_lightcones/lightcone0_particles/lightcone0_0000.0.hdf5"
 
          # Open the lightcone particle output
          import lightcone_io as lc
-         lightcone = lc.ParticleLightcone(filename, remote_dir=root)
+         lightcone = lc.ParticleLightcone(filename, remote_dir=root_dir)
 
    .. tab-item:: Opening local files
 
