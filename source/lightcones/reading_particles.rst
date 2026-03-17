@@ -3,7 +3,7 @@ Reading lightcone particle data
 
 The `lightcone_io <https://lightconeio.readthedocs.io/en/stable/>`__
 python module can be used to read FLAMINGO lightcone particle outputs,
-either by reading downloaded HDF5 files directly or by accessing maps
+either by reading downloaded HDF5 files directly or by accessing files
 stored on `Cosma <https://cosma.readthedocs.io/en/latest/>`__ using
 the `hdfstream <https://hdfstream-python.readthedocs.io/en/latest>`__
 service. The latter method might be better if you're only interested
@@ -82,15 +82,19 @@ corresponding particles::
   # radius=None to read the full sky.
   vector = (1., 0., 0.)
 
-  # Angular radius of the patch to read in (10 degrees, here)
+  # Angular radius of the patch to read in (5 degrees, here)
   import numpy as np
-  radius = np.radians(10.)
+  radius = np.radians(5.)
 
   # Redshift range to read in, or None to read all redshifts.
-  redshift_range = (0., 1.0)
+  redshift_range = (0.0, 0.15)
 
-  # Read or download the dark matter particles
-  data = lightcone["DM"].read(property_names, vector, radius, redshift_range)
+  # Show how many particles will be read
+  nr_particles = lightcone["Gas"].count_particles(vector, radius, redshift_range)
+  print(f"There are {nr_particles} particles in the specified region")
+
+  # Read or download the particles
+  data = lightcone["Gas"].read(property_names, vector, radius, redshift_range)
 
 The result is a dict of `unyt
 <https://unyt.readthedocs.io/en/stable/>`__ arrays with the requested
@@ -98,3 +102,16 @@ data. In this example we have particle positions and IDs::
 
   particle_positions = data["Coordinates"]
   particle_ids       = data["ParticleIDs"]
+
+We have read in all particles at redshift :math:`z < 0.15` in a cone
+aligned with the x axis. We can illustrate this by plotting the
+particles in a slice through the cone::
+
+  import unyt
+  in_slice = (particle_positions[:,2] > -1.0*unyt.Mpc) & (particle_positions[:,2] < 1.0*unyt.Mpc)
+  plt.plot(particle_positions[in_slice,0], particle_positions[in_slice,1], "k,", alpha=0.1, rasterized=True)
+  plt.xlabel("x [cMpc]")
+  plt.ylabel("y [cMpc]")
+  plt.show()
+
+TODO: add image with result (when disk access is possible again...)
