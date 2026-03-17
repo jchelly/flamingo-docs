@@ -1,6 +1,12 @@
 Python examples
 ===============
 
+This page will provides links to examples showing how to read data in
+python.
+
+TODO: move the example below, and maybe convert to use swiftsimio?
+
+
 Plotting SOAP halo positions
 ----------------------------
 
