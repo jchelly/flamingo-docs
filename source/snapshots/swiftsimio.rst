@@ -3,7 +3,7 @@ Reading snapshots with swiftsimio
 
 The `swiftsimio <https://swiftsimio.readthedocs.io/en/latest/>`__
 python module can be used to read snapshots. It can efficiently cut
-out regions of interest from the snapshots and handes units and
+out regions of interest from the snapshots and handles units and
 cosmology metadata. There are two ways to access FLAMINGO data with
 swiftsimio:
 

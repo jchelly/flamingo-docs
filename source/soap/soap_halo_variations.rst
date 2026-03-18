@@ -99,6 +99,8 @@ present in the catalogue. These are stored in a separate group,
 ``SOAP``. This is just done for convenience; these quantities can be
 computed from the SOAP output alone.
 
+.. _soap_summary_table:
+
 Summary table
 -------------
 
@@ -108,7 +110,6 @@ projected aperture variation. Each halo variation can have a filter
 applied to it. If a halo does not satisfy the filter then the variation
 will not be calculated for that halo. More information on filters can be
 found :doc:`in the next section <soap_filters>`.
-
 
 +----------------------------------------+------------+-------------+
 | Group name                             | Inclusive? |  Filter     |

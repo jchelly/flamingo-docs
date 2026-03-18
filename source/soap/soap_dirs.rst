@@ -9,9 +9,9 @@ Each simulation has a ``SOAP-HBT`` directory with one
 the snapshot number. See :doc:`../snapshots/snapshot_redshifts` for the relation
 between snapshot number and redshift.
 
-.. tip:: The easiest way to read the SOAP catalogues is to use swiftsimio
-         so that unit metadata is read automatically.
-         TODO: write and link to examples!
+.. tip:: The easiest way to read the SOAP catalogues is to use
+         swiftsimio so that unit metadata is read automatically. See
+         :doc:`swiftsimio` for an example.
 
 As an example, see `/FLAMINGO/L1_m9/L1_m9/SOAP-HBT/
 </flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/SOAP-HBT>`__ for
