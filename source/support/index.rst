@@ -36,3 +36,4 @@ The following is a list of data products we expect to add in the near future:
     <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__
   * AGN Point Source maps from `McDonald et al. (2026)
     <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__
+  * SOAP catalogues for the PlanckDCDM12 and PlanckDCDM24 simulations
