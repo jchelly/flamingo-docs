@@ -17,19 +17,17 @@ As an example, see `/FLAMINGO/L1_m9/L1_m9/SOAP-HBT/
 </flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/SOAP-HBT>`__ for
 the ``L1_m9`` SOAP catalogues.
 
+
+.. _hbt_directory_layout:
+
 HBT-HERONS catalgoues
 ---------------------
 
-# TODO: Are we serving the HBT files?
-# TODO: If so then do we want sorted HBT files?
+TODO: Update location of files once they're being served
 
 Each simulation has an ``HBT-HERONS`` directory with one
-``XXX`` subdirectory for each output time, where ``XXX`` is
+``OrderedSubSnap_XXX.hdf5`` file for each output time, where ``XXX`` is
 the snapshot number.
-
-Documentation for the HBT-HERONS files can be found at the
-`HBT-HERONS website
-<https://hbt-herons.strw.leidenuniv.nl/>`__
 
 As an example, see `/FLAMINGO/L1_m9/L1_m9/HBT-HERONS/
 </flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/HBT-HERONS>`__ for
