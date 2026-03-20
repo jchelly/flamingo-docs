@@ -10,7 +10,8 @@ table_header = """\
 
    * - Name
      - Lightcone nr.
-     - Gas max :math:`z`
+     - All gas max :math:`z`
+     - Filtered gas max :math:`z`
      - DM max :math:`z`
      - stars max :math:`z`
      - BH max :math:`z`
@@ -19,7 +20,8 @@ table_header = """\
 row_template = """\
    * - ``{name}``
      - {lightcone_nr}
-     - {max_z_gas}
+     - {max_z_all_gas}
+     - {max_z_filtered_gas}
      - {max_z_dm}
      - {max_z_stars}
      - {max_z_bh}
@@ -38,11 +40,11 @@ for res_name in ["L1_m8", "L1_m9", "L2p8_m9", "L1_m10"]:
             continue
         if res_name not in name:
             continue
-            
+
         # Skip DMOs for now
         if name.endswith("_DMO"):
             continue
-            
+
         # Read parameters from one of the files
         attrs = {}
         nr_lightcones = 0
@@ -57,9 +59,17 @@ for res_name in ["L1_m8", "L1_m9", "L2p8_m9", "L1_m10"]:
                         max_z[ptype] = float(attrs[lightcone_nr][f"maximum_redshift_{ptype}"][0])
                     else:
                         max_z[ptype] = "-"
+
+                # Determine maximum redshift for all gas
+                if max_z["Gas"] != "-":
+                    max_z_all_gas = 0.78 if res_name == "L2p8_m9" else 0.25
+                else:
+                    max_z_all_gas = "-"
+
                 print(row_template.format(name=name,
                                           lightcone_nr=lightcone_nr,
-                                          max_z_gas=max_z["Gas"],
+                                          max_z_all_gas = max_z_all_gas,
+                                          max_z_filtered_gas=max_z["Gas"],
                                           max_z_dm=max_z["DM"],
                                           max_z_stars=max_z["Stars"],
                                           max_z_bh=max_z["BH"],
@@ -77,7 +87,7 @@ for name in root["FLAMINGO/L1_m9"]:
         continue
     # Skip fiducial model
     if "L1_m9" in name :
-        continue 
+        continue
     # Skip DMOs for now
     if name.endswith("_DMO"):
         continue
@@ -96,9 +106,17 @@ for name in root["FLAMINGO/L1_m9"]:
                     max_z[ptype] = float(attrs[lightcone_nr][f"maximum_redshift_{ptype}"][0])
                 else:
                     max_z[ptype] = "-"
+
+            # Determine maximum redshift for all gas
+            if max_z["Gas"] != "-":
+                max_z_all_gas = 0.78 if res_name == "L2p8_m9" else 0.25
+            else:
+                max_z_all_gas = "-"
+
             print(row_template.format(name=name,
                                       lightcone_nr=lightcone_nr,
-                                      max_z_gas=max_z["Gas"],
+                                      max_z_all_gas = max_z_all_gas,
+                                      max_z_filtered_gas=max_z["Gas"],
                                       max_z_dm=max_z["DM"],
                                       max_z_stars=max_z["Stars"],
                                       max_z_bh=max_z["BH"],
