@@ -5,7 +5,16 @@ The tables below show the maximum redshift at which particles of each
 type are output in each of the FLAMINGO simulations. Where no redshift
 is listed no lightcone particle data are available.
 
-.. note:: Particle lightcones are not available for the DMO simulations.
+There are two thresholds for gas particles to be output. All gas
+particles are output up to the redshift specified in the "All gas"
+column. Gas particles which have both temperature :math:`T >
+10^{5}\mathrm{K}` and hydrogen number density :math:`N_\mathrm{H} >
+10^{-6}(1+z)^4\mathrm{cm}^{-3}` are output at higher redshifts up to
+the limit shown in the "Filtered gas" column.
+
+.. note:: Particle lightcones are not available for the DMO
+          simulations, and particle data are only available for two of
+          the eight observers in the ``L2p8_m9`` simulation.
 
 .. list-table::
    :header-rows: 1
