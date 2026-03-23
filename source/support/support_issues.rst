@@ -212,9 +212,9 @@ Each of these unusually bright pixels has been overwritten with the mean value o
 
 Affected maps:
 
-  * L1000M1800/HYDRO_PLANCK: lightcone0, shell 2, XrayROSATIntrinsicPhotons
-  * L2800M5040/HYDRO_FIDUCIAL: lightcone2, shell 1, XrayROSATIntrinsicPhotons
-  * L2800M5040/HYDRO_FIDUCIAL: lightcone7, shell 4, XrayROSATIntrinsicPhotons
+  * L1000N1800/HYDRO_PLANCK: lightcone1, shell 1, XrayROSATIntrinsicPhotons
+  * L2800N5040/HYDRO_FIDUCIAL: lightcone2, shell 1, XrayROSATIntrinsicPhotons
+  * L2800N5040/HYDRO_FIDUCIAL: lightcone7, shell 4, XrayROSATIntrinsicPhotons
 
 .. _issues_xray_uvb:
 
