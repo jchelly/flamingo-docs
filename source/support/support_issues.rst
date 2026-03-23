@@ -239,3 +239,11 @@ A discussion of this effect, and an alternative density cut which can be made in
 
 Figures showing the fraction of haloes which are affected at redshift :math:`z=0` :ref:`can be found here<issues_compression_images>`.
 
+.. _issues_power_spectrum:
+
+Normalisation of the matter power spectrum on large scale
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As noted by `Schaller et al. (2025)<https://ui.adsabs.harvard.edu/abs/2025MNRAS.539.1337S/abstract>`__, the total matter
+power spectra of the Jet and Jet_fgas-4σ simulations do not exactly match the power spectra of their DMO counterparts on
+the largest scales, with an error smaller than 1%. The same issue affects the DESIw0wa and DESIw0wa_fgas-8σ simulations,.
