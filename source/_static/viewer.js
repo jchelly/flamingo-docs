@@ -37,7 +37,7 @@ function add_text(node, text) {
 
 function format_file_size(size) {
     var i = (size == 0) ? 0 : Math.floor(Math.log(size) / Math.log(1024));
-    return +((size / Math.pow(1024, i)).toFixed(2)) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB'][i];
+    return ((size / Math.pow(1024, i)).toFixed(1)) + ' ' + ['B ', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB'][i];
 }
 
 function format_shape(shape) {
@@ -57,12 +57,14 @@ function join_path(path, name) {
         return path+"/"+name;
 }
 
-function msgpack_url(path, object=null, data_size_limit=null) {
+function msgpack_url(path, object=null, data_size_limit=null, max_depth=null) {
     const url = new URL("/hdfstream/msgpack/"+sanitize_path(path), window.location.origin);
     if(object != null)
         url.searchParams.set("object", object);
     if(data_size_limit != null)
         url.searchParams.set("data_size_limit", data_size_limit);
+    if(max_depth != null)
+        url.searchParams.set("max_depth", max_depth);
     return url;
 }
 
@@ -245,9 +247,9 @@ function display_content(node) {
 }
 
 // Request a msgpack encoded file, directory or HDF5 object from the server
-async function fetch_and_decode(path, object=null, data_size_limit=0) {
+async function fetch_and_decode(path, object=null, data_size_limit=0, max_depth=null) {
 
-    const url = msgpack_url(path, object, data_size_limit);
+    const url = msgpack_url(path, object, data_size_limit, max_depth);
     const response = await fetch(url, {responseType: "arraybuffer"});
     const content_type = response.headers.get('Content-Type');
     if(content_type == "application/x-msgpack") {
@@ -418,57 +420,71 @@ async function display_directory(path, object) {
     }
 
     // Create list of subdirectories
+    const dir_map = new Map(Object.entries(object.directories));
     const nr_dirs = Object.keys(object.directories).length;
     if(nr_dirs > 0) {
         const dir_header = add_element(div, "h3");
-        add_text(dir_header, "Subdirectories:");
+        add_text(dir_header, "Subdirectories");
         const dir_table = add_element(div, "table");
         for(let i=0; i<nr_dirs; i++) {
             const tr = add_element(dir_table, "tr");
             const name = Object.keys(object.directories)[i];
+            // Add the directory size
+            const dir_size = format_file_size(dir_map.get(name).size);
+            const td_size = add_element(tr, "td");
+            td_size.classList.add("file_size");
+            add_text(add_element(td_size, "pre"), dir_size);
+            // Add the directory name
             const td1 = add_element(tr, "td");
             const dir_link = add_element(td1, "a");
             dir_link.href = viewer_url(join_path(path, name));
             add_text(dir_link, "📁 "+name);
             dir_link.onclick = function() {display_path(path+"/"+name, null, true) ; return false}; // returning false prevents loading the href
             // Add description of this directory, if we have one
-            const td2 = add_element(tr, "td");
+            const td_desc = add_element(tr, "td");
             if(labels != null) {
                 if(labels.has(name)) {
                     // Labels are interpreted as inline fragments of markdown
                     const md = marked.parseInline(labels.get(name));
-                    set_inner_html(td2, md);
+                    set_inner_html(td_desc, md);
                 }
             }
         }
     }
 
     // Create list of files
-    if((nr_dirs > 0) && (nr_files > 0))add_element(div, "br");
-    const file_header = add_element(div, "h3");
-    if(nr_files > 0) {
+    const file_map = new Map(Object.entries(object.files));
+    if((nr_dirs > 0) && (nr_displayed > 0))add_element(div, "br");
+    if(nr_displayed > 0) {
+        const file_header = add_element(div, "h3");
+        add_text(file_header, "Files");
         const file_table = add_element(div, "table");
         for(let i=0; i<nr_files; i++) {
             const name = Object.keys(object.files)[i];
             if((name != "description.md") && (name != "labels.msgpack")) {
                 // This is a regular data file, so display it
                 const tr = add_element(file_table, "tr");
+                // Add the file size
+                const file_size = format_file_size(file_map.get(name).size);
+                const td_size = add_element(tr, "td");
+                td_size.classList.add("file_size");
+                add_text(add_element(td_size, "pre"), file_size);
+                // Add the filename as a link
                 const td1 = add_element(tr, "td");
                 const file_link = add_element(td1, "a");
                 file_link.href = viewer_url(join_path(path, name));
                 add_text(file_link, "📄 " + name);
                 file_link.onclick = function() {display_path(path+"/"+name, null, true) ; return false}; // returning false prevents loading the href
-                // Add description of this directory, if we have one
-                const td2 = add_element(tr, "td");
+                // Add description of this file, if we have one
+                const td_desc = add_element(tr, "td");
                 if(labels != null) {
                     if(labels.has(name)) {
-                        add_text(td2, labels.get(name));
+                        add_text(td_desc, labels.get(name));
                     }
                 }
             }
         }
     }
-    if(nr_displayed > 0)add_text(file_header, "Files:");
 
     return frag;
 }
@@ -974,7 +990,7 @@ async function display_path(path, object_name, push_state) {
     try {
 
         // Download the file or directory object for this path
-        const file_data = await fetch_and_decode(path);
+        const file_data = await fetch_and_decode(path, null, 0, 1);
 
         // Generate html description
         const file_type = file_data.type.split(";")[0];
