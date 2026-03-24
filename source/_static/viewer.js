@@ -458,13 +458,6 @@ async function display_directory(path, object) {
     const file_header = add_element(div, "h3");
     if(nr_displayed > 0) {
         const file_table = add_element(div, "table");
-        /*
-          const header_row = add_element(file_table, "tr");;
-          add_text(add_element(header_row, "th"), "Size");
-          add_text(add_element(header_row, "th"), "Name");
-          const descr_header = add_element(header_row, "th");
-          let have_descr = 0;
-        */
         for(let i=0; i<nr_files; i++) {
             const name = Object.keys(object.files)[i];
             if((name != "description.md") && (name != "labels.msgpack")) {
@@ -487,12 +480,6 @@ async function display_directory(path, object) {
                 if(labels != null) {
                     if(labels.has(name)) {
                         add_text(td_desc, labels.get(name));
-                        /*
-                          if(have_descr==0) {
-                          have_descr = 1;
-                          add_text(descr_header, "Description");
-                          }
-                        */
                     }
                 }
             }
