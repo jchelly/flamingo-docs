@@ -1,7 +1,7 @@
 HEALPix map descriptions
 ========================
 
-This page describes the HEALPix maps wich were output as the FLAMINGO
+This page describes the HEALPix maps which were output as the FLAMINGO
 simulations were running. It describes what quantities have been
 computed and their units.
 

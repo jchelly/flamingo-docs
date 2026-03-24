@@ -18,7 +18,7 @@ row_template = """\
 
 
 # Read redshifts
-redshift_file = "/cosma8/data/dp004/flamingo/Runs/L2800N5040/HYDRO_FIDUCIAL/shell_redshifts.txt"
+redshift_file = "/cosma8/data/dp004/flamingo/Runs/L11200N5040/DMO_FIDUCIAL/shell_redshifts.txt"
 redshift_data = np.loadtxt(redshift_file, delimiter=",")
 z_min = redshift_data[:,0]
 z_max = redshift_data[:,1]
