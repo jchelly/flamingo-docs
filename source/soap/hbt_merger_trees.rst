@@ -138,6 +138,8 @@ In order to get access to :doc:`all the halo/galaxy properties calculated by SOA
              literature, which includes the mass contribution of all particles. The values
              in the SOAP catalogues should be used instead.
 
+.. _hbt_evolution_example:
+
 Evolution of a subhalo example
 ------------------------------
 
