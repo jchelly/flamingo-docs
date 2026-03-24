@@ -14,7 +14,7 @@ the limit shown in the "Filtered gas" column.
 
 .. note:: Particle lightcones are not available for the DMO
           simulations, and particle data are only available for two of
-          the eight observers in the ``L2p8_m9`` simulation.
+          the eight :doc:`observers` in the ``L2p8_m9`` simulation.
 
 .. list-table::
    :header-rows: 1
