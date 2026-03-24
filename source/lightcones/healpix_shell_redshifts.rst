@@ -2,8 +2,37 @@ HEALPix map shell redshifts
 ===========================
 
 The HEALPix maps are constructed in a series of concentric shells
-around the observer. Each shell is defined by a minimum and maximum
-redshift. The shells used in FLAMINGO are shown in the table below:
+around each :doc:`observer <observers>`. HEALPix maps are only output
+to a maximum redshift, which depends on the simulation box size.
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 0
+
+   * - Simulation box
+     - Number of shells
+     - Maximum redshift
+   * - 1Gpc boxes (observer 0)
+     - 60
+     - 3.0
+   * - 1Gpc boxes (observer 1)
+     - 10
+     - 0.5
+   * - 2.8Gpc boxes
+     - 68
+     - 5.0
+   * - 5.6Gpc box
+     - 80
+     - 25.0
+   * - 11.2Gpc box
+     - 81
+     - 30.0
+
+Each shell is defined by a minimum and maximum redshift, as shown
+below. All simulations use the same redshift shells except that
+shells beyond the maximum redshift are omitted.
+
+.. _shell_redshift_table:
 
 .. list-table::
    :header-rows: 1
@@ -216,3 +245,42 @@ redshift. The shells used in FLAMINGO are shown in the table below:
    * - 67
      - 4.750
      - 5.000
+   * - 68
+     - 5.000
+     - 5.500
+   * - 69
+     - 5.500
+     - 6.040
+   * - 70
+     - 6.040
+     - 6.630
+   * - 71
+     - 6.630
+     - 7.260
+   * - 72
+     - 7.260
+     - 7.950
+   * - 73
+     - 7.950
+     - 8.700
+   * - 74
+     - 8.700
+     - 9.510
+   * - 75
+     - 9.510
+     - 10.380
+   * - 76
+     - 10.380
+     - 12.260
+   * - 77
+     - 12.260
+     - 15.000
+   * - 78
+     - 15.000
+     - 20.000
+   * - 79
+     - 20.000
+     - 25.000
+   * - 80
+     - 25.000
+     - 30.000
