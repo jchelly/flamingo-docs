@@ -33,6 +33,9 @@
     padding-top: 0.15em;
     padding-bottom: 0.15em;
 }
+.directory_listing th {
+    text-align: left;
+}
 
 /*
   Download options
@@ -41,6 +44,17 @@
     margin-left: 0em;
     padding-top: 0.5em;
     padding-bottom: 1em;
+}
+
+/*
+  File sizes
+*/
+.file_size {
+    text-align: end;
+    /* font-family: "Courier New", Courier, monospace; */
+}
+.file_size pre {
+    display: inline;
 }
 
 /*
