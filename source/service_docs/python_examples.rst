@@ -17,6 +17,8 @@ in python. Here, we provide links to these examples.
 
   * :doc:`Identify the same halo between different simulations </soap/soap_matching>`
 
+  * :ref:`Plot the evolution of a halo across snapshots <hbt_evolution_example>`
+
   * :doc:`Read lightcone particles in a specified redshift range and
     position on the sky </lightcones/reading_particles>`
 
