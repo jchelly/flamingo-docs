@@ -21,7 +21,7 @@ the limit shown in the "Filtered gas" column.
    :stub-columns: 1
 
    * - Name
-     - Lightcone nr.
+     - :doc:`Observer index <observers>`
      - All gas max :math:`z`
      - Filtered gas max :math:`z`
      - DM max :math:`z`
