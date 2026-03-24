@@ -246,4 +246,4 @@ Normalisation of the matter power spectrum on large scale
 
 As noted by `Schaller et al. (2025)<https://ui.adsabs.harvard.edu/abs/2025MNRAS.539.1337S/abstract>`__, the total matter
 power spectra of the Jet and Jet_fgas-4σ simulations do not exactly match the power spectra of their DMO counterparts on
-the largest scales, with an error smaller than 1%. The same issue affects the DESIw0wa and DESIw0wa_fgas-8σ simulations,.
+the largest scales, with an error smaller than 1%. The same issue affects the DESIw0wa and DESIw0wa_fgas-8σ simulations.
