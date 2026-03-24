@@ -472,8 +472,7 @@ async function display_directory(path, object) {
                 const td1 = add_element(tr, "td");
                 const file_link = add_element(td1, "a");
                 file_link.href = viewer_url(join_path(path, name));
-                //add_text(file_link, "📄 " + name);
-                add_text(file_link, name);
+                add_text(file_link, "📄 " + name);
                 file_link.onclick = function() {display_path(path+"/"+name, null, true) ; return false}; // returning false prevents loading the href
                 // Add description of this file, if we have one
                 const td_desc = add_element(tr, "td");
