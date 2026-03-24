@@ -37,7 +37,7 @@ for observer 0 in the fiducial ``L1_m9`` simulation.
          root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
 
          # Location of one of the lightcone particle files relative to the remote directory
-         filename = "FLAMINGO/L1_m9/L1_m9/particle_lightcones/lightcone0_particles/lightcone0_0000.0.hdf5"
+         filename = "FLAMINGO/L1_m9/L1_m9/particle_lightcones/lightcone0_particles/lightcone0_0000.hdf5"
 
          # Open the lightcone particle output
          import lightcone_io as lc
@@ -48,7 +48,7 @@ for observer 0 in the fiducial ``L1_m9`` simulation.
       .. code-block:: python
 
          # Location of one of the lightcone particle files we downloaded
-         filename = "./FLAMINGO/L1_m9/L1_m9/particle_lightcones/lightcone0_particles/lightcone0_0000.0.hdf5"
+         filename = "./FLAMINGO/L1_m9/L1_m9/particle_lightcones/lightcone0_particles/lightcone0_0000.hdf5"
 
          # Open the lightcone particle output
          import lightcone_io as lc
