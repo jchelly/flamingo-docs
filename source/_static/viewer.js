@@ -455,8 +455,9 @@ async function display_directory(path, object) {
     // Create list of files
     const file_map = new Map(Object.entries(object.files));
     if((nr_dirs > 0) && (nr_displayed > 0))add_element(div, "br");
-    const file_header = add_element(div, "h3");
     if(nr_displayed > 0) {
+        const file_header = add_element(div, "h3");
+        add_text(file_header, "Files");
         const file_table = add_element(div, "table");
         for(let i=0; i<nr_files; i++) {
             const name = Object.keys(object.files)[i];
@@ -484,7 +485,6 @@ async function display_directory(path, object) {
             }
         }
     }
-    if(nr_displayed > 0)add_text(file_header, "Files");
 
     return frag;
 }
