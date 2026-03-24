@@ -2,10 +2,12 @@ HEALPix maps
 ============
 
 The FLAMINGO simulation lightcone outputs include full-sky projected
-maps of particle properties (such as mass or x-ray luminosity) in
-concentric spherical shells around the observer. When a particle
-crosses the observer's lightcone we determine which radial shell it is
-in and accumulate its contribution to the appropriate maps.
+maps of :doc:`particle properties <healpix_map_descriptions>` (such as
+mass or x-ray luminosity) in concentric :doc:`spherical shells
+<healpix_shell_redshifts>` around each :doc:`observer
+<observers>`. When a particle crosses the observer's lightcone we
+determine which radial shell it is in and accumulate its contribution
+to the appropriate maps.
 
 These maps use the `HEALPix <https://healpix.sourceforge.io/>`__
 pixelisation scheme to divide the sky into pixels of equal area. The
