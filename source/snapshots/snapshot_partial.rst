@@ -29,6 +29,8 @@ For the downsampled snapshots at each output we select a random 1% of particles 
    * - Neutrinos
      - ``Coordinates``, ``Masses``, ``SampledSpeeds``, ``Velocities``, ``Weights``
 
+Downsampled snapshots are not available for the ``L1_m9``, ``L1_m9_DMO``, ``L1_m10``, and ``L1_m10_DMO`` runs (since the full snapshots are available for all outputs). Downsampled snapshots are also not available for the ``L1_m8`` and ``L1_m8_DMO`` simulations (as downsampling the high resolution runs effectively gives you the low resolution runs).
+
 TODO: Add a link to an example downsampled snapshot directory
 
 Reduced snapshots
@@ -37,5 +39,7 @@ Reduced snapshots
 The reduced snapshots contains all the particles within the :math:`R_{100c}` radius of a selection of massive halos. Within the SOAP catalogues each subhalo has a flag ``SOAP/IncludedInReducedSnapshot`` which indicates whether its particles are included in the reduced snapshot. To pick these halos we define a set of :math:`M_{200c}` halo mass bins of width 0.05 dex, with the lowest mass bin starting at :math:`M_{200c}=10^{13} M_\odot`. If a bin has less than 200 halos then we include all of them in the reduced snapshot, if not then we include a random 200.
 
 All of the properties available in the :doc:`full snapshots <snapshot_particle_properties>` are present in the reduced snapshots.
+
+Reduced snapshots are not available for the ``L1_m9``, ``L1_m9_DMO``, ``L1_m10``, and ``L1_m10_DMO`` runs (since the full snapshots are available for all outputs).
 
 TODO: Add a link to an example reduced snapshot directory
