@@ -107,6 +107,7 @@ As described in :ref:`issues_agn_heating`, for a number of properties we filter 
 heated by AGN feedback. The :math:`\Delta T_\text{AGN}` value from the L1_m9 simulation was used for all SOAP catalogues, rather
 than the :math:`\Delta T_\text{AGN}` value from the corresponding run (see Table 1 of `Schaye et al. (2023)
 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__). No filtering was done for gas particles in the Jet runs.
+The impact of this on scaling relations :ref:`can be found here<issues_incorrect_dT_images>`.
 
 .. _issues_unsoftened_spin:
 
