@@ -22,4 +22,4 @@ details.
    Directory layout <halo_lightcone_layout>
    File format <halo_lightcone_format>
 
-.. note:: If you wish to use the halo lightcones in conjunction with the interated maps, you need to ensure you :ref:`apply the same rotations<map_rotations>`
+.. note:: If you wish to use the halo lightcones in conjunction with the integrated maps, you need to ensure you :ref:`apply the same rotations<map_rotations>`
