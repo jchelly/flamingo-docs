@@ -17,33 +17,33 @@ The output is a HDF5 file with the following datasets:
 
 There are corresponding datasets with 1 and 2 reversed (e.g. ``MatchIndex2to1``) with information about matching in the opposite direction.
 
-TODO: Add a link to the matching files?
+TODO: Test this script works once the matching files are available
 
 Matching example
 ----------------
 
 .. code-block:: python
 
-    import h5py
+    import hdfstream
     import matplotlib.pyplot as plt
     import numpy as np
     import swiftsimio as sw
 
+    # Connect to the hdfstream service and open the root directory
+    root_dir = hdfstream.open("cosma", "/")
+
     # Simulations to match between
-    sim1 = "L1000N1800/DMO_FIDUCIAL"
-    sim2 = "L1000N1800/HYDRO_FIDUCIAL"
+    sim1 = "L1_m9_DMO"
+    sim2 = "L1_m9"
     snap_nr = 77
 
     # Load SOAP catalogues
-    base_dir = "/cosma8/data/dp004/flamingo/Runs/"
-    soap1 = sw.load(f"{base_dir}/{sim1}/SOAP-HBT/halo_properties_{snap_nr:04}.hdf5")
-    soap2 = sw.load(f"{base_dir}/{sim2}/SOAP-HBT/halo_properties_{snap_nr:04}.hdf5")
+    soap1 = sw.load(root_dir[f"FLAMINGO/L1_m9/{sim1}/SOAP-HBT/halo_properties_{snap_nr:04}.hdf5"])
+    soap2 = sw.load(root_dir[f"FLAMINGO/L1_m9/{sim2}/SOAP-HBT/halo_properties_{snap_nr:04}.hdf5"])
 
     # Load matching file
-    match_dir = "/cosma8/data/dp004/dc-mcgi1/FLAMINGO/matching"
-    match_filename = f"{match_dir}/match_{sim1.replace('/', '_')}_{sim2.replace('/', '_')}_{snap_nr:04}.hdf5"
-
-    with h5py.File(match_filename, "r") as file:
+    match_filename = f"FLAMINGO/L1_m9/{sim2}/SOAP-HBT/match_{sim1}_{sim2}_{snap_nr:04}.hdf5"
+    with hdfstream.open('cosma', match_filename) as file:
         match_index = file["MatchIndex1to2"][:]
         consistent = file["Consistent1to2"][:] == 1
 
@@ -65,10 +65,10 @@ Matching example
     ax.set_yscale("log")
     ax.set_xlabel(f"M200c in {sim1} [$M_\\odot$]")
     ax.set_ylabel(f"M200c in {sim2} [$M_\\odot$]")
-    
+
     cbar = fig.colorbar(h[3], ax=ax)
     cbar.set_label('N_halo')
-    
-    plt.savefig(f"compare_mbound_{sim1.replace('/', '_')}.png", dpi=200)
+
+    plt.savefig(f"compare_mbound_{sim1}_{sim2}.png", dpi=200)
     plt.close()
 

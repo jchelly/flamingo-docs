@@ -44,7 +44,7 @@ observables (Gas and Spectroscopic-like temperatures, ComptonY properties, X-ray
 properties) the SOAP catalogues provide versions that exclude particles that were subject to direct AGN heating
 in the last 15 Myr and whose temperatures are between
 :math:`10^{-1}\Delta T_\text{AGN}` and :math:`10^{0.3}\Delta T_\text{AGN}`, where :math:`\Delta T_\text{AGN}` is the AGN heating temperature
-(but see also :ref:`issues_incorrect_dT`).
+(but see also :ref:`Incorrect ΔT for filtering recently heated gas<issues_incorrect_dT>`).
 
 Snapshots
 ---------
@@ -107,6 +107,7 @@ As described in :ref:`issues_agn_heating`, for a number of properties we filter 
 heated by AGN feedback. The :math:`\Delta T_\text{AGN}` value from the L1_m9 simulation was used for all SOAP catalogues, rather
 than the :math:`\Delta T_\text{AGN}` value from the corresponding run (see Table 1 of `Schaye et al. (2023)
 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__). No filtering was done for gas particles in the Jet runs.
+The impact of this on scaling relations :ref:`can be found here<issues_incorrect_dT_images>`.
 
 .. _issues_unsoftened_spin:
 
@@ -186,22 +187,35 @@ Unweighted neutrino masses were used to generate the maps, which means the maps 
 Incorrect search radius for smoothing particles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The search radius for smoothing particles when adding values to the map was too small by a factor of approximately 1.8. Therefore, some particles which should have been smoothed were instead deposited onto a singular pixel. The impact of this bug for cross correlations was examined 
-in appendix A of `McDonald et al. (2026)
-<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__, and found to be negligible.
+When constructing the FLAMINGO smoothed maps, a given particle property is either added to a singular pixel 
+or smoothed over multiple pixels provided its search radius, :math:`\theta_{\mathrm{s}}`, is greater than the radius of a pixel in the map, 
+as described in Appendix A2 of `Schaye et al. (2023)
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__. The search radius is proportional to the particle's sph smoothing length, :math:`h`, 
+when projected onto the sky, :math:`\theta_{\mathrm{s}} \propto \arctan(h/r)`, where :math:`r` is the co-moving distance from the observer to the particle.
+The on-the-fly HEALPix maps erroneously used a search radius that was to small by a factor of :math:`\approx 1.9` when determining if a particle should be 
+smoothed onto the map. Hence, particles with an angular smoothing length 1-1.9 times the pixel radii were not smoothed and instead only updated a 
+singular pixel. Particles with a larger or smaller angular smoothing length were treated correctly.
+Furthermore, this bug only affected whether a particle should be smoothed; it had no impact on identifying pixels within 
+the search radius to update or on the actual smoothing of the particle's value across the smoothing kernel. `McDonald et al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__ finds that this bug has a negligible effect on cross-correlations computed with the smoothed X-ray maps.
 
 .. All maps except xray, also xray maps above z=0.5 for L1 runs, xray maps for all cosmology runs
 
 .. _issues_bright_pixels:
 
-Extra bright X-ray pixels
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Unusually bright X-ray pixels
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A number of the X-ray photon count maps contain individual pixels which are extremely bright.
-These pixels are 1-2 orders of magnitude brighter than the next brightest pixels, and should be smoothed over (which can be done using ``healpy``).
-The cause of these bright pixels is unknown.
+A very small number of pixels (3 in total) in the on-the-fly healpix lightcones are unusually bright
+(2 orders of magnitude greater) compared to all other pixels within that same lightcone (i.e. across all shells for all redshifts).
+These pixels could not be reproduced from the particle lightcones.
+Each of these unusually bright pixels has been overwritten with the mean value of the neighbouring pixels
 
-.. Some of the maps, such as those for the PLANCK and fiducial models have an extremely X-ray bright pixel that cannot be reproduced from the particle data.
+Affected maps:
+
+  * L1000N1800/HYDRO_PLANCK: lightcone1, shell 1, XrayROSATIntrinsicPhotons
+  * L2800N5040/HYDRO_FIDUCIAL: lightcone2, shell 1, XrayROSATIntrinsicPhotons
+  * L2800N5040/HYDRO_FIDUCIAL: lightcone7, shell 4, XrayROSATIntrinsicPhotons
 
 .. _issues_xray_uvb:
 
@@ -222,10 +236,13 @@ Particle lightcones
 Replication of black holes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The repositioning of a black hole particle can cause it to cross into/out-of the
-lightcone. When this happens, the same black hole can appear in the lightcone outputs multiple times in quick succession.
+The repositioning of a black hole particle can cause it to cross into the lightcone.
+When this happens, the same black hole can appear in the lightcone outputs multiple times in quick succession.
+Similarly repositioning a black hole out of the lightcone can cause it to be to be missing.
 Note that it is expected that individual particles appear in the lightcone multiple times due to box replication,
-but they should not do so in very close succession. This affects the lightcones for all runs.
+but they should not do so in very close succession. This affects the lightcones for all runs, but the effect
+is negligible (it occurs approximately once for every ten thousand times a black hole appears in the lightcone).
+A figure showing the distribution of the distance between replicated particles :ref:`can be found here<issues_reposition_bh_images>`.
 
 .. _issues_compression:
 
@@ -233,11 +250,11 @@ Compression of scale factors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A ``Bfloat16`` :ref:`lossy compression filter<faq_compression>` was applied to the dataset ``PartType0/LastAGNFeedbackScaleFactors``
-in the particle lightcones. The reduced precision means it is not possible to reliably determine whether a particle was heated by an AGN within the last 15 Myr.
-A discussion of this effect, and an alternative density cut which can be made instead, will be included in the version of `McDonald et al. (2026)
-<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__ that incorporates the referee’s comments.
+in the particle lightcones.
+The reduced precision means it is not possible to reliably determine whether a particle was heated by an AGN within the last 15 Myr (as discussed in :ref:`issues_agn_heating`).
+A figure which gives a full description of this issue :ref:`can be found here<issues_compression_images>`.
+A alternative cut is to apply a time limit of 70 Myr, a density cut of :math:`\rho_{\mathrm{gas}}~ > 10^{-26} \mathrm{g~cm}^{-3}`, and the standard temperature constraint (:math:`10^{-1} \Delta T_{\mathrm{AGN}} < T/\mathrm{K} < 10^{0.3} \Delta T_{\mathrm{AGN}}`).
 
-Figures showing the fraction of haloes which are affected at redshift :math:`z=0` :ref:`can be found here<issues_compression_images>`.
 
 Power spectra
 -------------
