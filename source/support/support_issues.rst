@@ -206,11 +206,11 @@ the search radius to update or on the actual smoothing of the particle's value a
 Unusually bright X-ray pixels
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A very small number of pixels (3 in total) in the on-the-fly healpix lightcones are unusually bright
+A very small number of pixels (3 in total) in the X-ray HEALPix maps are unusually bright
 (2 orders of magnitude greater) compared to all other pixels within that same lightcone (i.e. across all shells for all redshifts) and constitutes a  
 signicant portion of the maps total (up to 35% in some cases). 
-Tfihese pixels could not be reproduced from the particle lightcones.
-Each of these unusually bright pixels has been overwritten with the mean value of the neighbouring pixels
+These pixels could not be reproduced from the particle lightcones.
+Each of these unusually bright pixels has been overwritten with the mean value of the 8 neighbouring pixels
 
 Affected maps and pixels:
 
