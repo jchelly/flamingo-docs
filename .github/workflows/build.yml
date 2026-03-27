@@ -1,8 +1,13 @@
 name: Check build succeeds with no warnings
 
 on:
+  push:
+    branches: [ "master" ]
   pull_request:
-    branches: [ "**" ]
+    branches: [ "master" ]
+
+permissions:
+  contents: read
 
 jobs:
   docs:
