@@ -17,8 +17,10 @@ model have :ref:`78 snapshots <snapshots-0-77>`.
 Output redshifts for ``L1_m9`` model variations and the ``L1_m10`` model
 ------------------------------------------------------------------------
 
-The snapshot redshifts for all FLAMINGO simulations in 1Gpc boxes at
+The output redshifts for all FLAMINGO simulations in 1Gpc boxes at
 ``m9`` and ``m10`` resolution are listed below.
+Particle data is available for all outputs of the ``L1_m9``, ``L1_m9_DMO``, ``L1_m10``, and ``L1_m10_DMO`` runs. For the other runs the third column
+indicates whether particle data is available.
 
 +-----------------+----------+--------------------------+
 | Snapshot number | Redshift | Particle data available  |

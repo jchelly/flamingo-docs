@@ -14,23 +14,42 @@ between snapshot number and redshift.
 
 .. mermaid::
 
-   flowchart LR
-     snapshots["snapshots/"]
+  flowchart TD
+    snapshots["snapshots/"]
 
-     snapshots --> s0000["`**Snapshot 0**
-     flamingo_0000/`"]
-     snapshots --> s0001["`**Snapshot 1**
-     flamingo_0001/`"]
+    snapshots --> s0000["`**Snapshot 0**
+    flamingo_0000/`"]
+    snapshots --> s0001["`**Snapshot 1**
+    flamingo_0001/`"]
 
-     s0000 --> s0000_virtual["`**Virtual snapshot**
-     flamingo_0000.hdf5`"]
-     s0000 --> s0000_chunks["`**Snapshot chunks**
-     flamingo_0000.0.hdf5
-     flamingo_0000.1.hdf5
-     flamingo_0000.2.hdf5
-     ...`"]
+    s0000 --> s0000_v["`**Virtual snapshot**
+    flamingo_0000.hdf5`"]
 
-     s0001 --> s0001_f0["..."]
+    s0000 --> swift_dir["`**SWIFT output**
+    swift_snapshot_0000/`"]
+
+    s0000 --> xray_dir["`**Recomputed X-rays**
+    xray_0000/`"]
+
+    s0000 --> mem_dir["`**Subhalo membership**
+    membership_0000/`"]
+
+    swift_dir --> swift_files["`**Snapshot chunks**
+    flamingo_0000.0.hdf5
+    flamingo_0000.1.hdf5
+    ...`"]
+
+    xray_dir --> xray_files["`**Xray chunks**
+    xray_0000.0.hdf5
+    xray_0000.1.hdf5
+    ...`"]
+
+    mem_dir --> mem_files["`**Membership chunks**
+    membership_0000.0.hdf5
+    membership_0000.1.hdf5
+    ...`"]
+
+    s0001 --> s0001_exp["..."]
 
 As an example, see `/FLAMINGO/L1_m9/L1_m9/snapshots/
 </flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9/snapshots>`__ for
@@ -51,16 +70,19 @@ particles.
 Snapshot data files
 -------------------
 
-The virtual snapshot file does not contain any particle data
-itself. The particles in each snapshot are split across multiple HDF5
-files with names of the form ``flamingo_XXXX.Y.hdf5``, where ``XXXX``
-is the snapshot number and ``Y`` numbers the files that make up the
-snapshot. Each one of these files contains the particles in part of
-the simulation volume. To read all of the particles in the snapshot, it
-is necessary to read from all of the files.
+The virtual snapshot file does not contain any particle data itself.
+Instead, the data for each snapshot is split across three (two for DMO)
+sets of HDF5 files: the SWIFT output, recomputed X-rays,
+and subhalo membership information. Within these sets, the files follow
+naming conventions such as ``flamingo_XXXX.Y.hdf5``, where ``XXXX`` is
+the snapshot number and ``Y`` numbers the files that make up the snapshot.
+Each one of these files contains the properties of particles for part of
+the simulation volume. To read the complete data for a snapshot, it is necessary
+to read from all of the files in the corresponding set.
 
-If you download the virtual snapshot file, it will only be readable if
-you also download the snapshot data files to the same directory. The
+If you download the virtual snapshot file, it will only be readable
+if you also download all the snapshot data files and
+maintain the original directory structure. The
 easiest way to ensure this is to use the full directory download link
 for the snapshot you're interested in. See
 :doc:`/service_docs/web_interface` for details.
