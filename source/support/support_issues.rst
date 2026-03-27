@@ -207,15 +207,22 @@ Unusually bright X-ray pixels
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A very small number of pixels (3 in total) in the on-the-fly healpix lightcones are unusually bright
-(2 orders of magnitude greater) compared to all other pixels within that same lightcone (i.e. across all shells for all redshifts).
-These pixels could not be reproduced from the particle lightcones.
+(2 orders of magnitude greater) compared to all other pixels within that same lightcone (i.e. across all shells for all redshifts) and constitutes a  
+signicant portion of the maps total (up to 35% in some cases). 
+Tfihese pixels could not be reproduced from the particle lightcones.
 Each of these unusually bright pixels has been overwritten with the mean value of the neighbouring pixels
 
-Affected maps:
+Affected maps and pixels:
 
-  * L1000N1800/HYDRO_PLANCK: lightcone1, shell 1, XrayROSATIntrinsicPhotons
-  * L2800N5040/HYDRO_FIDUCIAL: lightcone2, shell 1, XrayROSATIntrinsicPhotons
-  * L2800N5040/HYDRO_FIDUCIAL: lightcone7, shell 4, XrayROSATIntrinsicPhotons
+  * L1000N1800/HYDRO_PLANCK: lightcone1, shell 1
+      * neutrino_corrected_maps_downsampled_4096:  57780382
+      * neutrino_corrected_maps:  924361336
+  * L2800N5040/HYDRO_FIDUCIAL: lightcone0, shell 55
+      * neutrino_corrected_maps_downsampled_4096:  178573185
+      * neutrino_corrected_maps:  2857106781
+  * L2800N5040/HYDRO_FIDUCIAL: lightcone3, shell 1
+      * neutrino_corrected_maps_downsampled_4096:  152497301
+      * neutrino_corrected_maps:  2440147541
 
 .. _issues_xray_uvb:
 
