@@ -103,9 +103,3 @@ the cosmological and galaxy formation model parameters.
    * - ``L1_m9_extraDM``
      - `FLAMINGO/L1_m9/L1_m9_extraDM </flamingo/viewer.html?path=/FLAMINGO/L1_m9/L1_m9_extraDM>`__
      - Model with increased dark matter resolution
-   * - ``DESIw0wa``
-     - `FLAMINGO/L1_m9/DESIw0wa </flamingo/viewer.html?path=/FLAMINGO/L1_m9/DESIw0wa>`__
-     - Model with DESI w0wa cosmology
-   * - ``DESIw0wa_fgas-8sigma``
-     - `FLAMINGO/L1_m9/DESIw0wa_fgas-8sigma </flamingo/viewer.html?path=/FLAMINGO/L1_m9/DESIw0wa_fgas-8sigma>`__
-     - Model with DESI w0wa cosmology, calibrated to cluster gas fractions 8σ below observed
