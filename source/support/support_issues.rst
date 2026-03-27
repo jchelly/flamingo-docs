@@ -222,7 +222,6 @@ Affected maps:
 Incorrect UVB used for computing X-ray values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 The X-ray tables used to compute X-ray luminosities when running the simulations assumed the z=0 UV background for all redshifts. The X-ray values have been recomputed for
 all the snapshots using a corrected table. We have also recomputed the X-ray maps where possible, but the shells above :math:`z=0.5` for the
 :math:`1 \mathrm{Gpc}` runs have not been corrected.
