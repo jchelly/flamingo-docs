@@ -25,8 +25,8 @@ in python. Here, we provide links to these examples.
   * :doc:`Read in HEALPix maps of various quantities for a specified
     redshift shell and observer </lightcones/healpix_lightcone_io>`
 
+  * :doc:`Read halo properties from the halo lightcone </lightcones/reading_halos>`
+
   * :doc:`Read the redshift integrated HEALPix maps
     </lightcones/integrated_lightcones>`
-
-  * TODO: write (and test...) an example for lightcone halo catalogues
 

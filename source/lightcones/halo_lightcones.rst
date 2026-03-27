@@ -21,6 +21,7 @@ details.
    Construction <halo_lightcone_construction>
    Directory layout <halo_lightcone_layout>
    File format <halo_lightcone_format>
+   Reading the halos <reading_halos>
 
 .. note:: If you wish to use the halo lightcones in conjunction with
           the :doc:`integrated maps <integrated_lightcones>`, you need
