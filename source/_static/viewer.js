@@ -456,7 +456,9 @@ async function display_directory(path, object) {
             const td_desc = add_element(tr, "td");
             if(labels != null) {
                 if(labels.has(name)) {
-                    add_text(td_desc, labels.get(name));
+                    // Labels are interpreted as inline fragments of markdown
+                    const md = marked.parseInline(labels.get(name));
+                    set_inner_html(td_desc, md);
                 }
             }
         }
