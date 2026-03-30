@@ -75,27 +75,27 @@ A full list of the available quantities is shown in the table below.
    * - ``XrayErositaHighIntrinsicEnergies``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Yes
-     - Total X-ray flux in the eROSITA 2.3 - 8.0 keV band.  Excludes :ref:`recently heated gas <agn_exclusion>`.
+     - Total X-ray flux in the eROSITA 2.3 - 8.0 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayErositaHighIntrinsicPhotons``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Yes
-     - Total X-ray photon flux in the eROSITA 2.3 - 8.0 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
+     - Total X-ray photon flux in the eROSITA 2.3 - 8.0 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayErositaLowIntrinsicEnergies``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Yes
-     - Total X-ray flux in the eROSITA 0.2 - 2.3 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
+     - Total X-ray flux in the eROSITA 0.2 - 2.3 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayErositaLowIntrinsicPhotons``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Yes
-     - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
+     - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayROSATIntrinsicEnergies``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Yes
-     - Total X-ray flux in the ROSAT 0.5 - 2.0 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
+     - Total X-ray flux in the ROSAT 0.5 - 2.0 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayROSATIntrinsicPhotons``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Yes
-     - Total X-ray photon flux in the ROSAT 0.5 - 2.0 keV  band. Excludes :ref:`recently heated gas <agn_exclusion>`.
+     - Total X-ray photon flux in the ROSAT 0.5 - 2.0 keV  band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
 
 .. _agn_exclusion:
 
