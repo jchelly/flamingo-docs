@@ -95,3 +95,13 @@ for the snapshot you're interested in. See
 If you use the hdfstream module to read from a virtual snapshot, the
 server automatically reads the underlying datasets in the real
 snapshot files.
+
+.. _warning_buggy_datasets:
+
+.. warning:: Since the simulation was run, 
+   :ref:`the values of the Xray properties (now stored in the xray chunk files)<issues_xray_uvb>`
+   and :ref:`the values of the FOF IDs (now stored in the membership chunk files)<issues_rerun_fof>`
+   have been updated. Loading the virtual file will give access to the correct datasets
+   , but the original datasets are still present
+   in the SWIFT output chunk files. These original datasets should not be used.
+
