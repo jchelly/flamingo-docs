@@ -385,38 +385,16 @@ async function display_directory(path, object) {
 
     // Make a div to contain any description for this diretcory
     const description_div = add_element(div, "div");
-    const description_url = download_url(path+"/description.md");
-    const labels_url      = download_url(path+"/labels.msgpack");
 
-    // Check for any special files
-    const nr_files = Object.keys(object.files).length;
-    var nr_displayed = 0;
+    // Display the description, if we have one
+    if(object.description != null) {
+        set_inner_html(description_div, marked.parse(object.description));
+    }
+
+    // Find the file and directory labels, if we have any
     var labels = null;
-    for(let i=0; i<nr_files; i++) {
-        const name = Object.keys(object.files)[i];
-        if(name == "description.md") {
-            // If description.md exists we render it as markdown
-            const response = await fetch(description_url);
-            if(response.status == 200) {
-                set_inner_html(description_div, marked.parse(await response.text()));
-            } else {
-                // Generate a warning if the fetch fails
-                add_text(description_div, "[Unable to read description.md]");
-            }
-        } else if(name == "labels.msgpack") {
-            // If labels.msgpack exists we unpack it to get a map of (filename, description) pairs
-            const response = await fetch(labels_url, {responseType: "arraybuffer"});
-            if(response.status == 200) {
-                const buffer = await response.arrayBuffer();
-                const unpacked = MessagePack.decode(buffer);
-                labels = new Map(Object.entries(unpacked));
-            } else {
-                // Generate a warning if the fetch fails
-                add_text(description_div, "[Unable to read labels.msgpack]");
-            }
-        } else {
-            nr_displayed +=1;
-        }
+    if(object.labels != null) {
+        labels = new Map(Object.entries(object.labels));
     }
 
     // Create list of subdirectories
@@ -453,34 +431,34 @@ async function display_directory(path, object) {
     }
 
     // Create list of files
+    const nr_files = Object.keys(object.files).length;
     const file_map = new Map(Object.entries(object.files));
-    if((nr_dirs > 0) && (nr_displayed > 0))add_element(div, "br");
-    if(nr_displayed > 0) {
+    if((nr_dirs > 0) && (nr_files > 0))add_element(div, "br");
+    if(nr_files > 0) {
         const file_header = add_element(div, "h3");
         add_text(file_header, "Files");
         const file_table = add_element(div, "table");
         for(let i=0; i<nr_files; i++) {
             const name = Object.keys(object.files)[i];
-            if((name != "description.md") && (name != "labels.msgpack")) {
-                // This is a regular data file, so display it
-                const tr = add_element(file_table, "tr");
-                // Add the file size
-                const file_size = format_file_size(file_map.get(name).size);
-                const td_size = add_element(tr, "td");
-                td_size.classList.add("file_size");
-                add_text(add_element(td_size, "pre"), file_size);
-                // Add the filename as a link
-                const td1 = add_element(tr, "td");
-                const file_link = add_element(td1, "a");
-                file_link.href = viewer_url(join_path(path, name));
-                add_text(file_link, "📄 " + name);
-                file_link.onclick = function() {display_path(path+"/"+name, null, true) ; return false}; // returning false prevents loading the href
-                // Add description of this file, if we have one
-                const td_desc = add_element(tr, "td");
-                if(labels != null) {
-                    if(labels.has(name)) {
-                        add_text(td_desc, labels.get(name));
-                    }
+            const tr = add_element(file_table, "tr");
+            // Add the file size
+            const file_size = format_file_size(file_map.get(name).size);
+            const td_size = add_element(tr, "td");
+            td_size.classList.add("file_size");
+            add_text(add_element(td_size, "pre"), file_size);
+            // Add the filename as a link
+            const td1 = add_element(tr, "td");
+            const file_link = add_element(td1, "a");
+            file_link.href = viewer_url(join_path(path, name));
+            add_text(file_link, "📄 " + name);
+            file_link.onclick = function() {display_path(path+"/"+name, null, true) ; return false}; // returning false prevents loading the href
+            // Add description of this file, if we have one
+            const td_desc = add_element(tr, "td");
+            if(labels != null) {
+                if(labels.has(name)) {
+                    // Labels are interpreted as inline fragments of markdown
+                    const md = marked.parseInline(labels.get(name));
+                    set_inner_html(td_desc, md);
                 }
             }
         }
