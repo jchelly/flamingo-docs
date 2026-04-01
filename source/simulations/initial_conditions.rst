@@ -16,11 +16,29 @@ can be found in Section 2.4 and appendix B of
 `Schaye et al (2023)
 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__.
 
-Initial conditions are available for the following runs:
+Two sets of initial conditions for 1Gpc boxes at ``m9`` resolution are
+available for download.
 
-  * `L1_m9
-    <FLAMINGO/L1_m9/L1_m9/initial_conditions/FLAMINGO_DES3_M060_L1000_N1800.hdf5>`__
-  * `L1_m9_DMO
-    <FLAMINGO/L1_m9/L1_m9_DMO/initial_conditions/FLAMINGO_DES3_M060_L1000_N1800_DMO.hdf5>`__
+Dark matter only initial conditions
+-----------------------------------
 
+The initial conditions for the ``L1_m9_DMO`` simulation are available
+in the directory `FLAMINGO/L1_m9/L1_m9_DMO/initial_conditions
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9_DMO/initial_conditions>`__.
 
+Hydro run initial conditions
+----------------------------
+
+The initial conditions for the ``L1_m9`` simulation are available in
+the directory `FLAMINGO/L1_m9/L1_m9/initial_conditions
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/initial_conditions>`__. These
+initial conditions were also used for the following simulations:
+
+  * ``fgas+2sigma``
+  * ``fgas-2sigma``
+  * ``fgas-4sigma``
+  * ``fgas-8sigma``
+  * ``Mstar-1sigma``
+  * ``Mstar-1sigma_fgas-4sigma``
+  * ``Jet``
+  * ``Jet_fgas-4sigma``
