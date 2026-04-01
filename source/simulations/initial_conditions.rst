@@ -16,8 +16,11 @@ can be found in Section 2.4 and appendix B of
 `Schaye et al (2023)
 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__.
 
-TODO: Update when initial conditions are available
-
 Initial conditions are available for the following runs:
-  * L1_m9
+
+  * `L1_m9
+    <FLAMINGO/L1_m9/L1_m9/initial_conditions/FLAMINGO_DES3_M060_L1000_N1800.hdf5>`__
+  * `L1_m9_DMO
+    <FLAMINGO/L1_m9/L1_m9_DMO/initial_conditions/FLAMINGO_DES3_M060_L1000_N1800_DMO.hdf5>`__
+
 
