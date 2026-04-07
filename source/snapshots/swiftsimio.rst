@@ -22,7 +22,7 @@ Installation
 
 The swiftsimio module can be installed as follows::
 
-  pip install "git+https://github.com/SWIFTSIM/swiftsimio.git" # TODO: update after next swiftsimio release
+  pip install swiftsimio
 
 For remote access to snapshots we also need the hdfstream module::
 
