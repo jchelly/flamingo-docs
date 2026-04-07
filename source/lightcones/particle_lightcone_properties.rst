@@ -208,7 +208,7 @@ store the following particle properties:
      - float32
      - N
      - :math:`-`
-     - TODO: what does this mean for star particles?
+     - Scale-factors at which the particles were last hit by AGN feedback. -1 if a particle has never been hit by feedback
    * - ``Luminosities``
      - float32
      - N, 9
