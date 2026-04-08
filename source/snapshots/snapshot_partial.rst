@@ -31,7 +31,9 @@ For the downsampled snapshots at each output we select a random 1% of particles 
 
 Downsampled snapshots are not available for the ``L1_m9``, ``L1_m9_DMO``, ``L1_m10``, and ``L1_m10_DMO`` runs (since the full snapshots are available for all outputs). Downsampled snapshots are also not available for the ``L1_m8`` and ``L1_m8_DMO`` simulations (as downsampling the high resolution runs effectively gives you the low resolution runs).
 
-TODO: Add a link to an example downsampled snapshot directory
+As an example, see `/FLAMINGO/L1_m9/Planck/snapshots_downsampled/
+</flamingo/viewer.html?path=/FLAMINGO/L1_m9/Planck/snapshots_downsampled>`__ for
+the ``Planck`` simulation snapshot data.
 
 Reduced snapshots
 -----------------
@@ -42,4 +44,6 @@ All of the properties available in the :doc:`full snapshots <snapshot_particle_p
 
 Reduced snapshots are not available for the ``L1_m9``, ``L1_m9_DMO``, ``L1_m10``, and ``L1_m10_DMO`` runs (since the full snapshots are available for all outputs).
 
-TODO: Add a link to an example reduced snapshot directory
+As an example, see `/FLAMINGO/L1_m9/Planck/snapshots_reduced/
+</flamingo/viewer.html?path=/FLAMINGO/L1_m9/Planck/snapshots_reduced>`__ for
+the ``Planck`` simulation snapshot data.
