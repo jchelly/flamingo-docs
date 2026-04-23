@@ -34,7 +34,7 @@ for observer 0 in the fiducial ``L1_m9`` simulation.
 
          # Connect to the hdfstream service and open the root directory
          import hdfstream
-         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+         root_dir = hdfstream.open("cosma", "/")
 
          # Location of one of the lightcone particle files relative to the remote directory
          filename = "FLAMINGO/L1_m9/L1_m9/particle_lightcones/lightcone0_particles/lightcone0_0000.hdf5"
@@ -113,5 +113,3 @@ particles in a slice through the cone::
   plt.xlabel("x [cMpc]")
   plt.ylabel("y [cMpc]")
   plt.show()
-
-TODO: add image with result (when disk access is possible again...)

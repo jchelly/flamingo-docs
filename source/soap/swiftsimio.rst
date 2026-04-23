@@ -41,7 +41,7 @@ downloaded, and how to open a remote file on the hdfstream server.
 
          # Connect to the hdfstream service and open the root directory
          import hdfstream
-         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+         root_dir = hdfstream.open("cosma", "/")
 
          # Open the z=0 halo catalogue fro the L1_m10 simulation
          remote_file = root_dir["FLAMINGO/L1_m10/L1_m10/SOAP-HBT/halo_properties_0077.hdf5"]
