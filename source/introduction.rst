@@ -5,6 +5,7 @@ This service provides web based remote access to the `FLAMINGO
 simulations <https://flamingo.strw.leidenuniv.nl/>`__ described in
 `Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__
 and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.6103K/abstract>`__.
+(TODO: add a link to the data release paper)
 
 FLAMINGO simulation data products
 ---------------------------------

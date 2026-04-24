@@ -64,7 +64,7 @@ Reading HDF5 groups and datasets
 
 Files are opened by subscripting the directory object with the path to the file::
 
-    snap_file = root_dir["FLAMINGO/L1_m10/L1_m10_DMO/snapshots/flamingo_0077/flamingo_0077.0.hdf5"]
+    snap_file = root_dir["FLAMINGO/L1_m10/L1_m10_DMO/snapshots/flamingo_0077/swift_snapshot_0077/flamingo_0077.0.hdf5"]
 
 This returns a RemoteFile object which behaves like a h5py.File.
 We can read a dataset with::
@@ -103,7 +103,7 @@ by indexing numpy's built in `np.s_` object. For example::
     slices = []
     slices.append(np.s_[10:20,:])
     slices.append(np.s_[50:60,:])
-    data = dm_pos.request_slices(slices)
+    data = snap_file["PartType1/Coordinates"].request_slices(slices)
 
 This would return the coordinates of particles 10 to 19 and 50 to 59 in a
 single array of shape (20,3). There are some restrictions on the slices:

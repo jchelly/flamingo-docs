@@ -38,18 +38,18 @@ drawn from snapshot 70 of the L1_m10 simulation for lightcone observer
          root_dir = hdfstream.open("cosma", "/")
 
          # Name of the lightcone halo catalogue file to read
-         filename = "FLAMINGO/L1_m10/L1_m10/halo_lightcones/lightcone0/lightcone_halos_0070.hdf5"
+         filename = "FLAMINGO/L1_m10/L1_m10/halo_lightcone/lightcone0/lightcone_halos_0070.hdf5"
 
          # Open the lightcone particle output
          import lightcone_io as lc
-         halos = lc.HaloLightconeFile(filename, remote_dir=root)
+         halos = lc.HaloLightconeFile(filename, remote_dir=root_dir)
 
    .. tab-item:: Opening local files
 
       .. code-block:: python
 
          # Name of the lightcone halo catalogue file to read
-         filename = "FLAMINGO/L1_m10/L1_m10/halo_lightcones/lightcone0/lightcone_halos_0070.hdf5"
+         filename = "FLAMINGO/L1_m10/L1_m10/halo_lightcone/lightcone0/lightcone_halos_0070.hdf5"
 
          # Open the lightcone particle output
          import lightcone_io as lc
@@ -106,8 +106,11 @@ The ``lightcone_io.HaloLightconeFile`` class has an optional parameter
 ``soap_filename`` which can be used to do this. For example::
 
       import lightcone_io as lc
-      halos = lc.HaloLightconeFile(filename="hbt_lightcone_halos/lightcone0/lightcone_halos_0070.hdf5",
-                                   soap_filename="SOAP-HBT/halo_properties_0070.hdf5")
+      filename = "FLAMINGO/L1_m10/L1_m10/halo_lightcone/lightcone0/lightcone_halos_0070.hdf5"
+      soap_filename = "FLAMINGO/L1_m10/L1_m10/SOAP-HBT/halo_properties_0070.hdf5"
+      halos = lc.HaloLightconeFile(filename=filename,
+                                   soap_filename=soap_filename,
+                                   remote_dir=root_dir)
 
 This opens one of the halo lightcone files AND the corresponding SOAP
 output which the halos were taken from. We can then select a patch of
