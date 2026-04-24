@@ -34,7 +34,7 @@ observer 0 in the fiducial ``L1_m9`` simulation.
 
          # Connect to the hdfstream service and open the root directory
          import hdfstream
-         root = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+         root = hdfstream.open("cosma", "/")
 
          # Location of the lightcone output relative to the directory we opened
          basedir="FLAMINGO/L1_m9/L1_m9/healpix_maps/nside_4096"

@@ -17,8 +17,6 @@ The output is a HDF5 file with the following datasets:
 
 There are corresponding datasets with 1 and 2 reversed (e.g. ``MatchIndex2to1``) with information about matching in the opposite direction.
 
-TODO: Test this script works once the matching files are available
-
 Matching example
 ----------------
 

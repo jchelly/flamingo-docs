@@ -143,8 +143,6 @@ In order to get access to :doc:`all the halo/galaxy properties calculated by SOA
 Evolution of a subhalo example
 ------------------------------
 
-TODO: Update and test once HBT files are served
-
 .. code-block:: python
 
     import h5py

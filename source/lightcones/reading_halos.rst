@@ -22,8 +22,6 @@ For remote access to snapshots we also need the hdfstream module::
 Reading a lightcone halo catalogue file
 ---------------------------------------
 
-TODO: test this and update paths in the SOAP example below
-
 Each file contains all of the halos in a spherical shell corresponding
 to a single simulation snapshot. The example below reads the halos
 drawn from snapshot 70 of the L1_m10 simulation for lightcone observer
@@ -37,7 +35,7 @@ drawn from snapshot 70 of the L1_m10 simulation for lightcone observer
 
          # Connect to the hdfstream service and open the root directory
          import hdfstream
-         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+         root_dir = hdfstream.open("cosma", "/")
 
          # Name of the lightcone halo catalogue file to read
          filename = "FLAMINGO/L1_m10/L1_m10/halo_lightcones/lightcone0/lightcone_halos_0070.hdf5"
