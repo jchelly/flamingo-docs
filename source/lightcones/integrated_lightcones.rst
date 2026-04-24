@@ -4,6 +4,12 @@ Integrated lightcones
 This page describes the integrated lightcone HEALPix maps that have
 been produced in the analyses of the simulations.
 
+Where integrated maps for a simulation exist, they are stored in an
+``integrated_maps`` subdirectory in the simulation's base
+directory. For example, the integrated maps for ``L1_m9`` simulation
+are in the directory `/FLAMINGO/L1_m9/L1_m9/integrated_maps
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/integrated_maps>`__.
+
 .. _map_rotations:
 
 Rotations
@@ -24,10 +30,16 @@ and appendix A of `Broxterman et al (2024)
 for a discussion of the effects of random rotation on CMB lensing and
 weak lensing peak statistics, respectively.
 
-The same rotation has been applied to the different observables,
-meaning the different integrated maps can be directly compared and
-cross correlated. The rotations that have been applied to the 1 cGpc
-(``L1``) or 2.8 cGpc (``L2p8``) variations are
+The same rotation has been applied to all of the integrated
+observables described on this page, meaning that these integrated maps
+can be directly compared and cross correlated with each
+other. However, the :doc:`HEALPix maps in spherical shells
+<healpix_map_descriptions>` have not been rotated. The python code
+below shows how to read in the total mass in shells and rotate the
+shells to match the integrated maps described on this page.
+
+The rotations that have been applied to the 1 cGpc (``L1``) or 2.8
+cGpc (``L2p8``) variations are
 
 .. code-block:: python
 
@@ -40,7 +52,7 @@ cross correlated. The rotations that have been applied to the 1 cGpc
 
     angles_L2p8=np.array(([[0., 0., 0., 0., 0., 0., 0.,  2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 3.79736641, 3.79736641, 3.79736641, 3.79736641,  3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 1.32878635, 1.32878635, 1.32878635, 1.32878635, 1.32878635, 1.32878635], [0., 0., 0., 0., 0., 0., 0., 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313,  1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 2.48706614, 2.48706614, 2.48706614, 2.48706614, 2.48706614, 2.48706614]]))
 
-    path = f"/cosma8/data/dp004/flamingo/Runs/L1000N1800/L1_m9/neutrino_corrected_maps_downsampled_4096/"
+    path = "./FLAMINGO/L1_m9/L1_m9/healpix_maps/nside_4096/"
     shells = hm.ShellArray(f"{path}", "lightcone0")
 
     def rotate_map(hmap, rot_theta, rot_phi):
@@ -99,7 +111,6 @@ as shown below.
 
 where the part ``L1_m9_lc0`` changes between the variations and lightcones (lc), for example,
 ``L2p8_m9_DMO_lc4`` for observer four in the 2800 cGpc dark-matter-only box.
-
 
 
 ROSAT convolved X-ray All-Sky maps
