@@ -103,7 +103,7 @@ A full list of the available quantities is shown in the table below.
    * - ``XrayErositaLowConvolvedPhotons``
      - :math:`\mathrm{Mpc}^{-1}\mathrm{km/s}`
      - Yes
-     - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band:ref:`convolved with eROSITA ARF <_convolved-Xray>`. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
+     - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band :ref:`convolved with eROSITA ARF <_convolved-Xray>`. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
    * - ``XrayROSATIntrinsicEnergies``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Yes
