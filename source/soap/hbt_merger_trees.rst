@@ -145,7 +145,7 @@ Evolution of a subhalo example
 
 .. code-block:: python
 
-    import h5py
+    import hdfstream
     import matplotlib.pyplot as plt
     import numpy as np
     import swiftsimio as sw
@@ -176,13 +176,12 @@ Evolution of a subhalo example
     scale_factor = np.zeros(n_exist)
 
     # Loop through the catalogues and extract the mass for this object
-    hbt_basename = f"FLAMINGO/L1_m9/L1_m9/sorted_hbt/OrderedSubSnap_{{snap_nr:03}}.hdf5"
+    hbt_basename = f"FLAMINGO/L1_m9/L1_m9/HBT-HERONS/OrderedSubSnap_{{snap_nr:03}}.hdf5"
     for i in range(n_exist):
-        hbt_filename = hbt_basename.format(snap_nr=birth_snap_nr+i)
-        with hdfstream.open('cosma', hbt_filename) as file:
-            # Mass is stored in units of 10^10 Msun
-            mass_evolution_msun[i] = file["Subhalos/MboundType"][track_id] * 10 ** 10
-            scale_factor[i] = file['Cosmology']['ScaleFactor'][0]
+        hbt = root_dir[hbt_basename.format(snap_nr=birth_snap_nr+i)]
+        # Mass is stored in units of 10^10 Msun
+        mass_evolution_msun[i] = hbt["Subhalos/MboundType"][int(track_id)] * 10 ** 10
+        scale_factor[i] = hbt['Cosmology']['ScaleFactor'][0]
 
     # Plot the results
     fig, ax = plt.subplots(1)
