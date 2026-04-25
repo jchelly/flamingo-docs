@@ -32,6 +32,13 @@ Each shell is defined by a minimum and maximum redshift, as shown
 below. All simulations use the same redshift shells except that
 shells beyond the maximum redshift are omitted.
 
+.. note:: Not all of the FLAMINGO simulations use the same
+          cosmological parameters, so the relation between redshift
+          and comoving distance varies. If you need to translate
+          between redshift, distance and time in the cosmology of a
+          specific simulation, we recommend :ref:`using swiftsimio
+          <swiftsimio_cosmology>`.
+
 .. _shell_redshift_table:
 
 .. list-table::

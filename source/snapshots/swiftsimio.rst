@@ -73,16 +73,7 @@ metadata. The simulation box size is available as::
 
   snap.metadata.boxsize
 
-If you need cosmology information, you can get an astropy `cosmology
-object <https://docs.astropy.org/en/stable/cosmology/index.html>`__
-with::
-
-  cosmo = snap.metadata.cosmology
-
-This allows accurate calculation of the age of the universe or the
-comoving distance at a particular redshift in the FLAMINGO cosmology,
-for example. The numbers of particles of each type in the snapshot are
-available as::
+The numbers of particles of each type in the snapshot are available as::
 
   snap.metadata.n_gas
   snap.metadata.n_dark_matter
@@ -110,6 +101,32 @@ And to see the particle properties available for one particle type::
 See the `swiftsimio documentation
 <https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html#using-metadata>`__
 on snapshot metadata for more information.
+
+.. _swiftsimio_cosmology:
+
+Cosmology
+---------
+
+If you need cosmology information, you can get an astropy `cosmology
+object <https://docs.astropy.org/en/stable/cosmology/index.html>`__
+with::
+
+  cosmo = snap.metadata.cosmology
+
+This is the recommended way to translate between redshift, comoving
+distance and lookback time in the FLAMINGO simulations. You can
+compute the age of the universe at :math:`z = 0.5`, for example,
+with::
+
+  age_of_universe = cosmo.age(0.5)
+
+or compute the comoving distance to the same redshift with::
+
+  comoving_distance = cosmo.comoving_distance(0.5)
+
+See the `astropy documentation
+<https://docs.astropy.org/en/stable/cosmology/index.html>`__ for more
+details.
 
 Reading particle data
 ---------------------
