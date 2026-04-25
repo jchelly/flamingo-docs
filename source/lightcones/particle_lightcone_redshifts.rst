@@ -3,7 +3,10 @@ Particle lightcone redshift ranges
 
 The tables below show the maximum redshift at which particles of each
 type are output in each of the FLAMINGO simulations. Where no redshift
-is listed no lightcone particle data are available.
+is listed no lightcone particle data are available. The corresponding
+comoving distances vary depending on the cosmological parameters of
+the simulation and can be :ref:`computed with swiftsimio
+<swiftsimio_cosmology>`.
 
 There are two thresholds for gas particles to be output. All gas
 particles are output up to the redshift specified in the "All gas"
