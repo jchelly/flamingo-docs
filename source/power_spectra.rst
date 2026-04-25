@@ -277,9 +277,7 @@ The files follow the naming convention ``power_<type>_<index>.txt``. The followi
     * ``starBH-neutrino``: Stars/Black Holes and neutrinos
     * ``neutrino0-neutrino1``: Cross-correlation between the two neutrino particle realisations (used for shot-noise suppression)
 
-The power spectra do contain some small artifacts (such as the small peak in the middle of the z=2 line if you run the example below for the L1_m9 outputs) which are due to combining foldings, and are not real.
-
-TODO: Add link to some files
+The power spectra do contain some small artifacts (such as the small peak in the middle of the z=2 line if you run the example below for the L1_m9 outputs) which are due to combining foldings, and are not real. An example set of power spectrum files (for the ``L1_m9`` run) can be seen in the directory `L1_m9/L1_m9/power_spectra </flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/power_spectra>`__.
 
 The files are stored as plain text with a descriptive header. The data is organized into three space-separated columns:
 

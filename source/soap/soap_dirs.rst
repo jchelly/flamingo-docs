@@ -23,8 +23,6 @@ the ``L1_m9`` SOAP catalogues.
 HBT-HERONS catalgoues
 ---------------------
 
-TODO: Update location of files once they're being served
-
 Each simulation has an ``HBT-HERONS`` directory with one
 ``OrderedSubSnap_XXX.hdf5`` file for each output time, where ``XXX`` is
 the snapshot number.

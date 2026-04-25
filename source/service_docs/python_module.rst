@@ -30,7 +30,7 @@ Connecting to the server
 You can connect to the service as follows::
 
     import hdfstream
-    root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+    root_dir = hdfstream.open("cosma", "/")
 
 Here, the first parameter is the server name. This can be a full URL or an
 alias recognised by the hdfstream module. The second parameter is the name of

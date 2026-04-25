@@ -22,7 +22,7 @@ Installation
 
 The swiftsimio module can be installed as follows::
 
-  pip install "git+https://github.com/SWIFTSIM/swiftsimio.git" # TODO: update after next swiftsimio release
+  pip install swiftsimio
 
 For remote access to snapshots we also need the hdfstream module::
 
@@ -43,7 +43,7 @@ downloaded, and how to open a remote file on the hdfstream server.
 
          # Connect to the hdfstream service and open the root directory
          import hdfstream
-         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+         root_dir = hdfstream.open("cosma", "/")
 
          # Open the remote snapshot file
          remote_snapshot = root_dir["FLAMINGO/L1_m10/L1_m10/snapshots/flamingo_0077/flamingo_0077.hdf5"]
@@ -160,7 +160,7 @@ snapshot on the server.
 
          # Connect to the hdfstream service and open the root directory
          import hdfstream
-         root_dir = hdfstream.open("cosma", "/", user="my_username") # TODO: update when we remove access restrictions
+         root_dir = hdfstream.open("cosma", "/")
 
          # Open the remote snapshot file.
          # The path here specifies a file on the server.

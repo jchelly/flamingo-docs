@@ -18,7 +18,7 @@ contents described below.
          with SOAP to look up additional halo properties. It can also
          use the :ref:`spatial ordering
          <lightcone_halo_spatial_index>` of the catalogues to cut out
-         regions on the sky. TODO: examples!
+         regions on the sky. See :doc:`reading_halos`.
 
 Halo properties from the input halo catalogue
 ---------------------------------------------

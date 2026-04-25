@@ -4,6 +4,12 @@ Integrated lightcones
 This page describes the integrated lightcone HEALPix maps that have
 been produced in the analyses of the simulations.
 
+Where integrated maps for a simulation exist, they are stored in an
+``integrated_maps`` subdirectory in the simulation's base
+directory. For example, the integrated maps for ``L1_m9`` simulation
+are in the directory `/FLAMINGO/L1_m9/L1_m9/integrated_maps
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/integrated_maps>`__.
+
 .. _map_rotations:
 
 Rotations
@@ -24,10 +30,16 @@ and appendix A of `Broxterman et al (2024)
 for a discussion of the effects of random rotation on CMB lensing and
 weak lensing peak statistics, respectively.
 
-The same rotation has been applied to the different observables,
-meaning the different integrated maps can be directly compared and
-cross correlated. The rotations that have been applied to the 1 cGpc
-(``L1``) or 2.8 cGpc (``L2p8``) variations are
+The same rotation has been applied to all of the integrated
+observables described on this page, meaning that these integrated maps
+can be directly compared and cross correlated with each
+other. However, the :doc:`HEALPix maps in spherical shells
+<healpix_map_descriptions>` have not been rotated. The python code
+below shows how to read in the total mass in shells and rotate the
+shells to match the integrated maps described on this page.
+
+The rotations that have been applied to the 1 cGpc (``L1``) or 2.8
+cGpc (``L2p8``) variations are
 
 .. code-block:: python
 
@@ -40,7 +52,7 @@ cross correlated. The rotations that have been applied to the 1 cGpc
 
     angles_L2p8=np.array(([[0., 0., 0., 0., 0., 0., 0.,  2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 2.11833333, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 1.29070838, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 5.69217656, 3.79736641, 3.79736641, 3.79736641, 3.79736641,  3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 3.79736641, 1.32878635, 1.32878635, 1.32878635, 1.32878635, 1.32878635, 1.32878635], [0., 0., 0., 0., 0., 0., 0., 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 0.96440001, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 1.74841793, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 0.56258515, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313,  1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 1.45462313, 2.48706614, 2.48706614, 2.48706614, 2.48706614, 2.48706614, 2.48706614]]))
 
-    path = f"/cosma8/data/dp004/flamingo/Runs/L1000N1800/L1_m9/neutrino_corrected_maps_downsampled_4096/"
+    path = "./FLAMINGO/L1_m9/L1_m9/healpix_maps/nside_4096/"
     shells = hm.ShellArray(f"{path}", "lightcone0")
 
     def rotate_map(hmap, rot_theta, rot_phi):
@@ -69,10 +81,10 @@ non-tomographic Euclid-like source redshift distribution and are saved
 as ring-ordered Healpix maps at :math:`N_\mathrm{side} = 8192`. No
 smoothing or noise has been applied to these files.
 
-Each simulation has a subdirectory ``value_add/broxterman24`` which
+Each simulation has a subdirectory ``integrated_maps/broxterman24`` which
 contains the convergence maps. For example, the maps for ``L1_m9`` are
 in `this directory
-</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/value_add/broxterman24>`__. The
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/integrated_maps/broxterman24>`__. The
 files can be accessed using the :doc:`hdfstream
 </service_docs/python_module>` module or downloaded and read directly,
 as shown below.
@@ -84,7 +96,7 @@ as shown below.
       .. code-block:: python
 
          import hdfstream
-         file_path = 'FLAMINGO/L1_m9/L1_m9/value_add/broxterman24/WL_convergence_Euclid_like_nz_Broxterman24_L1_m9_lc0.hdf5'
+         file_path = 'FLAMINGO/L1_m9/L1_m9/integrated_maps/broxterman24/WL_convergence_Euclid_like_nz_Broxterman24_L1_m9_lc0.hdf5'
          with hdfstream.open("cosma", file_path) as data_file:
            kappa_map = data_file["Convergence"][:]
 
@@ -93,13 +105,12 @@ as shown below.
       .. code-block:: python
 
          import h5py
-         file_path = './FLAMINGO/L1_m9/L1_m9/value_add/broxterman24/WL_convergence_Euclid_like_nz_Broxterman24_L1_m9_lc0.hdf5'
+         file_path = './FLAMINGO/L1_m9/L1_m9/integrated_maps/broxterman24/WL_convergence_Euclid_like_nz_Broxterman24_L1_m9_lc0.hdf5'
          with h5py.File(f"/{file_path}",'r') as data_file:
            kappa_map = data_file["Convergence"][:]
 
 where the part ``L1_m9_lc0`` changes between the variations and lightcones (lc), for example,
 ``L2p8_m9_DMO_lc4`` for observer four in the 2800 cGpc dark-matter-only box.
-
 
 
 ROSAT convolved X-ray All-Sky maps
@@ -120,10 +131,10 @@ coordinates of the gas particles in each shell are rotated as
 described in `Broxterman et al (2024)
 <https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.2309B%2F/abstract>`__.
 
-Each simulation has a subdirectory ``value_add/mcdonald26`` which
+Each simulation has a subdirectory ``integrated_maps/mcdonald26`` which
 contains the X-ray maps. For example, the maps for ``L1_m9`` are
 in `this directory
-</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26>`__. The
+</flamingo/viewer.html?path=FLAMINGO/L1_m9/L1_m9/integrated_maps/mcdonald26>`__. The
 files can be accessed using the :doc:`hdfstream
 </service_docs/python_module>` module or downloaded and read
 directly. Below, we show how to read the maps:
@@ -138,7 +149,7 @@ directly. Below, we show how to read the maps:
 
          xray_source="Gas"
          map_name="XrayROSATIntrinsicPhotonsConvolved"
-         with hdfstream.open("cosma", "./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
+         with hdfstream.open("cosma", "FLAMINGO/L1_m9/L1_m9/integrated_maps/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5") as integrated_map:
 
            # read ROSAT convolved photon flux X-ray map
            ROSAT_Xray_map=integrated_map[xray_source+'/'+map_name][:]
@@ -147,7 +158,8 @@ directly. Below, we show how to read the maps:
            print("\tFLAMINGO identifier: {label}".format(label=integrated_map[xray_source].attrs['paper_name'][:]))
 
            # print integrated redshift range:
-           lc_zmin=integrated_map[xray_source].attrs['redshift_min'] lc_zmax=integrated_map[xray_source].attrs['redshift_max']
+           lc_zmin=integrated_map[xray_source].attrs['redshift_min']
+           lc_zmax=integrated_map[xray_source].attrs['redshift_max']
            print("\tredshift range: {zmin:.3f}, {zmax:.3f}".format(zmin=lc_zmin, zmax=lc_zmax))
 
            # print expression for map units:
@@ -161,7 +173,7 @@ directly. Below, we show how to read the maps:
 
          xray_source="Gas"
          map_name="XrayROSATIntrinsicPhotonsConvolved"
-         with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
+         with h5py.File("./FLAMINGO/L1_m9/L1_m9/integrated_maps/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
 
            # read ROSAT convolved photon flux X-ray map
            ROSAT_Xray_map=integrated_map[xray_source+'/'+map_name][:]
@@ -170,7 +182,8 @@ directly. Below, we show how to read the maps:
            print("\tFLAMINGO identifier: {label}".format(label=integrated_map[xray_source].attrs['paper_name'][:]))
 
            # print integrated redshift range:
-           lc_zmin=integrated_map[xray_source].attrs['redshift_min'] lc_zmax=integrated_map[xray_source].attrs['redshift_max']
+           lc_zmin=integrated_map[xray_source].attrs['redshift_min']
+           lc_zmax=integrated_map[xray_source].attrs['redshift_max']
            print("\tredshift range: {zmin:.3f}, {zmax:.3f}".format(zmin=lc_zmin, zmax=lc_zmax))
 
            # print expression for map units:
@@ -182,20 +195,42 @@ of a pixel in the HEALPix map of a given :math:`N_\mathrm{side}` . See
 the example given below for how to convert the map from per pixel area
 to per steradian (or square degree.)
 
-.. code-block:: python
 
-    import h5py
-    import healpy as hp
-    import unyt
-    xray_source="Gas"
-    map_name="XrayROSATIntrinsicPhotonsConvolved"
+.. tab-set::
 
-    with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
-        # read map
-        ROSAT_Xray_map_per_sr=integrated_map[xray_source+'/'+map_name][:]
-        nside = integrated_map[xray_source].attrs['shell_nside'] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
-        # apply unit transformation and define map units
-        ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
+   .. tab-item:: Remote access
+
+      .. code-block:: python
+
+         import hdfstream
+         import healpy as hp
+         import unyt
+         xray_source="Gas"
+         map_name="XrayROSATIntrinsicPhotonsConvolved"
+
+         with hdfstream.open("cosma", "FLAMINGO/L1_m9/L1_m9/integrated_maps/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5") as integrated_map:
+           # read map
+           ROSAT_Xray_map_per_sr=integrated_map[xray_source+'/'+map_name][:]
+           nside = integrated_map[xray_source].attrs['shell_nside'] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
+           # apply unit transformation and define map units
+           ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
+
+   .. tab-item:: Reading local files
+
+      .. code-block:: python
+
+         import h5py
+         import healpy as hp
+         import unyt
+         xray_source="Gas"
+         map_name="XrayROSATIntrinsicPhotonsConvolved"
+
+         with h5py.File("./FLAMINGO/L1_m9/L1_m9/integrated_maps/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
+           # read map
+           ROSAT_Xray_map_per_sr=integrated_map[xray_source+'/'+map_name][:]
+           nside = integrated_map[xray_source].attrs['shell_nside'] # can take nside from map attributes, otherwise confirm from the number of pixels in the map
+           # apply unit transformation and define map units
+           ROSAT_Xray_map_per_sr /= hp.nside2pixarea(nside, degrees=False) * unyt.photon / unyt.s / unyt.radian**2
 
 AGN Point Source Maps
 ---------------------
@@ -216,16 +251,6 @@ central halo with the abundance matching.  Both sets of maps are
 described in sections 3.1 and 3.2 of `McDonald et al (2026)
 <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`__.)
 
-Both of these maps can be accessed as demonstrated:
-
-.. code-block:: python
-
-    with h5py.File("./FLAMINGO/L1_m9/L1_m9/value_add/mcdonald26/ROSAT_convolved_Xray_AllSky_L1_m9.hdf5", "r") as integrated_map:
-        AGN_names=["AGN_base", "AGN_AM"]
-	ROSAT_point_source_maps={}
-        for xray_source in AGN_names:
-            ROSAT_point_source_maps[xray_source]=integrated_map[xray_source+'/'+map_name][:]
-
 
 Integrated Thermal SZ Maps
 --------------------------
@@ -234,18 +259,47 @@ These maps will be made available with the publication of `Yang et
 al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
 
-These are integrated maps constructed by accumulating the Compton-y parameter maps from individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). Lensing effects are included using `pixell <https://pixell.readthedocs.io/en/latest/>`__, applied shell by shell with the integrated convergence map up to the shell of interest. Note that the Compton-y shells exclude contributions from gas particles that have recently been directly heated by AGN feedback. The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+These are integrated maps constructed by accumulating the Compton-y
+parameter maps from individual lightcone shells (`Schaye et al., 2023
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__,
+Appendix A2.3). Lensing effects are included using `pixell
+<https://pixell.readthedocs.io/en/latest/>`__, applied shell by shell
+with the integrated convergence map up to the shell of interest. Note
+that the Compton-y shells exclude contributions from gas particles
+that have recently been directly heated by AGN feedback. The maps are
+organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below,
+we show how to read the maps and convert them into a :math:`\Delta
+T_\mathrm{CMB}` map.
 
-.. code-block:: python
-    
-    import h5py
+.. tab-set::
 
-    ##tSZ SED, assuming no relativistic corrections:
-    x = h*freq_test*1e9/(T_cmb*k_B)
-    tSZ_freq_dep_func = x*(np.cosh(x/2)/np.sinh(x/2))-4
-    
-    lensed_tSZ_map = h5py.File(map_save_dir+'lightcone0_shells/lensed_tSZ_rot_same_rot.hdf5', 'r')['data'][...]
-    delta_T_tSZ = tSZ_freq_dep_func * lensed_tSZ_map * T_cmb ## in K_CMB
+   .. tab-item:: Remote access
+
+      .. code-block:: python
+
+         import hdfstream
+
+         ##tSZ SED, assuming no relativistic corrections:
+         x = h*freq_test*1e9/(T_cmb*k_B)
+         tSZ_freq_dep_func = x*(np.cosh(x/2)/np.sinh(x/2))-4
+
+         with hdfstream.open("cosma", "FLAMINGO/L1_m9/L1_m9/integrated_maps/yang26/lightcone0_shells/lensed_tSZ_rot_same_rot.hdf5") as map_file:
+           lensed_tSZ_map = map_file["data"][...]
+         delta_T_tSZ = tSZ_freq_dep_func * lensed_tSZ_map * T_cmb ## in K_CMB
+
+   .. tab-item:: Reading local files
+
+      .. code-block:: python
+
+         import h5py
+
+         ##tSZ SED, assuming no relativistic corrections:
+         x = h*freq_test*1e9/(T_cmb*k_B)
+         tSZ_freq_dep_func = x*(np.cosh(x/2)/np.sinh(x/2))-4
+
+         with h5py.File("./FLAMINGO/L1_m9/L1_m9/integrated_maps/yang26/lightcone0_shells/lensed_tSZ_rot_same_rot.hdf5","r") as map_file:
+           lensed_tSZ_map = map_file["data"][...]
+         delta_T_tSZ = tSZ_freq_dep_func * lensed_tSZ_map * T_cmb ## in K_CMB
 
 Integrated Kinetic SZ Maps
 --------------------------
@@ -254,14 +308,36 @@ These maps will be made available with the publication of `Yang et
 al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
 
-These are integrated maps constructed by accumulating the Doppler-b parameter maps from individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). Lensing effects are computed using the same procedure as used for lensing of the thermal SZ map. The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+These are integrated maps constructed by accumulating the Doppler-b
+parameter maps from individual lightcone shells (`Schaye et al., 2023
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__,
+Appendix A2.3). Lensing effects are computed using the same procedure
+as used for lensing of the thermal SZ map. The maps are organised in
+ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how
+to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}`
+map.
 
-.. code-block:: python
-    
-    import h5py
-    
-    lensed_kSZ_map = h5py.File(map_save_dir+'lightcone0_shells/lensed_kSZ_rot_same_rot.hdf5', 'r')['data'][...]
-    delta_T_kSZ = -lensed_kSZ_map * T_cmb ## in K_CMB 
+.. tab-set::
+
+   .. tab-item:: Remote access
+
+      .. code-block:: python
+
+         import hdfstream
+
+         with hdfstream.open("cosma", "FLAMINGO/L1_m9/L1_m9/integrated_maps/yang26/lightcone0_shells/lensed_kSZ_rot_same_rot.hdf5") as map_file:
+           lensed_kSZ_map = map_file['data'][...]
+         delta_T_kSZ = -lensed_kSZ_map * T_cmb ## in K_CMB
+
+   .. tab-item:: Reading local files
+
+      .. code-block:: python
+
+         import h5py
+
+         with h5py.File("./FLAMINGO/L1_m9/L1_m9/integrated_maps/yang26/lightcone0_shells/lensed_kSZ_rot_same_rot.hdf5","r") as map_file:
+           lensed_kSZ_map = map_file['data'][...]
+         delta_T_kSZ = -lensed_kSZ_map * T_cmb ## in K_CMB
 
 Integrated Relativistically Corrected Thermal SZ Maps
 -----------------------------------------------------
@@ -270,14 +346,23 @@ These maps will be made available with the publication of `Yang et
 al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
 
-These are the relativistically corrected version of the thermal SZ intensity fluctuation maps, with the correction function computed using
-SZpack (`Chluba et al., 2012 <https://ui.adsabs.harvard.edu/abs/2012MNRAS.426..510C/abstract>`__, `2013 <https://ui.adsabs.harvard.edu/abs/2013MNRAS.430.3054C/abstract>`__). For now, only maps under lightcone1_shells for the 2.8 Gpc box run are available. Maps are given in MJy/sr, and are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. To convert intensity maps into :math:`\Delta T_\mathrm{CMB}` maps, a conversion factor is required, computed as:
+These are the relativistically corrected version of the thermal SZ
+intensity fluctuation maps, with the correction function computed
+using SZpack (`Chluba et al., 2012
+<https://ui.adsabs.harvard.edu/abs/2012MNRAS.426..510C/abstract>`__,
+`2013
+<https://ui.adsabs.harvard.edu/abs/2013MNRAS.430.3054C/abstract>`__). For
+now, only maps under lightcone1_shells for the 2.8 Gpc box run are
+available. Maps are given in MJy/sr, and are organised in ring
+ordering with :math:`N_\mathrm{side} = 4096`. To convert intensity
+maps into :math:`\Delta T_\mathrm{CMB}` maps, a conversion factor is
+required, computed as:
 
 .. code-block:: python
 
     import h5py
     import numpy as np
-    
+
     def prefactor(x_freq):
 
     	exp_x = np.exp(x_freq)
@@ -288,7 +373,7 @@ SZpack (`Chluba et al., 2012 <https://ui.adsabs.harvard.edu/abs/2012MNRAS.426..5
     x_CMB = h * freq_test * 1e9 / (T_cmb * k_B)
     pref = prefactor(x_CMB)
     unit_conv = (I_0 / T_cmb) * pref ## where I_0 = 270 MJy/sr.
-    
+
     delta_T_rel_tSZ = h5py.File(map_save_dir + 'L2p8_m9_fid/lightcone1_shells/delta_ItSZ_'+str(freq_test)+'_rot_same_rot_MJy_sr.hdf5', 'r')['data'][...] / unit_conv ## in K_CMB
 
 Integrated Cosmic Infrared Background Maps
@@ -298,7 +383,32 @@ These maps will be made available with the publication of `Yang et
 al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
 
-These are integrated maps generated from the star formation rate lightcone outputs, with the bolometric infrared luminosity assumed to be proportional to the star formation rate (`Kennicutt, 1998 <https://ui.adsabs.harvard.edu/abs/1998ApJ...498..541K/abstract>`__). The luminosity at a given frequency is then computed using a greybody radiation SED for infrared sources (`Planck Collaboration et al., 2016 <https://ui.adsabs.harvard.edu/abs/2016A%26A...594A..15P/abstract>`__), with the SED parameters determined by fitting to the measured 353, 545, and 857 GHz CIB power spectra from `Lenz et al. (2019) <https://ui.adsabs.harvard.edu/abs/2019ApJ...883...75L/abstract>`__. The same procedure as used for lensing of the thermal SZ map is applied here. Only maps at 217, 353, 545, and 857 GHz are provided here, which have been validated against observational CIB power spectra ( `Planck Collaboration et al., 2014 <https://ui.adsabs.harvard.edu/abs/2014A%26A...571A..30P/abstract>`__ and `Lenz et al., 2019 <https://ui.adsabs.harvard.edu/abs/2019ApJ...883...75L/abstract>`__ ). Maps at other frequencies can be generated upon request. Maps are provided in the unit of Jy/sr, and are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Maps are generated using the default three-parameter model discussed in `Yang et al. (2026) <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map. Conversion factors from Jy/sr to K_CMB are taken from Table 6 in `Planck Collaboration et al. (2014) <https://ui.adsabs.harvard.edu/abs/2014A%26A...571A...9P/abstract>`__.
+These are integrated maps generated from the star formation rate
+lightcone outputs, with the bolometric infrared luminosity assumed to
+be proportional to the star formation rate (`Kennicutt, 1998
+<https://ui.adsabs.harvard.edu/abs/1998ApJ...498..541K/abstract>`__). The
+luminosity at a given frequency is then computed using a greybody
+radiation SED for infrared sources (`Planck Collaboration et al., 2016
+<https://ui.adsabs.harvard.edu/abs/2016A%26A...594A..15P/abstract>`__),
+with the SED parameters determined by fitting to the measured 353,
+545, and 857 GHz CIB power spectra from `Lenz et al. (2019)
+<https://ui.adsabs.harvard.edu/abs/2019ApJ...883...75L/abstract>`__. The
+same procedure as used for lensing of the thermal SZ map is applied
+here. Only maps at 217, 353, 545, and 857 GHz are provided here, which
+have been validated against observational CIB power spectra ( `Planck
+Collaboration et al., 2014
+<https://ui.adsabs.harvard.edu/abs/2014A%26A...571A..30P/abstract>`__
+and `Lenz et al., 2019
+<https://ui.adsabs.harvard.edu/abs/2019ApJ...883...75L/abstract>`__
+). Maps at other frequencies can be generated upon request. Maps are
+provided in the unit of Jy/sr, and are organised in ring ordering with
+:math:`N_\mathrm{side} = 4096`. Maps are generated using the default
+three-parameter model discussed in `Yang et al. (2026)
+<https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__. Below,
+we show how to read the maps and convert them into a :math:`\Delta
+T_\mathrm{CMB}` map. Conversion factors from Jy/sr to K_CMB are taken
+from Table 6 in `Planck Collaboration et al. (2014)
+<https://ui.adsabs.harvard.edu/abs/2014A%26A...571A...9P/abstract>`__.
 
 .. code-block:: python
 
@@ -314,12 +424,31 @@ These maps will be made available with the publication of `Yang et
 al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
 
-These are integrated maps constructed from the black hole particle lightcone outputs. Radio luminosities are assigned by abundance matching the bolometric AGN luminosity function to the LOFAR 150 MHz luminosity function up to z = 2.5 (`Kondapally et al., 2022 <https://ui.adsabs.harvard.edu/abs/2022MNRAS.513.3742K/abstract>`__). The lensed source fluxes are extrapolated to higher CMB frequencies using a power-law SED, with the power index fitted to match the measured radio source counts from the SPT survey at 95, 150, and 220 GHz (`Everett et al., 2020 <https://ui.adsabs.harvard.edu/abs/2020ApJ...900...55E/abstract>`__). The procedure is repeated for subsamples selected by black hole accretion state using different Eddington ratio cuts, :math:`\lambda_\mathrm{Edd}< 10^{−2}, 10^{−3}, 10^{−6}`. Maps are provided in the unit of Jy/sr at 150 MHz, and are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. While rescaling radio maps to higher CMB frequencies, each case has its own SED power-law index parameter. Maps are provided without any radio flux-density cuts. 3D radio lightcone catalogues are available upon request. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+These are integrated maps constructed from the black hole particle
+lightcone outputs. Radio luminosities are assigned by abundance
+matching the bolometric AGN luminosity function to the LOFAR 150 MHz
+luminosity function up to z = 2.5 (`Kondapally et al., 2022
+<https://ui.adsabs.harvard.edu/abs/2022MNRAS.513.3742K/abstract>`__). The
+lensed source fluxes are extrapolated to higher CMB frequencies using
+a power-law SED, with the power index fitted to match the measured
+radio source counts from the SPT survey at 95, 150, and 220 GHz
+(`Everett et al., 2020
+<https://ui.adsabs.harvard.edu/abs/2020ApJ...900...55E/abstract>`__). The
+procedure is repeated for subsamples selected by black hole accretion
+state using different Eddington ratio cuts,
+:math:`\lambda_\mathrm{Edd}< 10^{−2}, 10^{−3}, 10^{−6}`. Maps are
+provided in the unit of Jy/sr at 150 MHz, and are organised in ring
+ordering with :math:`N_\mathrm{side} = 4096`. While rescaling radio
+maps to higher CMB frequencies, each case has its own SED power-law
+index parameter. Maps are provided without any radio flux-density
+cuts. 3D radio lightcone catalogues are available upon request. Below,
+we show how to read the maps and convert them into a :math:`\Delta
+T_\mathrm{CMB}` map.
 
 .. code-block:: python
 
     import h5py
-    
+
     ##radio:
     alpha_rad = -0.56
     # alpha_rad = -0.58 ##if reading in lensed_radiops_rot_llim_0.001_MBHcut.hdf5
@@ -336,7 +465,12 @@ These maps will be made available with the publication of `Yang et
 al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2025arXiv251209891Y/abstract>`__.
 
-These are integrated maps stacked from the dispersion measure maps per individual lightcone shells (`Schaye et al., 2023 <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__, Appendix A2.3). The maps are organised in ring ordering with :math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
+These are integrated maps stacked from the dispersion measure maps per
+individual lightcone shells (`Schaye et al., 2023
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__,
+Appendix A2.3). The maps are organised in ring ordering with
+:math:`N_\mathrm{side} = 4096`. Below, we show how to read the maps
+and convert them into a :math:`\Delta T_\mathrm{CMB}` map.
 
 .. code-block:: python
 
