@@ -108,8 +108,9 @@ Cosmology
 ---------
 
 If you need cosmology information, you can get an astropy `cosmology
-object <https://docs.astropy.org/en/stable/cosmology/index.html>`__
-with::
+object <https://docs.astropy.org/en/stable/cosmology/index.html>`__ by
+opening a snapshot as shown above, then accessing its cosmology
+field::
 
   cosmo = snap.metadata.cosmology
 
