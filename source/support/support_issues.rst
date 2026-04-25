@@ -206,23 +206,50 @@ the search radius to update or on the actual smoothing of the particle's value a
 Unusually bright X-ray pixels
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A very small number of pixels (3 in total) in the X-ray HEALPix maps are unusually bright
-(2 orders of magnitude greater) compared to all other pixels within that same lightcone (i.e. across all shells for all redshifts) and constitutes a  
-signicant portion of the maps total (up to 35% in some cases). 
-These pixels could not be reproduced from the particle lightcones.
+A very small number of pixels in the X-ray HEALPix maps are unusually bright compared to all other pixels within that same lightcone shell (i.e. across all HEALPix maps at a given redshift) and constitutes a signicant portion of each maps total X-ray emission (up to 35% in some cases). For each lightcone shell we class a pixel as being 'unusually' bright if: 1) the same pixel is the most X-ray bright in each X-ray map at a given redshift, 2) this pixel is atleast two orders of magnitude brighter than the next brightest pixel in a given X-ray map and 3) each of the neighouring pixels. Note these criteria only apply to the nside 16384 HEALPix maps. 
+These pixels could not be reproduced from the particle lightcones. 
 Each of these unusually bright pixels has been overwritten with the mean value of the 8 neighbouring pixels
 
 Affected maps and pixels:
 
-  * L1000N1800/HYDRO_PLANCK: lightcone1, shell 1
-      * neutrino_corrected_maps_downsampled_4096:  57780382
-      * neutrino_corrected_maps:  924361336
-  * L2800N5040/HYDRO_FIDUCIAL: lightcone0, shell 55
-      * neutrino_corrected_maps_downsampled_4096:  178573185
-      * neutrino_corrected_maps:  2857106781
-  * L2800N5040/HYDRO_FIDUCIAL: lightcone3, shell 1
-      * neutrino_corrected_maps_downsampled_4096:  152497301
-      * neutrino_corrected_maps:  2440147541
+   * L1000N1800/HYDRO_PLANCK: 
+      * lightcone 1, shell 1
+         * neutrino_corrected_maps:  924361336
+
+   * L2800N5040/HYDRO_FIDUCIAL: 
+      * lightcone 0, shell 55
+         * neutrino_corrected_maps:  2857106781
+      * lightcone 3, shell 1
+         * neutrino_corrected_maps:  2440147541
+
+   * L1000N1800/HYDRO_LOW_SIGMA8: 
+      * lightcone0, shell 14
+         * neutrino_corrected_maps:  2619121853
+
+   * L1000N1800/HYDRO_PLANCK_DCDM_12: 
+      * lightcone1, shell 9
+         * neutrino_corrected_maps:  1915507559
+
+   * L1000N1800/HYDRO_PLANCK_LARGE_NU_FIXED: 
+      * lightcone0, shell 3
+         * neutrino_corrected_maps:  2809245861
+
+   * L1000N1800/HYDRO_PLANCK_LARGE_NU_VARY: 
+      * lightcone0, shell 8
+         * neutrino_corrected_maps:  2953084165
+
+   * L1000N1800/HYDRO_STRONG_SUPERNOVA: 
+      * lightcone0, shell 22
+         * neutrino_corrected_maps:  2289480478
+
+   * L1000N1800/ HYDRO_STRONGER_AGN: 
+      * lightcone0, shell 38
+         * neutrino_corrected_maps:  1154659568
+      * lightcone1, shell 2
+         * neutrino_corrected_maps:  1219684110
+
+
+
 
 .. _issues_xray_uvb:
 
