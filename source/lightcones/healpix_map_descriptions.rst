@@ -85,7 +85,14 @@ Original X-ray maps output by Swift
 These maps are available for all observers and to high redshift, but
 were computed incorrectly :ref:`assuming the z=0 UV background at all
 redshifts <issues_xray_uvb>`. They have a ``_FrozenUVB`` suffix in the
-``lightconeX_shell_*.hdf5`` map files.
+``lightconeX.shell_*.hdf5`` map files.
+
+.. warning:: We recommend accessing all X-ray maps via the virtual
+             datasets in the files ``lightconeX.shell*.hdf5``. The
+             raw data for the original maps (which suffer from the UVB
+             issue) are stored in the files
+             ``swift_lightconeX.shell*.hdf5`` where they do not have
+             the ``_FrozenUVB`` suffix.
 
 .. list-table::
    :header-rows: 1
@@ -94,22 +101,22 @@ redshifts <issues_xray_uvb>`. They have a ``_FrozenUVB`` suffix in the
    * - Name
      - Units
      - Description
-   * - ``XrayErositaHighIntrinsicEnergies``
+   * - ``XrayErositaHighIntrinsicEnergies_FrozenUVB``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the eROSITA 2.3 - 8.0 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaHighIntrinsicPhotons``
+   * - ``XrayErositaHighIntrinsicPhotons_FrozenUVB``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Total X-ray photon flux in the eROSITA 2.3 - 8.0 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaLowIntrinsicEnergies``
+   * - ``XrayErositaLowIntrinsicEnergies_FrozenUVB``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the eROSITA 0.2 - 2.3 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaLowIntrinsicPhotons``
+   * - ``XrayErositaLowIntrinsicPhotons_FrozenUVB``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayROSATIntrinsicEnergies``
+   * - ``XrayROSATIntrinsicEnergies_FrozenUVB``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the ROSAT 0.5 - 2.0 keV band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayROSATIntrinsicPhotons``
+   * - ``XrayROSATIntrinsicPhotons_FrozenUVB``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Total X-ray photon flux in the ROSAT 0.5 - 2.0 keV  band. :ref:`Assumes z=0 UV background <issues_xray_uvb>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
 
@@ -145,40 +152,40 @@ Recomputed maps are available for the following simulations:
    * - Name
      - Units
      - Description
-   * - ``XrayErositaHighIntrinsicEnergies``
+   * - ``XrayErositaHighIntrinsicEnergies_Recomp``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the eROSITA 2.3 - 8.0 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaHighConvolvedEnergies``
+   * - ``XrayErositaHighConvolvedEnergies_Recomp``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-1}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the eROSITA 2.3 - 8.0 keV band :ref:`convolved with eROSITA ARF <convolved-Xray>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaHighIntrinsicPhotons``
+   * - ``XrayErositaHighIntrinsicPhotons_Recomp``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Total X-ray photon flux in the eROSITA 2.3 - 8.0 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaHighConvolvedPhotons``
+   * - ``XrayErositaHighConvolvedPhotons_Recomp``
      - :math:`\mathrm{Mpc}^{-1}\mathrm{km/s}`
      - Total X-ray photon flux in the eROSITA 2.3 - 8.0 keV band :ref:`convolved with eROSITA ARF <convolved-Xray>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaLowIntrinsicEnergies``
+   * - ``XrayErositaLowIntrinsicEnergies_Recomp``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the eROSITA 0.2 - 2.3 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaLowConvolvedEnergies``
+   * - ``XrayErositaLowConvolvedEnergies_Recomp``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-1}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the eROSITA 0.2 - 2.3 keV band :ref:`convolved with eROSITA ARF <convolved-Xray>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaLowIntrinsicPhotons``
+   * - ``XrayErositaLowIntrinsicPhotons_Recomp``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayErositaLowConvolvedPhotons``
+   * - ``XrayErositaLowConvolvedPhotons_Recomp``
      - :math:`\mathrm{Mpc}^{-1}\mathrm{km/s}`
      - Total X-ray photon flux in the eROSITA 0.2 - 2.3 keV band :ref:`convolved with eROSITA ARF <convolved-Xray>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayROSATIntrinsicEnergies``
+   * - ``XrayROSATIntrinsicEnergies_Recomp``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-3}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the ROSAT 0.5 - 2.0 keV band. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayROSATConvolvedEnergies``
+   * - ``XrayROSATConvolvedEnergies_Recomp``
      - :math:`10^{10}\mathrm{M}_\odot\mathrm{Mpc}^{-1}\mathrm{(km/s)}^{3}`
      - Total X-ray flux in the ROSAT 0.5 - 2.0 keV  band :ref:`convolved with the ROSAT response function <convolved-Xray>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayROSATIntrinsicPhotons``
+   * - ``XrayROSATIntrinsicPhotons_Recomp``
      - :math:`\mathrm{Mpc}^{-3}\mathrm{km/s}`
      - Total X-ray photon flux in the ROSAT 0.5 - 2.0 keV  band. Excludes :ref:`recently heated gas <agn_exclusion>`.
-   * - ``XrayROSATConvolvedPhotons``
+   * - ``XrayROSATConvolvedPhotons_Recomp``
      - :math:`\mathrm{Mpc}^{-1}\mathrm{km/s}`
      - Total X-ray photon flux in the ROSAT 0.5 - 2.0 keV band :ref:`convolved with the ROSAT response function <convolved-Xray>`. Excludes :ref:`recently heated gas <agn_exclusion>`.
 
