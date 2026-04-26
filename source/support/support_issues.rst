@@ -206,46 +206,57 @@ the search radius to update or on the actual smoothing of the particle's value a
 Unusually bright X-ray pixels
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A very small number of pixels in the X-ray HEALPix maps are unusually bright compared to all other pixels within that same lightcone shell (i.e. across all HEALPix maps at a given redshift) and constitute a signicant portion of each map's total X-ray emission (up to 35% in some cases). For each lightcone shell we class a pixel as being 'unusually' bright if: 1) the same pixel is the most X-ray bright in each X-ray map at a given redshift, 2) this pixel is atleast two orders of magnitude brighter than the next brightest pixel in a given X-ray map and 3) each of the neighouring pixels. Note these criteria only apply to the nside 16384 HEALPix maps.
-These pixels could not be reproduced from the particle lightcones.
+A very small number of pixels in the X-ray HEALPix maps are unusually bright compared to all other pixels within that same lightcone shell (i.e. across all HEALPix maps at a given redshift) and constitute a signicant portion of each map's total X-ray emission (up to 35% in some cases). For each lightcone shell we class a pixel as being 'unusually' bright if: 1) the same pixel is the most X-ray bright in each X-ray map at a given redshift, 2) this pixel is atleast two orders of magnitude brighter than the next brightest pixel in a given X-ray map and 3) each of the neighouring pixels. Note these criteria only apply to the nside 16384 HEALPix maps. These pixels could not be reproduced from the particle lightcones.
+
+.. note:: The recomputed X-ray maps (datasets with a ``_Recomp`` suffix in the ``lightcone*.hdf5`` files) are not affected.
 
 Affected maps and pixels:
 
-   * L1000N1800/HYDRO_PLANCK:
-      * lightcone 1, shell 1
-         * neutrino_corrected_maps:  924361336
+   * ``Planck``:
+      * Observer 1, shell 1
+         * Directory: `/FLAMINGO/L1_m9/Planck/healpix_maps/nside_16384/lightcone1_shells/shell_1/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/Planck/healpix_maps/nside_16384/lightcone1_shells/shell_1/>`__
+         * pixel index 924361336
 
-   * L2800N5040/HYDRO_FIDUCIAL:
-      * lightcone 0, shell 55
-         * neutrino_corrected_maps:  2857106781
-      * lightcone 3, shell 1
-         * neutrino_corrected_maps:  2440147541
+   * ``L2p8_m9``:
+      * Observer 0, shell 55
+         * Directory: `/FLAMINGO/L2p8_m9/L2p8_m9/healpix_maps/nside_16384/lightcone0_shells/shell_55/ </flamingo/viewer.html?path=/FLAMINGO/L2p8_m9/L2p8_m9/healpix_maps/nside_16384/lightcone0_shells/shell_55/>`__
+         * pixel index 2857106781
+      * Observer 3, shell 1
+         * Directory: `/FLAMINGO/L2p8_m9/L2p8_m9/healpix_maps/nside_16384/lightcone3_shells/shell_1/ </flamingo/viewer.html?path=/FLAMINGO/L2p8_m9/L2p8_m9/healpix_maps/nside_16384/lightcone3_shells/shell_1/>`__
+         * pixel index 2440147541
 
-   * L1000N1800/HYDRO_LOW_SIGMA8:
-      * lightcone0, shell 14
-         * neutrino_corrected_maps:  2619121853
+   * ``LS8``:
+      * Observer 0, shell 14
+         * Directory: `/FLAMINGO/L1_m9/LS8/healpix_maps/nside_16384/lightcone0_shells/shell_14/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/LS8/healpix_maps/nside_16384/lightcone0_shells/shell_14/>`__
+         * pixel index 2619121853
 
-   * L1000N1800/HYDRO_PLANCK_DCDM_12:
-      * lightcone1, shell 9
-         * neutrino_corrected_maps:  1915507559
+   * ``PlanckDCDM12``:
+      * Observer 1, shell 9
+         * Directory: `/FLAMINGO/L1_m9/PlanckDCDM12/healpix_maps/nside_16384/lightcone1_shells/shell_9/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/PlanckDCDM12/healpix_maps/nside_16384/lightcone1_shells/shell_9/>`__
+         * pixel index 1915507559
 
-   * L1000N1800/HYDRO_PLANCK_LARGE_NU_FIXED:
-      * lightcone0, shell 3
-         * neutrino_corrected_maps:  2809245861
+   * ``PlanckNu0p24Fix``:
+      * Observer 0, shell 3
+         * Directory: `/FLAMINGO/L1_m9/PlanckNu0p24Fix/healpix_maps/nside_16384/lightcone0_shells/shell_3/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/PlanckNu0p24Fix/healpix_maps/nside_16384/lightcone0_shells/shell_3/>`__
+         * pixel index 2809245861
 
-   * L1000N1800/HYDRO_PLANCK_LARGE_NU_VARY:
-      * lightcone0, shell 8
-         * neutrino_corrected_maps:  2953084165
+   * ``PlanckNu0p24Var``:
+      * Observer 0, shell 8
+         * Directory: `/FLAMINGO/L1_m9/PlanckNu0p24Var/healpix_maps/nside_16384/lightcone0_shells/shell_8/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/PlanckNu0p24Var/healpix_maps/nside_16384/lightcone0_shells/shell_8/>`__
+         * pixel index 2953084165
 
-   * L1000N1800/HYDRO_STRONG_SUPERNOVA:
-      * lightcone0, shell 22
-         * neutrino_corrected_maps:  2289480478
+   * ``Mstar-1sigma``:
+      * Observer 0, shell 22
+         * Directory: `/FLAMINGO/L1_m9/Mstar-1sigma/healpix_maps/nside_16384/lightcone0_shells/shell_22/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/Mstar-1sigma/healpix_maps/nside_16384/lightcone0_shells/shell_22/>`__
+         * pixel index 2289480478
 
-   * L1000N1800/ HYDRO_STRONGER_AGN:
-      * lightcone0, shell 38
-         * neutrino_corrected_maps:  1154659568
-      * lightcone1, shell 2
-         * neutrino_corrected_maps:  1219684110
+   * ``fgas-4sigma``:
+      * Observer 0, shell 38
+         * Directory: `/FLAMINGO/L1_m9/fgas-4sigma/healpix_maps/nside_16384/lightcone0_shells/shell_38/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/fgas-4sigma/healpix_maps/nside_16384/lightcone0_shells/shell_38/>`__
+         * pixel index 1154659568
+      * Observer 1, shell 2
+         * Directory: `/FLAMINGO/L1_m9/fgas-4sigma/healpix_maps/nside_16384/lightcone1_shells/shell_2/ </flamingo/viewer.html?path=/FLAMINGO/L1_m9/fgas-4sigma/healpix_maps/nside_16384/lightcone1_shells/shell_2/>`__
+         * pixel index 1219684110
 
 .. _issues_xray_uvb:
 
