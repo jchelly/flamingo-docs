@@ -197,9 +197,23 @@ the lightcone.  Excludes :ref:`gas recently heated by AGN
 Convolved X-ray Maps
 ^^^^^^^^^^^^^^^^^^^^
 
-The convolved X-ray maps (e.g. ``XrayErositaLowConvolvedPhotons``) are constructed the same as the ``Intrinsic`` X-ray maps, except the emitted photon energy is convolved with the effective area of the detector beloning to the telescope of the corresponding energy band (e.g. 
-section 3.1 of `McDonald et al (2026)
-<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`__.). Convolved maps in the ROSAT (0.5-2.0 keV) band adopt the effective area information from the publicly available `ROSAT on-axis response function <https://heasarc.gsfc.nasa.gov/docs/rosat/ruh/handbook/node122.html\#tabeffarea>` . The maps in the eROSITA-high (2.3 - 8.0 keV band) and eROSITA-low (0.2 - 2.3 keV) utilise the `survey-averaged eROSITA auxiliary response files <https://erosita.mpe.mpg.de/dr1/eSASS4DR1/eSASS4DR1_arfrmf/>`, specifically those for telescope model (TM) 8, which excludes TM5 and TM7 as they suffer from light leakage (`Predehl et al (2021) <https://arxiv.org/abs/2010.03477>`__.)
+The convolved X-ray maps (e.g. ``XrayErositaLowConvolvedPhotons``) are
+constructed in the same way as the ``Intrinsic`` X-ray maps, except
+that the emitted photon energy is convolved with the effective area of
+the detector belonging to the telescope of the corresponding energy
+band (e.g. section 3.1 of `McDonald et al (2026)
+<https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M/abstract>`__ .)
+Convolved maps in the ROSAT (0.5-2.0 keV) band adopt the effective
+area information from the publicly available `ROSAT on-axis response
+function
+<https://heasarc.gsfc.nasa.gov/docs/rosat/ruh/handbook/node122.html\#tabeffarea>`__
+. The maps in the eROSITA-high (2.3 - 8.0 keV band) and eROSITA-low
+(0.2 - 2.3 keV) utilise the `survey-averaged eROSITA auxiliary
+response files
+<https://erosita.mpe.mpg.de/dr1/eSASS4DR1/eSASS4DR1_arfrmf/>`__,
+specifically those for telescope model (TM) 8, which excludes TM5 and
+TM7 as they suffer from light leakage (`Predehl et al (2021)
+<https://arxiv.org/abs/2010.03477>`__.)
 
 
 .. _smoothed-maps:
