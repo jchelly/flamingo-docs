@@ -30,7 +30,7 @@ In all intermediate-resolution simulations except for the Jet models, particles 
 AGN heating
 ~~~~~~~~~~~
 
-AGN feedback is implemented by heating/kicking particles to very high temperatures/velocities, 
+AGN feedback is implemented by heating/kicking particles to very high temperatures/velocities,
 which is necessary to overcome numerical overcooling. Because the gas particles subject to energy injection by feedback are selected from the
 SPH neighbours of black holes/young stars, they tend to be
 part of the dense interstellar medium. This implies that for
@@ -187,15 +187,15 @@ Unweighted neutrino masses were used to generate the maps, which means the maps 
 Incorrect search radius for smoothing particles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When constructing the FLAMINGO smoothed maps, a given particle property is either added to a singular pixel 
-or smoothed over multiple pixels provided its search radius, :math:`\theta_{\mathrm{s}}`, is greater than the radius of a pixel in the map, 
+When constructing the FLAMINGO smoothed maps, a given particle property is either added to a singular pixel
+or smoothed over multiple pixels provided its search radius, :math:`\theta_{\mathrm{s}}`, is greater than the radius of a pixel in the map,
 as described in Appendix A2 of `Schaye et al. (2023)
-<https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__. The search radius is proportional to the particle's sph smoothing length, :math:`h`, 
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.tmp.2384S>`__. The search radius is proportional to the particle's sph smoothing length, :math:`h`,
 when projected onto the sky, :math:`\theta_{\mathrm{s}} \propto \arctan(h/r)`, where :math:`r` is the co-moving distance from the observer to the particle.
-The on-the-fly HEALPix maps erroneously used a search radius that was to small by a factor of :math:`\approx 1.9` when determining if a particle should be 
-smoothed onto the map. Hence, particles with an angular smoothing length 1-1.9 times the pixel radii were not smoothed and instead only updated a 
+The on-the-fly HEALPix maps erroneously used a search radius that was to small by a factor of :math:`\approx 1.9` when determining if a particle should be
+smoothed onto the map. Hence, particles with an angular smoothing length 1-1.9 times the pixel radii were not smoothed and instead only updated a
 singular pixel. Particles with a larger or smaller angular smoothing length were treated correctly.
-Furthermore, this bug only affected whether a particle should be smoothed; it had no impact on identifying pixels within 
+Furthermore, this bug only affected whether a particle should be smoothed; it had no impact on identifying pixels within
 the search radius to update or on the actual smoothing of the particle's value across the smoothing kernel. `McDonald et al. (2026)
 <https://ui.adsabs.harvard.edu/abs/2026arXiv260202484M>`__ finds that this bug has a negligible effect on cross-correlations computed with the smoothed X-ray maps.
 
@@ -206,50 +206,46 @@ the search radius to update or on the actual smoothing of the particle's value a
 Unusually bright X-ray pixels
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A very small number of pixels in the X-ray HEALPix maps are unusually bright compared to all other pixels within that same lightcone shell (i.e. across all HEALPix maps at a given redshift) and constitutes a signicant portion of each maps total X-ray emission (up to 35% in some cases). For each lightcone shell we class a pixel as being 'unusually' bright if: 1) the same pixel is the most X-ray bright in each X-ray map at a given redshift, 2) this pixel is atleast two orders of magnitude brighter than the next brightest pixel in a given X-ray map and 3) each of the neighouring pixels. Note these criteria only apply to the nside 16384 HEALPix maps. 
-These pixels could not be reproduced from the particle lightcones. 
-Each of these unusually bright pixels has been overwritten with the mean value of the 8 neighbouring pixels
+A very small number of pixels in the X-ray HEALPix maps are unusually bright compared to all other pixels within that same lightcone shell (i.e. across all HEALPix maps at a given redshift) and constitute a signicant portion of each map's total X-ray emission (up to 35% in some cases). For each lightcone shell we class a pixel as being 'unusually' bright if: 1) the same pixel is the most X-ray bright in each X-ray map at a given redshift, 2) this pixel is atleast two orders of magnitude brighter than the next brightest pixel in a given X-ray map and 3) each of the neighouring pixels. Note these criteria only apply to the nside 16384 HEALPix maps.
+These pixels could not be reproduced from the particle lightcones.
 
 Affected maps and pixels:
 
-   * L1000N1800/HYDRO_PLANCK: 
+   * L1000N1800/HYDRO_PLANCK:
       * lightcone 1, shell 1
          * neutrino_corrected_maps:  924361336
 
-   * L2800N5040/HYDRO_FIDUCIAL: 
+   * L2800N5040/HYDRO_FIDUCIAL:
       * lightcone 0, shell 55
          * neutrino_corrected_maps:  2857106781
       * lightcone 3, shell 1
          * neutrino_corrected_maps:  2440147541
 
-   * L1000N1800/HYDRO_LOW_SIGMA8: 
+   * L1000N1800/HYDRO_LOW_SIGMA8:
       * lightcone0, shell 14
          * neutrino_corrected_maps:  2619121853
 
-   * L1000N1800/HYDRO_PLANCK_DCDM_12: 
+   * L1000N1800/HYDRO_PLANCK_DCDM_12:
       * lightcone1, shell 9
          * neutrino_corrected_maps:  1915507559
 
-   * L1000N1800/HYDRO_PLANCK_LARGE_NU_FIXED: 
+   * L1000N1800/HYDRO_PLANCK_LARGE_NU_FIXED:
       * lightcone0, shell 3
          * neutrino_corrected_maps:  2809245861
 
-   * L1000N1800/HYDRO_PLANCK_LARGE_NU_VARY: 
+   * L1000N1800/HYDRO_PLANCK_LARGE_NU_VARY:
       * lightcone0, shell 8
          * neutrino_corrected_maps:  2953084165
 
-   * L1000N1800/HYDRO_STRONG_SUPERNOVA: 
+   * L1000N1800/HYDRO_STRONG_SUPERNOVA:
       * lightcone0, shell 22
          * neutrino_corrected_maps:  2289480478
 
-   * L1000N1800/ HYDRO_STRONGER_AGN: 
+   * L1000N1800/ HYDRO_STRONGER_AGN:
       * lightcone0, shell 38
          * neutrino_corrected_maps:  1154659568
       * lightcone1, shell 2
          * neutrino_corrected_maps:  1219684110
-
-
-
 
 .. _issues_xray_uvb:
 
