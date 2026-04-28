@@ -377,7 +377,7 @@ async function display_directory(path, object) {
         add_text(li_cmd, "Download and unpack on the command line:");
         add_element(li_cmd, "br");
         const dl_code = add_element(add_element(li_cmd, "pre"), "code");
-        dl_code.textContent = 'curl -u my_username -L "'+download_url(path)+'" | tar xvf -';
+        dl_code.textContent = 'curl -L "'+download_url(path)+'" | tar xvf -';
         // Access via globus
         const li_globus = add_element(ul, "li");
         set_inner_html(li_globus, "Users with a <a href='https://cosma.readthedocs.io/en/latest'>Cosma</a> account can use <a href='https://cosma.readthedocs.io/en/latest/data.html#globus-online'>Globus Online or bbcp</a>");

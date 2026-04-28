@@ -3,9 +3,12 @@ Introduction
 
 This service provides web based remote access to the `FLAMINGO
 simulations <https://flamingo.strw.leidenuniv.nl/>`__ described in
-`Schaye et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__
-and `Kugel et al (2023) <https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.6103K/abstract>`__.
-(TODO: add a link to the data release paper)
+`Schaye et al (2023)
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.4978S/abstract>`__
+and `Kugel et al (2023)
+<https://ui.adsabs.harvard.edu/abs/2023MNRAS.526.6103K/abstract>`__.
+The FLAMINGO data release is presented in `Helly et al (2026)
+<https://arxiv.org/abs/2604.24324>`__.
 
 FLAMINGO simulation data products
 ---------------------------------
@@ -67,13 +70,13 @@ possible, for example, to download just the star particles from some
 specified region in a simulation snapshot or download only a few
 properties of interest from a halo catalogue.
 
-We provide adapted versions of the `pynbody
-<https://github.com/pynbody/pynbody>`__ and `swiftsimio
+We provide an adapted version of the `swiftsimio
 <https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`__
-python modules which can transparently make use of this service, and a
+python module which can transparently make use of this service, and a
 more generic :doc:`hdfstream <service_docs/python_module>` module
 which allows downloads of arbitrary HDF5 data using a similar
-interface to h5py.
+interface to h5py. We also plan to adapt `pynbody
+<https://github.com/pynbody/pynbody>`__ to access this service.
 
 .. image:: images/download_dataset.gif
    :class: screenshot
