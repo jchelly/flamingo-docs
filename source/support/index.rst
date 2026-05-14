@@ -11,6 +11,7 @@ The following pages contain resources that might be useful to solve issues
 
    Frequently asked questions <support_faq>
    List of known issues <support_issues>
+   Scheduled down time <at_risk>
 
 If these do not resolve your problem, you can contact us in one of two ways.
 
