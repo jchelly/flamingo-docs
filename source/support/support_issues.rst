@@ -151,6 +151,26 @@ This means the tensors are not available for low mass subhaloes.
 Halo lightcones
 ---------------
 
+.. _issues_lightcone_soapindex:
+
+Incorrect ``InputHalos/SOAPIndex`` dataset in halo lightcones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each halo lightcone file contains halos drawn from a single snapshot
+and includes a dataset ``InputHalos/SOAPIndex`` which is intended to
+store the index in the corresponding SOAP catalogue of each lightcone
+halo. In some cases this has been written out in the wrong order, so
+if it is used to look up additional properties for halos in the
+lighcone, those properties will be incorrect.
+
+All halo lightcones except for ``L1_m10`` and ``L2p8_m9`` appear to be
+affected. Affected halo lightcones can be identified by a mismatch
+between the halo ``TrackId`` stored in the halo lightcone file and the
+corresponding SOAP output.
+
+This issue was identified on 25th September 2026. We are working on
+correcting it.
+
 .. _issues_lightcone_satellites:
 
 Missing satellite galaxies

@@ -75,6 +75,11 @@ in the redshift range covered by this file.
      - :math:`-`
      - Index of the halo in the input SOAP catalogue. The first halo is 0.
 
+.. warning:: An issue has been identified with the ``SOAPIndex``
+             dataset which links the halo lightcones to the SOAP
+             catalogues. See :ref:`issues_lightcone_soapindex` for
+             details.
+
 The HDF5 group ``BoundSubhalos`` contains additional halo properties
 passed through from SOAP. In FLAMINGO this is just the total bound mass.
 

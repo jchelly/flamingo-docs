@@ -1,6 +1,10 @@
 Halo lightcones
 ===============
 
+.. warning:: An issue has been identified with the dataset which links
+             the halo lightcones to the SOAP catalogues. See
+             :ref:`issues_lightcone_soapindex` for details.
+
 Lightcone halo catalogues extending to redshift :math:`z=15` have been
 constructed by interpolating the HBT-HERONS halo catalogues between
 snapshots using black hole particles as tracers of the halo
