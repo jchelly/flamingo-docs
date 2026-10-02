@@ -1,8 +1,9 @@
 Halo lightcones
 ===============
 
-.. warning:: An issue has been identified with the dataset which links
-             the halo lightcones to the SOAP catalogues. See
+.. warning:: An issue was identified with the dataset which links the
+             halo lightcones to the SOAP catalogues. We believe this
+             has been corrected as of 2026-10-02. See
              :ref:`issues_lightcone_soapindex` for details.
 
 Lightcone halo catalogues extending to redshift :math:`z=15` have been

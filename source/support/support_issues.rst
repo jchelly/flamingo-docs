@@ -159,17 +159,19 @@ Incorrect ``InputHalos/SOAPIndex`` dataset in halo lightcones
 Each halo lightcone file contains halos drawn from a single snapshot
 and includes a dataset ``InputHalos/SOAPIndex`` which is intended to
 store the index in the corresponding SOAP catalogue of each lightcone
-halo. In some cases this has been written out in the wrong order, so
-if it is used to look up additional properties for halos in the
-lighcone, those properties will be incorrect.
+halo. In many cases this had been written out in the wrong order, so
+if it was used to look up additional properties for halos in the
+lightcone then those properties would be incorrect.
 
-All halo lightcones except for ``L1_m10`` and ``L2p8_m9`` appear to be
-affected. Affected halo lightcones can be identified by a mismatch
-between the halo ``TrackId`` stored in the halo lightcone file and the
-corresponding SOAP output.
+Affected halo lightcones can be identified by a mismatch between the
+halo ``TrackId`` stored in the halo lightcone file and the ``TrackId``
+in the corresponding SOAP output.
 
-This issue was identified on 25th September 2026. We are working on
-correcting it.
+The lightcone halo catalogues for ``L1_m8`` and all ``L1_m9``
+variations were affected. As of 2026-10-02, these catalogues have been
+replaced and they should now be correct. Only the ``SOAPIndex``
+dataset has changed.
+
 
 .. _issues_lightcone_satellites:
 
