@@ -64,7 +64,7 @@ downloaded, and how to open a remote file on the hdfstream server.
 
          # Here we pass the name of the file we downloaded to pynbody
          import pynbody
-         soap = pynbody.load("./FLAMINGO/L1_m10/L1_m10/SOAP-HBT/halo_properties_0077.hdf5", remote_dir=root_dir)
+         soap = pynbody.load("./FLAMINGO/L1_m10/L1_m10/SOAP-HBT/halo_properties_0077.hdf5")
 
 Accessing halo properties
 -------------------------
