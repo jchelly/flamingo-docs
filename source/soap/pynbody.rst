@@ -41,8 +41,8 @@ Opening a halo catalogue
 The examples below show how to open a local HDF5 which you have
 downloaded, and how to open a remote file on the hdfstream server.
 
-.. note:: Opening SOAP outputs with pynbody is currently quite slow
-          due to the very large number of datasets.
+.. note:: Opening remote SOAP outputs with pynbody is currently quite
+          slow due to the very large number of datasets.
 
 .. tab-set::
 
@@ -96,4 +96,14 @@ In this list we can see the centre of mass of the bound particles,
 Each property is returned as pynbody `SimArray
 <https://pynbody.readthedocs.io/latest/reference/_autosummary/pynbody.array.SimArray.html#pynbody.array.SimArray>`__,
 which wraps a numpy ndarray with extra metadata such as unit
-information.
+information. For example, if we print the ``pos`` array returned
+here we can see that the coordinates are in comoving Mpc::
+
+  >>> pos
+  SimArray([[ 20.04614709,   8.79539709,   3.39604709],
+            [ 19.61300709,  21.37973709,  15.29066709],
+            [  2.01806709,  14.31845709,  15.56091709],
+            ...,
+            [993.50471063, 977.71273063, 976.64425063],
+            [991.69164063, 987.54288063, 986.86865063],
+            [975.01300063, 979.57271063, 975.25803063]], shape=(2244621, 3), '3.09e+24 cm a')
