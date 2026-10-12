@@ -170,7 +170,10 @@ particles. This is referred to as `spatial masking
 
 Spatial masking can be used to read in just part of a local snapshot
 which you have downloaded, or to download just part of a remote
-snapshot on the server.
+snapshot on the server. The result is likely to include additional
+particles outside the requested region because the snapshot volume is
+divided into cells and all cells which overlap the region are read in
+full.
 
 .. note:: This example has been updated (on 2026-07-17) because
           swiftsimio now requires the coordinates to cut out to be

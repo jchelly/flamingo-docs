@@ -1,6 +1,21 @@
 Reading particles belonging to a halo
 =====================================
 
+Both swiftsimio and pynbody are capable of identifying and extracting
+the particles belonging to a target halo without reading the full
+snapshot.
+
+Using pynbody
+-------------
+
+See the `pynbody documentation
+<https://pynbody.readthedocs.io/latest/tutorials/flamingo_halo_particles.html>`__
+for an example showing how to select a halo from a SOAP catalogue and
+read in its particles.
+
+Using swiftsimio
+----------------
+
 Here we show how to identify a halo of interest in a :doc:`SOAP halo
 catalogue </soap/index>` and then find its particles in the
 corresponding :doc:`snapshot </snapshots/index>`. This could be used

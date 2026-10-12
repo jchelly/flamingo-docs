@@ -6,11 +6,12 @@ describes each type of simulation output (snapshots, halo catalogues,
 HEALPix maps etc) and provides examples showing how to read each one
 in python. Here, we provide links to these examples.
 
-  * :doc:`Open a snapshot with swiftsimio, extract particles in a
-    specified region, and save part of a snapshot to a local file
-    </snapshots/swiftsimio>`
+  * Open a snapshot, read particles in a region, and save the region
+    to a local file using :doc:`swiftsimio </snapshots/swiftsimio>` or
+    :doc:`pynbody </snapshots/pynbody>`.
 
-  * :doc:`Read SOAP halo properties using swiftsimio</soap/swiftsimio>`
+  * Read SOAP halo properties using :doc:`swiftsimio </soap/swiftsimio>` or
+    :doc:`pynbody </soap/pynbody>`
 
   * :doc:`Identify a halo of interest and read in the particles
     belonging to it </snapshots/halo_particles>`

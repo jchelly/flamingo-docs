@@ -22,6 +22,7 @@ halo/galaxy definitions, as described within the following pages.
    soap_filters
    soap_property_table
    Reading with swiftsimio <swiftsimio>
+   Reading with pynbody <pynbody>
    soap_matching
    hbt_merger_trees
 
@@ -30,7 +31,7 @@ halo/galaxy definitions, as described within the following pages.
           Within FLAMINGO a halo corresponds to an overdensity of particles, originally found using the 3D FoF algorithm. Each halo contains one or more
           subhalos, which are a self-bound collection of particles identified by
           HBT-HERONS. Subhalos can be either centrals (each halo has a single central subhalo,
-          and the halo centre is defined as the position of the most bound 
+          and the halo centre is defined as the position of the most bound
           particle of its central subhalo), or satellites.
 
 The SOAP source code is available at `on github
