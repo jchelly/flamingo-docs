@@ -10,7 +10,8 @@ in python. Here, we provide links to these examples.
     to a local file using :doc:`swiftsimio </snapshots/swiftsimio>` or
     :doc:`pynbody </snapshots/pynbody>`.
 
-  * :doc:`Read SOAP halo properties using swiftsimio</soap/swiftsimio>`
+  * Read SOAP halo properties using :doc:`swiftsimio </soap/swiftsimio>` or
+    :doc:`pynbody </soap/pynbody>`
 
   * :doc:`Identify a halo of interest and read in the particles
     belonging to it </snapshots/halo_particles>`

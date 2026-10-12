@@ -41,8 +41,8 @@ Opening a halo catalogue
 The examples below show how to open a local HDF5 which you have
 downloaded, and how to open a remote file on the hdfstream server.
 
-.. note:: Opening remote SOAP outputs with pynbody is currently quite
-          slow due to the very large number of datasets.
+.. warning:: Opening remote SOAP outputs with pynbody is currently quite
+             slow due to the very large number of datasets.
 
 .. tab-set::
 
