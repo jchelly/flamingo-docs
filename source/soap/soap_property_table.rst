@@ -1750,6 +1750,8 @@ We do not calculate the inertia tensor if there are fewer than 20 particles with
 
 When calculating the inertia tensor for a bound subhalo we use a sphere with a radius equal to the half mass radius of the particles being considered.
 
+.. note:: Due to a bug, the inertia tensors are missing for low mass subhaloes. See :ref:`issues_missing_tensors` for details.
+
 .. _footnote-9:
 
 **[9]** **The angular momentum** of gas, dark matter, or stars is computed relative to
