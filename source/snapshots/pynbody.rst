@@ -118,11 +118,17 @@ returns the names of particle properties which can be loaded::
    'phi',
    'eps']
 
-Pynbody assigns standardised names to various common properties such
-as particle coordinates, velocities and masses. This is why the list
+Pynbody assigns standardised names to various common properties such as
+particle coordinates, velocities and masses. This is why the list
 above contains "pos" and not "Coordinates", for example. Quantities
 which do not have a standard pynbody name are identified by their HDF5
 dataset names.
+
+The standard name mappings used in Swift snapshots are defined in the
+``swift-name-mapping`` section of pynbody's configuration file. See
+the `configuration
+<https://pynbody.readthedocs.io/latest/tutorials/configuration.html>`__
+page of the pynbody documentation for details.
 
 Reading particle data
 ---------------------
