@@ -70,13 +70,14 @@ possible, for example, to download just the star particles from some
 specified region in a simulation snapshot or download only a few
 properties of interest from a halo catalogue.
 
-We provide an adapted version of the `swiftsimio
+The `swiftsimio
 <https://swiftsimio.readthedocs.io/en/latest/loading_data/index.html>`__
-python module which can transparently make use of this service, and a
-more generic :doc:`hdfstream <service_docs/python_module>` module
-which allows downloads of arbitrary HDF5 data using a similar
-interface to h5py. We also plan to adapt `pynbody
-<https://github.com/pynbody/pynbody>`__ to access this service.
+and `pynbody
+<https://pynbody.readthedocs.io/latest/tutorials/flamingo_halo_particles.html>`__
+python modules can access snapshot and halo catalogue data using this
+service, and we provide a more generic :doc:`hdfstream
+<service_docs/python_module>` module which allows downloads of
+arbitrary HDF5 data using a similar interface to h5py.
 
 .. image:: images/download_dataset.gif
    :class: screenshot
