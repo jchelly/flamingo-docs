@@ -88,8 +88,8 @@ The available halo properties are fully documented in
 of the bound particles, ``centre_of_mass``, and the total bound mass
 of the subhalo, ``total_mass``. To read in these quantities::
 
-  pos = snap.bound_subhalo.centre_of_mass
-  mass = snap.bound_subhalo.total_mass
+  pos = soap.bound_subhalo.centre_of_mass
+  mass = soap.bound_subhalo.total_mass
 
 Each property is returned as a `cosmo_array
 <https://swiftsimio.readthedocs.io/en/latest/cosmo_array/index.html>`__,
