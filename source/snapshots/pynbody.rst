@@ -118,6 +118,12 @@ returns the names of particle properties which can be loaded::
    'phi',
    'eps']
 
+Pynbody assigns standardised names to various common properties such
+as particle coordinates, velocities and masses. This is why the list
+above contains "pos" and not "Coordinates", for example. Quantities
+which do not have a standard pynbody name are identified by their HDF5
+dataset names.
+
 Reading particle data
 ---------------------
 
