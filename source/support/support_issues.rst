@@ -144,7 +144,8 @@ for redshifts greater than 3 for the L1m8 run.
 Missing inertia tensors
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-When computing the inertia tensors, a filter was applied based on subhalo bound mass (:math:`2 \times 10^{11} \mathrm{M_\odot}`),
+When computing the inertia tensors, a filter was applied based on
+subhalo bound mass (:math:`4 \times 10^{11} \mathrm{M_\odot}`),
 instead of the normal particle number threshold.
 This means the tensors are not available for low mass subhaloes.
 
